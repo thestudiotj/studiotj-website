@@ -1,0 +1,110 @@
+import Link from 'next/link'
+import Image from 'next/image'
+import { getManifest } from '@/lib/manifest'
+import EmailCapture from '@/components/EmailCapture'
+
+export default async function HomePage() {
+  const manifest = await getManifest()
+  const featuredCollections = manifest?.collections?.slice(0, 3) ?? []
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative min-h-[90vh] flex items-end pb-16 px-6 md:px-12 overflow-hidden">
+        {/* Replace with your own hero image */}
+        <div className="absolute inset-0 bg-ink">
+          {/* Hero image goes here — add your best photo */}
+          {/* <Image src="/hero.jpg" alt="" fill className="object-cover opacity-70" /> */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/20 to-ink/80" />
+        </div>
+
+        <div className="relative z-10 max-w-2xl animate-fade-up">
+          <p className="text-dust text-sm tracking-[0.3em] uppercase mb-4">StudioTJ</p>
+          <h1 className="font-display text-5xl md:text-7xl text-paper leading-tight mb-6">
+            Light,<br />
+            <em>found.</em>
+          </h1>
+          <p className="text-dust text-lg mb-8 max-w-md leading-relaxed">
+            Photography that sits at the edge of the familiar — architecture,
+            nature, and the lines that hold them together.
+          </p>
+          <div className="flex gap-4">
+            <Link href="/portfolio" className="btn-primary">View Portfolio</Link>
+            <Link href="/shop" className="btn-outline border-paper text-paper hover:bg-paper hover:text-ink">
+              Shop Prints
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Collections */}
+      {featuredCollections.length > 0 && (
+        <section className="px-6 md:px-12 py-20">
+          <div className="flex items-end justify-between mb-12">
+            <h2 className="section-title">Collections</h2>
+            <Link href="/portfolio" className="nav-link">View all →</Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {featuredCollections.map((collection: any) => (
+              <Link
+                key={collection.name}
+                href={`/portfolio?collection=${encodeURIComponent(collection.name)}`}
+                className="group block aspect-[4/5] bg-dust/30 relative overflow-hidden"
+              >
+                {collection.photos[0] && (
+                  <div className="absolute inset-0 bg-ink/20 group-hover:bg-ink/40 transition-all duration-500 z-10" />
+                )}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                  <p className="text-paper font-display text-2xl">{collection.name}</p>
+                  <p className="text-dust text-sm mt-1">{collection.photo_count} photos</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* About strip */}
+      <section className="border-t border-dust/40 px-6 md:px-12 py-20 grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 className="section-title mb-6">The work</h2>
+          <p className="text-muted leading-relaxed mb-4">
+            Based in the Netherlands, StudioTJ is a solo photography practice focused on
+            finding structure in the overlooked — the angle of a canal bridge, the geometry
+            of a greenhouse roof, the way Dutch light falls flat and honest.
+          </p>
+          <p className="text-muted leading-relaxed mb-8">
+            Available as fine art prints, editorial licensing, and stock on Alamy.
+          </p>
+          <Link href="/about" className="btn-outline">About the studio</Link>
+        </div>
+        <div className="aspect-square bg-dust/30 relative overflow-hidden">
+          {/* Add a portrait or studio photo here */}
+        </div>
+      </section>
+
+      {/* Latest from the blog */}
+      <section className="bg-ink text-paper px-6 md:px-12 py-20">
+        <div className="flex items-end justify-between mb-12">
+          <h2 className="font-display text-4xl md:text-6xl">Latest</h2>
+          <Link href="/blog" className="text-dust text-sm tracking-widest uppercase hover:text-paper transition-colors">
+            All posts →
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Blog post cards will render here once you have posts */}
+          <p className="text-muted col-span-3">No posts yet — add markdown files to /content/blog/</p>
+        </div>
+      </section>
+
+      {/* Email capture */}
+      <EmailCapture
+        variant="light"
+        headline="When new work is ready"
+        subline="An occasional email. No schedule, no noise — just new work and where it came from."
+        incentive="First email includes a free high-res cloud wallpaper pack."
+      />
+    </>
+  )
+}
