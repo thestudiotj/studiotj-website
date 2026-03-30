@@ -157,7 +157,27 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
     for (const val of opt.values) titleMap.set(val.id, val.title)
   }
 
-  // product.options[i].type is "color" | "size" and its index matches variant.options[i]
+  // Collect which IDs appear at each variant.options position across enabled variants.
+  // variant.options order may differ from product.options order, so we detect the mapping
+  // using only IDs that actually appear in this product's variants (small, non-overlapping sets).
+  const variantPositionSets: Set<number>[] = []
+  for (const v of enabledVariants) {
+    v.options.forEach((id, pos) => {
+      if (!variantPositionSets[pos]) variantPositionSets[pos] = new Set()
+      variantPositionSets[pos].add(id)
+    })
+  }
+
+  // For each product option, find which variant.options position holds its values
+  const productToVariantPos: number[] = product.options.map((opt) => {
+    const optIds = new Set(opt.values.map((v) => v.id))
+    for (let pos = 0; pos < variantPositionSets.length; pos++) {
+      const posSet = variantPositionSets[pos]
+      if (posSet && [...posSet].some((id) => optIds.has(id))) return pos
+    }
+    return -1
+  })
+
   // Display order: color first, size second, others after
   const displayOptionOrder = Array.from(product.options.keys()).sort((a, b) => {
     const rank = (type: string) => (type === 'color' ? 0 : type === 'size' ? 1 : 2)
@@ -168,7 +188,10 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
 
   const [selectedValues, setSelectedValues] = useState<number[]>(() => {
     if (!defaultVariant) return product.options.map((opt) => opt.values[0]?.id ?? 0)
-    return product.options.map((_, pIdx) => defaultVariant.options[pIdx] ?? 0)
+    return product.options.map((_, pIdx) => {
+      const vPos = productToVariantPos[pIdx]
+      return vPos >= 0 ? defaultVariant.options[vPos] : 0
+    })
   })
   const [added, setAdded] = useState(false)
   const { addItem, openDrawer } = useCart()
@@ -177,14 +200,19 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   const activeVariant: PrintifyVariant | null = useMemo(() => {
     return (
       enabledVariants.find((v) =>
-        product.options.every((_, pIdx) => v.options[pIdx] === selectedValues[pIdx])
+        product.options.every((_, pIdx) => {
+          const vPos = productToVariantPos[pIdx]
+          return vPos < 0 || v.options[vPos] === selectedValues[pIdx]
+        })
       ) ?? null
     )
   }, [enabledVariants, product.options, selectedValues])
 
   // For each option, pre-compute the values that appear in at least one enabled variant
   const availableValuesByOption = product.options.map((opt, pIdx) => {
-    const ids = new Set(enabledVariants.map((v) => v.options[pIdx]))
+    const vPos = productToVariantPos[pIdx]
+    if (vPos < 0) return []
+    const ids = new Set(enabledVariants.map((v) => v.options[vPos]))
     const values = Array.from(ids).map((id) => ({
       id,
       title: titleMap.get(id) ?? String(id),
