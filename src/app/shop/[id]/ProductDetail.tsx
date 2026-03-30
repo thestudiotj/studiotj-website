@@ -124,6 +124,9 @@ function OptionSelector({
 
 export default function ProductDetail({ product }: { product: PrintifyProduct }) {
   const enabledVariants = getEnabledVariants(product)
+  console.log('[ProductDetail] options:', JSON.stringify(product.options, null, 2))
+  console.log('[ProductDetail] variants (first 3):', JSON.stringify(product.variants.slice(0, 3), null, 2))
+  console.log('[ProductDetail] enabledVariants count:', enabledVariants.length)
 
   // Build initial selection: default variant's option values
   const defaultVariant =
