@@ -7,6 +7,7 @@ const nextConfig = {
       // Shopify CDN for product images
       { protocol: 'https', hostname: '*.myshopify.com' },
       { protocol: 'https', hostname: 'cdn.shopify.com' },
+      { protocol: 'https', hostname: 'images-api.printify.com' },
     ],
   },
 }

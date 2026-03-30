@@ -99,20 +99,16 @@ function OptionSelector({
     <div>
       <p className="text-xs tracking-widest uppercase text-muted mb-2">{option.name}</p>
       <div className="flex flex-wrap gap-2">
-        {option.values.map((value) => {
-          const available = availableValueIds.has(value.id)
+        {option.values.filter((value) => availableValueIds.has(value.id)).map((value) => {
           const active = selectedValueId === value.id
           return (
             <button
               key={value.id}
-              disabled={!available}
               onClick={() => onChange(value.id)}
               className={`px-4 py-2 text-xs tracking-wider uppercase border transition-colors ${
                 active
                   ? 'bg-ink text-paper border-ink'
-                  : available
-                  ? 'border-dust text-ink hover:border-ink'
-                  : 'border-dust/30 text-dust cursor-not-allowed line-through'
+                  : 'border-dust text-ink hover:border-ink'
               }`}
             >
               {value.title}
@@ -136,6 +132,7 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   const [selectedValues, setSelectedValues] = useState<number[]>(
     () => defaultVariant?.options ?? product.options.map((opt) => opt.values[0]?.id ?? 0)
   )
+  const [showConfirm, setShowConfirm] = useState(false)
   const [buying, setBuying] = useState(false)
   const [error, setError] = useState('')
 
@@ -168,7 +165,7 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
     setSelectedValues(next)
   }
 
-  async function handleBuyNow() {
+  async function handleConfirmPay() {
     if (!activeVariant) return
     setBuying(true)
     setError('')
@@ -191,6 +188,11 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   }
 
   const price = activeVariant ? formatPrice(activeVariant.price) : null
+
+  const selectedLabels = product.options
+    .map((opt, idx) => opt.values.find((v) => v.id === selectedValues[idx])?.title ?? '')
+    .filter(Boolean)
+    .join(' / ')
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
@@ -250,21 +252,53 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
             </div>
           )}
 
-          {/* Buy button */}
+          {/* Buy button / confirmation */}
           <div className="flex flex-col gap-3 mb-8">
-            <button
-              onClick={handleBuyNow}
-              disabled={!activeVariant || buying}
-              className="btn-primary w-full text-center disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {buying ? 'Redirecting…' : 'Buy now'}
-            </button>
-            {!activeVariant && (
-              <p className="text-xs text-muted text-center">
-                This combination is unavailable
-              </p>
+            {showConfirm ? (
+              <div className="border border-dust/40 p-5 flex flex-col gap-4">
+                <p className="text-xs tracking-widest uppercase text-muted">Order summary</p>
+                <div>
+                  <p className="text-sm text-ink font-medium">{product.title}</p>
+                  <p className="text-sm text-muted mt-0.5">
+                    {selectedLabels} · {price}
+                  </p>
+                </div>
+                <div className="flex gap-3">
+                  <button
+                    onClick={handleConfirmPay}
+                    disabled={buying}
+                    className="btn-primary flex-1 text-center disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    {buying ? 'Redirecting…' : 'Confirm & Pay →'}
+                  </button>
+                  <button
+                    onClick={() => setShowConfirm(false)}
+                    disabled={buying}
+                    className="px-4 py-2 text-xs tracking-wider uppercase border border-dust text-ink hover:border-ink transition-colors disabled:opacity-40"
+                  >
+                    ← Change
+                  </button>
+                </div>
+                {error && <p className="text-xs text-red-500">{error}</p>}
+              </div>
+            ) : (
+              <>
+                <button
+                  onClick={() => setShowConfirm(true)}
+                  disabled={!activeVariant}
+                  className="btn-primary w-full text-center disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {activeVariant
+                    ? `Buy Now — ${selectedLabels} — ${price}`
+                    : 'Select options'}
+                </button>
+                {!activeVariant && (
+                  <p className="text-xs text-muted text-center">
+                    This combination is unavailable
+                  </p>
+                )}
+              </>
             )}
-            {error && <p className="text-xs text-red-500 text-center">{error}</p>}
           </div>
 
           {/* Description */}
