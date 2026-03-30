@@ -85,11 +85,11 @@ interface PrintifyProductsResponse {
 
 export async function getProducts(): Promise<PrintifyProduct[]> {
   const shopId = process.env.PRINTIFY_SHOP_ID
-  const url = `${BASE_URL}/shops/${shopId}/products.json?limit=100`
+  const url = `${BASE_URL}/shops/${shopId}/products.json?limit=50`
   console.log('[printify] getProducts fetching:', url)
   try {
     const data = await printifyFetch<PrintifyProductsResponse>(
-      `/shops/${shopId}/products.json?limit=100`,
+      `/shops/${shopId}/products.json?limit=50`,
       { next: { revalidate: 300 } }
     )
     console.log('[printify] getProducts response status: ok, total products:', data.data.length)
