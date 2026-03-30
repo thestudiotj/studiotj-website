@@ -161,9 +161,22 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   console.log('[ProductDetail] options[1]:', product.options[1]?.name, product.options[1]?.type)
   console.log('[ProductDetail] colorOptionIdx:', colorOptionIdx, '| sizeOptionIdx:', sizeOptionIdx)
 
-  // Available values: only IDs that appear in at least one enabled variant
+  // Build a map from value ID → product option index (position-independent)
+  const valueIdToOptionIdx = new Map<number, number>()
+  product.options.forEach((opt, i) => {
+    opt.values.forEach((val) => valueIdToOptionIdx.set(val.id, i))
+  })
+
+  // Available values: collect IDs from variant.options that belong to the right option,
+  // regardless of their position in the array
   const availableColorValues = colorOption
-    ? Array.from(new Set(enabledVariants.map((v) => v.options[colorOptionIdx]))).map((id) => ({
+    ? Array.from(
+        new Set(
+          enabledVariants.flatMap((v) =>
+            v.options.filter((id) => valueIdToOptionIdx.get(id) === colorOptionIdx)
+          )
+        )
+      ).map((id) => ({
         id,
         title: colorOption.values.find((v) => v.id === id)?.title ?? String(id),
       }))
@@ -171,7 +184,13 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
 
   const availableSizeValues = sizeOption
     ? sortOptionValues(
-        Array.from(new Set(enabledVariants.map((v) => v.options[sizeOptionIdx]))).map((id) => ({
+        Array.from(
+          new Set(
+            enabledVariants.flatMap((v) =>
+              v.options.filter((id) => valueIdToOptionIdx.get(id) === sizeOptionIdx)
+            )
+          )
+        ).map((id) => ({
           id,
           title: sizeOption.values.find((v) => v.id === id)?.title ?? String(id),
         })),
@@ -193,8 +212,8 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   const activeVariant: PrintifyVariant | null = useMemo(() => {
     return (
       enabledVariants.find((v) => {
-        const colorMatch = colorOptionIdx < 0 || v.options[colorOptionIdx] === selectedColorId
-        const sizeMatch = sizeOptionIdx < 0 || v.options[sizeOptionIdx] === selectedSizeId
+        const colorMatch = colorOptionIdx < 0 || v.options.includes(selectedColorId)
+        const sizeMatch = sizeOptionIdx < 0 || v.options.includes(selectedSizeId)
         return colorMatch && sizeMatch
       }) ?? null
     )
