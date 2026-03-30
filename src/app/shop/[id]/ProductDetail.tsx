@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
-  getEnabledVariants,
   formatPrice,
   type PrintifyProduct,
   type PrintifyVariant,
@@ -123,7 +122,7 @@ function OptionSelector({
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function ProductDetail({ product }: { product: PrintifyProduct }) {
-  const enabledVariants = getEnabledVariants(product)
+  const enabledVariants = product.variants.filter((v) => v.is_available)
   console.log('[ProductDetail] options:', JSON.stringify(product.options, null, 2))
   console.log('[ProductDetail] variants (first 3):', JSON.stringify(product.variants.slice(0, 3), null, 2))
   console.log('[ProductDetail] enabledVariants count:', enabledVariants.length)
