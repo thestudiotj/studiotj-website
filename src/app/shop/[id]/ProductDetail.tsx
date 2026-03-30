@@ -143,7 +143,7 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   })
 
   // Display order: color first, size second, others after
-  const displayOptionOrder = [...product.options.keys()].sort((a, b) => {
+  const displayOptionOrder = Array.from(product.options.keys()).sort((a, b) => {
     const rank = (name: string) =>
       /colou?r/i.test(name) ? 0 : /size/i.test(name) ? 1 : 2
     return rank(product.options[a].name) - rank(product.options[b].name)
