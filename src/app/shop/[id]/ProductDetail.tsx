@@ -157,6 +157,10 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   const colorOption = colorOptionIdx >= 0 ? product.options[colorOptionIdx] : null
   const sizeOption = sizeOptionIdx >= 0 ? product.options[sizeOptionIdx] : null
 
+  console.log('[ProductDetail] options[0]:', product.options[0]?.name, product.options[0]?.type)
+  console.log('[ProductDetail] options[1]:', product.options[1]?.name, product.options[1]?.type)
+  console.log('[ProductDetail] colorOptionIdx:', colorOptionIdx, '| sizeOptionIdx:', sizeOptionIdx)
+
   // Available values: only IDs that appear in at least one enabled variant
   const availableColorValues = colorOption
     ? Array.from(new Set(enabledVariants.map((v) => v.options[colorOptionIdx]))).map((id) => ({
