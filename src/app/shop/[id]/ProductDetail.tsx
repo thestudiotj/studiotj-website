@@ -145,98 +145,71 @@ function sortOptionValues(
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function ProductDetail({ product }: { product: PrintifyProduct }) {
-  // is_enabled = shop owner has configured this variant for sale
   const enabledVariants = product.variants.filter((v) => v.is_enabled)
-  console.log('[ProductDetail] options:', JSON.stringify(product.options, null, 2))
-  console.log('[ProductDetail] variants (first 3):', JSON.stringify(product.variants.slice(0, 3), null, 2))
-  console.log('[ProductDetail] enabledVariants count:', enabledVariants.length)
 
-  // Single valueId → title map across all option definitions
-  const titleMap = new Map<number, string>()
-  for (const opt of product.options) {
-    for (const val of opt.values) titleMap.set(val.id, val.title)
-  }
+  // Locate color and size options by type or name
+  const colorOptionIdx = product.options.findIndex(
+    (o) => o.type === 'color' || o.name.toLowerCase().includes('color')
+  )
+  const sizeOptionIdx = product.options.findIndex(
+    (o) => o.type === 'size' || o.name.toLowerCase().includes('size')
+  )
+  const colorOption = colorOptionIdx >= 0 ? product.options[colorOptionIdx] : null
+  const sizeOption = sizeOptionIdx >= 0 ? product.options[sizeOptionIdx] : null
 
-  // Collect which IDs appear at each variant.options position across enabled variants.
-  // variant.options order may differ from product.options order, so we detect the mapping
-  // using only IDs that actually appear in this product's variants (small, non-overlapping sets).
-  const variantPositionSets: Set<number>[] = []
-  for (const v of enabledVariants) {
-    v.options.forEach((id, pos) => {
-      if (!variantPositionSets[pos]) variantPositionSets[pos] = new Set()
-      variantPositionSets[pos].add(id)
-    })
-  }
+  // Available values: only IDs that appear in at least one enabled variant
+  const availableColorValues = colorOption
+    ? Array.from(new Set(enabledVariants.map((v) => v.options[colorOptionIdx]))).map((id) => ({
+        id,
+        title: colorOption.values.find((v) => v.id === id)?.title ?? String(id),
+      }))
+    : []
 
-  // For each product option, find which variant.options position holds its values
-  const productToVariantPos: number[] = product.options.map((opt) => {
-    const optIds = new Set(opt.values.map((v) => v.id))
-    for (let pos = 0; pos < variantPositionSets.length; pos++) {
-      const posSet = variantPositionSets[pos]
-      if (posSet && Array.from(posSet).some((id) => optIds.has(id))) return pos
-    }
-    return -1
-  })
-
-  // Display order: color first, size second, others after
-  const displayOptionOrder = Array.from(product.options.keys()).sort((a, b) => {
-    const rank = (type: string) => (type === 'color' ? 0 : type === 'size' ? 1 : 2)
-    return rank(product.options[a].type) - rank(product.options[b].type)
-  })
+  const availableSizeValues = sizeOption
+    ? sortOptionValues(
+        Array.from(new Set(enabledVariants.map((v) => v.options[sizeOptionIdx]))).map((id) => ({
+          id,
+          title: sizeOption.values.find((v) => v.id === id)?.title ?? String(id),
+        })),
+        sizeOption.name
+      )
+    : []
 
   const defaultVariant = enabledVariants.find((v) => v.is_default) ?? enabledVariants[0]
 
-  const [selectedValues, setSelectedValues] = useState<number[]>(() => {
-    if (!defaultVariant) return product.options.map((opt) => opt.values[0]?.id ?? 0)
-    return product.options.map((_, pIdx) => {
-      const vPos = productToVariantPos[pIdx]
-      return vPos >= 0 ? defaultVariant.options[vPos] : 0
-    })
-  })
+  const [selectedColorId, setSelectedColorId] = useState<number>(
+    () => (defaultVariant && colorOptionIdx >= 0 ? defaultVariant.options[colorOptionIdx] : 0)
+  )
+  const [selectedSizeId, setSelectedSizeId] = useState<number>(
+    () => (defaultVariant && sizeOptionIdx >= 0 ? defaultVariant.options[sizeOptionIdx] : 0)
+  )
   const [added, setAdded] = useState(false)
   const { addItem, openDrawer } = useCart()
 
-  // Match selected values to an exact enabled variant
   const activeVariant: PrintifyVariant | null = useMemo(() => {
     return (
-      enabledVariants.find((v) =>
-        product.options.every((_, pIdx) => {
-          const vPos = productToVariantPos[pIdx]
-          return vPos < 0 || v.options[vPos] === selectedValues[pIdx]
-        })
-      ) ?? null
+      enabledVariants.find((v) => {
+        const colorMatch = colorOptionIdx < 0 || v.options[colorOptionIdx] === selectedColorId
+        const sizeMatch = sizeOptionIdx < 0 || v.options[sizeOptionIdx] === selectedSizeId
+        return colorMatch && sizeMatch
+      }) ?? null
     )
-  }, [enabledVariants, product.options, selectedValues])
-
-  // For each option, pre-compute the values that appear in at least one enabled variant
-  const availableValuesByOption = product.options.map((opt, pIdx) => {
-    const vPos = productToVariantPos[pIdx]
-    if (vPos < 0) return []
-    const ids = new Set(enabledVariants.map((v) => v.options[vPos]))
-    const values = Array.from(ids).map((id) => ({
-      id,
-      title: titleMap.get(id) ?? String(id),
-    }))
-    return sortOptionValues(values, opt.name)
-  })
-
-  function handleOptionChange(pIdx: number, valueId: number) {
-    const next = [...selectedValues]
-    next[pIdx] = valueId
-    setSelectedValues(next)
-  }
+  }, [enabledVariants, selectedColorId, selectedSizeId])
 
   function handleAddToCart() {
     if (!activeVariant) return
-    const image = product.images.find((img) => img.variant_ids.includes(activeVariant.id))
-      ?? product.images.find((img) => img.is_default)
-      ?? product.images[0]
-      ?? null
+    const image =
+      product.images.find((img) => img.variant_ids.includes(activeVariant.id)) ??
+      product.images.find((img) => img.is_default) ??
+      product.images[0] ??
+      null
+    const colorTitle = colorOption?.values.find((v) => v.id === selectedColorId)?.title ?? ''
+    const sizeTitle = sizeOption?.values.find((v) => v.id === selectedSizeId)?.title ?? ''
     addItem({
       productId: product.id,
       variantId: activeVariant.id,
       productTitle: product.title,
-      variantLabel: selectedLabels,
+      variantLabel: [colorTitle, sizeTitle].filter(Boolean).join(' / '),
       price: activeVariant.price,
       imageUrl: image?.src ?? null,
     })
@@ -246,11 +219,9 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   }
 
   const price = activeVariant ? formatPrice(activeVariant.price) : null
-
-  const selectedLabels = selectedValues
-    .map((id) => titleMap.get(id) ?? '')
-    .filter(Boolean)
-    .join(' / ')
+  const colorTitle = colorOption?.values.find((v) => v.id === selectedColorId)?.title ?? ''
+  const sizeTitle = sizeOption?.values.find((v) => v.id === selectedSizeId)?.title ?? ''
+  const selectedLabels = [colorTitle, sizeTitle].filter(Boolean).join(' / ')
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
@@ -282,17 +253,24 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
           </p>
 
           {/* Options */}
-          {product.options.length > 0 && (
+          {(colorOption || sizeOption) && (
             <div className="flex flex-col gap-6 mb-8">
-              {displayOptionOrder.map((pIdx) => (
+              {colorOption && (
                 <OptionSelector
-                  key={product.options[pIdx].name}
-                  label={product.options[pIdx].name}
-                  values={availableValuesByOption[pIdx]}
-                  selectedId={selectedValues[pIdx]}
-                  onChange={(valueId) => handleOptionChange(pIdx, valueId)}
+                  label={colorOption.name}
+                  values={availableColorValues}
+                  selectedId={selectedColorId}
+                  onChange={setSelectedColorId}
                 />
-              ))}
+              )}
+              {sizeOption && (
+                <OptionSelector
+                  label={sizeOption.name}
+                  values={availableSizeValues}
+                  selectedId={selectedSizeId}
+                  onChange={setSelectedSizeId}
+                />
+              )}
             </div>
           )}
 
