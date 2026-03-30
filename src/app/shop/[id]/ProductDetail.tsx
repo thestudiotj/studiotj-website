@@ -196,27 +196,17 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
     )
   }, [enabledVariants, product.options, selectedValues])
 
-  // Derive available {id, title} values for product option pIdx given other selections
-  function getAvailableOptionValues(pIdx: number): { id: number; title: string }[] {
+  // For each option, pre-compute the values that appear in at least one enabled variant
+  const availableValuesByOption = product.options.map((opt, pIdx) => {
     const vPos = productToVariantPos[pIdx]
     if (vPos < 0) return []
-    const ids = new Set(
-      enabledVariants
-        .filter((v) =>
-          product.options.every((_, i) => {
-            if (i === pIdx) return true
-            const vi = productToVariantPos[i]
-            return vi < 0 || v.options[vi] === selectedValues[i]
-          })
-        )
-        .map((v) => v.options[vPos])
-    )
+    const ids = new Set(enabledVariants.map((v) => v.options[vPos]))
     const values = Array.from(ids).map((id) => ({
       id,
       title: titleMap.get(id) ?? String(id),
     }))
-    return sortOptionValues(values, product.options[pIdx].name)
-  }
+    return sortOptionValues(values, opt.name)
+  })
 
   function handleOptionChange(pIdx: number, valueId: number) {
     const next = [...selectedValues]
@@ -286,7 +276,7 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
                 <OptionSelector
                   key={product.options[pIdx].name}
                   label={product.options[pIdx].name}
-                  values={getAvailableOptionValues(pIdx)}
+                  values={availableValuesByOption[pIdx]}
                   selectedId={selectedValues[pIdx]}
                   onChange={(valueId) => handleOptionChange(pIdx, valueId)}
                 />
