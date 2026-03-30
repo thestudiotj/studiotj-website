@@ -8,6 +8,7 @@ import {
   type PrintifyProduct,
   type PrintifyVariant,
 } from '@/lib/printify'
+import { useCart } from '@/lib/cart'
 
 // ─── Image gallery ────────────────────────────────────────────────────────────
 
@@ -119,6 +120,28 @@ function OptionSelector({
   )
 }
 
+// ─── Size sort ────────────────────────────────────────────────────────────────
+
+const SIZE_ORDER = ['XXS', 'XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL', '5XL', '6XL']
+
+function sortOptionValues(
+  values: { id: number; title: string }[],
+  optionName: string
+): { id: number; title: string }[] {
+  if (!/size/i.test(optionName)) return values
+  return [...values].sort((a, b) => {
+    const ai = SIZE_ORDER.indexOf(a.title.toUpperCase())
+    const bi = SIZE_ORDER.indexOf(b.title.toUpperCase())
+    if (ai >= 0 && bi >= 0) return ai - bi
+    if (ai >= 0) return -1
+    if (bi >= 0) return 1
+    const an = parseFloat(a.title)
+    const bn = parseFloat(b.title)
+    if (!isNaN(an) && !isNaN(bn)) return an - bn
+    return a.title.localeCompare(b.title)
+  })
+}
+
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function ProductDetail({ product }: { product: PrintifyProduct }) {
@@ -158,9 +181,8 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
       return vPos >= 0 ? defaultVariant.options[vPos] : 0
     })
   })
-  const [showConfirm, setShowConfirm] = useState(false)
-  const [buying, setBuying] = useState(false)
-  const [error, setError] = useState('')
+  const [added, setAdded] = useState(false)
+  const { addItem, openDrawer } = useCart()
 
   // Match selected values to an exact enabled variant using detected position mapping
   const activeVariant: PrintifyVariant | null = useMemo(() => {
@@ -189,10 +211,11 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
         )
         .map((v) => v.options[vPos])
     )
-    return Array.from(ids).map((id) => ({
+    const values = Array.from(ids).map((id) => ({
       id,
       title: titleMap.get(id) ?? String(id),
     }))
+    return sortOptionValues(values, product.options[pIdx].name)
   }
 
   function handleOptionChange(pIdx: number, valueId: number) {
@@ -201,26 +224,23 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
     setSelectedValues(next)
   }
 
-  async function handleConfirmPay() {
+  function handleAddToCart() {
     if (!activeVariant) return
-    setBuying(true)
-    setError('')
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          productId: product.id,
-          variantId: activeVariant.id,
-        }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error ?? 'Checkout failed')
-      window.location.href = data.url
-    } catch (err: any) {
-      setError(err.message)
-      setBuying(false)
-    }
+    const image = product.images.find((img) => img.variant_ids.includes(activeVariant.id))
+      ?? product.images.find((img) => img.is_default)
+      ?? product.images[0]
+      ?? null
+    addItem({
+      productId: product.id,
+      variantId: activeVariant.id,
+      productTitle: product.title,
+      variantLabel: selectedLabels,
+      price: activeVariant.price,
+      imageUrl: image?.src ?? null,
+    })
+    setAdded(true)
+    openDrawer()
+    setTimeout(() => setAdded(false), 2000)
   }
 
   const price = activeVariant ? formatPrice(activeVariant.price) : null
@@ -249,20 +269,6 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
 
         {/* Info */}
         <div className="flex flex-col">
-          {/* Tags */}
-          {product.tags.length > 0 && (
-            <div className="flex flex-wrap gap-3 mb-4">
-              {product.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs tracking-[0.2em] uppercase text-dust"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-
           {/* Title */}
           <h1 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-4">
             {product.title}
@@ -288,52 +294,23 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
             </div>
           )}
 
-          {/* Buy button / confirmation */}
+          {/* Add to cart */}
           <div className="flex flex-col gap-3 mb-8">
-            {showConfirm ? (
-              <div className="border border-dust/40 p-5 flex flex-col gap-4">
-                <p className="text-xs tracking-widest uppercase text-muted">Order summary</p>
-                <div>
-                  <p className="text-sm text-ink font-medium">{product.title}</p>
-                  <p className="text-sm text-muted mt-0.5">
-                    {selectedLabels} · {price}
-                  </p>
-                </div>
-                <div className="flex gap-3">
-                  <button
-                    onClick={handleConfirmPay}
-                    disabled={buying}
-                    className="btn-primary flex-1 text-center disabled:opacity-40 disabled:cursor-not-allowed"
-                  >
-                    {buying ? 'Redirecting…' : 'Confirm & Pay →'}
-                  </button>
-                  <button
-                    onClick={() => setShowConfirm(false)}
-                    disabled={buying}
-                    className="px-4 py-2 text-xs tracking-wider uppercase border border-dust text-ink hover:border-ink transition-colors disabled:opacity-40"
-                  >
-                    ← Change
-                  </button>
-                </div>
-                {error && <p className="text-xs text-red-500">{error}</p>}
-              </div>
-            ) : (
-              <>
-                <button
-                  onClick={() => setShowConfirm(true)}
-                  disabled={!activeVariant}
-                  className="btn-primary w-full text-center disabled:opacity-40 disabled:cursor-not-allowed"
-                >
-                  {activeVariant
-                    ? `Buy Now — ${selectedLabels} — ${price}`
-                    : 'Select options'}
-                </button>
-                {!activeVariant && (
-                  <p className="text-xs text-muted text-center">
-                    This combination is unavailable
-                  </p>
-                )}
-              </>
+            <button
+              onClick={handleAddToCart}
+              disabled={!activeVariant}
+              className="btn-primary w-full text-center disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {added
+                ? 'Added to cart ✓'
+                : activeVariant
+                ? `Add to Cart — ${selectedLabels} — ${price}`
+                : 'Select options'}
+            </button>
+            {!activeVariant && (
+              <p className="text-xs text-muted text-center">
+                This combination is unavailable
+              </p>
             )}
           </div>
 

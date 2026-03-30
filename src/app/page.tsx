@@ -31,7 +31,7 @@ export default async function HomePage() {
           <div className="flex gap-4">
             <Link href="/portfolio" className="btn-primary">View Portfolio</Link>
             <Link href="/shop" className="btn-outline border-paper text-paper hover:bg-paper hover:text-ink">
-              Shop Prints
+              Shop Now
             </Link>
           </div>
         </div>
