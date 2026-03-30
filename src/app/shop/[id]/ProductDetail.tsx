@@ -173,7 +173,7 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
     const optIds = new Set(opt.values.map((v) => v.id))
     for (let pos = 0; pos < variantPositionSets.length; pos++) {
       const posSet = variantPositionSets[pos]
-      if (posSet && [...posSet].some((id) => optIds.has(id))) return pos
+      if (posSet && Array.from(posSet).some((id) => optIds.has(id))) return pos
     }
     return -1
   })
