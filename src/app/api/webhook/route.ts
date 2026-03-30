@@ -33,6 +33,10 @@ export async function POST(req: NextRequest) {
   const rawBody = await req.text()
   let event: Stripe.Event
 
+  console.log('[webhook] body length:', rawBody.length)
+  console.log('[webhook] signature header:', sig?.substring(0, 30))
+  console.log('[webhook] secret prefix:', process.env.STRIPE_WEBHOOK_SECRET?.substring(0, 10))
+
   try {
     event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret)
   } catch (err: any) {
