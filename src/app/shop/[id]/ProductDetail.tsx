@@ -84,22 +84,22 @@ function Gallery({
 // ─── Option selector ──────────────────────────────────────────────────────────
 
 function OptionSelector({
-  option,
-  selectedValueId,
-  availableValueIds,
+  label,
+  values,
+  selectedId,
   onChange,
 }: {
-  option: PrintifyProduct['options'][number]
-  selectedValueId: number
-  availableValueIds: Set<number>
-  onChange: (valueId: number) => void
+  label: string
+  values: { id: number; title: string }[]
+  selectedId: number
+  onChange: (id: number) => void
 }) {
   return (
     <div>
-      <p className="text-xs tracking-widest uppercase text-muted mb-2">{option.name}</p>
+      <p className="text-xs tracking-widest uppercase text-muted mb-2">{label}</p>
       <div className="flex flex-wrap gap-2">
-        {option.values.filter((value) => availableValueIds.has(value.id)).map((value) => {
-          const active = selectedValueId === value.id
+        {values.map((value) => {
+          const active = selectedId === value.id
           return (
             <button
               key={value.id}
@@ -122,14 +122,18 @@ function OptionSelector({
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function ProductDetail({ product }: { product: PrintifyProduct }) {
-  const enabledVariants = product.variants.filter((v) => v.is_available)
+  // is_enabled = shop owner has configured this variant for sale
+  const enabledVariants = product.variants.filter((v) => v.is_enabled)
   console.log('[ProductDetail] options:', JSON.stringify(product.options, null, 2))
   console.log('[ProductDetail] variants (first 3):', JSON.stringify(product.variants.slice(0, 3), null, 2))
   console.log('[ProductDetail] enabledVariants count:', enabledVariants.length)
 
-  // Build initial selection: default variant's option values
-  const defaultVariant =
-    enabledVariants.find((v) => v.is_default) ?? enabledVariants[0]
+  // Build valueId → title lookup maps, one per option position
+  const optionValueMaps: Map<number, string>[] = product.options.map((opt) =>
+    new Map(opt.values.map((val) => [val.id, val.title]))
+  )
+
+  const defaultVariant = enabledVariants.find((v) => v.is_default) ?? enabledVariants[0]
 
   const [selectedValues, setSelectedValues] = useState<number[]>(
     () => defaultVariant?.options ?? product.options.map((opt) => opt.values[0]?.id ?? 0)
@@ -138,7 +142,7 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   const [buying, setBuying] = useState(false)
   const [error, setError] = useState('')
 
-  // Derive the active variant from current selections
+  // Match selected values to an exact enabled variant
   const activeVariant: PrintifyVariant | null = useMemo(() => {
     return (
       enabledVariants.find((v) =>
@@ -147,10 +151,9 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
     )
   }, [enabledVariants, product.options, selectedValues])
 
-  // For each option, which value IDs are still available given other selections
-  function getAvailableValues(optionIdx: number): Set<number> {
-    const otherSelections = selectedValues.filter((_, i) => i !== optionIdx)
-    return new Set(
+  // Derive available {id, title} values for one option slot given other current selections
+  function getAvailableOptionValues(optionIdx: number): { id: number; title: string }[] {
+    const ids = new Set(
       enabledVariants
         .filter((v) =>
           product.options.every(
@@ -159,6 +162,10 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
         )
         .map((v) => v.options[optionIdx])
     )
+    return Array.from(ids).map((id) => ({
+      id,
+      title: optionValueMaps[optionIdx]?.get(id) ?? String(id),
+    }))
   }
 
   function handleOptionChange(optionIdx: number, valueId: number) {
@@ -191,8 +198,8 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
 
   const price = activeVariant ? formatPrice(activeVariant.price) : null
 
-  const selectedLabels = product.options
-    .map((opt, idx) => opt.values.find((v) => v.id === selectedValues[idx])?.title ?? '')
+  const selectedLabels = selectedValues
+    .map((id, idx) => optionValueMaps[idx]?.get(id) ?? '')
     .filter(Boolean)
     .join(' / ')
 
@@ -245,9 +252,9 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
               {product.options.map((option, idx) => (
                 <OptionSelector
                   key={option.name}
-                  option={option}
-                  selectedValueId={selectedValues[idx]}
-                  availableValueIds={getAvailableValues(idx)}
+                  label={option.name}
+                  values={getAvailableOptionValues(idx)}
+                  selectedId={selectedValues[idx]}
                   onChange={(valueId) => handleOptionChange(idx, valueId)}
                 />
               ))}
