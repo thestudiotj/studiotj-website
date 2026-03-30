@@ -157,50 +157,34 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
     for (const val of opt.values) titleMap.set(val.id, val.title)
   }
 
-  // For each product.options[i], detect which slot in variant.options[] holds its values.
-  // Printify's variant options order may differ from product.options order.
-  const productToVariantPos: number[] = product.options.map((opt) => {
-    if (enabledVariants.length === 0) return -1
-    const sample = enabledVariants[0]
-    return sample.options.findIndex((vid) => opt.values.some((v) => v.id === vid))
-  })
-
+  // product.options[i].type is "color" | "size" and its index matches variant.options[i]
   // Display order: color first, size second, others after
   const displayOptionOrder = Array.from(product.options.keys()).sort((a, b) => {
-    const rank = (name: string) =>
-      /colou?r/i.test(name) ? 0 : /size/i.test(name) ? 1 : 2
-    return rank(product.options[a].name) - rank(product.options[b].name)
+    const rank = (type: string) => (type === 'color' ? 0 : type === 'size' ? 1 : 2)
+    return rank(product.options[a].type) - rank(product.options[b].type)
   })
 
   const defaultVariant = enabledVariants.find((v) => v.is_default) ?? enabledVariants[0]
 
   const [selectedValues, setSelectedValues] = useState<number[]>(() => {
     if (!defaultVariant) return product.options.map((opt) => opt.values[0]?.id ?? 0)
-    return product.options.map((_, pIdx) => {
-      const vPos = productToVariantPos[pIdx]
-      return vPos >= 0 ? defaultVariant.options[vPos] : 0
-    })
+    return product.options.map((_, pIdx) => defaultVariant.options[pIdx] ?? 0)
   })
   const [added, setAdded] = useState(false)
   const { addItem, openDrawer } = useCart()
 
-  // Match selected values to an exact enabled variant using detected position mapping
+  // Match selected values to an exact enabled variant
   const activeVariant: PrintifyVariant | null = useMemo(() => {
     return (
       enabledVariants.find((v) =>
-        product.options.every((_, pIdx) => {
-          const vPos = productToVariantPos[pIdx]
-          return vPos < 0 || v.options[vPos] === selectedValues[pIdx]
-        })
+        product.options.every((_, pIdx) => v.options[pIdx] === selectedValues[pIdx])
       ) ?? null
     )
   }, [enabledVariants, product.options, selectedValues])
 
   // For each option, pre-compute the values that appear in at least one enabled variant
   const availableValuesByOption = product.options.map((opt, pIdx) => {
-    const vPos = productToVariantPos[pIdx]
-    if (vPos < 0) return []
-    const ids = new Set(enabledVariants.map((v) => v.options[vPos]))
+    const ids = new Set(enabledVariants.map((v) => v.options[pIdx]))
     const values = Array.from(ids).map((id) => ({
       id,
       title: titleMap.get(id) ?? String(id),
