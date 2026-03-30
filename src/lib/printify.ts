@@ -85,11 +85,21 @@ interface PrintifyProductsResponse {
 
 export async function getProducts(): Promise<PrintifyProduct[]> {
   const shopId = process.env.PRINTIFY_SHOP_ID
-  const data = await printifyFetch<PrintifyProductsResponse>(
-    `/shops/${shopId}/products.json?limit=100`,
-    { next: { revalidate: 300 } }
-  )
-  return data.data.filter((p) => p.visible)
+  const url = `${BASE_URL}/shops/${shopId}/products.json?limit=100`
+  console.log('[printify] getProducts fetching:', url)
+  try {
+    const data = await printifyFetch<PrintifyProductsResponse>(
+      `/shops/${shopId}/products.json?limit=100`,
+      { next: { revalidate: 300 } }
+    )
+    console.log('[printify] getProducts response status: ok, total products:', data.data.length)
+    const visible = data.data.filter((p) => p.visible)
+    console.log('[printify] getProducts visible products:', visible.length)
+    return visible
+  } catch (err) {
+    console.error('[printify] getProducts error:', err)
+    throw err
+  }
 }
 
 export async function getProductById(id: string): Promise<PrintifyProduct | null> {
