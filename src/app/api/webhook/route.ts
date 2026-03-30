@@ -49,13 +49,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ received: true })
     }
 
-    const printifyProductId = session.metadata?.printify_product_id
-    const printifyVariantId = session.metadata?.printify_variant_id
-
-    if (!printifyProductId || !printifyVariantId) {
-      console.error('Missing Printify metadata on session', session.id)
+    const orderItemsRaw = session.metadata?.order_items
+    if (!orderItemsRaw) {
+      console.error('Missing order_items metadata on session', session.id)
       return NextResponse.json({ error: 'Missing product metadata' }, { status: 400 })
     }
+
+    const line_items = orderItemsRaw.split('|').map((entry) => {
+      const [productId, variantId, qty] = entry.split(':')
+      return {
+        product_id: productId,
+        variant_id: Number(variantId),
+        quantity: Number(qty) || 1,
+      }
+    })
 
     // ── Build shipping address ────────────────────────────────────────────
     // stripe@21: shipping address is under collected_information.shipping_details
@@ -75,13 +82,7 @@ export async function POST(req: NextRequest) {
       const order = await submitOrderToPrintify({
         external_id: session.id,              // Stripe session ID — traceable in both dashboards
         label: `Order ${session.id.slice(-8).toUpperCase()}`,
-        line_items: [
-          {
-            product_id: printifyProductId,
-            variant_id: Number(printifyVariantId),
-            quantity: 1,
-          },
-        ],
+        line_items,
         shipping_method: 1,                   // 1 = standard shipping
         send_shipping_notification: true,     // Printify emails the customer when it ships
         address_to: {

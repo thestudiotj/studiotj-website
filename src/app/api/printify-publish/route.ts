@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
+  const secret = process.env.PRINTIFY_PUBLISH_SECRET
+  if (!secret || req.headers.get('x-admin-token') !== secret) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   let product_id: string
 
   try {

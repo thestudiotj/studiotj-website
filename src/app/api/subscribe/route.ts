@@ -16,10 +16,29 @@
 
 import { NextResponse } from 'next/server'
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+// Basic in-memory rate limit: max 5 requests per IP per 60 seconds
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>()
+const RATE_LIMIT = 5
+const RATE_WINDOW_MS = 60_000
+
 export async function POST(req: Request) {
+  const ip = (req as any).headers?.get?.('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+  const now = Date.now()
+  const entry = rateLimitMap.get(ip)
+  if (entry && now < entry.resetAt) {
+    if (entry.count >= RATE_LIMIT) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 })
+    }
+    entry.count++
+  } else {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS })
+  }
+
   const { email } = await req.json()
 
-  if (!email || !email.includes('@')) {
+  if (!email || !EMAIL_RE.test(email)) {
     return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
   }
 

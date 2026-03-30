@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 
   // ── Resolve site origin ───────────────────────────────────────────────────
   const origin =
-    process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.SITE_URL ??
     req.headers.get('origin') ??
     'http://localhost:3000'
 

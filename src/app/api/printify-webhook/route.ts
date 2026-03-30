@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
+  const secret = process.env.PRINTIFY_WEBHOOK_SECRET
+  if (!secret || req.nextUrl.searchParams.get('token') !== secret) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   const body = await req.json().catch(() => null)
 
   console.log('Printify webhook received:', JSON.stringify(body))
