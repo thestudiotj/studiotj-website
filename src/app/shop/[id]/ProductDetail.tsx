@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import {
   formatPrice,
@@ -9,80 +8,118 @@ import {
   type PrintifyVariant,
 } from '@/lib/printify'
 import { useCart } from '@/lib/cart'
+import ProductGallery from '@/components/ProductGallery'
 
-// ─── Image gallery ────────────────────────────────────────────────────────────
+// ─── Color swatch selector ────────────────────────────────────────────────────
 
-function Gallery({
-  images,
-  activeVariantId,
+// Maps common color names to approximate hex values for swatches.
+// Falls back to rendering a text button for unrecognised colors.
+const COLOR_HEX: Record<string, string> = {
+  black: '#0D0D0D',
+  white: '#F5F2EC',
+  navy: '#1B2A4A',
+  'navy blue': '#1B2A4A',
+  blue: '#2563EB',
+  'light blue': '#93C5FD',
+  'sky blue': '#7DD3FC',
+  red: '#DC2626',
+  green: '#16A34A',
+  'forest green': '#166534',
+  yellow: '#EAB308',
+  orange: '#EA580C',
+  pink: '#EC4899',
+  purple: '#7C3AED',
+  grey: '#6B7280',
+  gray: '#6B7280',
+  'dark grey': '#374151',
+  'dark gray': '#374151',
+  'light grey': '#D1D5DB',
+  'light gray': '#D1D5DB',
+  brown: '#92400E',
+  tan: '#D97706',
+  beige: '#E7D5B3',
+  cream: '#FEF3C7',
+  maroon: '#7F1D1D',
+  burgundy: '#6B21A8',
+  teal: '#0D9488',
+  cyan: '#06B6D4',
+  gold: '#D97706',
+  silver: '#9CA3AF',
+  charcoal: '#374151',
+  'heather grey': '#9CA3AF',
+  'heather gray': '#9CA3AF',
+}
+
+function getSwatchHex(title: string): string | null {
+  return COLOR_HEX[title.toLowerCase()] ?? null
+}
+
+function ColorSwatchSelector({
+  label,
+  values,
+  selectedId,
+  onChange,
 }: {
-  images: PrintifyProduct['images']
-  activeVariantId: number | null
+  label: string
+  values: { id: number; title: string }[]
+  selectedId: number
+  onChange: (id: number) => void
 }) {
-  // Prefer the image that belongs to the active variant; fall back to default
-  const defaultIdx = useMemo(() => {
-    if (activeVariantId !== null) {
-      const variantIdx = images.findIndex((img) =>
-        img.variant_ids.includes(activeVariantId)
-      )
-      if (variantIdx !== -1) return variantIdx
-    }
-    const defIdx = images.findIndex((img) => img.is_default)
-    return defIdx !== -1 ? defIdx : 0
-  }, [images, activeVariantId])
-
-  const [selected, setSelected] = useState(0)
-
-  // Sync to variant changes only when the variant-linked image is different
-  const displayIdx = selected !== 0 ? selected : defaultIdx
-
   return (
-    <div className="flex flex-col gap-3">
-      {/* Main image */}
-      <div className="aspect-square bg-dust/20 relative overflow-hidden">
-        {images[displayIdx] ? (
-          <Image
-            src={images[displayIdx].src}
-            alt="Product image"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-            priority
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-dust text-xs tracking-widest uppercase">No image</span>
-          </div>
-        )}
-      </div>
+    <div>
+      <p className="text-xs tracking-widest uppercase text-muted mb-2">{label}</p>
+      <div className="flex flex-wrap gap-2">
+        {values.map((value) => {
+          const active = selectedId === value.id
+          const hex = getSwatchHex(value.title)
+          const isLight =
+            hex === COLOR_HEX.white || hex === COLOR_HEX.cream || hex === COLOR_HEX.beige
 
-      {/* Thumbnails — only shown when there are multiple images */}
-      {images.length > 1 && (
-        <div className="flex gap-2 flex-wrap">
-          {images.map((img, idx) => (
+          if (hex) {
+            return (
+              <button
+                key={value.id}
+                onClick={() => onChange(value.id)}
+                title={value.title}
+                className={`w-7 h-7 rounded-full transition-all duration-150 ${
+                  active
+                    ? isLight
+                      ? 'ring-2 ring-offset-2 ring-ink'
+                      : 'ring-2 ring-offset-2 ring-ink'
+                    : 'hover:scale-110'
+                }`}
+                style={{ background: hex, border: isLight ? '1px solid #C4BEB4' : 'none' }}
+                aria-label={value.title}
+                aria-pressed={active}
+              />
+            )
+          }
+
+          // Fallback: text button for unrecognised colors
+          return (
             <button
-              key={idx}
-              onClick={() => setSelected(idx)}
-              className={`w-16 h-16 relative overflow-hidden flex-shrink-0 border transition-colors ${
-                displayIdx === idx ? 'border-ink' : 'border-dust/40 hover:border-dust'
+              key={value.id}
+              onClick={() => onChange(value.id)}
+              className={`px-4 py-2 text-xs tracking-wider uppercase border transition-colors ${
+                active
+                  ? 'bg-ink text-paper border-ink'
+                  : 'border-dust text-ink hover:border-ink'
               }`}
             >
-              <Image
-                src={img.src}
-                alt={`View ${idx + 1}`}
-                fill
-                sizes="64px"
-                className="object-cover"
-              />
+              {value.title}
             </button>
-          ))}
-        </div>
-      )}
+          )
+        })}
+      </div>
+      {/* Show selected color name beneath swatches */}
+      <p className="text-xs text-muted mt-2">
+        {values.find((v) => v.id === selectedId)?.title ?? ''}
+      </p>
     </div>
   )
 }
 
-// ─── Option selector ──────────────────────────────────────────────────────────
+// ─── Generic option selector (sizes, etc.) ────────────────────────────────────
 
 function OptionSelector({
   label,
@@ -157,18 +194,12 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   const colorOption = colorOptionIdx >= 0 ? product.options[colorOptionIdx] : null
   const sizeOption = sizeOptionIdx >= 0 ? product.options[sizeOptionIdx] : null
 
-  console.log('[ProductDetail] options[0]:', product.options[0]?.name, product.options[0]?.type)
-  console.log('[ProductDetail] options[1]:', product.options[1]?.name, product.options[1]?.type)
-  console.log('[ProductDetail] colorOptionIdx:', colorOptionIdx, '| sizeOptionIdx:', sizeOptionIdx)
-
-  // Build a map from value ID → product option index (position-independent)
+  // Build a map from value ID → option index (position-independent)
   const valueIdToOptionIdx = new Map<number, number>()
   product.options.forEach((opt, i) => {
     opt.values.forEach((val) => valueIdToOptionIdx.set(val.id, i))
   })
 
-  // Available values: collect IDs from variant.options that belong to the right option,
-  // regardless of their position in the array
   const availableColorValues = colorOption
     ? Array.from(
         new Set(
@@ -200,9 +231,16 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
 
   const defaultVariant = enabledVariants.find((v) => v.is_default) ?? enabledVariants[0]
 
-  const [selectedColorId, setSelectedColorId] = useState<number>(
-    () => (defaultVariant && colorOptionIdx >= 0 ? defaultVariant.options[colorOptionIdx] : 0)
-  )
+  // Default to Black if available, otherwise fall back to the default variant
+  const [selectedColorId, setSelectedColorId] = useState<number>(() => {
+    if (colorOptionIdx < 0) return 0
+    const blackValue = availableColorValues.find((v) => /\bblack\b/i.test(v.title))
+    if (blackValue) return blackValue.id
+    return defaultVariant && colorOptionIdx >= 0
+      ? defaultVariant.options[colorOptionIdx]
+      : (availableColorValues[0]?.id ?? 0)
+  })
+
   const [selectedSizeId, setSelectedSizeId] = useState<number>(
     () => (defaultVariant && sizeOptionIdx >= 0 ? defaultVariant.options[sizeOptionIdx] : 0)
   )
@@ -217,7 +255,15 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
         return colorMatch && sizeMatch
       }) ?? null
     )
-  }, [enabledVariants, selectedColorId, selectedSizeId])
+  }, [enabledVariants, selectedColorId, selectedSizeId, colorOptionIdx, sizeOptionIdx])
+
+  // All variant IDs for the selected color (used to filter gallery images)
+  const colorVariantIds = useMemo(() => {
+    if (!selectedColorId) return []
+    return enabledVariants
+      .filter((v) => v.options.includes(selectedColorId))
+      .map((v) => v.id)
+  }, [enabledVariants, selectedColorId])
 
   function handleAddToCart() {
     if (!activeVariant) return
@@ -246,6 +292,84 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
   const sizeTitle = sizeOption?.values.find((v) => v.id === selectedSizeId)?.title ?? ''
   const selectedLabels = [colorTitle, sizeTitle].filter(Boolean).join(' / ')
 
+  const gallery = (
+    <ProductGallery
+      images={product.images}
+      colorVariantIds={colorVariantIds}
+      productTitle={product.title}
+    />
+  )
+
+  const titleAndPrice = (
+    <>
+      <h1 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-4">
+        {product.title}
+      </h1>
+      <p className="text-2xl text-ink mb-6">
+        {price ?? <span className="text-muted text-base">Select options</span>}
+      </p>
+    </>
+  )
+
+  const options = (colorOption || sizeOption) && (
+    <div className="flex flex-col gap-6 mb-6">
+      {colorOption && (
+        <ColorSwatchSelector
+          label={colorOption.name}
+          values={availableColorValues}
+          selectedId={selectedColorId}
+          onChange={setSelectedColorId}
+        />
+      )}
+      {sizeOption && (
+        <OptionSelector
+          label={sizeOption.name}
+          values={availableSizeValues}
+          selectedId={selectedSizeId}
+          onChange={setSelectedSizeId}
+        />
+      )}
+    </div>
+  )
+
+  const addToCart = (
+    <div className="flex flex-col gap-3 mb-8">
+      <button
+        onClick={handleAddToCart}
+        disabled={!activeVariant}
+        className="btn-primary w-full text-center disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        {added
+          ? 'Added to cart ✓'
+          : activeVariant
+          ? `Add to Cart — ${selectedLabels} — ${price}`
+          : 'Select options'}
+      </button>
+      {!activeVariant && (
+        <p className="text-xs text-muted text-center">This combination is unavailable</p>
+      )}
+    </div>
+  )
+
+  const description = product.description && (
+    <div className="border-t border-dust/30 pt-8">
+      <p className="text-xs tracking-widest uppercase text-muted mb-4">Details</p>
+      <div
+        className="text-sm text-muted leading-relaxed prose-sm"
+        dangerouslySetInnerHTML={{ __html: product.description }}
+      />
+    </div>
+  )
+
+  const printNote = (
+    <div className="border-t border-dust/30 mt-8 pt-6">
+      <p className="text-xs text-dust leading-relaxed">
+        Printed on demand via Printify. Delivery 5–10 business days.
+        Ships from the nearest fulfilment partner to your address.
+      </p>
+    </div>
+  )
+
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
       {/* Back link */}
@@ -256,87 +380,28 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
         <span>←</span> Shop
       </Link>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-        {/* Gallery */}
-        <Gallery
-          images={product.images}
-          activeVariantId={activeVariant?.id ?? null}
-        />
+      {/*
+        Layout strategy:
+        - Mobile (flex-col): title/price → options → gallery → add-to-cart → description
+        - Desktop (grid 2-col): gallery left (spanning both rows), info right
+      */}
+      <div className="flex flex-col md:grid md:grid-cols-2 md:grid-rows-[auto_1fr] md:gap-x-20">
+        {/* Title + price — mobile: 1st. Desktop: right col top */}
+        <div className="order-1 md:order-none md:col-start-2 md:row-start-1 mb-6 md:mb-0">
+          {titleAndPrice}
+          {options}
+        </div>
 
-        {/* Info */}
-        <div className="flex flex-col">
-          {/* Title */}
-          <h1 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-4">
-            {product.title}
-          </h1>
+        {/* Gallery — mobile: 2nd. Desktop: left col, both rows */}
+        <div className="order-2 md:order-none md:col-start-1 md:row-start-1 md:row-span-2 mb-8 md:mb-0">
+          {gallery}
+        </div>
 
-          {/* Price */}
-          <p className="text-2xl text-ink mb-8">
-            {price ?? <span className="text-muted text-base">Select options</span>}
-          </p>
-
-          {/* Options */}
-          {(colorOption || sizeOption) && (
-            <div className="flex flex-col gap-6 mb-8">
-              {colorOption && (
-                <OptionSelector
-                  label={colorOption.name}
-                  values={availableColorValues}
-                  selectedId={selectedColorId}
-                  onChange={setSelectedColorId}
-                />
-              )}
-              {sizeOption && (
-                <OptionSelector
-                  label={sizeOption.name}
-                  values={availableSizeValues}
-                  selectedId={selectedSizeId}
-                  onChange={setSelectedSizeId}
-                />
-              )}
-            </div>
-          )}
-
-          {/* Add to cart */}
-          <div className="flex flex-col gap-3 mb-8">
-            <button
-              onClick={handleAddToCart}
-              disabled={!activeVariant}
-              className="btn-primary w-full text-center disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {added
-                ? 'Added to cart ✓'
-                : activeVariant
-                ? `Add to Cart — ${selectedLabels} — ${price}`
-                : 'Select options'}
-            </button>
-            {!activeVariant && (
-              <p className="text-xs text-muted text-center">
-                This combination is unavailable
-              </p>
-            )}
-          </div>
-
-          {/* Description */}
-          {product.description && (
-            <div className="border-t border-dust/30 pt-8">
-              <p className="text-xs tracking-widest uppercase text-muted mb-4">
-                Details
-              </p>
-              <div
-                className="text-sm text-muted leading-relaxed prose-sm"
-                dangerouslySetInnerHTML={{ __html: product.description }}
-              />
-            </div>
-          )}
-
-          {/* Print note */}
-          <div className="border-t border-dust/30 mt-8 pt-6">
-            <p className="text-xs text-dust leading-relaxed">
-              Printed on demand via Printify. Delivery 5–10 business days.
-              Ships from the nearest fulfilment partner to your address.
-            </p>
-          </div>
+        {/* Add-to-cart + description — mobile: 3rd. Desktop: right col bottom */}
+        <div className="order-3 md:order-none md:col-start-2 md:row-start-2 flex flex-col">
+          {addToCart}
+          {description}
+          {printNote}
         </div>
       </div>
     </div>
