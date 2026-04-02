@@ -44,13 +44,27 @@ export function getBlackOrDefaultImages(product: PrintifyProduct): {
       null)
     : (product.images.find((img) => img.is_default) ?? product.images[0] ?? null)
 
-  // Hover: a different angle for the same color variant
-  const hover = primaryVariantId
-    ? (product.images.find(
-        (img) =>
-          img.variant_ids.includes(primaryVariantId!) && img.src !== primary?.src
-      ) ?? null)
-    : (product.images.find((img) => img.src !== primary?.src) ?? null)
+  // Hover: a different angle that still shows the design.
+  // Preference order: lifestyle shot > other non-back view > skip plain back view entirely.
+  const isPlainBack = (img: PrintifyImage) =>
+    /^back$/i.test(img.position.trim())
+
+  const isLifestyle = (img: PrintifyImage) =>
+    /lifestyle/i.test(img.position)
+
+  const candidatePool = (variantId: number | null) =>
+    variantId
+      ? product.images.filter(
+          (img) => img.variant_ids.includes(variantId) && img.src !== primary?.src
+        )
+      : product.images.filter((img) => img.src !== primary?.src)
+
+  const candidates = candidatePool(primaryVariantId).filter((img) => !isPlainBack(img))
+
+  const hover =
+    candidates.find(isLifestyle) ?? // 1st choice: lifestyle shot
+    candidates[0] ??                // 2nd choice: any non-back candidate
+    null                            // no hover if only back views remain
 
   return { primary, hover }
 }

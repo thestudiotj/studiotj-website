@@ -1,4 +1,4 @@
-import { getPortfolio, getPhoto } from '@/lib/portfolio'
+import { getPortfolio, getPhoto, sortCollections } from '@/lib/portfolio'
 import CollectionCard from '@/components/CollectionCard'
 
 export const metadata = {
@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function PortfolioPage() {
   const data = getPortfolio()
-  const collections = data?.collections ?? []
+  const collections = data ? sortCollections(data.collections, data.photos) : []
 
   return (
     <div className="min-h-screen bg-paper">

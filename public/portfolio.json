@@ -19,6 +19,7 @@
     },
     {
       "slug": "the-signature-collection",
+      "sort_order": 0,
       "name": "The Signature Collection",
       "tagline": "Bold urban geometry. The lines that define Maastricht.",
       "description": "",

@@ -18,6 +18,9 @@ export interface Collection {
   layout: Layout
   style_intensity: StyleIntensity
   photo_ids: string[]
+  /** Optional manual position override. Lower values sort first. Collections
+   *  without this field are sorted after all pinned ones, newest-photo first. */
+  sort_order?: number
 }
 
 export interface Photo {
@@ -83,6 +86,29 @@ export function getCollectionPhotos(slug: string): Photo[] {
 
 export function getPhoto(id: string): Photo | null {
   return getPortfolio()?.photos.find(p => p.id === id) ?? null
+}
+
+/** Sort collections for display:
+ *  1. Pinned collections (`sort_order` present) ascending by that value
+ *  2. Unpinned collections descending by most-recent photo date
+ */
+export function sortCollections(collections: Collection[], photos: Photo[]): Collection[] {
+  const photoMap = new Map(photos.map(p => [p.id, p]))
+
+  function latestDate(collection: Collection): string {
+    const dates = collection.photo_ids
+      .map(id => photoMap.get(id)?.date)
+      .filter((d): d is string => Boolean(d))
+    return dates.sort().at(-1) ?? '0000-00-00'
+  }
+
+  return [...collections].sort((a, b) => {
+    const oa = a.sort_order ?? Infinity
+    const ob = b.sort_order ?? Infinity
+    if (oa !== ob) return oa - ob
+    // Same bucket (both pinned with equal value, or both unpinned) → newest first
+    return latestDate(b).localeCompare(latestDate(a))
+  })
 }
 
 // ─── Mood theming ─────────────────────────────────────────────────────────────

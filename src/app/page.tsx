@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getPortfolio } from '@/lib/portfolio'
+import { getPortfolio, sortCollections } from '@/lib/portfolio'
 import EmailCapture from '@/components/EmailCapture'
 
 export default async function HomePage() {
   const portfolio = getPortfolio()
-  const featuredCollections = portfolio?.collections?.slice(0, 3) ?? []
+  const featuredCollections = portfolio
+    ? sortCollections(portfolio.collections, portfolio.photos).slice(0, 3)
+    : []
 
   return (
     <>
