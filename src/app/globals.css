@@ -72,4 +72,28 @@
     @apply inline-block px-6 py-3 border border-ink text-ink text-sm tracking-widest uppercase
            hover:bg-ink hover:text-paper transition-colors duration-200;
   }
+
+  /* Markdown prose for collection descriptions */
+  .collection-description {
+    max-width: 70ch;
+    line-height: 1.75;
+    font-size: 1rem;
+  }
+
+  .collection-description p {
+    margin-bottom: 1.25em;
+  }
+
+  .collection-description p:last-child {
+    margin-bottom: 0;
+  }
+
+  .collection-description strong {
+    font-weight: 500;
+    opacity: 0.9;
+  }
+
+  .collection-description em {
+    font-style: italic;
+  }
 }
