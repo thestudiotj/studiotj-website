@@ -76,7 +76,7 @@ export default function Footer() {
           <p className="text-xs tracking-widest uppercase text-muted mb-4">Find the work</p>
           <ul className="space-y-2 mb-6">
             <li>
-              <a href="https://tinyurl.com/tjvanderheeft-alamy" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.alamy.com/stock-photo/?cid=YCLQJL4TSRM49GEASAHTCF2U7BCHX6RQ43SXPL74Y2PP5R9MJ8N3GDQMDHSFCRS6" target="_blank" rel="noopener noreferrer"
                 className="text-sm text-muted hover:text-ink transition-colors">
                 Alamy Stock Photos
               </a>
