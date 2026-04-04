@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useCart } from '@/lib/cart'
@@ -38,14 +37,11 @@ export default function Nav() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
       <nav className="flex items-center justify-between px-6 md:px-12 h-16">
         <Link href="/" className="flex items-center">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/images/logo-header.png"
             alt="StudioTJ"
-            height={44}
-            width={0}
-            sizes="auto"
-            style={{ width: 'auto', height: '44px' }}
-            priority
+            style={{ height: '44px', width: 'auto' }}
           />
         </Link>
 
