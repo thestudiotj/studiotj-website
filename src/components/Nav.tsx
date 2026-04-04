@@ -28,7 +28,7 @@ export default function Nav() {
   }, [])
 
   const navBg = isHome
-    ? scrolled ? 'bg-paper/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+    ? scrolled ? 'bg-paper/95 backdrop-blur-sm shadow-sm' : 'bg-black/30 backdrop-blur-sm'
     : 'bg-paper border-b border-dust/30'
 
   const linkColor = isHome && !scrolled ? 'text-paper/70 hover:text-paper' : 'text-muted hover:text-ink'

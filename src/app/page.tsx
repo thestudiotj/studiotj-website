@@ -16,7 +16,8 @@ export default async function HomePage() {
       <section className="relative min-h-[90vh] flex items-end pb-16 px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0">
           <HeroImage />
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/50 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-2xl animate-fade-up">
