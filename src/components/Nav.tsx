@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useCart } from '@/lib/cart'
@@ -30,14 +31,22 @@ export default function Nav() {
     ? scrolled ? 'bg-paper/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
     : 'bg-paper border-b border-dust/30'
 
-  const logoColor = isHome && !scrolled ? 'text-paper' : 'text-ink'
   const linkColor = isHome && !scrolled ? 'text-paper/70 hover:text-paper' : 'text-muted hover:text-ink'
+  const cartColor = isHome && !scrolled ? 'text-paper' : 'text-ink'
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
       <nav className="flex items-center justify-between px-6 md:px-12 h-16">
-        <Link href="/" className={`font-display text-xl tracking-tight transition-colors ${logoColor}`}>
-          StudioTJ
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo-header.png"
+            alt="StudioTJ"
+            height={44}
+            width={0}
+            sizes="auto"
+            style={{ width: 'auto', height: '44px' }}
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
@@ -48,7 +57,7 @@ export default function Nav() {
                 href={link.href}
                 className={`text-xs tracking-[0.2em] uppercase transition-colors duration-200 ${
                   pathname.startsWith(link.href)
-                    ? isHome && !scrolled ? 'text-paper' : 'text-ink'
+                    ? isHome && !scrolled ? 'text-paper' : 'text-ink' // active link
                     : linkColor
                 }`}
               >
@@ -61,7 +70,7 @@ export default function Nav() {
         {/* Cart icon */}
         <button
           onClick={openDrawer}
-          className={`relative p-2 transition-colors ${logoColor}`}
+          className={`relative p-2 transition-colors ${cartColor}`}
           aria-label="Open cart"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -78,7 +87,7 @@ export default function Nav() {
 
         {/* Mobile hamburger */}
         <button
-          className={`md:hidden flex flex-col gap-1.5 p-2 ${logoColor}`}
+          className={`md:hidden flex flex-col gap-1.5 p-2 ${cartColor}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >

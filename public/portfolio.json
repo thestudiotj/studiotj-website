@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-01T14:00:00Z",
+  "generated_at": "2026-04-02T23:56:28.870197+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -11,11 +11,26 @@
       "tagline": "Texture, light, and the weight of stone.",
       "description": "",
       "mood": "moody",
-      "palette": ["#1a1a1a", "#4a4a4a", "#8c8c8c", "#c4c4c4", "#e8e8e8"],
+      "palette": [
+        "#1a1a1a",
+        "#4a4a4a",
+        "#8c8c8c",
+        "#c4c4c4",
+        "#e8e8e8"
+      ],
       "hero_photo_id": "mm-001",
       "layout": "masonry",
       "style_intensity": "bold",
-      "photo_ids": ["mm-001", "mm-002", "mm-003", "mm-004", "mm-005", "mm-006", "mm-007", "mm-008"]
+      "photo_ids": [
+        "mm-001",
+        "mm-002",
+        "mm-003",
+        "mm-004",
+        "mm-005",
+        "mm-006",
+        "mm-007",
+        "mm-008"
+      ]
     },
     {
       "slug": "the-signature-collection",
@@ -24,11 +39,23 @@
       "tagline": "Bold urban geometry. The lines that define Maastricht.",
       "description": "",
       "mood": "bold",
-      "palette": ["#2c3e50", "#e74c3c", "#ecf0f1", "#34495e", "#95a5a6"],
+      "palette": [
+        "#2c3e50",
+        "#e74c3c",
+        "#ecf0f1",
+        "#34495e",
+        "#95a5a6"
+      ],
       "hero_photo_id": "sig-001",
       "layout": "masonry",
       "style_intensity": "moderate",
-      "photo_ids": ["sig-001", "sig-002", "sig-003", "sig-004", "sig-005"]
+      "photo_ids": [
+        "sig-001",
+        "sig-002",
+        "sig-003",
+        "sig-004",
+        "sig-005"
+      ]
     },
     {
       "slug": "halcyon",
@@ -36,11 +63,30 @@
       "tagline": "Warm light, open skies, and the colours of home.",
       "description": "The Halcyon Collection is where I slow down. These are the shots taken on golden afternoons along the Maas, in the hills south of Maastricht, and through the old neighbourhoods where the light hits limestone and turns everything amber. This is the Limburg I see when I'm not looking for anything in particular — just walking, noticing, and letting the warmth do the work.",
       "mood": "warm",
-      "palette": ["#d4a574", "#e8c9a0", "#7a6548", "#f0e4d4", "#c17f3e"],
+      "palette": [
+        "#d4a574",
+        "#e8c9a0",
+        "#7a6548",
+        "#f0e4d4",
+        "#c17f3e"
+      ],
       "hero_photo_id": "hal-001",
       "layout": "auto",
       "style_intensity": "subtle",
-      "photo_ids": ["hal-001", "hal-002", "hal-003", "hal-004", "hal-005", "hal-006", "hal-007", "hal-008", "hal-009", "hal-010", "hal-011", "hal-012"]
+      "photo_ids": [
+        "hal-001",
+        "hal-002",
+        "hal-003",
+        "hal-004",
+        "hal-005",
+        "hal-006",
+        "hal-007",
+        "hal-008",
+        "hal-009",
+        "hal-010",
+        "hal-011",
+        "hal-012"
+      ]
     },
     {
       "slug": "atmospheric",
@@ -48,11 +94,24 @@
       "tagline": "When the weather becomes the subject.",
       "description": "",
       "mood": "moody",
-      "palette": ["#3d4f5f", "#6b8299", "#a4b8c9", "#2a3a4a", "#8fa3b5"],
+      "palette": [
+        "#3d4f5f",
+        "#6b8299",
+        "#a4b8c9",
+        "#2a3a4a",
+        "#8fa3b5"
+      ],
       "hero_photo_id": "atm-001",
       "layout": "masonry",
       "style_intensity": "moderate",
-      "photo_ids": ["atm-001", "atm-002", "atm-003", "atm-004", "atm-005", "atm-006"]
+      "photo_ids": [
+        "atm-001",
+        "atm-002",
+        "atm-003",
+        "atm-004",
+        "atm-005",
+        "atm-006"
+      ]
     },
     {
       "slug": "maastricht-winter-walk",
@@ -60,78 +119,1147 @@
       "tagline": "A January afternoon through the old city.",
       "description": "Three hours, one lens, freezing hands. I walked from Wyck across the Sint Servaasbrug, through the Vrijthof, down into the Jekerkwartier and back along the river. The light was flat and grey for the first hour, then the sun broke through just before it set and everything turned gold for twenty minutes. Most of this series is from those twenty minutes.",
       "mood": "serene",
-      "palette": ["#b8c4cc", "#d4a574", "#5a6a7a", "#e8ddd0", "#8a7a6a"],
+      "palette": [
+        "#b8c4cc",
+        "#d4a574",
+        "#5a6a7a",
+        "#e8ddd0",
+        "#8a7a6a"
+      ],
       "hero_photo_id": "mww-001",
       "layout": "masonry",
       "style_intensity": "subtle",
-      "photo_ids": ["mww-001", "mww-002", "mww-003", "mww-004", "mww-005", "mww-006", "mww-007", "mww-008", "mww-009", "mww-010", "mww-011", "mww-012", "mww-013", "mww-014", "mww-015", "mww-016", "mww-017", "mww-018", "mww-019", "mww-020", "mww-021", "mww-022", "mww-023", "mww-024", "mww-025", "mww-026", "mww-027", "mww-028", "mww-029", "mww-030"]
+      "photo_ids": [
+        "mww-001",
+        "mww-002",
+        "mww-003",
+        "mww-004",
+        "mww-005",
+        "mww-006",
+        "mww-007",
+        "mww-008",
+        "mww-009",
+        "mww-010",
+        "mww-011",
+        "mww-012",
+        "mww-013",
+        "mww-014",
+        "mww-015",
+        "mww-016",
+        "mww-017",
+        "mww-018",
+        "mww-019",
+        "mww-020",
+        "mww-021",
+        "mww-022",
+        "mww-023",
+        "mww-024",
+        "mww-025",
+        "mww-026",
+        "mww-027",
+        "mww-028",
+        "mww-029",
+        "mww-030"
+      ]
     }
   ],
   "photos": [
-    { "id": "mm-001", "url": "/sample/placeholder-dark-1.jpg", "thumbnail_url": "/sample/placeholder-dark-1-thumb.jpg", "title": "Sint-Petruskerk Wall Detail", "aspect_ratio": 1.5, "dominant_colors": ["#2a2a2a", "#6b6b6b", "#a0a0a0"], "collections": ["monochrome-moods"], "shoot_folder": "maastricht-churches", "date": "2026-01-15" },
-    { "id": "mm-002", "url": "/sample/placeholder-dark-2.jpg", "thumbnail_url": "/sample/placeholder-dark-2-thumb.jpg", "title": "Bonnefanten Staircase", "aspect_ratio": 0.67, "dominant_colors": ["#1a1a1a", "#4d4d4d", "#808080"], "collections": ["monochrome-moods"], "shoot_folder": "maastricht-museums", "date": "2026-01-20" },
-    { "id": "mm-003", "url": "/sample/placeholder-dark-3.jpg", "thumbnail_url": "/sample/placeholder-dark-3-thumb.jpg", "title": "Cobblestones After Rain", "aspect_ratio": 1.5, "dominant_colors": ["#333333", "#5a5a5a", "#888888"], "collections": ["monochrome-moods"], "shoot_folder": "maastricht-streets", "date": "2026-02-01" },
-    { "id": "mm-004", "url": "/sample/placeholder-dark-4.jpg", "thumbnail_url": "/sample/placeholder-dark-4-thumb.jpg", "title": "Wyck Bridge Cables", "aspect_ratio": 1.0, "dominant_colors": ["#0f0f0f", "#3a3a3a", "#707070"], "collections": ["monochrome-moods"], "shoot_folder": "maastricht-bridges", "date": "2026-02-05" },
-    { "id": "mm-005", "url": "/sample/placeholder-dark-5.jpg", "thumbnail_url": "/sample/placeholder-dark-5-thumb.jpg", "title": "Industrial Window Pattern", "aspect_ratio": 1.5, "dominant_colors": ["#252525", "#555555", "#999999"], "collections": ["monochrome-moods"], "shoot_folder": "maastricht-industrial", "date": "2026-02-10" },
-    { "id": "mm-006", "url": "/sample/placeholder-dark-6.jpg", "thumbnail_url": "/sample/placeholder-dark-6-thumb.jpg", "title": "Crypt Archway", "aspect_ratio": 0.67, "dominant_colors": ["#1e1e1e", "#484848", "#7a7a7a"], "collections": ["monochrome-moods"], "shoot_folder": "maastricht-churches", "date": "2026-02-14" },
-    { "id": "mm-007", "url": "/sample/placeholder-dark-7.jpg", "thumbnail_url": "/sample/placeholder-dark-7-thumb.jpg", "title": "Concrete Texture Study", "aspect_ratio": 1.5, "dominant_colors": ["#3b3b3b", "#636363", "#9e9e9e"], "collections": ["monochrome-moods"], "shoot_folder": "maastricht-modern", "date": "2026-02-18" },
-    { "id": "mm-008", "url": "/sample/placeholder-dark-8.jpg", "thumbnail_url": "/sample/placeholder-dark-8-thumb.jpg", "title": "Shadow on Limestone", "aspect_ratio": 1.33, "dominant_colors": ["#2d2d2d", "#5e5e5e", "#8b8b8b"], "collections": ["monochrome-moods"], "shoot_folder": "maastricht-old-town", "date": "2026-02-22" },
-
-    { "id": "sig-001", "url": "/sample/placeholder-urban-1.jpg", "thumbnail_url": "/sample/placeholder-urban-1-thumb.jpg", "title": "Bijlmer Construction Grid", "aspect_ratio": 1.5, "dominant_colors": ["#2c3e50", "#e74c3c", "#ecf0f1"], "collections": ["the-signature-collection"], "shoot_folder": "amsterdam-bijlmer", "date": "2025-11-10" },
-    { "id": "sig-002", "url": "/sample/placeholder-urban-2.jpg", "thumbnail_url": "/sample/placeholder-urban-2-thumb.jpg", "title": "Leiden Steeple Against Sky", "aspect_ratio": 0.67, "dominant_colors": ["#34495e", "#e8d5b7", "#87ceeb"], "collections": ["the-signature-collection"], "shoot_folder": "leiden-walk", "date": "2025-11-15" },
-    { "id": "sig-003", "url": "/sample/placeholder-urban-3.jpg", "thumbnail_url": "/sample/placeholder-urban-3-thumb.jpg", "title": "Parking Garage Spiral", "aspect_ratio": 1.0, "dominant_colors": ["#4a4a4a", "#c0392b", "#bdc3c7"], "collections": ["the-signature-collection"], "shoot_folder": "maastricht-modern", "date": "2025-12-01" },
-    { "id": "sig-004", "url": "/sample/placeholder-urban-4.jpg", "thumbnail_url": "/sample/placeholder-urban-4-thumb.jpg", "title": "Glass Facade Reflections", "aspect_ratio": 1.5, "dominant_colors": ["#2980b9", "#2c3e50", "#ecf0f1"], "collections": ["the-signature-collection"], "shoot_folder": "maastricht-modern", "date": "2025-12-10" },
-    { "id": "sig-005", "url": "/sample/placeholder-urban-5.jpg", "thumbnail_url": "/sample/placeholder-urban-5-thumb.jpg", "title": "Rooftop Angles", "aspect_ratio": 1.5, "dominant_colors": ["#7f8c8d", "#2c3e50", "#d4a574"], "collections": ["the-signature-collection"], "shoot_folder": "maastricht-rooftops", "date": "2026-01-05" },
-
-    { "id": "hal-001", "url": "/sample/placeholder-warm-1.jpg", "thumbnail_url": "/sample/placeholder-warm-1-thumb.jpg", "title": "Golden Hour on the Maas", "aspect_ratio": 1.78, "dominant_colors": ["#d4a574", "#e8c9a0", "#5a4a3a"], "collections": ["halcyon"], "shoot_folder": "maas-river-walks", "date": "2026-03-01" },
-    { "id": "hal-002", "url": "/sample/placeholder-warm-2.jpg", "thumbnail_url": "/sample/placeholder-warm-2-thumb.jpg", "title": "Limestone in Late Light", "aspect_ratio": 1.5, "dominant_colors": ["#c17f3e", "#e8ddd0", "#7a6548"], "collections": ["halcyon"], "shoot_folder": "maastricht-old-town", "date": "2026-03-05" },
-    { "id": "hal-003", "url": "/sample/placeholder-warm-3.jpg", "thumbnail_url": "/sample/placeholder-warm-3-thumb.jpg", "title": "Field Path Near Cadier", "aspect_ratio": 1.5, "dominant_colors": ["#8fbc6a", "#d4a574", "#87ceeb"], "collections": ["halcyon"], "shoot_folder": "limburg-countryside", "date": "2026-03-08" },
-    { "id": "hal-004", "url": "/sample/placeholder-warm-4.jpg", "thumbnail_url": "/sample/placeholder-warm-4-thumb.jpg", "title": "Shuttered Window", "aspect_ratio": 0.67, "dominant_colors": ["#b87333", "#f0e4d4", "#6b5744"], "collections": ["halcyon"], "shoot_folder": "maastricht-details", "date": "2026-03-10" },
-    { "id": "hal-005", "url": "/sample/placeholder-warm-5.jpg", "thumbnail_url": "/sample/placeholder-warm-5-thumb.jpg", "title": "Church Garden", "aspect_ratio": 1.5, "dominant_colors": ["#7a9e5a", "#d4a574", "#e8e0d0"], "collections": ["halcyon"], "shoot_folder": "maastricht-gardens", "date": "2026-03-12" },
-    { "id": "hal-006", "url": "/sample/placeholder-warm-6.jpg", "thumbnail_url": "/sample/placeholder-warm-6-thumb.jpg", "title": "Morning Market Stall", "aspect_ratio": 1.5, "dominant_colors": ["#c0392b", "#d4a574", "#f5e6d0"], "collections": ["halcyon"], "shoot_folder": "maastricht-market", "date": "2026-03-14" },
-    { "id": "hal-007", "url": "/sample/placeholder-warm-7.jpg", "thumbnail_url": "/sample/placeholder-warm-7-thumb.jpg", "title": "Terrace Chairs", "aspect_ratio": 1.33, "dominant_colors": ["#e8c9a0", "#7a6548", "#d4a574"], "collections": ["halcyon"], "shoot_folder": "maastricht-cafes", "date": "2026-03-15" },
-    { "id": "hal-008", "url": "/sample/placeholder-warm-8.jpg", "thumbnail_url": "/sample/placeholder-warm-8-thumb.jpg", "title": "Cobbled Lane at Dusk", "aspect_ratio": 0.67, "dominant_colors": ["#c17f3e", "#5a4a3a", "#e8ddd0"], "collections": ["halcyon"], "shoot_folder": "maastricht-old-town", "date": "2026-03-16" },
-    { "id": "hal-009", "url": "/sample/placeholder-warm-9.jpg", "thumbnail_url": "/sample/placeholder-warm-9-thumb.jpg", "title": "Vineyard Rows", "aspect_ratio": 1.78, "dominant_colors": ["#8fbc6a", "#d4a574", "#e8e0d0"], "collections": ["halcyon"], "shoot_folder": "limburg-vineyards", "date": "2026-03-18" },
-    { "id": "hal-010", "url": "/sample/placeholder-warm-10.jpg", "thumbnail_url": "/sample/placeholder-warm-10-thumb.jpg", "title": "River Barge", "aspect_ratio": 1.5, "dominant_colors": ["#4a6a7a", "#d4a574", "#87ceeb"], "collections": ["halcyon"], "shoot_folder": "maas-river-walks", "date": "2026-03-20" },
-    { "id": "hal-011", "url": "/sample/placeholder-warm-11.jpg", "thumbnail_url": "/sample/placeholder-warm-11-thumb.jpg", "title": "Old Bakery Door", "aspect_ratio": 0.67, "dominant_colors": ["#8b6914", "#d4a574", "#3a2a1a"], "collections": ["halcyon"], "shoot_folder": "maastricht-details", "date": "2026-03-22" },
-    { "id": "hal-012", "url": "/sample/placeholder-warm-12.jpg", "thumbnail_url": "/sample/placeholder-warm-12-thumb.jpg", "title": "Afternoon Shadows on Plaster", "aspect_ratio": 1.5, "dominant_colors": ["#e8c9a0", "#c17f3e", "#f0e4d4"], "collections": ["halcyon"], "shoot_folder": "maastricht-walls", "date": "2026-03-24" },
-
-    { "id": "atm-001", "url": "/sample/placeholder-atm-1.jpg", "thumbnail_url": "/sample/placeholder-atm-1-thumb.jpg", "title": "Fog Over the Maas", "aspect_ratio": 1.78, "dominant_colors": ["#6b8299", "#a4b8c9", "#3d4f5f"], "collections": ["atmospheric"], "shoot_folder": "maas-fog", "date": "2026-02-28" },
-    { "id": "atm-002", "url": "/sample/placeholder-atm-2.jpg", "thumbnail_url": "/sample/placeholder-atm-2-thumb.jpg", "title": "Rain on Glass", "aspect_ratio": 1.0, "dominant_colors": ["#4a5a6a", "#8fa3b5", "#2a3a4a"], "collections": ["atmospheric"], "shoot_folder": "rain-series", "date": "2026-03-02" },
-    { "id": "atm-003", "url": "/sample/placeholder-atm-3.jpg", "thumbnail_url": "/sample/placeholder-atm-3-thumb.jpg", "title": "Cloud Ceiling", "aspect_ratio": 1.5, "dominant_colors": ["#8fa3b5", "#c4d4e0", "#3d4f5f"], "collections": ["atmospheric"], "shoot_folder": "sky-studies", "date": "2026-03-04" },
-    { "id": "atm-004", "url": "/sample/placeholder-atm-4.jpg", "thumbnail_url": "/sample/placeholder-atm-4-thumb.jpg", "title": "Wet Pavement Reflections", "aspect_ratio": 1.5, "dominant_colors": ["#2a3a4a", "#6b8299", "#d4a574"], "collections": ["atmospheric"], "shoot_folder": "rain-series", "date": "2026-03-06" },
-    { "id": "atm-005", "url": "/sample/placeholder-atm-5.jpg", "thumbnail_url": "/sample/placeholder-atm-5-thumb.jpg", "title": "Bridge in Mist", "aspect_ratio": 1.78, "dominant_colors": ["#5a6a7a", "#a4b8c9", "#3d4f5f"], "collections": ["atmospheric"], "shoot_folder": "maas-fog", "date": "2026-03-07" },
-    { "id": "atm-006", "url": "/sample/placeholder-atm-6.jpg", "thumbnail_url": "/sample/placeholder-atm-6-thumb.jpg", "title": "Storm Light Through Clouds", "aspect_ratio": 1.5, "dominant_colors": ["#c4a050", "#3d4f5f", "#8fa3b5"], "collections": ["atmospheric"], "shoot_folder": "sky-studies", "date": "2026-03-09" },
-
-    { "id": "mww-001", "url": "/sample/placeholder-walk-1.jpg", "thumbnail_url": "/sample/placeholder-walk-1-thumb.jpg", "title": "Sint Servaasbrug Approach", "aspect_ratio": 1.5, "dominant_colors": ["#b8c4cc", "#5a6a7a", "#d4a574"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-002", "url": "/sample/placeholder-walk-2.jpg", "thumbnail_url": "/sample/placeholder-walk-2-thumb.jpg", "title": "Vrijthof Empty", "aspect_ratio": 1.78, "dominant_colors": ["#8a7a6a", "#b8c4cc", "#e8ddd0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-003", "url": "/sample/placeholder-walk-3.jpg", "thumbnail_url": "/sample/placeholder-walk-3-thumb.jpg", "title": "Jekerkwartier Alley", "aspect_ratio": 0.67, "dominant_colors": ["#5a6a7a", "#d4a574", "#8a7a6a"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-004", "url": "/sample/placeholder-walk-4.jpg", "thumbnail_url": "/sample/placeholder-walk-4-thumb.jpg", "title": "Helpoort Side View", "aspect_ratio": 1.5, "dominant_colors": ["#6b5744", "#b8c4cc", "#e8ddd0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-005", "url": "/sample/placeholder-walk-5.jpg", "thumbnail_url": "/sample/placeholder-walk-5-thumb.jpg", "title": "River Path Winter", "aspect_ratio": 1.78, "dominant_colors": ["#7a8a7a", "#b8c4cc", "#5a6a7a"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-006", "url": "/sample/placeholder-walk-6.jpg", "thumbnail_url": "/sample/placeholder-walk-6-thumb.jpg", "title": "Frozen Jeker", "aspect_ratio": 1.5, "dominant_colors": ["#a4b8c9", "#5a6a7a", "#e8ddd0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-007", "url": "/sample/placeholder-walk-7.jpg", "thumbnail_url": "/sample/placeholder-walk-7-thumb.jpg", "title": "Last Light on Limestone", "aspect_ratio": 1.5, "dominant_colors": ["#d4a574", "#e8c9a0", "#5a4a3a"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-008", "url": "/sample/placeholder-walk-8.jpg", "thumbnail_url": "/sample/placeholder-walk-8-thumb.jpg", "title": "Golden Minute Rooftops", "aspect_ratio": 1.78, "dominant_colors": ["#c17f3e", "#5a6a7a", "#e8ddd0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-009", "url": "/sample/placeholder-walk-9.jpg", "thumbnail_url": "/sample/placeholder-walk-9-thumb.jpg", "title": "Onze-Lieve-Vrouwebasiliek Tower", "aspect_ratio": 0.67, "dominant_colors": ["#6b5744", "#d4a574", "#b8c4cc"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-010", "url": "/sample/placeholder-walk-10.jpg", "thumbnail_url": "/sample/placeholder-walk-10-thumb.jpg", "title": "Wyck Street Corner", "aspect_ratio": 1.5, "dominant_colors": ["#8a7a6a", "#e8ddd0", "#5a6a7a"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-011", "url": "/sample/placeholder-walk-11.jpg", "thumbnail_url": "/sample/placeholder-walk-11-thumb.jpg", "title": "Blue Hour Bridge", "aspect_ratio": 1.78, "dominant_colors": ["#3d4f5f", "#6b8299", "#d4a574"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-012", "url": "/sample/placeholder-walk-12.jpg", "thumbnail_url": "/sample/placeholder-walk-12-thumb.jpg", "title": "Door Detail Stokstraat", "aspect_ratio": 0.67, "dominant_colors": ["#5a4a3a", "#d4a574", "#8a7a6a"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-013", "url": "/sample/placeholder-walk-13.jpg", "thumbnail_url": "/sample/placeholder-walk-13-thumb.jpg", "title": "Market Square Lamplight", "aspect_ratio": 1.5, "dominant_colors": ["#c17f3e", "#2a2a2a", "#e8ddd0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-014", "url": "/sample/placeholder-walk-14.jpg", "thumbnail_url": "/sample/placeholder-walk-14-thumb.jpg", "title": "Steps to the Basilica", "aspect_ratio": 0.67, "dominant_colors": ["#6b5744", "#b8c4cc", "#e8ddd0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-015", "url": "/sample/placeholder-walk-15.jpg", "thumbnail_url": "/sample/placeholder-walk-15-thumb.jpg", "title": "Graffiti Under Bridge", "aspect_ratio": 1.5, "dominant_colors": ["#e74c3c", "#2c3e50", "#ecf0f1"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-016", "url": "/sample/placeholder-walk-16.jpg", "thumbnail_url": "/sample/placeholder-walk-16-thumb.jpg", "title": "Park Bench Snow", "aspect_ratio": 1.78, "dominant_colors": ["#e8e8e8", "#5a6a7a", "#7a8a7a"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-017", "url": "/sample/placeholder-walk-17.jpg", "thumbnail_url": "/sample/placeholder-walk-17-thumb.jpg", "title": "Casemates Entrance", "aspect_ratio": 1.5, "dominant_colors": ["#4a4a4a", "#8a7a6a", "#b8c4cc"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-018", "url": "/sample/placeholder-walk-18.jpg", "thumbnail_url": "/sample/placeholder-walk-18-thumb.jpg", "title": "Bicycle Row", "aspect_ratio": 1.5, "dominant_colors": ["#2c3e50", "#e8ddd0", "#c17f3e"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-019", "url": "/sample/placeholder-walk-19.jpg", "thumbnail_url": "/sample/placeholder-walk-19-thumb.jpg", "title": "Canal Reflection", "aspect_ratio": 1.0, "dominant_colors": ["#5a6a7a", "#d4a574", "#a4b8c9"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-020", "url": "/sample/placeholder-walk-20.jpg", "thumbnail_url": "/sample/placeholder-walk-20-thumb.jpg", "title": "Old City Wall Texture", "aspect_ratio": 1.5, "dominant_colors": ["#8a7a6a", "#6b5744", "#b8c4cc"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-021", "url": "/sample/placeholder-walk-21.jpg", "thumbnail_url": "/sample/placeholder-walk-21-thumb.jpg", "title": "Shop Window Ceramics", "aspect_ratio": 0.67, "dominant_colors": ["#2980b9", "#e8ddd0", "#d4a574"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-022", "url": "/sample/placeholder-walk-22.jpg", "thumbnail_url": "/sample/placeholder-walk-22-thumb.jpg", "title": "Iron Railing Shadow", "aspect_ratio": 1.5, "dominant_colors": ["#2a2a2a", "#b8c4cc", "#e8ddd0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-023", "url": "/sample/placeholder-walk-23.jpg", "thumbnail_url": "/sample/placeholder-walk-23-thumb.jpg", "title": "Maas from Above", "aspect_ratio": 1.78, "dominant_colors": ["#4a6a7a", "#a4b8c9", "#d4a574"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-024", "url": "/sample/placeholder-walk-24.jpg", "thumbnail_url": "/sample/placeholder-walk-24-thumb.jpg", "title": "Stadspark Path", "aspect_ratio": 1.5, "dominant_colors": ["#7a8a7a", "#5a6a7a", "#e8ddd0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-025", "url": "/sample/placeholder-walk-25.jpg", "thumbnail_url": "/sample/placeholder-walk-25-thumb.jpg", "title": "Twilight Servaasbrug", "aspect_ratio": 1.78, "dominant_colors": ["#3d4f5f", "#c17f3e", "#6b8299"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-026", "url": "/sample/placeholder-walk-26.jpg", "thumbnail_url": "/sample/placeholder-walk-26-thumb.jpg", "title": "Window Light Interior", "aspect_ratio": 0.67, "dominant_colors": ["#d4a574", "#3a2a1a", "#e8c9a0"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-027", "url": "/sample/placeholder-walk-27.jpg", "thumbnail_url": "/sample/placeholder-walk-27-thumb.jpg", "title": "Stone Arch Detail", "aspect_ratio": 1.5, "dominant_colors": ["#8a7a6a", "#c4b8a0", "#5a4a3a"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-028", "url": "/sample/placeholder-walk-28.jpg", "thumbnail_url": "/sample/placeholder-walk-28-thumb.jpg", "title": "Late Sun on Plaster", "aspect_ratio": 1.5, "dominant_colors": ["#e8c9a0", "#c17f3e", "#f0e4d4"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-029", "url": "/sample/placeholder-walk-29.jpg", "thumbnail_url": "/sample/placeholder-walk-29-thumb.jpg", "title": "Pigeon on Lamppost", "aspect_ratio": 1.0, "dominant_colors": ["#b8c4cc", "#5a6a7a", "#8a7a6a"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" },
-    { "id": "mww-030", "url": "/sample/placeholder-walk-30.jpg", "thumbnail_url": "/sample/placeholder-walk-30-thumb.jpg", "title": "Final Frame — Wyck at Night", "aspect_ratio": 1.78, "dominant_colors": ["#1a1a2e", "#c17f3e", "#3d4f5f"], "collections": ["maastricht-winter-walk"], "shoot_folder": "winter-walk-jan", "date": "2026-01-25" }
+    {
+      "id": "mm-001",
+      "url": "/sample/placeholder-dark-1.jpg",
+      "thumbnail_url": "/sample/placeholder-dark-1-thumb.jpg",
+      "title": "Sint-Petruskerk Wall Detail",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#2a2a2a",
+        "#6b6b6b",
+        "#a0a0a0"
+      ],
+      "collections": [
+        "monochrome-moods"
+      ],
+      "shoot_folder": "maastricht-churches",
+      "date": "2026-01-15"
+    },
+    {
+      "id": "mm-002",
+      "url": "/sample/placeholder-dark-2.jpg",
+      "thumbnail_url": "/sample/placeholder-dark-2-thumb.jpg",
+      "title": "Bonnefanten Staircase",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#1a1a1a",
+        "#4d4d4d",
+        "#808080"
+      ],
+      "collections": [
+        "monochrome-moods"
+      ],
+      "shoot_folder": "maastricht-museums",
+      "date": "2026-01-20"
+    },
+    {
+      "id": "mm-003",
+      "url": "/sample/placeholder-dark-3.jpg",
+      "thumbnail_url": "/sample/placeholder-dark-3-thumb.jpg",
+      "title": "Cobblestones After Rain",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#333333",
+        "#5a5a5a",
+        "#888888"
+      ],
+      "collections": [
+        "monochrome-moods"
+      ],
+      "shoot_folder": "maastricht-streets",
+      "date": "2026-02-01"
+    },
+    {
+      "id": "mm-004",
+      "url": "/sample/placeholder-dark-4.jpg",
+      "thumbnail_url": "/sample/placeholder-dark-4-thumb.jpg",
+      "title": "Wyck Bridge Cables",
+      "aspect_ratio": 1.0,
+      "dominant_colors": [
+        "#0f0f0f",
+        "#3a3a3a",
+        "#707070"
+      ],
+      "collections": [
+        "monochrome-moods"
+      ],
+      "shoot_folder": "maastricht-bridges",
+      "date": "2026-02-05"
+    },
+    {
+      "id": "mm-005",
+      "url": "/sample/placeholder-dark-5.jpg",
+      "thumbnail_url": "/sample/placeholder-dark-5-thumb.jpg",
+      "title": "Industrial Window Pattern",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#252525",
+        "#555555",
+        "#999999"
+      ],
+      "collections": [
+        "monochrome-moods"
+      ],
+      "shoot_folder": "maastricht-industrial",
+      "date": "2026-02-10"
+    },
+    {
+      "id": "mm-006",
+      "url": "/sample/placeholder-dark-6.jpg",
+      "thumbnail_url": "/sample/placeholder-dark-6-thumb.jpg",
+      "title": "Crypt Archway",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#1e1e1e",
+        "#484848",
+        "#7a7a7a"
+      ],
+      "collections": [
+        "monochrome-moods"
+      ],
+      "shoot_folder": "maastricht-churches",
+      "date": "2026-02-14"
+    },
+    {
+      "id": "mm-007",
+      "url": "/sample/placeholder-dark-7.jpg",
+      "thumbnail_url": "/sample/placeholder-dark-7-thumb.jpg",
+      "title": "Concrete Texture Study",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#3b3b3b",
+        "#636363",
+        "#9e9e9e"
+      ],
+      "collections": [
+        "monochrome-moods"
+      ],
+      "shoot_folder": "maastricht-modern",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "mm-008",
+      "url": "/sample/placeholder-dark-8.jpg",
+      "thumbnail_url": "/sample/placeholder-dark-8-thumb.jpg",
+      "title": "Shadow on Limestone",
+      "aspect_ratio": 1.33,
+      "dominant_colors": [
+        "#2d2d2d",
+        "#5e5e5e",
+        "#8b8b8b"
+      ],
+      "collections": [
+        "monochrome-moods"
+      ],
+      "shoot_folder": "maastricht-old-town",
+      "date": "2026-02-22"
+    },
+    {
+      "id": "sig-001",
+      "url": "/sample/placeholder-urban-1.jpg",
+      "thumbnail_url": "/sample/placeholder-urban-1-thumb.jpg",
+      "title": "Bijlmer Construction Grid",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#2c3e50",
+        "#e74c3c",
+        "#ecf0f1"
+      ],
+      "collections": [
+        "the-signature-collection"
+      ],
+      "shoot_folder": "amsterdam-bijlmer",
+      "date": "2025-11-10"
+    },
+    {
+      "id": "sig-002",
+      "url": "/sample/placeholder-urban-2.jpg",
+      "thumbnail_url": "/sample/placeholder-urban-2-thumb.jpg",
+      "title": "Leiden Steeple Against Sky",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#34495e",
+        "#e8d5b7",
+        "#87ceeb"
+      ],
+      "collections": [
+        "the-signature-collection"
+      ],
+      "shoot_folder": "leiden-walk",
+      "date": "2025-11-15"
+    },
+    {
+      "id": "sig-003",
+      "url": "/sample/placeholder-urban-3.jpg",
+      "thumbnail_url": "/sample/placeholder-urban-3-thumb.jpg",
+      "title": "Parking Garage Spiral",
+      "aspect_ratio": 1.0,
+      "dominant_colors": [
+        "#4a4a4a",
+        "#c0392b",
+        "#bdc3c7"
+      ],
+      "collections": [
+        "the-signature-collection"
+      ],
+      "shoot_folder": "maastricht-modern",
+      "date": "2025-12-01"
+    },
+    {
+      "id": "sig-004",
+      "url": "/sample/placeholder-urban-4.jpg",
+      "thumbnail_url": "/sample/placeholder-urban-4-thumb.jpg",
+      "title": "Glass Facade Reflections",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#2980b9",
+        "#2c3e50",
+        "#ecf0f1"
+      ],
+      "collections": [
+        "the-signature-collection"
+      ],
+      "shoot_folder": "maastricht-modern",
+      "date": "2025-12-10"
+    },
+    {
+      "id": "sig-005",
+      "url": "/sample/placeholder-urban-5.jpg",
+      "thumbnail_url": "/sample/placeholder-urban-5-thumb.jpg",
+      "title": "Rooftop Angles",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#7f8c8d",
+        "#2c3e50",
+        "#d4a574"
+      ],
+      "collections": [
+        "the-signature-collection"
+      ],
+      "shoot_folder": "maastricht-rooftops",
+      "date": "2026-01-05"
+    },
+    {
+      "id": "hal-001",
+      "url": "/sample/placeholder-warm-1.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-1-thumb.jpg",
+      "title": "Golden Hour on the Maas",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#d4a574",
+        "#e8c9a0",
+        "#5a4a3a"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maas-river-walks",
+      "date": "2026-03-01"
+    },
+    {
+      "id": "hal-002",
+      "url": "/sample/placeholder-warm-2.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-2-thumb.jpg",
+      "title": "Limestone in Late Light",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c17f3e",
+        "#e8ddd0",
+        "#7a6548"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maastricht-old-town",
+      "date": "2026-03-05"
+    },
+    {
+      "id": "hal-003",
+      "url": "/sample/placeholder-warm-3.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-3-thumb.jpg",
+      "title": "Field Path Near Cadier",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#8fbc6a",
+        "#d4a574",
+        "#87ceeb"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "limburg-countryside",
+      "date": "2026-03-08"
+    },
+    {
+      "id": "hal-004",
+      "url": "/sample/placeholder-warm-4.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-4-thumb.jpg",
+      "title": "Shuttered Window",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#b87333",
+        "#f0e4d4",
+        "#6b5744"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maastricht-details",
+      "date": "2026-03-10"
+    },
+    {
+      "id": "hal-005",
+      "url": "/sample/placeholder-warm-5.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-5-thumb.jpg",
+      "title": "Church Garden",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#7a9e5a",
+        "#d4a574",
+        "#e8e0d0"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maastricht-gardens",
+      "date": "2026-03-12"
+    },
+    {
+      "id": "hal-006",
+      "url": "/sample/placeholder-warm-6.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-6-thumb.jpg",
+      "title": "Morning Market Stall",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c0392b",
+        "#d4a574",
+        "#f5e6d0"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maastricht-market",
+      "date": "2026-03-14"
+    },
+    {
+      "id": "hal-007",
+      "url": "/sample/placeholder-warm-7.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-7-thumb.jpg",
+      "title": "Terrace Chairs",
+      "aspect_ratio": 1.33,
+      "dominant_colors": [
+        "#e8c9a0",
+        "#7a6548",
+        "#d4a574"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maastricht-cafes",
+      "date": "2026-03-15"
+    },
+    {
+      "id": "hal-008",
+      "url": "/sample/placeholder-warm-8.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-8-thumb.jpg",
+      "title": "Cobbled Lane at Dusk",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#c17f3e",
+        "#5a4a3a",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maastricht-old-town",
+      "date": "2026-03-16"
+    },
+    {
+      "id": "hal-009",
+      "url": "/sample/placeholder-warm-9.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-9-thumb.jpg",
+      "title": "Vineyard Rows",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#8fbc6a",
+        "#d4a574",
+        "#e8e0d0"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "limburg-vineyards",
+      "date": "2026-03-18"
+    },
+    {
+      "id": "hal-010",
+      "url": "/sample/placeholder-warm-10.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-10-thumb.jpg",
+      "title": "River Barge",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#4a6a7a",
+        "#d4a574",
+        "#87ceeb"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maas-river-walks",
+      "date": "2026-03-20"
+    },
+    {
+      "id": "hal-011",
+      "url": "/sample/placeholder-warm-11.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-11-thumb.jpg",
+      "title": "Old Bakery Door",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#8b6914",
+        "#d4a574",
+        "#3a2a1a"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maastricht-details",
+      "date": "2026-03-22"
+    },
+    {
+      "id": "hal-012",
+      "url": "/sample/placeholder-warm-12.jpg",
+      "thumbnail_url": "/sample/placeholder-warm-12-thumb.jpg",
+      "title": "Afternoon Shadows on Plaster",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#e8c9a0",
+        "#c17f3e",
+        "#f0e4d4"
+      ],
+      "collections": [
+        "halcyon"
+      ],
+      "shoot_folder": "maastricht-walls",
+      "date": "2026-03-24"
+    },
+    {
+      "id": "atm-001",
+      "url": "/sample/placeholder-atm-1.jpg",
+      "thumbnail_url": "/sample/placeholder-atm-1-thumb.jpg",
+      "title": "Fog Over the Maas",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#6b8299",
+        "#a4b8c9",
+        "#3d4f5f"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "maas-fog",
+      "date": "2026-02-28"
+    },
+    {
+      "id": "atm-002",
+      "url": "/sample/placeholder-atm-2.jpg",
+      "thumbnail_url": "/sample/placeholder-atm-2-thumb.jpg",
+      "title": "Rain on Glass",
+      "aspect_ratio": 1.0,
+      "dominant_colors": [
+        "#4a5a6a",
+        "#8fa3b5",
+        "#2a3a4a"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "rain-series",
+      "date": "2026-03-02"
+    },
+    {
+      "id": "atm-003",
+      "url": "/sample/placeholder-atm-3.jpg",
+      "thumbnail_url": "/sample/placeholder-atm-3-thumb.jpg",
+      "title": "Cloud Ceiling",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#8fa3b5",
+        "#c4d4e0",
+        "#3d4f5f"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "sky-studies",
+      "date": "2026-03-04"
+    },
+    {
+      "id": "atm-004",
+      "url": "/sample/placeholder-atm-4.jpg",
+      "thumbnail_url": "/sample/placeholder-atm-4-thumb.jpg",
+      "title": "Wet Pavement Reflections",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#2a3a4a",
+        "#6b8299",
+        "#d4a574"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "rain-series",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "atm-005",
+      "url": "/sample/placeholder-atm-5.jpg",
+      "thumbnail_url": "/sample/placeholder-atm-5-thumb.jpg",
+      "title": "Bridge in Mist",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#5a6a7a",
+        "#a4b8c9",
+        "#3d4f5f"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "maas-fog",
+      "date": "2026-03-07"
+    },
+    {
+      "id": "atm-006",
+      "url": "/sample/placeholder-atm-6.jpg",
+      "thumbnail_url": "/sample/placeholder-atm-6-thumb.jpg",
+      "title": "Storm Light Through Clouds",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c4a050",
+        "#3d4f5f",
+        "#8fa3b5"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "sky-studies",
+      "date": "2026-03-09"
+    },
+    {
+      "id": "mww-001",
+      "url": "/sample/placeholder-walk-1.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-1-thumb.jpg",
+      "title": "Sint Servaasbrug Approach",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b8c4cc",
+        "#5a6a7a",
+        "#d4a574"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-002",
+      "url": "/sample/placeholder-walk-2.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-2-thumb.jpg",
+      "title": "Vrijthof Empty",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#8a7a6a",
+        "#b8c4cc",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-003",
+      "url": "/sample/placeholder-walk-3.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-3-thumb.jpg",
+      "title": "Jekerkwartier Alley",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#5a6a7a",
+        "#d4a574",
+        "#8a7a6a"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-004",
+      "url": "/sample/placeholder-walk-4.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-4-thumb.jpg",
+      "title": "Helpoort Side View",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#6b5744",
+        "#b8c4cc",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-005",
+      "url": "/sample/placeholder-walk-5.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-5-thumb.jpg",
+      "title": "River Path Winter",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#7a8a7a",
+        "#b8c4cc",
+        "#5a6a7a"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-006",
+      "url": "/sample/placeholder-walk-6.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-6-thumb.jpg",
+      "title": "Frozen Jeker",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a4b8c9",
+        "#5a6a7a",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-007",
+      "url": "/sample/placeholder-walk-7.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-7-thumb.jpg",
+      "title": "Last Light on Limestone",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d4a574",
+        "#e8c9a0",
+        "#5a4a3a"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-008",
+      "url": "/sample/placeholder-walk-8.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-8-thumb.jpg",
+      "title": "Golden Minute Rooftops",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#c17f3e",
+        "#5a6a7a",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-009",
+      "url": "/sample/placeholder-walk-9.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-9-thumb.jpg",
+      "title": "Onze-Lieve-Vrouwebasiliek Tower",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#6b5744",
+        "#d4a574",
+        "#b8c4cc"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-010",
+      "url": "/sample/placeholder-walk-10.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-10-thumb.jpg",
+      "title": "Wyck Street Corner",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#8a7a6a",
+        "#e8ddd0",
+        "#5a6a7a"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-011",
+      "url": "/sample/placeholder-walk-11.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-11-thumb.jpg",
+      "title": "Blue Hour Bridge",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#3d4f5f",
+        "#6b8299",
+        "#d4a574"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-012",
+      "url": "/sample/placeholder-walk-12.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-12-thumb.jpg",
+      "title": "Door Detail Stokstraat",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#5a4a3a",
+        "#d4a574",
+        "#8a7a6a"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-013",
+      "url": "/sample/placeholder-walk-13.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-13-thumb.jpg",
+      "title": "Market Square Lamplight",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c17f3e",
+        "#2a2a2a",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-014",
+      "url": "/sample/placeholder-walk-14.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-14-thumb.jpg",
+      "title": "Steps to the Basilica",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#6b5744",
+        "#b8c4cc",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-015",
+      "url": "/sample/placeholder-walk-15.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-15-thumb.jpg",
+      "title": "Graffiti Under Bridge",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#e74c3c",
+        "#2c3e50",
+        "#ecf0f1"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-016",
+      "url": "/sample/placeholder-walk-16.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-16-thumb.jpg",
+      "title": "Park Bench Snow",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#e8e8e8",
+        "#5a6a7a",
+        "#7a8a7a"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-017",
+      "url": "/sample/placeholder-walk-17.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-17-thumb.jpg",
+      "title": "Casemates Entrance",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#4a4a4a",
+        "#8a7a6a",
+        "#b8c4cc"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-018",
+      "url": "/sample/placeholder-walk-18.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-18-thumb.jpg",
+      "title": "Bicycle Row",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#2c3e50",
+        "#e8ddd0",
+        "#c17f3e"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-019",
+      "url": "/sample/placeholder-walk-19.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-19-thumb.jpg",
+      "title": "Canal Reflection",
+      "aspect_ratio": 1.0,
+      "dominant_colors": [
+        "#5a6a7a",
+        "#d4a574",
+        "#a4b8c9"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-020",
+      "url": "/sample/placeholder-walk-20.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-20-thumb.jpg",
+      "title": "Old City Wall Texture",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#8a7a6a",
+        "#6b5744",
+        "#b8c4cc"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-021",
+      "url": "/sample/placeholder-walk-21.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-21-thumb.jpg",
+      "title": "Shop Window Ceramics",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#2980b9",
+        "#e8ddd0",
+        "#d4a574"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-022",
+      "url": "/sample/placeholder-walk-22.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-22-thumb.jpg",
+      "title": "Iron Railing Shadow",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#2a2a2a",
+        "#b8c4cc",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-023",
+      "url": "/sample/placeholder-walk-23.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-23-thumb.jpg",
+      "title": "Maas from Above",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#4a6a7a",
+        "#a4b8c9",
+        "#d4a574"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-024",
+      "url": "/sample/placeholder-walk-24.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-24-thumb.jpg",
+      "title": "Stadspark Path",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#7a8a7a",
+        "#5a6a7a",
+        "#e8ddd0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-025",
+      "url": "/sample/placeholder-walk-25.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-25-thumb.jpg",
+      "title": "Twilight Servaasbrug",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#3d4f5f",
+        "#c17f3e",
+        "#6b8299"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-026",
+      "url": "/sample/placeholder-walk-26.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-26-thumb.jpg",
+      "title": "Window Light Interior",
+      "aspect_ratio": 0.67,
+      "dominant_colors": [
+        "#d4a574",
+        "#3a2a1a",
+        "#e8c9a0"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-027",
+      "url": "/sample/placeholder-walk-27.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-27-thumb.jpg",
+      "title": "Stone Arch Detail",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#8a7a6a",
+        "#c4b8a0",
+        "#5a4a3a"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-028",
+      "url": "/sample/placeholder-walk-28.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-28-thumb.jpg",
+      "title": "Late Sun on Plaster",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#e8c9a0",
+        "#c17f3e",
+        "#f0e4d4"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-029",
+      "url": "/sample/placeholder-walk-29.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-29-thumb.jpg",
+      "title": "Pigeon on Lamppost",
+      "aspect_ratio": 1.0,
+      "dominant_colors": [
+        "#b8c4cc",
+        "#5a6a7a",
+        "#8a7a6a"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "mww-030",
+      "url": "/sample/placeholder-walk-30.jpg",
+      "thumbnail_url": "/sample/placeholder-walk-30-thumb.jpg",
+      "title": "Final Frame — Wyck at Night",
+      "aspect_ratio": 1.78,
+      "dominant_colors": [
+        "#1a1a2e",
+        "#c17f3e",
+        "#3d4f5f"
+      ],
+      "collections": [
+        "maastricht-winter-walk"
+      ],
+      "shoot_folder": "winter-walk-jan",
+      "date": "2026-01-25"
+    },
+    {
+      "id": "test-shoot-dsc-0007",
+      "url": "https://photos.studiotj.com/test-shoot/DSC_0007.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/test-shoot/DSC_0007-thumb.jpg",
+      "title": "DSC_0007.jpg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#cccacc",
+        "#858f9c",
+        "#282725"
+      ],
+      "collections": [],
+      "shoot_folder": "test-shoot",
+      "date": "2025-06-09"
+    },
+    {
+      "id": "test-shoot-dsc-0049",
+      "url": "https://photos.studiotj.com/test-shoot/DSC_0049.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/test-shoot/DSC_0049-thumb.jpg",
+      "title": "DSC_0049.jpg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#fefefe",
+        "#b5b0a2",
+        "#282a28"
+      ],
+      "collections": [],
+      "shoot_folder": "test-shoot",
+      "date": "2025-06-09"
+    },
+    {
+      "id": "test-shoot-dsc-0315",
+      "url": "https://photos.studiotj.com/test-shoot/DSC_0315.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/test-shoot/DSC_0315-thumb.jpg",
+      "title": "DSC_0315.jpg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#8eabcd",
+        "#809dbf",
+        "#6b6663"
+      ],
+      "collections": [],
+      "shoot_folder": "test-shoot",
+      "date": "2025-11-04"
+    },
+    {
+      "id": "test-shoot-dsc-0668",
+      "url": "https://photos.studiotj.com/test-shoot/DSC_0668.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/test-shoot/DSC_0668-thumb.jpg",
+      "title": "DSC_0668.jpg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c1ccd8",
+        "#5b6a79",
+        "#12100c"
+      ],
+      "collections": [],
+      "shoot_folder": "test-shoot",
+      "date": "2026-02-08"
+    }
   ]
 }

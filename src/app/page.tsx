@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getPortfolio, sortCollections } from '@/lib/portfolio'
 import EmailCapture from '@/components/EmailCapture'
+import HeroImage from '@/components/HeroImage'
 
 export default async function HomePage() {
   const portfolio = getPortfolio()
@@ -13,11 +14,9 @@ export default async function HomePage() {
     <>
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-end pb-16 px-6 md:px-12 overflow-hidden">
-        {/* Replace with your own hero image */}
-        <div className="absolute inset-0 bg-ink">
-          {/* Hero image goes here — add your best photo */}
-          {/* <Image src="/hero.jpg" alt="" fill className="object-cover opacity-70" /> */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink/20 to-ink/80" />
+        <div className="absolute inset-0">
+          <HeroImage />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/70" />
         </div>
 
         <div className="relative z-10 max-w-2xl animate-fade-up">

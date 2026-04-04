@@ -9,7 +9,12 @@
       "Bash(npx next:*)",
       "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(c['slug'], c.get\\('sort_order','—'\\), c['photo_ids'][:2]\\) for c in d['collections']]\")",
       "Bash(python -c \"import json; d=json.load\\(open\\('public/portfolio.json', encoding='utf-8'\\)\\); [print\\(c['slug'], c.get\\('sort_order','none'\\), c['photo_ids'][:1]\\) for c in d['collections']]\")",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "Bash(mkdir -p C:/Users/tjvan/Documents/Projects/studiotj-website/public/images)",
+      "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/logo-header.png C:/Users/tjvan/Documents/Projects/studiotj-website/public/images/logo-header.png)",
+      "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/hero-light.jpg C:/Users/tjvan/Documents/Projects/studiotj-website/public/images/hero-light.jpg)",
+      "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/hero-dark.jpg C:/Users/tjvan/Documents/Projects/studiotj-website/public/images/hero-dark.jpg)",
+      "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/favicon.ico C:/Users/tjvan/Documents/Projects/studiotj-website/src/app/favicon.ico)"
     ]
   }
 }
