@@ -5,6 +5,7 @@ const nextConfig = {
       // Add your SmugMug domain here if migrating photos
       { protocol: 'https', hostname: '*.smugmug.com' },
       { protocol: 'https', hostname: 'images-api.printify.com' },
+      { protocol: 'https', hostname: 'photos.studiotj.com' },
     ],
   },
   async headers() {
@@ -21,7 +22,7 @@ const nextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "img-src 'self' data: blob: https://images-api.printify.com https://*.smugmug.com",
+              "img-src 'self' data: blob: https://images-api.printify.com https://*.smugmug.com https://photos.studiotj.com",
               "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://api.stripe.com",
               "frame-src https://js.stripe.com https://hooks.stripe.com",
