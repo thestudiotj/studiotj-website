@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-02T23:56:28.870197+00:00",
+  "generated_at": "2026-04-05T21:56:07.763237+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -12,11 +12,11 @@
       "description": "",
       "mood": "moody",
       "palette": [
+        "#2a2a2a",
+        "#6b6b6b",
+        "#a0a0a0",
         "#1a1a1a",
-        "#4a4a4a",
-        "#8c8c8c",
-        "#c4c4c4",
-        "#e8e8e8"
+        "#4d4d4d"
       ],
       "hero_photo_id": "mm-001",
       "layout": "masonry",
@@ -29,7 +29,12 @@
         "mm-005",
         "mm-006",
         "mm-007",
-        "mm-008"
+        "mm-008",
+        "export-2025-02-08-maastricht-dsc-0552",
+        "export-2025-02-08-maastricht-dsc-0568",
+        "export-2025-02-08-maastricht-dsc-0576",
+        "export-2025-02-08-maastricht-dsc-0591",
+        "export-2025-02-08-maastricht-dsc-0628"
       ]
     },
     {
@@ -41,10 +46,10 @@
       "mood": "bold",
       "palette": [
         "#2c3e50",
-        "#e74c3c",
         "#ecf0f1",
+        "#e74c3c",
         "#34495e",
-        "#95a5a6"
+        "#e8d5b7"
       ],
       "hero_photo_id": "sig-001",
       "layout": "masonry",
@@ -54,7 +59,34 @@
         "sig-002",
         "sig-003",
         "sig-004",
-        "sig-005"
+        "sig-005",
+        "export-2025-02-08-maastricht-dsc-0542",
+        "export-2025-02-08-maastricht-dsc-0546",
+        "export-2025-02-08-maastricht-dsc-0550",
+        "export-2025-02-08-maastricht-dsc-0552",
+        "export-2025-02-08-maastricht-dsc-0562",
+        "export-2025-02-08-maastricht-dsc-0564",
+        "export-2025-02-08-maastricht-dsc-0568",
+        "export-2025-02-08-maastricht-dsc-0576",
+        "export-2025-02-08-maastricht-dsc-0577",
+        "export-2025-02-08-maastricht-dsc-0580",
+        "export-2025-02-08-maastricht-dsc-0585",
+        "export-2025-02-08-maastricht-dsc-0589",
+        "export-2025-02-08-maastricht-dsc-0591",
+        "export-2025-02-08-maastricht-dsc-0595",
+        "export-2025-02-08-maastricht-dsc-0606",
+        "export-2025-02-08-maastricht-dsc-0628",
+        "export-2025-02-08-maastricht-dsc-0636",
+        "export-2025-02-08-maastricht-dsc-0638",
+        "export-2025-02-08-maastricht-dsc-0642",
+        "export-2025-02-08-maastricht-dsc-0647",
+        "export-2025-02-08-maastricht-dsc-0649",
+        "export-2025-02-08-maastricht-dsc-0651",
+        "export-2025-02-08-maastricht-dsc-0655",
+        "export-2025-02-08-maastricht-dsc-0658",
+        "export-2025-02-08-maastricht-dsc-0659",
+        "export-2025-02-08-maastricht-dsc-0661",
+        "export-2025-02-08-maastricht-dsc-0663"
       ]
     },
     {
@@ -96,10 +128,10 @@
       "mood": "moody",
       "palette": [
         "#3d4f5f",
+        "#8fa3b5",
         "#6b8299",
         "#a4b8c9",
-        "#2a3a4a",
-        "#8fa3b5"
+        "#2a3a4a"
       ],
       "hero_photo_id": "atm-001",
       "layout": "masonry",
@@ -110,7 +142,38 @@
         "atm-003",
         "atm-004",
         "atm-005",
-        "atm-006"
+        "atm-006",
+        "export-2025-02-08-maastricht-dsc-0542",
+        "export-2025-02-08-maastricht-dsc-0546",
+        "export-2025-02-08-maastricht-dsc-0550",
+        "export-2025-02-08-maastricht-dsc-0552",
+        "export-2025-02-08-maastricht-dsc-0562",
+        "export-2025-02-08-maastricht-dsc-0564",
+        "export-2025-02-08-maastricht-dsc-0568",
+        "export-2025-02-08-maastricht-dsc-0576",
+        "export-2025-02-08-maastricht-dsc-0577",
+        "export-2025-02-08-maastricht-dsc-0580",
+        "export-2025-02-08-maastricht-dsc-0581",
+        "export-2025-02-08-maastricht-dsc-0585",
+        "export-2025-02-08-maastricht-dsc-0589",
+        "export-2025-02-08-maastricht-dsc-0591",
+        "export-2025-02-08-maastricht-dsc-0595",
+        "export-2025-02-08-maastricht-dsc-0598",
+        "export-2025-02-08-maastricht-dsc-0606",
+        "export-2025-02-08-maastricht-dsc-0613",
+        "export-2025-02-08-maastricht-dsc-0628",
+        "export-2025-02-08-maastricht-dsc-0632",
+        "export-2025-02-08-maastricht-dsc-0636",
+        "export-2025-02-08-maastricht-dsc-0638",
+        "export-2025-02-08-maastricht-dsc-0642",
+        "export-2025-02-08-maastricht-dsc-0647",
+        "export-2025-02-08-maastricht-dsc-0649",
+        "export-2025-02-08-maastricht-dsc-0651",
+        "export-2025-02-08-maastricht-dsc-0655",
+        "export-2025-02-08-maastricht-dsc-0658",
+        "export-2025-02-08-maastricht-dsc-0659",
+        "export-2025-02-08-maastricht-dsc-0661",
+        "export-2025-02-08-maastricht-dsc-0663"
       ]
     },
     {
@@ -1259,6 +1322,625 @@
       ],
       "collections": [],
       "shoot_folder": "test-shoot",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0523",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0523.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0523-thumb.jpg",
+      "title": "DSC_0523.jpg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c1ac92",
+        "#8a7c6e",
+        "#302e2d"
+      ],
+      "collections": [],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0542",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0542.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0542-thumb.jpg",
+      "title": "Cement Works; River Valley",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#a3c2dd",
+        "#5a8ab5",
+        "#383224"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0546",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0546.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0546-thumb.jpg",
+      "title": "Elevated Walkway; Industrial Overlook",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c1cedc",
+        "#6f91b2",
+        "#282c2e"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0550",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0550.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0550-thumb.jpg",
+      "title": "Cantilevered Edge; Valley Overlook",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#7e858c",
+        "#2873b2",
+        "#354d60"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0552",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0552.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0552-thumb.jpg",
+      "title": "Cliff Face; Erosion Exposed",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#8aa7bf",
+        "#576f80",
+        "#373a39"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "monochrome-moods",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0557",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0557.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0557-thumb.jpg",
+      "title": "DSC_0557.jpg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#b08454",
+        "#825e39",
+        "#2f2111"
+      ],
+      "collections": [],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0558",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0558.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0558-thumb.jpg",
+      "title": "DSC_0558.jpg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#f4d29b",
+        "#9e7546",
+        "#4e2d0c"
+      ],
+      "collections": [],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0560",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0560.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0560-thumb.jpg",
+      "title": "DSC_0560.jpg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#c1955f",
+        "#8e6431",
+        "#391e05"
+      ],
+      "collections": [],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0562",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0562.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0562-thumb.jpg",
+      "title": "Carved Light; Quarry Passage",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#bab7a8",
+        "#8e571a",
+        "#522904"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0564",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0564.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0564-thumb.jpg",
+      "title": "Rock-Cut Chambers; Stairway to Sky",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b29b7b",
+        "#39647e",
+        "#153952"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0568",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0568.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0568-thumb.jpg",
+      "title": "Cut Through Stone; Golden Light on Rock Face",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#e0e3e6",
+        "#b5aca7",
+        "#2a2520"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "monochrome-moods",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0576",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0576.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0576-thumb.jpg",
+      "title": "Cement Works; Quarry Basin",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c6daee",
+        "#6b99c0",
+        "#474642"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0577",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0577.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0577-thumb.jpg",
+      "title": "Cement Works; Quarry and Reflection",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#98c0df",
+        "#6090b3",
+        "#3b3935"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0580",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0580.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0580-thumb.jpg",
+      "title": "Quarry Basin; Maastricht Limestone",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a6a299",
+        "#4794cf",
+        "#5b4a37"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0581",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0581.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0581-thumb.jpg",
+      "title": "Flooded Quarry; Winter Light",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#81a8c6",
+        "#53788b",
+        "#4d4b43"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0585",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0585.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0585-thumb.jpg",
+      "title": "Flooded Quarry; Winter Light",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a5c9e3",
+        "#948d7f",
+        "#544b3f"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0589",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0589.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0589-thumb.jpg",
+      "title": "Cement Works at the Quarry Edge",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#eff5fb",
+        "#b6c1ca",
+        "#4f5c60"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0591",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0591.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0591-thumb.jpg",
+      "title": "Cement Works; Quarry Edge",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b8d7f0",
+        "#868f96",
+        "#4a443f"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "monochrome-moods",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0595",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0595.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0595-thumb.jpg",
+      "title": "Flooded Quarry; Limestone Reflection",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#9ebdd4",
+        "#887c6d",
+        "#2b3537"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0598",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0598.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0598-thumb.jpg",
+      "title": "Sun and Reservoir; Winter Stillness",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#8f9aa7",
+        "#495e75",
+        "#161513"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0606",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0606.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0606-thumb.jpg",
+      "title": "Cement Works; Reflected in Quarry Water",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#bad3ea",
+        "#688aa9",
+        "#172329"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0613",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0613.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0613-thumb.jpg",
+      "title": "Flooded Quarry; Late Winter Light",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b2cadd",
+        "#a77d56",
+        "#342d26"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0628",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0628.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0628-thumb.jpg",
+      "title": "Quarry Lake; Still Water and Stone",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c1ddf4",
+        "#98b3c9",
+        "#464a4a"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "monochrome-moods",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0632",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0632.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0632-thumb.jpg",
+      "title": "Quarry Lake at Sunset",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c9d2dc",
+        "#7a97b2",
+        "#3c4142"
+      ],
+      "collections": [
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0636",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0636.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0636-thumb.jpg",
+      "title": "Flooded Quarry; Still Water Rising",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#bfd8eb",
+        "#8aa6b8",
+        "#3f4445"
+      ],
+      "collections": [
+        "atmospheric",
+        "the-signature-collection"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0638",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0638.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0638-thumb.jpg",
+      "title": "Flooded Quarry; Still Water",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b5d4ea",
+        "#90a7b6",
+        "#344248"
+      ],
+      "collections": [
+        "atmospheric",
+        "the-signature-collection"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0642",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0642.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0642-thumb.jpg",
+      "title": "Flooded Quarry; Still Water, Chalk Walls",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#94bdd8",
+        "#7f8b8e",
+        "#3c3e3d"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0647",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0647.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0647-thumb.jpg",
+      "title": "Cement Works; Quarry Edge",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#a0c1da",
+        "#4e8ebe",
+        "#41423b"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0649",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0649.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0649-thumb.jpg",
+      "title": "Cement Works; Winter Light",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#89aecb",
+        "#5383a4",
+        "#314146"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0651",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0651.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0651-thumb.jpg",
+      "title": "Cement Works; Winter Light",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#a3c2de",
+        "#568cba",
+        "#333f41"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0655",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0655.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0655-thumb.jpg",
+      "title": "Cement Works; Appalachian Quarry",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#9fc2df",
+        "#4f8db8",
+        "#364349"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0658",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0658.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0658-thumb.jpg",
+      "title": "Cement Works Above Still Water",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#86a5c0",
+        "#3683c0",
+        "#2f3e47"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0659",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0659.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0659-thumb.jpg",
+      "title": "Quarry Reflection; Industrial Stillwater",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#82aed7",
+        "#427cab",
+        "#24363e"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0661",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0661.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0661-thumb.jpg",
+      "title": "Smokestack and Sky; Industrial Cliff",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#7da4c7",
+        "#6187a8",
+        "#305e80"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "export-2025-02-08-maastricht-dsc-0663",
+      "url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0663.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/export-2025-02-08-maastricht/DSC_0663-thumb.jpg",
+      "title": "Chimney Above the Cliff Face",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#c2a37c",
+        "#7a8c9f",
+        "#1f567f"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "atmospheric"
+      ],
+      "shoot_folder": "export-2025-02-08-maastricht",
       "date": "2026-02-08"
     }
   ]
