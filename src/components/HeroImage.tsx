@@ -7,7 +7,8 @@ export default function HeroImage() {
   const [src, setSrc] = useState<string | null>(null)
 
   useEffect(() => {
-    setSrc(Math.random() < 0.5 ? '/images/hero-light.jpg' : '/images/hero-dark.jpg')
+    const images = ['/images/hero-light.jpg', '/images/hero-dark.jpg', '/images/hero-subtext.jpg']
+    setSrc(images[Math.floor(Math.random() * images.length)])
   }, [])
 
   if (!src) return <div className="absolute inset-0 bg-ink" />
