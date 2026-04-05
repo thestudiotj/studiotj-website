@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
+import Image from 'next/image'
 import type { Photo, Layout } from '@/lib/portfolio'
 import Lightbox from './Lightbox'
 
@@ -62,10 +63,22 @@ function PhotoPlaceholder({ photo, onClick }: { photo: Photo; onClick: () => voi
       onKeyDown={(e) => e.key === 'Enter' && onClick()}
     >
       {/* Background */}
-      <div
-        className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-        style={{ background: isPlaceholder ? gradient : undefined, backgroundColor: isPlaceholder ? undefined : '#1a1a1a' }}
-      />
+      {isPlaceholder ? (
+        <div
+          className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          style={{ background: gradient }}
+        />
+      ) : (
+        <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]">
+          <Image
+            src={photo.thumbnail_url}
+            alt={photo.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+          />
+        </div>
+      )}
 
       {/* Overlay on hover */}
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-end p-3">
