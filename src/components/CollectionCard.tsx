@@ -10,11 +10,14 @@ interface CollectionCardProps {
   collection: Collection
   heroPhoto: Photo | null
   index: number
+  variant?: 'portfolio' | 'homepage'
 }
 
-export default function CollectionCard({ collection, heroPhoto, index }: CollectionCardProps) {
+export default function CollectionCard({ collection, heroPhoto, index, variant = 'portfolio' }: CollectionCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-60px' })
+
+  const isHomepage = variant === 'homepage'
 
   const accentColor = collection.palette[0] ?? '#C4BEB4'
   const bgColors = heroPhoto?.dominant_colors ?? collection.palette.slice(0, 3)
@@ -33,7 +36,7 @@ export default function CollectionCard({ collection, heroPhoto, index }: Collect
       <Link
         href={`/portfolio/${collection.slug}`}
         className="group block relative overflow-hidden"
-        style={{ borderLeft: `2px solid ${accentColor}` }}
+        style={isHomepage ? undefined : { borderLeft: `2px solid ${accentColor}` }}
       >
         {/* Hero image / placeholder */}
         <div
@@ -69,28 +72,34 @@ export default function CollectionCard({ collection, heroPhoto, index }: Collect
             <h2 className="font-display text-2xl md:text-3xl text-paper leading-tight mb-2">
               {collection.name}
             </h2>
-            <p className="text-paper/75 text-sm leading-relaxed line-clamp-2">
-              {collection.tagline}
-            </p>
+            {!isHomepage && (
+              <p className="text-paper/75 text-sm leading-relaxed line-clamp-2">
+                {collection.tagline}
+              </p>
+            )}
 
-            {/* Arrow */}
-            <div className="mt-4 flex items-center gap-2 text-paper/50 text-xs tracking-widest uppercase transition-all duration-300 group-hover:text-paper/90 group-hover:gap-3">
-              <span>View</span>
-              <span>→</span>
-            </div>
+            {/* Arrow — portfolio only */}
+            {!isHomepage && (
+              <div className="mt-4 flex items-center gap-2 text-paper/50 text-xs tracking-widest uppercase transition-all duration-300 group-hover:text-paper/90 group-hover:gap-3">
+                <span>View</span>
+                <span>→</span>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Palette strip */}
-        <div className="flex h-1">
-          {collection.palette.map((color, i) => (
-            <div
-              key={i}
-              className="flex-1"
-              style={{ backgroundColor: color }}
-            />
-          ))}
-        </div>
+        {/* Palette strip — portfolio only */}
+        {!isHomepage && (
+          <div className="flex h-1">
+            {collection.palette.map((color, i) => (
+              <div
+                key={i}
+                className="flex-1"
+                style={{ backgroundColor: color }}
+              />
+            ))}
+          </div>
+        )}
       </Link>
     </motion.div>
   )

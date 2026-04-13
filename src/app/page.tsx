@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { getPortfolio, sortCollections } from '@/lib/portfolio'
+import { getPortfolio, getPhoto, sortCollections } from '@/lib/portfolio'
 import { getAllPosts } from '@/lib/blog'
 import EmailCapture from '@/components/EmailCapture'
 import HeroImage from '@/components/HeroImage'
+import CollectionCard from '@/components/CollectionCard'
 
 export default async function HomePage() {
   const portfolio = getPortfolio()
@@ -50,22 +50,18 @@ export default async function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {featuredCollections.map((collection) => {
-              const bgColor = collection.palette[0] ?? '#2a2a2a'
-              const bgColor2 = collection.palette[1] ?? '#4a4a4a'
+            {featuredCollections.map((collection, i) => {
+              const heroPhoto = collection.hero_photo_id
+                ? getPhoto(collection.hero_photo_id)
+                : null
               return (
-                <Link
+                <CollectionCard
                   key={collection.slug}
-                  href={`/portfolio/${collection.slug}`}
-                  className="group block aspect-[4/5] relative overflow-hidden"
-                  style={{ background: `linear-gradient(145deg, ${bgColor}, ${bgColor2})` }}
-                >
-                  <div className="absolute inset-0 bg-ink/20 group-hover:bg-ink/40 transition-all duration-500 z-10" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-                    <p className="text-paper font-display text-2xl">{collection.name}</p>
-                    <p className="text-dust text-sm mt-1">{collection.photo_ids.length} photos</p>
-                  </div>
-                </Link>
+                  collection={collection}
+                  heroPhoto={heroPhoto}
+                  index={i}
+                  variant="homepage"
+                />
               )
             })}
           </div>
