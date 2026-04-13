@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import type { Collection, Photo } from '@/lib/portfolio'
@@ -39,10 +40,23 @@ export default function CollectionCard({ collection, heroPhoto, index }: Collect
           className="relative w-full overflow-hidden"
           style={{ aspectRatio: '4 / 5' }}
         >
+          {/* Gradient sits behind the photo — shows during load and as fallback */}
           <div
-            className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            className="absolute inset-0"
             style={{ background: placeholderGradient }}
           />
+
+          {heroPhoto?.thumbnail_url && (
+            <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
+              <Image
+                src={heroPhoto.thumbnail_url}
+                alt={heroPhoto.title || collection.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
+            </div>
+          )}
 
           {/* Dark gradient overlay — strengthens on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-90" />

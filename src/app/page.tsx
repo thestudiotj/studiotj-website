@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getPortfolio, sortCollections } from '@/lib/portfolio'
+import { getAllPosts } from '@/lib/blog'
 import EmailCapture from '@/components/EmailCapture'
 import HeroImage from '@/components/HeroImage'
 
 export default async function HomePage() {
   const portfolio = getPortfolio()
   const featuredCollections = portfolio
-    ? sortCollections(portfolio.collections, portfolio.photos).slice(0, 3)
+    ? sortCollections(portfolio.collections, portfolio.photos).slice(0, 4)
     : []
+  const posts = await getAllPosts()
 
   return (
     <>
@@ -47,7 +49,7 @@ export default async function HomePage() {
             <Link href="/portfolio" className="nav-link">View all →</Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {featuredCollections.map((collection) => {
               const bgColor = collection.palette[0] ?? '#2a2a2a'
               const bgColor2 = collection.palette[1] ?? '#4a4a4a'
@@ -71,8 +73,8 @@ export default async function HomePage() {
       )}
 
       {/* About strip */}
-      <section className="border-t border-dust/40 px-6 md:px-12 py-20 grid md:grid-cols-2 gap-16 items-center">
-        <div>
+      <section className="border-t border-dust/40 px-6 md:px-12 py-20">
+        <div className="max-w-2xl">
           <h2 className="section-title mb-6">The work</h2>
           <p className="text-muted leading-relaxed mb-4">
             Based in the Netherlands, StudioTJ is a solo photography practice focused on
@@ -84,24 +86,32 @@ export default async function HomePage() {
           </p>
           <Link href="/about" className="btn-outline">About the studio</Link>
         </div>
-        <div className="aspect-square bg-dust/30 relative overflow-hidden">
-          {/* Add a portrait or studio photo here */}
-        </div>
       </section>
 
-      {/* Latest from the blog */}
-      <section className="bg-ink text-paper px-6 md:px-12 py-20">
-        <div className="flex items-end justify-between mb-12">
-          <h2 className="font-display text-4xl md:text-6xl">Latest</h2>
-          <Link href="/blog" className="text-dust text-sm tracking-widest uppercase hover:text-paper transition-colors">
-            All posts →
-          </Link>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Blog post cards will render here once you have posts */}
-          <p className="text-muted col-span-3">No posts yet — add markdown files to /content/blog/</p>
-        </div>
-      </section>
+      {/* Latest from the blog — only rendered when posts exist */}
+      {posts.length > 0 && (
+        <section className="bg-ink text-paper px-6 md:px-12 py-20">
+          <div className="flex items-end justify-between mb-12">
+            <h2 className="font-display text-4xl md:text-6xl">Latest</h2>
+            <Link href="/blog" className="text-dust text-sm tracking-widest uppercase hover:text-paper transition-colors">
+              All posts →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {posts.slice(0, 3).map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+                <p className="text-dust text-xs tracking-widest uppercase mb-2">{post.date}</p>
+                <h3 className="font-display text-xl text-paper group-hover:text-dust transition-colors leading-snug">
+                  {post.title}
+                </h3>
+                {post.excerpt && (
+                  <p className="text-dust/70 text-sm mt-2 leading-relaxed line-clamp-2">{post.excerpt}</p>
+                )}
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Email capture */}
       <EmailCapture

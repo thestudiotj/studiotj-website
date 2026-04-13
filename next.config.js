@@ -1,5 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/portfolio/halcyon',
+        destination: '/portfolio/the-halcyon-collection',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/atmospheric',
+        destination: '/portfolio/the-atmospheric-collection',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       // Add your SmugMug domain here if migrating photos
