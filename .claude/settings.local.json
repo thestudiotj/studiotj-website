@@ -19,7 +19,8 @@
       "Bash(npx eslint:*)",
       "Bash(git add:*)",
       "Bash(git rm:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(python3:*)"
     ]
   }
 }
