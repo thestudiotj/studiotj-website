@@ -14,7 +14,12 @@
       "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/logo-header.png C:/Users/tjvan/Documents/Projects/studiotj-website/public/images/logo-header.png)",
       "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/hero-light.jpg C:/Users/tjvan/Documents/Projects/studiotj-website/public/images/hero-light.jpg)",
       "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/hero-dark.jpg C:/Users/tjvan/Documents/Projects/studiotj-website/public/images/hero-dark.jpg)",
-      "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/favicon.ico C:/Users/tjvan/Documents/Projects/studiotj-website/src/app/favicon.ico)"
+      "Bash(cp C:/Users/tjvan/Documents/Projects/studiotj-assets/favicon.ico C:/Users/tjvan/Documents/Projects/studiotj-website/src/app/favicon.ico)",
+      "Bash(git stash:*)",
+      "Bash(npx eslint:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
