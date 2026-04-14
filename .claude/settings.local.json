@@ -22,7 +22,24 @@
       "Bash(git commit:*)",
       "Bash(python3:*)",
       "Bash(cmd:*)",
-      "Bash(ls .eslint*)"
+      "Bash(ls .eslint*)",
+      "Bash(head -5 /c/Users/tjvan/Documents/Projects/studiotj-website/content/blog/*.mdx)",
+      "Bash(curl -s http://localhost:3000/subtext-lab)",
+      "Bash(curl -s http://localhost:3000/subtext-lab/rewatching)",
+      "Bash(curl -s -o /tmp/rewatching.html http://localhost:3000/subtext-lab/rewatching)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(pkill -f \"node.*next\")",
+      "Bash(echo \"dev started, pid=$!\")",
+      "Bash(curl -s -o /tmp/index.html http://localhost:3000/subtext-lab)",
+      "Bash(curl -s -o /tmp/index.html http://localhost:3001/subtext-lab)",
+      "Bash(curl -s http://localhost:3001/subtext-lab)",
+      "Bash(curl -s http://localhost:3001/subtext-lab/rewatching)",
+      "Bash(curl -s http://localhost:3001/subtext-lab/_throwaway_video)",
+      "Bash(curl -s http://localhost:3001/subtext-lab/_throwaway_article)",
+      "Bash(curl -s \"http://localhost:3001/subtext-lab?subject=tech\")",
+      "Bash(curl -s \"http://localhost:3001/subtext-lab?subject=film\")",
+      "Bash(curl -s http://localhost:3001/blog)",
+      "Bash(git push:*)"
     ]
   }
 }
