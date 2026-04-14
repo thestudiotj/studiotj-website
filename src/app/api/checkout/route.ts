@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getProductById } from '@/lib/printify'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY
+  if (!key) throw new Error('STRIPE_SECRET_KEY not set')
+  return new Stripe(key)
+}
 
 interface CartItemInput {
   productId: string
@@ -11,6 +15,7 @@ interface CartItemInput {
 }
 
 export async function POST(req: NextRequest) {
+  const stripe = getStripe()
   // ── Parse & validate input ────────────────────────────────────────────────
   let items: CartItemInput[]
 

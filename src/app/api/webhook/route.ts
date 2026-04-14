@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { submitOrderToPrintify } from '@/lib/printify'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY
+  if (!key) throw new Error('STRIPE_SECRET_KEY not set')
+  return new Stripe(key)
+}
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -18,6 +22,7 @@ function splitName(full: string): { first_name: string; last_name: string } {
 // App Router does NOT auto-parse the body, so req.text() gives us the raw bytes
 // needed for Stripe signature verification.
 export async function POST(req: NextRequest) {
+  const stripe = getStripe()
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
   if (!webhookSecret) {
     console.error('STRIPE_WEBHOOK_SECRET is not set')

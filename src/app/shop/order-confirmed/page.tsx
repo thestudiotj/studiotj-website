@@ -5,7 +5,11 @@ export const metadata = {
   title: 'Order confirmed — StudioTJ',
 }
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY
+  if (!key) throw new Error('STRIPE_SECRET_KEY not set')
+  return new Stripe(key)
+}
 
 function formatAmount(amount: number, currency: string) {
   return new Intl.NumberFormat('nl-NL', {
@@ -25,6 +29,7 @@ export default async function OrderConfirmedPage({
 
   if (sessionId) {
     try {
+      const stripe = getStripe()
       session = await stripe.checkout.sessions.retrieve(sessionId, {
         expand: ['line_items'],
       })
