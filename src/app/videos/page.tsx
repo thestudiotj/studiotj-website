@@ -52,9 +52,8 @@ export default function VideosPage() {
       <div className="mt-24">
         <EmailCapture
           variant="dark"
-          headline="When new work is ready"
-          subline="No schedule. Just an email when something worth sharing exists."
-          incentive="First email includes a free high-res cloud wallpaper pack."
+          headline="A list for later"
+          subline="Leave your address and it joins the list. When StudioTJ has something worth sending, this is how you'll hear about it first."
         />
       </div>
     </div>

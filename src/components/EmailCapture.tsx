@@ -77,9 +77,9 @@ export default function EmailCapture({
 
         {status === 'success' ? (
           <div className={`border ${border} p-6`}>
-            <p className={`font-display text-xl ${text} mb-1`}>You&apos;re in.</p>
+            <p className={`font-display text-xl ${text} mb-1`}>You&apos;re on the list.</p>
             <p className={`${subText} text-sm`}>
-              Check your inbox — the wallpaper pack is on its way.
+              When there&apos;s something to send, it lands here first.
             </p>
           </div>
         ) : (
@@ -97,7 +97,7 @@ export default function EmailCapture({
               disabled={status === 'loading'}
               className={`${btnBg} px-6 py-3 text-xs tracking-widest uppercase transition-colors duration-200 shrink-0 disabled:opacity-50`}
             >
-              {status === 'loading' ? 'Sending…' : 'Subscribe'}
+              {status === 'loading' ? 'Joining…' : 'Join the list'}
             </button>
           </form>
         )}

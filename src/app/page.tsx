@@ -240,9 +240,8 @@ export default async function HomePage() {
       {/* Email capture */}
       <EmailCapture
         variant="light"
-        headline="Subscribe"
-        subline="The list is open; the newsletter is not. Sign up now and you'll be on it when the first one sends."
-        incentive="Photos, collections, notes — nothing often, nothing else."
+        headline="A list for later"
+        subline="Leave your address and it joins the list. When StudioTJ has something worth sending, this is how you'll hear about it first."
       />
     </>
   )
