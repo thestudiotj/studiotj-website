@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { getPortfolio, getCollection, getCollectionPhotos, getMoodTheme } from '@/lib/portfolio'
+import { getPortfolio, getCollection, getCollectionPhotos, getMoodTheme, getPhoto } from '@/lib/portfolio'
 import Gallery from '@/components/Gallery'
 
 interface PageProps {
@@ -17,11 +17,13 @@ export async function generateMetadata({ params }: PageProps) {
   const collection = getCollection(params.slug)
   if (!collection) return {}
   const description = collection.meta_description || collection.tagline
+  const heroPhoto = getPhoto(collection.hero_photo_id)
   return {
     title: collection.name,
     description,
     openGraph: {
       description,
+      ...(heroPhoto ? { images: [heroPhoto.url] } : {}),
     },
   }
 }
