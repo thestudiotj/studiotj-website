@@ -41,7 +41,8 @@
       "Bash(curl -s http://localhost:3001/blog)",
       "Bash(git push:*)",
       "Bash(curl -sI https://photos.studiotj.com/og/studiotj-default.jpg)",
-      "Bash(curl -sI https://photos.studiotj.com/og/subtext-lab-default.jpg)"
+      "Bash(curl -sI https://photos.studiotj.com/og/subtext-lab-default.jpg)",
+      "Bash(curl *)"
     ]
   }
 }
