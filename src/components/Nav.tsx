@@ -5,10 +5,11 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useCart } from '@/lib/cart'
 
-const links = [
+const links: { href: string; label: string; subtextDot?: boolean }[] = [
   { href: '/portfolio', label: 'Portfolio' },
-  { href: '/videos', label: 'Film' },
-  { href: '/blog', label: 'Notes' },
+  { href: '/journal', label: 'Journal' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/subtext-lab', label: 'Subtext Lab', subtextDot: true },
   { href: '/shop', label: 'Shop' },
   { href: '/about', label: 'About' },
 ]
@@ -51,12 +52,27 @@ export default function Nav() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-xs tracking-[0.2em] uppercase transition-colors duration-200 ${
+                className={`text-xs tracking-[0.2em] uppercase transition-colors duration-200 flex items-center ${
                   pathname.startsWith(link.href)
                     ? isHome && !scrolled ? 'text-paper' : 'text-ink' // active link
                     : linkColor
                 }`}
               >
+                {link.subtextDot && (
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      display: 'inline-block',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: 'var(--st-accent)',
+                      marginRight: '6px',
+                      flexShrink: 0,
+                      transform: 'translateY(-1px)',
+                    }}
+                  />
+                )}
                 {link.label}
               </Link>
             </li>
@@ -101,9 +117,24 @@ export default function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors"
+                  className="text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors flex items-center"
                   onClick={() => setMenuOpen(false)}
                 >
+                  {link.subtextDot && (
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        display: 'inline-block',
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        backgroundColor: 'var(--st-accent)',
+                        marginRight: '6px',
+                        flexShrink: 0,
+                        transform: 'translateY(-1px)',
+                      }}
+                    />
+                  )}
                   {link.label}
                 </Link>
               </li>
