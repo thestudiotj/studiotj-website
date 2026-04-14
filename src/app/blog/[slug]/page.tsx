@@ -19,10 +19,10 @@ export async function generateMetadata({
   if (!post) return {}
   return {
     title: post.frontmatter.title,
-    description: post.frontmatter.summary,
+    description: post.summary,
     openGraph: {
       title: post.frontmatter.title,
-      description: post.frontmatter.summary,
+      description: post.summary,
       ...(post.frontmatter.hero ? { images: [post.frontmatter.hero] } : {}),
     },
   }
@@ -168,7 +168,7 @@ export default async function BlogPostPage({
                     <h3 className="font-display text-xl text-ink group-hover:text-[var(--accent)] transition-colors mb-2">
                       {p.frontmatter.title}
                     </h3>
-                    <p className="text-muted leading-relaxed">{p.frontmatter.summary}</p>
+                    <p className="text-muted leading-relaxed">{p.summary}</p>
                   </Link>
                 </article>
               ))}

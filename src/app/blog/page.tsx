@@ -93,7 +93,7 @@ export default async function BlogPage({
                 <h2 className="font-display text-2xl text-ink group-hover:text-[var(--accent)] transition-colors mb-2">
                   {post.frontmatter.title}
                 </h2>
-                <p className="text-muted leading-relaxed">{post.frontmatter.summary}</p>
+                <p className="text-muted leading-relaxed">{post.summary}</p>
               </Link>
             </article>
           ))}
