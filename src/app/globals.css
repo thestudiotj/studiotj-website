@@ -8,6 +8,23 @@
   --font-display: 'Playfair Display', serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'DM Mono', monospace;
+
+  /* Main site accent — blue palette */
+  --accent: #033E8C;
+  --accent-deep: #022A62;
+  --accent-soft: #4B7BC8;
+
+  /* Subtext Lab accent — purple palette */
+  --st-accent: #8878BF;
+  --st-accent-deep: #6B5FA0;
+  --st-accent-soft: #A899D0;
+}
+
+/* Subtext Lab theme override — reassigns accent variables to st-accent palette */
+.theme-subtext {
+  --accent: var(--st-accent);
+  --accent-deep: var(--st-accent-deep);
+  --accent-soft: var(--st-accent-soft);
 }
 
 @layer base {

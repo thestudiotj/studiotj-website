@@ -39,7 +39,7 @@ const nextConfig = {
               "img-src 'self' data: blob: https://images-api.printify.com https://*.smugmug.com https://photos.studiotj.com",
               "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://api.stripe.com",
-              "frame-src https://js.stripe.com https://hooks.stripe.com",
+              "frame-src https://js.stripe.com https://hooks.stripe.com https://www.youtube-nocookie.com https://www.youtube.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),

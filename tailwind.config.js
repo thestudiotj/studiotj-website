@@ -16,7 +16,9 @@ module.exports = {
         ink: '#0D0D0D',
         paper: '#F5F2EC',
         dust: '#C4BEB4',
-        accent: '#D4522A',   // warm terracotta
+        accent: 'var(--accent)',
+        'accent-deep': 'var(--accent-deep)',
+        'accent-soft': 'var(--accent-soft)',
         muted: '#6B6560',
       },
       animation: {
