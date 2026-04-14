@@ -40,8 +40,10 @@ export default function Nav() {
         <Link href="/" className="flex items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/logo-header.png"
+            src="/images/logo-header.webp"
             alt="StudioTJ"
+            width={132}
+            height={44}
             style={{ height: '44px', width: 'auto' }}
           />
         </Link>

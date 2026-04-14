@@ -69,8 +69,8 @@ function EntryCard({ post }: { post: SubtextEntry }) {
         </div>
       )}
 
-      {/* Text block */}
-      <div className="relative z-10 p-5">
+      {/* Text block — pointer-events-none so the stretched link underneath receives clicks */}
+      <div className="relative z-10 p-5 pointer-events-none">
         <h2
           className={`font-display text-ink group-hover:text-[var(--accent)] transition-colors leading-tight mb-2 ${
             thumbSrc ? 'text-xl' : 'text-2xl'
@@ -89,7 +89,7 @@ function EntryCard({ post }: { post: SubtextEntry }) {
             <Link
               key={s}
               href={`/subtext-lab?subject=${encodeURIComponent(s)}`}
-              className="relative z-10 text-xs tracking-widest uppercase text-[var(--accent)] hover:underline"
+              className="relative z-10 pointer-events-auto text-xs tracking-widest uppercase text-[var(--accent)] hover:underline"
             >
               {s}
             </Link>
