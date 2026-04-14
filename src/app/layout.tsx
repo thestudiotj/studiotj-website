@@ -1,9 +1,71 @@
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { CartProvider } from '@/lib/cart'
 import CartDrawer from '@/components/CartDrawer'
+
+const playfairDisplay = localFont({
+  src: [
+    {
+      path: '../../public/fonts/playfair-display/playfair-display-latin-normal.woff2',
+      weight: '400 900',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/playfair-display/playfair-display-latin-ext-normal.woff2',
+      weight: '400 900',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/playfair-display/playfair-display-latin-italic.woff2',
+      weight: '400 900',
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/playfair-display/playfair-display-latin-ext-italic.woff2',
+      weight: '400 900',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const dmSans = localFont({
+  src: [
+    {
+      path: '../../public/fonts/dm-sans/dm-sans-latin.woff2',
+      weight: '300 500',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/dm-sans/dm-sans-latin-ext.woff2',
+      weight: '300 500',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-body',
+  display: 'swap',
+})
+
+const dmMono = localFont({
+  src: [
+    {
+      path: '../../public/fonts/dm-mono/dm-mono-latin-400.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/dm-mono/dm-mono-latin-ext-400.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-mono',
+  display: 'swap',
+})
 
 export const metadataBase = new URL('https://studiotj.com')
 
@@ -38,7 +100,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${playfairDisplay.variable} ${dmSans.variable} ${dmMono.variable}`}>
       <body className="bg-paper text-ink min-h-screen flex flex-col">
         <CartProvider>
           <Nav />
