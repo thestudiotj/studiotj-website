@@ -51,7 +51,6 @@ export default function Footer() {
           <p className="text-muted text-sm leading-relaxed">
             Photography from the Netherlands.
           </p>
-          <p className="text-dust text-xs mt-2">KvK: 75602172</p>
         </div>
 
         <div>
@@ -61,6 +60,7 @@ export default function Footer() {
               { href: '/portfolio', label: 'Portfolio' },
               { href: '/blog', label: 'Notes' },
               { href: '/shop', label: 'Shop' },
+              { href: '/contact', label: 'Contact' },
               { href: '/about', label: 'About' },
             ].map((link) => (
               <li key={link.href}>
@@ -99,13 +99,21 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-dust/30 mt-10 pt-6 flex flex-col md:flex-row justify-between gap-4">
-        <p className="text-xs text-dust">
-          © {new Date().getFullYear()} StudioTJ — Eenmanszaak, Netherlands
+      <div className="border-t border-dust/30 mt-10 pt-6">
+        <p className="text-xs text-dust leading-relaxed mb-4">
+          KvK: 75602172<br />
+          BTW: NL002283139B11<br />
+          Post: Keurenplein 41, Box D2818, 1069CD Amsterdam
         </p>
-        <div className="flex gap-6">
-          <Link href="/privacy" className="text-xs text-dust hover:text-muted transition-colors">Privacy</Link>
-          <Link href="/terms" className="text-xs text-dust hover:text-muted transition-colors">Terms</Link>
+        <div className="flex flex-col md:flex-row justify-between gap-4">
+          <p className="text-xs text-dust">
+            © {new Date().getFullYear()} StudioTJ — Eenmanszaak, Netherlands
+          </p>
+          <div className="flex gap-6">
+            <Link href="/privacy" className="text-xs text-dust hover:text-muted transition-colors">Privacy</Link>
+            <Link href="/terms" className="text-xs text-dust hover:text-muted transition-colors">Terms</Link>
+            <Link href="/terms#shipping-returns" className="text-xs text-dust hover:text-muted transition-colors">Shipping &amp; returns</Link>
+          </div>
         </div>
       </div>
     </footer>
