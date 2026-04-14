@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-13T20:32:59.703809+00:00",
+  "generated_at": "2026-04-14T02:38:21.613045+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -35,7 +35,20 @@
         "2025-05-23-Haarlem-export-dsc-0882",
         "2025-05-23-Haarlem-export-dsc-0923",
         "2025-05-23-Haarlem-export-dsc-0924",
-        "2025-05-23-Haarlem-export-dsc-0944"
+        "2025-05-23-Haarlem-export-dsc-0944",
+        "2025-02-08-Maastricht-export-dsc-0496",
+        "2025-02-08-Maastricht-export-dsc-0519",
+        "2025-02-08-Maastricht-export-dsc-0522",
+        "2025-02-08-Maastricht-export-dsc-0526",
+        "2025-02-08-Maastricht-export-dsc-0539",
+        "2025-02-08-Maastricht-export-dsc-0548",
+        "2025-02-08-Maastricht-export-dsc-0558",
+        "2025-02-08-Maastricht-export-dsc-0589",
+        "2025-02-08-Maastricht-export-dsc-0591",
+        "2025-02-08-Maastricht-export-dsc-0607",
+        "2025-02-08-Maastricht-export-dsc-0611",
+        "2025-02-08-Maastricht-export-dsc-0632",
+        "2025-02-08-Maastricht-export-dsc-0672"
       ]
     },
     {
@@ -79,7 +92,13 @@
         "2025-05-23-Haarlem-export-dsc-0927",
         "2025-05-23-Haarlem-export-dsc-0930",
         "2025-05-23-Haarlem-export-dsc-0934",
-        "2025-05-23-Haarlem-export-dsc-0939"
+        "2025-05-23-Haarlem-export-dsc-0939",
+        "2025-02-08-Maastricht-export-dsc-0550",
+        "2025-02-08-Maastricht-export-dsc-0562",
+        "2025-02-08-Maastricht-export-dsc-0564",
+        "2025-02-08-Maastricht-export-dsc-0638",
+        "2025-02-08-Maastricht-export-dsc-0642",
+        "2025-02-08-Maastricht-export-dsc-0663"
       ]
     },
     {
@@ -100,7 +119,10 @@
       "style_intensity": "moderate",
       "photo_ids": [
         "2025-05-23-Haarlem-export-dsc-0805",
-        "2025-05-23-Haarlem-export-dsc-0833"
+        "2025-05-23-Haarlem-export-dsc-0833",
+        "2025-02-08-Maastricht-export-dsc-0500",
+        "2025-02-08-Maastricht-export-dsc-0506",
+        "2025-02-08-Maastricht-export-dsc-0583"
       ]
     },
     {
@@ -126,7 +148,21 @@
         "2025-05-23-Haarlem-export-dsc-0813",
         "2025-05-23-Haarlem-export-dsc-0826",
         "2025-05-23-Haarlem-export-dsc-0828",
-        "2025-05-23-Haarlem-export-dsc-0830"
+        "2025-05-23-Haarlem-export-dsc-0830",
+        "2025-02-08-Maastricht-export-dsc-0509",
+        "2025-02-08-Maastricht-export-dsc-0524",
+        "2025-02-08-Maastricht-export-dsc-0542",
+        "2025-02-08-Maastricht-export-dsc-0546",
+        "2025-02-08-Maastricht-export-dsc-0552",
+        "2025-02-08-Maastricht-export-dsc-0568",
+        "2025-02-08-Maastricht-export-dsc-0571",
+        "2025-02-08-Maastricht-export-dsc-0577",
+        "2025-02-08-Maastricht-export-dsc-0595",
+        "2025-02-08-Maastricht-export-dsc-0613",
+        "2025-02-08-Maastricht-export-dsc-0618",
+        "2025-02-08-Maastricht-export-dsc-0624",
+        "2025-02-08-Maastricht-export-dsc-0628",
+        "2025-02-08-Maastricht-export-dsc-0667"
       ]
     }
   ],
@@ -982,6 +1018,660 @@
       ],
       "shoot_folder": "2025-05-23-Haarlem-export",
       "date": "2025-05-23"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0496",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0496.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0496-thumb.jpg",
+      "title": "Viewing Platform Over ENCI Quarry",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#f6f6f6",
+        "#919191",
+        "#202020"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0500",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0500.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0500-thumb.jpg",
+      "title": "ENCI Quarry Works Against Hillside Sky",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#bdcbd9",
+        "#7295b5",
+        "#38362d"
+      ],
+      "collections": [
+        "the-atmospheric-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0506",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0506.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0506-thumb.jpg",
+      "title": "Quarry Descent, ENCI Maastricht",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d5dee8",
+        "#738898",
+        "#3d362d"
+      ],
+      "collections": [
+        "the-atmospheric-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0509",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0509.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0509-thumb.jpg",
+      "title": "ENCI Quarry and Cement Works, Maastricht",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#b1cae0",
+        "#7f95a6",
+        "#494235"
+      ],
+      "collections": [
+        "the-halcyon-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0519",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0519.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0519-thumb.jpg",
+      "title": "Quarry Path and Cement Works, Maastricht",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#c7c7c7",
+        "#919191",
+        "#5c5c5c"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0522",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0522.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0522-thumb.jpg",
+      "title": "Steel Staircase Down the Quarry Face",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#c3c3c3",
+        "#787878",
+        "#383838"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0524",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0524.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0524-thumb.jpg",
+      "title": "Steel Staircase Into ENCI Quarry Floor",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d5c6ad",
+        "#a29585",
+        "#484847"
+      ],
+      "collections": [
+        "the-halcyon-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0526",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0526.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0526-thumb.jpg",
+      "title": "Quarry Lake at Midday Sun, ENCI",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#dcdcdc",
+        "#676767",
+        "#0b0b0b"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0539",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0539.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0539-thumb.jpg",
+      "title": "ENCI Quarry Basin at Low Winter Sun",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d6d6d6",
+        "#696969",
+        "#161616"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0542",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0542.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0542-thumb.jpg",
+      "title": "ENCI Quarry Works Against Winter Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#aac6de",
+        "#6594bd",
+        "#3d382c"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0546",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0546.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0546-thumb.jpg",
+      "title": "Viewing Platform Over ENCI Quarry, Maastricht",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b4c2cf",
+        "#6b8dad",
+        "#303638"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0548",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0548.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0548-thumb.jpg",
+      "title": "Descent to the Quarry Lake, ENCI",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#dfdfdf",
+        "#a2a2a2",
+        "#4b4b4b"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0550",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0550.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0550-thumb.jpg",
+      "title": "Cantilevered Viewing Platform, ENCI Quarry",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#897762",
+        "#026cb5",
+        "#1d476b"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "the-halcyon-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0552",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0552.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0552-thumb.jpg",
+      "title": "Limestone Cliff Edge, ENCI Quarry",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#8da7bd",
+        "#5a7b93",
+        "#454644"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "the-halcyon-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0558",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0558.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0558-thumb.jpg",
+      "title": "Limestone Portal Shadow ENCI Quarry",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#eaeaea",
+        "#8c8c8c",
+        "#2d2d2d"
+      ],
+      "collections": [
+        "monochrome-moods",
+        "the-atmospheric-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0562",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0562.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0562-thumb.jpg",
+      "title": "Quarry Rock Column Against Blue Sky",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#a3a99a",
+        "#79581f",
+        "#4c2e07"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "the-halcyon-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0564",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0564.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0564-thumb.jpg",
+      "title": "Steel Staircase on Limestone Cliff, ENCI",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#bb9c71",
+        "#395e79",
+        "#0e3459"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "the-halcyon-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0568",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0568.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0568-thumb.jpg",
+      "title": "Limestone Cliff Path, ENCI Quarry",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d9dbde",
+        "#b0aaab",
+        "#342f2b"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0571",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0571.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0571-thumb.jpg",
+      "title": "ENCI Chimney Stack Against Winter Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#90b1d1",
+        "#4e83b3",
+        "#303132"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0577",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0577.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0577-thumb.jpg",
+      "title": "ENCI Cement Works Above Quarry Floor",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#9abfdb",
+        "#6794b6",
+        "#413f3c"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0583",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0583.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0583-thumb.jpg",
+      "title": "ENCI Quarry Lake Against Winter Sun",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#cbd8e3",
+        "#648fb4",
+        "#39372e"
+      ],
+      "collections": [
+        "the-atmospheric-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0589",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0589.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0589-thumb.jpg",
+      "title": "ENCI Quarry Industrial Complex, Maastricht",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#d8d8d8",
+        "#6a6a6a",
+        "#171717"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0591",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0591.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0591-thumb.jpg",
+      "title": "ENCI Cement Works Across the Quarry",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c7c7c7",
+        "#7a7a7a",
+        "#373737"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0595",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0595.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0595-thumb.jpg",
+      "title": "Flooded Quarry Reflected, ENCI Maastricht",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a5c2d7",
+        "#8e8271",
+        "#2d3a3c"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "the-halcyon-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0607",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0607.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0607-thumb.jpg",
+      "title": "ENCI Quarry Chimney Reflected in Still Water",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#d3d3d3",
+        "#929292",
+        "#313131"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0611",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0611.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0611-thumb.jpg",
+      "title": "ENCI Chimney Reflected in Quarry Pond",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#bbbbbb",
+        "#5f5f5f",
+        "#1e1e1e"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0613",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0613.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0613-thumb.jpg",
+      "title": "Flooded Quarry Cliffs, ENCI Maastricht",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b9cdde",
+        "#ab8661",
+        "#433e37"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0618",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0618.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0618-thumb.jpg",
+      "title": "Quarry Lake and Kiln Ruins, ENCI Maastricht",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#bed7ee",
+        "#979088",
+        "#41413e"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0624",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0624.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0624-thumb.jpg",
+      "title": "Limestone Terraces, ENCI Quarry Maastricht",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#6a9fc3",
+        "#2888c6",
+        "#4f473f"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0628",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0628.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0628-thumb.jpg",
+      "title": "Flooded Quarry Terraces, ENCI Maastricht",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#bcd6eb",
+        "#9ab4c8",
+        "#525556"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0632",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0632.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0632-thumb.jpg",
+      "title": "Sun Over Still Water, ENCI Quarry",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c9c9c9",
+        "#7a7a7a",
+        "#2e2e2e"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0638",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0638.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0638-thumb.jpg",
+      "title": "Flooded Quarry Terraces, ENCI Maastricht",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#bec1be",
+        "#65adde",
+        "#30444c"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0642",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0642.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0642-thumb.jpg",
+      "title": "Limestone Terraces and Still Water, ENCI",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a29d8e",
+        "#399bcf",
+        "#39403e"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "the-halcyon-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0663",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0663.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0663-thumb.jpg",
+      "title": "Chalk Cliff and Chimney, ENCI Quarry",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#ccac83",
+        "#7c8f9e",
+        "#1a5d8b"
+      ],
+      "collections": [
+        "the-signature-collection",
+        "the-halcyon-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0667",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0667.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0667-thumb.jpg",
+      "title": "ENCI Quarry Floor, Maastricht",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#a2c9e7",
+        "#739dbd",
+        "#3a3a39"
+      ],
+      "collections": [
+        "the-halcyon-collection",
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2025-02-08-Maastricht-export-dsc-0672",
+      "url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0672.jpg",
+      "thumbnail_url": "https://photos.studiotj.com/2025-02-08-Maastricht-export/DSC_0672-thumb.jpg",
+      "title": "Sun Over Still Water, ENCI Quarry",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d2d2d2",
+        "#838383",
+        "#2a2a2a"
+      ],
+      "collections": [
+        "the-atmospheric-collection",
+        "monochrome-moods"
+      ],
+      "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
     }
   ]
 }
