@@ -5,7 +5,7 @@ import type { GearFrontmatter } from '@/lib/content'
 import { mdxComponents } from '@/components/mdx'
 
 export const metadata: Metadata = {
-  title: 'Gear — StudioTJ',
+  title: 'Gear',
   description: "What I carry, what I shoot with, what I'd add next.",
 }
 

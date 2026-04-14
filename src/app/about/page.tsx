@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: { absolute: 'About — StudioTJ' },
+  title: 'About',
   description:
     'StudioTJ is a Dutch photography practice — bold colour architecture and monochrome with weight, alongside essays from The Subtext Lab. Curated, on purpose.',
 }

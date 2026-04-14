@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     : null
 
   return {
-    title: 'Journal — StudioTJ',
+    title: 'Journal',
     description:
       'Photo galleries from walks, trips, and visits — the work beyond the four StudioTJ portfolio collections.',
     ...(heroUrl

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Contact — StudioTJ' },
+  title: 'Contact',
   description:
     'Reach StudioTJ for photography commissions, image licensing, or general enquiries. Direct email, no form. Based in the Netherlands.',
 }

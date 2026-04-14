@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Terms — StudioTJ' },
+  title: 'Terms',
   description:
     'Terms of sale for StudioTJ orders: products, pricing, delivery, returns, your right of withdrawal, and complaints. Dutch law applies; consumer rights under EU law take precedence where they differ.',
 }

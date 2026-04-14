@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Privacy — StudioTJ' },
+  title: 'Privacy',
   description:
     'How StudioTJ handles personal data: what is collected for orders, email correspondence, and the newsletter signup, who else processes it, and how long it is kept. Compliant with the AVG (GDPR).',
 }

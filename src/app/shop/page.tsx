@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { getProducts, type PrintifyProduct } from '@/lib/printify'
 import CategoryTabs from '@/components/CategoryTabs'
 import ShopGrid from '@/components/ShopGrid'
@@ -5,9 +6,9 @@ import { getProductCategory } from '@/lib/shopHelpers'
 
 export const dynamic = 'force-dynamic'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Shop',
-  description: 'Fine art prints and merchandise from StudioTJ',
+  description: 'Fine art prints from StudioTJ — photographs from the Netherlands, printed on demand and shipped worldwide via Printify partners.',
 }
 
 // ─── Empty state ──────────────────────────────────────────────────────────────

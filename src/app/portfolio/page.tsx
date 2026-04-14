@@ -1,7 +1,8 @@
+import type { Metadata } from 'next'
 import { getPortfolio, getPhoto, sortCollections } from '@/lib/portfolio'
 import CollectionCard from '@/components/CollectionCard'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Portfolio',
   description: 'Photography collections by StudioTJ — architecture, landscape, and light in the Netherlands.',
 }
