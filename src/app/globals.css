@@ -113,4 +113,20 @@
   .collection-description em {
     font-style: italic;
   }
+
+  /* Journal masonry grid (react-masonry-css) */
+  .journal-masonry {
+    display: flex;
+    margin-left: -8px;
+    width: auto;
+  }
+
+  .journal-masonry-col {
+    padding-left: 8px;
+    background-clip: padding-box;
+  }
+
+  .journal-masonry-col > * {
+    margin-bottom: 8px;
+  }
 }
