@@ -39,7 +39,9 @@
       "Bash(curl -s \"http://localhost:3001/subtext-lab?subject=tech\")",
       "Bash(curl -s \"http://localhost:3001/subtext-lab?subject=film\")",
       "Bash(curl -s http://localhost:3001/blog)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(curl -sI https://photos.studiotj.com/og/studiotj-default.jpg)",
+      "Bash(curl -sI https://photos.studiotj.com/og/subtext-lab-default.jpg)"
     ]
   }
 }
