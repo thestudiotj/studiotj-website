@@ -19,7 +19,7 @@ function EmptyState() {
       <p className="text-sm text-muted leading-relaxed">
         No published products found in your Printify shop yet.
         <br />
-        Publish products in Printify and they'll appear here.
+        Publish products in Printify and they&apos;ll appear here.
       </p>
     </div>
   )

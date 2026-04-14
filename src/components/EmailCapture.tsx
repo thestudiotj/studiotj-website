@@ -77,7 +77,7 @@ export default function EmailCapture({
 
         {status === 'success' ? (
           <div className={`border ${border} p-6`}>
-            <p className={`font-display text-xl ${text} mb-1`}>You're in.</p>
+            <p className={`font-display text-xl ${text} mb-1`}>You&apos;re in.</p>
             <p className={`${subText} text-sm`}>
               Check your inbox — the wallpaper pack is on its way.
             </p>

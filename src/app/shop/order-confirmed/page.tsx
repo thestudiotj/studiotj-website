@@ -60,13 +60,13 @@ export default async function OrderConfirmedPage({
           {email ? (
             <>
               <p className="text-muted leading-relaxed">
-                We'll send a shipping confirmation to{' '}
+                We&apos;ll send a shipping confirmation to{' '}
                 <span className="text-ink">{email}</span> once your order dispatches.
               </p>
             </>
           ) : (
             <p className="text-muted leading-relaxed">
-              We'll send a shipping confirmation to your email once your order dispatches.
+              We&apos;ll send a shipping confirmation to your email once your order dispatches.
             </p>
           )}
           <p className="text-muted leading-relaxed">
