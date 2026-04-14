@@ -8,8 +8,8 @@
     {
       "slug": "monochrome-moods",
       "name": "Monochrome Moods",
-      "tagline": "Texture, light, and the weight of stone.",
-      "description": "",
+      "tagline": "Black and white photography, at its best.",
+      "description": "Monochrome Moods is black and white photography at its best — it plays between the contrasts of light and dark, finds the farthest edges between them, and puts them in one image. Not only stripping a photo to its essence, but finding a new truth.",
       "mood": "moody",
       "palette": [
         "#0f0f0f",
@@ -49,14 +49,15 @@
         "2025-02-08-Maastricht-export-dsc-0611",
         "2025-02-08-Maastricht-export-dsc-0632",
         "2025-02-08-Maastricht-export-dsc-0672"
-      ]
+      ],
+      "meta_description": "Monochrome Moods — black and white photography that plays the contrasts of light and dark, finding the farthest edges and putting them in one image."
     },
     {
       "slug": "the-signature-collection",
       "sort_order": 0,
       "name": "The Signature Collection",
-      "tagline": "Bold urban geometry. The lines that define Maastricht.",
-      "description": "",
+      "tagline": "Architecture, as the subject.",
+      "description": "The Signature Collection is architecture as the clear subject of the frame. Old and new, from inside and from across a square — whatever distance the building is at, the building is what the photograph is about.",
       "mood": "bold",
       "palette": [
         "#a3c2dd",
@@ -99,14 +100,15 @@
         "2025-02-08-Maastricht-export-dsc-0638",
         "2025-02-08-Maastricht-export-dsc-0642",
         "2025-02-08-Maastricht-export-dsc-0663"
-      ]
+      ],
+      "meta_description": "The Signature Collection — architectural photography where the building is the clear subject of the frame, from facade detail to landmark-through-context."
     },
     {
       "slug": "the-atmospheric-collection",
       "name": "The Atmospheric Collection",
-      "tagline": "When the weather becomes the subject.",
-      "description": "",
-      "mood": "moody",
+      "tagline": "Sense of place, urban and natural.",
+      "description": "The Atmospheric Collection is photography about the feeling of a place. Urban or natural, quiet or weighted — the subject is the mood the scene carries, not the thing in front of the lens.",
+      "mood": "ambient",
       "palette": [
         "#3d4f5f",
         "#8fa3b5",
@@ -123,14 +125,15 @@
         "2025-02-08-Maastricht-export-dsc-0500",
         "2025-02-08-Maastricht-export-dsc-0506",
         "2025-02-08-Maastricht-export-dsc-0583"
-      ]
+      ],
+      "meta_description": "The Atmospheric Collection — photography about the feeling of a place, urban or natural, where the mood of the scene is the subject, not the things in it."
     },
     {
       "slug": "the-halcyon-collection",
       "name": "The Halcyon Collection",
-      "tagline": "Warm light, open skies, and the colours of home.",
-      "description": "A whole-image warm grade applied only when it makes a genuinely strong photo better. Pink and peach highlights, lavender shadows, warm midtones — the locked palette is pink, peach, coral, gold, and dusty lilac.",
-      "mood": "warm, golden, atmospheric",
+      "tagline": "Pink-graded photography, and everything adjacent.",
+      "description": "The Halcyon Collection is photography under a warm grade — pink through peach into gold, with lavender in the shadows. A softer register, and a deliberate step away from accurate colour.",
+      "mood": "warm",
       "palette": [
         "#F2C5A8",
         "#E8A4B8",
@@ -163,7 +166,8 @@
         "2025-02-08-Maastricht-export-dsc-0624",
         "2025-02-08-Maastricht-export-dsc-0628",
         "2025-02-08-Maastricht-export-dsc-0667"
-      ]
+      ],
+      "meta_description": "The Halcyon Collection — photography under a warm grade, pink through peach into gold with lavender in the shadows. A softer, deliberately graded register."
     }
   ],
   "photos": [

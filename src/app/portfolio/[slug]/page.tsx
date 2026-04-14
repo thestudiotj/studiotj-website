@@ -16,9 +16,13 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
   const collection = getCollection(params.slug)
   if (!collection) return {}
+  const description = collection.meta_description || collection.tagline
   return {
     title: collection.name,
-    description: collection.tagline,
+    description,
+    openGraph: {
+      description,
+    },
   }
 }
 

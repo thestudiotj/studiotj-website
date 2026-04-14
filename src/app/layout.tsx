@@ -10,10 +10,11 @@ export const metadata: Metadata = {
     default: 'StudioTJ — Photography',
     template: '%s | StudioTJ',
   },
-  description: 'Photography portfolio, prints, and creative work by StudioTJ.',
+  description: 'StudioTJ is a one-person studio — photography across four collections, a print shop, a journal, and essays at The Subtext Lab.',
   openGraph: {
     siteName: 'StudioTJ',
     type: 'website',
+    description: 'StudioTJ is a one-person studio — photography across four collections, a print shop, a journal, and essays at The Subtext Lab.',
   },
 }
 

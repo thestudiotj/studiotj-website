@@ -25,12 +25,10 @@ export default async function HomePage() {
         <div className="relative z-10 max-w-2xl animate-fade-up">
           <p className="text-dust text-sm tracking-[0.3em] uppercase mb-4">StudioTJ</p>
           <h1 className="font-display text-5xl md:text-7xl text-paper leading-tight mb-6">
-            Light,<br />
-            <em>found.</em>
+            Architecture, atmosphere, monochrome.
           </h1>
           <p className="text-dust text-lg mb-8 max-w-md leading-relaxed">
-            Photography that sits at the edge of the familiar — architecture,
-            nature, and the lines that hold them together.
+            A studio built around photography, and everything it kept pulling in.
           </p>
           <div className="flex gap-4">
             <Link href="/portfolio" className="btn-primary">View Portfolio</Link>
@@ -73,12 +71,10 @@ export default async function HomePage() {
         <div className="max-w-2xl">
           <h2 className="section-title mb-6">The work</h2>
           <p className="text-muted leading-relaxed mb-4">
-            Based in the Netherlands, StudioTJ is a solo photography practice focused on
-            finding structure in the overlooked — the angle of a canal bridge, the geometry
-            of a greenhouse roof, the way Dutch light falls flat and honest.
+            StudioTJ is a one-person studio working across photography, print, and writing. The photographs come first; the shop, the journal, and The Subtext Lab are what grew around them.
           </p>
           <p className="text-muted leading-relaxed mb-8">
-            Available as fine art prints, editorial licensing, and stock on Alamy.
+            Run by T.J. van der Heeft. Prints and products live in the <Link href="/shop">shop</Link>.
           </p>
           <Link href="/about" className="btn-outline">About the studio</Link>
         </div>
@@ -112,9 +108,9 @@ export default async function HomePage() {
       {/* Email capture */}
       <EmailCapture
         variant="light"
-        headline="When new work is ready"
-        subline="An occasional email. No schedule, no noise — just new work and where it came from."
-        incentive="First email includes a free high-res cloud wallpaper pack."
+        headline="Subscribe"
+        subline="The list is open; the newsletter is not. Sign up now and you'll be on it when the first one sends."
+        incentive="Photos, collections, notes — nothing often, nothing else."
       />
     </>
   )

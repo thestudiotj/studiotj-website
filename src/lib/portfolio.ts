@@ -3,7 +3,7 @@ import path from 'path'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type Mood = 'moody' | 'warm' | 'bold' | 'serene' | 'gritty' | 'playful' | 'minimal'
+export type Mood = 'moody' | 'warm' | 'bold' | 'serene' | 'gritty' | 'playful' | 'minimal' | 'ambient'
 export type StyleIntensity = 'subtle' | 'moderate' | 'bold'
 export type Layout = 'masonry' | 'grid' | 'auto'
 
@@ -12,6 +12,7 @@ export interface Collection {
   name: string
   tagline: string
   description: string
+  meta_description?: string
   mood: Mood
   palette: string[]
   hero_photo_id: string
@@ -159,6 +160,9 @@ export function getMoodTheme(
 
     case 'playful':
       return { bg: '#fafaf8', text: '#0D0D0D', textMuted: '#6B6560', accent: p0, border: '#C4BEB4', surface: '#f0eeea', isLight: false }
+
+    case 'ambient':
+      return { bg: '#f4f6f8', text: '#1e2428', textMuted: '#5a6470', accent: p0, border: '#d0d8e0', surface: '#eaecf0', isLight: false }
 
     case 'minimal':
     default:
