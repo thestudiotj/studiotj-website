@@ -363,7 +363,7 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
 
   const printNote = (
     <div className="border-t border-dust/30 mt-8 pt-6">
-      <p className="text-xs text-dust leading-relaxed">
+      <p className="text-xs text-muted leading-relaxed">
         Printed on demand via Printify. Delivery 5–10 business days.
         Ships from the nearest fulfilment partner to your address.
       </p>

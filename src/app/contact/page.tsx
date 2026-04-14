@@ -62,7 +62,7 @@ export default function ContactPage() {
 
         {/* Business details */}
         <div className="border-t border-dust/30 pt-8">
-          <p className="text-xs text-dust leading-relaxed">
+          <p className="text-xs text-muted leading-relaxed">
             StudioTJ — eenmanszaak, the Netherlands
             <br />
             KvK: 75602172

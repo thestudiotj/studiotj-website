@@ -55,7 +55,7 @@ export default async function OrderConfirmedPage({
           Thank you for<br />your order.
         </h1>
         {orderRef && (
-          <p className="text-xs tracking-widest uppercase text-dust mb-8">
+          <p className="text-xs tracking-widest uppercase text-muted mb-8">
             Order #{orderRef}
           </p>
         )}
@@ -89,7 +89,7 @@ export default async function OrderConfirmedPage({
                 <div key={idx} className="flex justify-between items-start gap-6">
                   <div className="flex-1 min-w-0">
                     <p className="text-sm text-ink leading-snug">{item.description}</p>
-                    <p className="text-xs text-dust mt-0.5 tracking-wide">
+                    <p className="text-xs text-muted mt-0.5 tracking-wide">
                       Qty {item.quantity ?? 1}
                     </p>
                   </div>

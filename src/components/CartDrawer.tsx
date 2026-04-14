@@ -124,7 +124,7 @@ export default function CartDrawer() {
                       </div>
                       <button
                         onClick={() => removeItem(item.productId, item.variantId)}
-                        className="text-xs text-dust hover:text-ink transition-colors uppercase tracking-wider"
+                        className="text-xs text-muted hover:text-ink transition-colors uppercase tracking-wider"
                       >
                         Remove
                       </button>
@@ -143,7 +143,7 @@ export default function CartDrawer() {
               <span className="text-xs tracking-widest uppercase text-muted">Subtotal</span>
               <span className="text-ink">{formatPrice(subtotal)}</span>
             </div>
-            <p className="text-xs text-dust">Shipping calculated at checkout.</p>
+            <p className="text-xs text-muted">Shipping calculated at checkout.</p>
             {error && <p className="text-xs text-red-500">{error}</p>}
             <button
               onClick={handleCheckout}

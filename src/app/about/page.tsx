@@ -39,7 +39,7 @@ export default function AboutPage() {
           </p>
           {/* TODO: Replace with final studio photo */}
           <div className="aspect-[4/3] bg-dust/20 border border-dust/30 flex items-center justify-center">
-            <span className="text-dust text-sm tracking-widest uppercase">Photo — to be replaced</span>
+            <span className="text-muted text-sm tracking-widest uppercase">Photo — to be replaced</span>
           </div>
         </section>
 

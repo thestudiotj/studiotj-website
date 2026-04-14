@@ -25,13 +25,13 @@ function BlogCard({ post }: { post: PostEntry<BlogFrontmatter> }) {
   const typeLabel = fm.type === 'note' ? 'Note' : 'Essay'
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
-      <p className="text-dust text-xs tracking-widest uppercase mb-2">
+      <p className="text-paper/70 text-xs tracking-widest uppercase mb-2">
         {typeLabel} · {formatDateShort(fm.date)}
       </p>
-      <h3 className="font-display text-xl text-paper group-hover:text-dust transition-colors leading-snug mb-2">
+      <h3 className="font-display text-xl text-paper group-hover:text-paper/70 transition-colors leading-snug mb-2">
         {fm.title}
       </h3>
-      <p className="text-dust/70 text-sm leading-relaxed line-clamp-3">{post.summary}</p>
+      <p className="text-paper/70 text-sm leading-relaxed line-clamp-3">{post.summary}</p>
     </Link>
   )
 }
@@ -71,10 +71,10 @@ function JournalCard({ post }: { post: PostEntry<JournalFrontmatter> }) {
           </div>
         )}
       </div>
-      <h3 className="font-display text-xl text-paper group-hover:text-dust transition-colors leading-snug">
+      <h3 className="font-display text-xl text-paper group-hover:text-paper/70 transition-colors leading-snug">
         {fm.title}
       </h3>
-      <p className="text-dust/70 text-sm mt-1">{metaLine}</p>
+      <p className="text-paper/70 text-sm mt-1">{metaLine}</p>
     </Link>
   )
 }
@@ -119,14 +119,14 @@ function SubtextCard({ post }: { post: PostEntry<SubtextFrontmatter> }) {
         </div>
       )}
       <h3
-        className={`font-display text-paper group-hover:text-dust transition-colors leading-snug mb-2 ${
+        className={`font-display text-paper group-hover:text-paper/70 transition-colors leading-snug mb-2 ${
           thumbSrc ? 'text-xl' : 'text-2xl'
         }`}
       >
         {fm.title}
       </h3>
       {post.summary && (
-        <p className="text-dust/70 text-sm leading-relaxed line-clamp-3">{post.summary}</p>
+        <p className="text-paper/70 text-sm leading-relaxed line-clamp-3">{post.summary}</p>
       )}
     </Link>
   )
@@ -164,11 +164,11 @@ export default async function HomePage() {
         </div>
 
         <div className="relative z-10 max-w-2xl animate-fade-up">
-          <p className="text-dust text-sm tracking-[0.3em] uppercase mb-4">StudioTJ</p>
+          <p className="text-paper/70 text-sm tracking-[0.3em] uppercase mb-4">StudioTJ</p>
           <h1 className="font-display text-5xl md:text-7xl text-paper leading-tight mb-6">
             Architecture, atmosphere, monochrome.
           </h1>
-          <p className="text-dust text-lg mb-8 max-w-md leading-relaxed">
+          <p className="text-paper/70 text-lg mb-8 max-w-md leading-relaxed">
             A studio built around photography, and everything it kept pulling in.
           </p>
           <div className="flex gap-4">

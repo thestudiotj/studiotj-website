@@ -284,7 +284,7 @@ export default function ProductGallery({
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-dust text-xs tracking-widest uppercase">No image</span>
+              <span className="text-muted text-xs tracking-widest uppercase">No image</span>
             </div>
           )}
           {/* Zoom hint */}

@@ -60,12 +60,12 @@ function VideoCard({ video }: { video: Video }) {
         )}
         <div className="flex flex-wrap gap-2 items-center">
           {video.tags?.map((tag) => (
-            <span key={tag} className="text-xs text-dust tracking-widest uppercase">
+            <span key={tag} className="text-xs text-muted tracking-widest uppercase">
               #{tag}
             </span>
           ))}
           {video.date && (
-            <span className="text-xs text-dust font-mono ml-auto">
+            <span className="text-xs text-muted font-mono ml-auto">
               {new Date(video.date).toLocaleDateString('en-NL', {
                 day: '2-digit', month: 'short', year: 'numeric'
               })}

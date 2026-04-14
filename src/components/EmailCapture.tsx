@@ -23,10 +23,10 @@ export default function EmailCapture({
 
   const bg = isDark ? 'bg-ink' : 'bg-paper'
   const text = isDark ? 'text-paper' : 'text-ink'
-  const subText = isDark ? 'text-dust' : 'text-muted'
+  const subText = isDark ? 'text-paper/70' : 'text-muted'
   const border = isDark ? 'border-paper/20' : 'border-ink/20'
   const inputBg = isDark ? 'bg-transparent border-paper/30 text-paper placeholder-paper/30 focus:border-paper' : 'bg-transparent border-ink/30 text-ink placeholder-ink/30 focus:border-ink'
-  const btnBg = isDark ? 'bg-paper text-ink hover:bg-dust' : 'bg-ink text-paper hover:bg-accent'
+  const btnBg = isDark ? 'bg-paper text-ink hover:bg-paper/80' : 'bg-ink text-paper hover:bg-accent'
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -70,7 +70,7 @@ export default function EmailCapture({
         </h2>
         <p className={`${subText} leading-relaxed mb-2`}>{subline}</p>
         {incentive && (
-          <p className={`text-xs tracking-wide ${isDark ? 'text-dust/70' : 'text-muted/70'} mb-8 italic`}>
+          <p className={`text-xs tracking-wide ${isDark ? 'text-paper/70' : 'text-muted/70'} mb-8 italic`}>
             {incentive}
           </p>
         )}
@@ -106,7 +106,7 @@ export default function EmailCapture({
           <p className="text-red-400 text-xs mt-2">{errorMsg}</p>
         )}
 
-        <p className={`text-xs ${isDark ? 'text-dust/50' : 'text-muted/50'} mt-4`}>
+        <p className={`text-xs ${isDark ? 'text-paper/50' : 'text-muted/50'} mt-4`}>
           No tracking. Unsubscribe any time. KvK-registered eenmanszaak.
         </p>
       </div>

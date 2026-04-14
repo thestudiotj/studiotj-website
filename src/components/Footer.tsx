@@ -115,10 +115,10 @@ export default function Footer() {
 
       {/* Bottom row: business details + copyright */}
       <div className="border-t border-dust/30 pt-6">
-        <p className="text-xs text-dust leading-relaxed mb-3">
+        <p className="text-xs text-muted leading-relaxed mb-3">
           KvK 75602172 · BTW NL002283139B11 · Postbus: Keurenplein 41 Box D2818, 1069CD Amsterdam
         </p>
-        <p className="text-xs text-dust">
+        <p className="text-xs text-muted">
           © {new Date().getFullYear()} StudioTJ — Eenmanszaak, Netherlands
         </p>
       </div>
