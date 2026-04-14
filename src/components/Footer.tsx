@@ -69,9 +69,7 @@ const socialLinks = [
     icon: <IconTikTok />,
   },
   {
-    // TODO: Verify Alamy contributor URL — contributor portal migrated mid-Feb 2026.
-    // Using existing URL from codebase; resolve in follow-up session.
-    href: 'https://www.alamy.com/stock-photo/?cid=YCLQJL4TSRM49GEASAHTCF2U7BCHX6RQ43SXPL74Y2PP5R9MJ8N3GDQMDHSFCRS6',
+    href: 'https://www.alamy.com/stock-photo/?cid=YCLQJL4TSRM49GEASAHTCF2U7BCHX6RQ43SXPL74Y2PP5R9MJ8N3GDQMDHSFCRS6&sortBy=relevant',
     label: 'Alamy',
     icon: <IconAlamy />,
   },
