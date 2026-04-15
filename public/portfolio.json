@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-15T19:35:12.732466+00:00",
+  "generated_at": "2026-04-15T21:05:16.165450+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -48,7 +48,10 @@
         "2025-02-08-Maastricht-export-dsc-0607",
         "2025-02-08-Maastricht-export-dsc-0611",
         "2025-02-08-Maastricht-export-dsc-0632",
-        "2025-02-08-Maastricht-export-dsc-0672"
+        "2025-02-08-Maastricht-export-dsc-0672",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0558",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0560",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0591"
       ],
       "meta_description": "Monochrome Moods — black and white photography that plays the contrasts of light and dark, finding the farthest edges and putting them in one image."
     },
@@ -126,7 +129,37 @@
         "2025-05-23-Haarlem-export-dsc-0833",
         "2025-02-08-Maastricht-export-dsc-0500",
         "2025-02-08-Maastricht-export-dsc-0506",
-        "2025-02-08-Maastricht-export-dsc-0583"
+        "2025-02-08-Maastricht-export-dsc-0583",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0496",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0500",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0510",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0519",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0522",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0524",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0526",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0539",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0542",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0546",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0548",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0552",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0568",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0578",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0581",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0585",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0589",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0595",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0607",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0611",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0622",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0624",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0628",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0632",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0638",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0642",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0645",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0665",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0667",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0672"
       ],
       "meta_description": "The Atmospheric Collection — photography about the feeling of a place, urban or natural, where the mood of the scene is the subject, not the things in it."
     },
@@ -167,7 +200,10 @@
         "2025-02-08-Maastricht-export-dsc-0618",
         "2025-02-08-Maastricht-export-dsc-0624",
         "2025-02-08-Maastricht-export-dsc-0628",
-        "2025-02-08-Maastricht-export-dsc-0667"
+        "2025-02-08-Maastricht-export-dsc-0667",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0573",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0613",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0618"
       ],
       "meta_description": "The Halcyon Collection — photography under a warm grade, pink through peach into gold with lavender in the shadows. A softer, deliberately graded register."
     }
@@ -1704,6 +1740,546 @@
         "#7a9caa",
         "#2a7aa8",
         "#0e5187"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0496",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0496-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0496-thumb.webp",
+      "title": "Viewing Platform Over ENCI Quarry",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#e7e8e9",
+        "#919596",
+        "#33312d"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0500",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0500-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0500-thumb.webp",
+      "title": "ENCI Cement Works Above Quarry Lake",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#b0c1d2",
+        "#6996bd",
+        "#323129"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0510",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0510-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0510-thumb.webp",
+      "title": "ENCI Quarry and Cement Works, Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a2c5e1",
+        "#7b99b0",
+        "#504331"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0519",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0519-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0519-thumb.webp",
+      "title": "Quarry Path and Cement Works, Sint-Pietersberg",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#cac7bd",
+        "#a69070",
+        "#685c4b"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0522",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0522-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0522-thumb.webp",
+      "title": "Staircase Descent Sint-Pietersberg Quarry Edge",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#a7c0d9",
+        "#537e9f",
+        "#352d22"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0524",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0524-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0524-thumb.webp",
+      "title": "Steel Staircase Descending ENCI Quarry Face",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#bdad99",
+        "#7c7570",
+        "#242425"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0526",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0526-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0526-thumb.webp",
+      "title": "Quarry Lake at Midday, Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#ceced1",
+        "#8293a7",
+        "#1a1a14"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0539",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0539-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0539-thumb.webp",
+      "title": "Quarry Basin and Lake, Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c5d0db",
+        "#82a1bf",
+        "#27261f"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0542",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0542-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0542-thumb.webp",
+      "title": "ENCI Quarry Works Against Winter Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#94b9d8",
+        "#4288bb",
+        "#393528"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0546",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0546-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0546-thumb.webp",
+      "title": "Viewing Platform ENCI Quarry Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a7b9c9",
+        "#5a8bb4",
+        "#2b3133"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0548",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0548-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0548-thumb.webp",
+      "title": "Descent to the Quarry Lake",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#cbdae8",
+        "#a59d94",
+        "#47443f"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0552",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0552-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0552-thumb.webp",
+      "title": "Limestone Cliff Face Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#9d9a8f",
+        "#2784c6",
+        "#464845"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0558",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0558-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0558-thumb.webp",
+      "title": "Blocked Doorway Stone Quarry Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#e6e6e6",
+        "#8b8b8b",
+        "#2a2a2a"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0560",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0560-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0560-thumb.webp",
+      "title": "Carved Stone Door ENCI Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#a9a9a9",
+        "#686868",
+        "#191919"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0568",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0568-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0568-thumb.webp",
+      "title": "Quarry Road Golden Wall Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#cbced2",
+        "#9a999d",
+        "#2b2724"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0573",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0573-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0573-thumb.webp",
+      "title": "Gravel Path Below Quarry Face Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#ad928a",
+        "#758ec1",
+        "#6c5f68"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0578",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0578-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0578-thumb.webp",
+      "title": "ENCI Cement Works Against Clear Winter Sky",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#96b3cb",
+        "#4b90c4",
+        "#2c3539"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0581",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0581-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0581-thumb.webp",
+      "title": "Quarry Pond and Limestone Cliffs, Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#a8a59c",
+        "#2391d8",
+        "#5b5447"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0585",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0585-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0585-thumb.webp",
+      "title": "Quarry Pond Reflected, Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a3c6df",
+        "#989283",
+        "#575044"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0589",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0589-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0589-thumb.webp",
+      "title": "ENCI Quarry Plant Against Winter Sky",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c0d4e5",
+        "#788e9e",
+        "#222a2d"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0591",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0591-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0591-thumb.webp",
+      "title": "ENCI Cement Works Across Quarry Floor",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#ababab",
+        "#5e5e5e",
+        "#2c2c2c"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0595",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0595-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0595-thumb.webp",
+      "title": "Quarry Pool Reflection Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#8eb2c9",
+        "#7f7b6c",
+        "#293638"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0607",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0607-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0607-thumb.webp",
+      "title": "Cement Works Reflected, Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#abc8e1",
+        "#5f88a6",
+        "#1b2c32"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0611",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0611-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0611-thumb.webp",
+      "title": "ENCI Cement Works Reflected in Quarry Pond",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#a8bdce",
+        "#6493b9",
+        "#303433"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0613",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0613-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0613-thumb.webp",
+      "title": "Quarry Lake and Limestone Cliffs, Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d9cdd4",
+        "#bd8766",
+        "#60484a"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0618",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0618-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0618-thumb.webp",
+      "title": "Quarry Lake and Lime Works, Sint-Pietersberg",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#d7d1e0",
+        "#af928a",
+        "#604c4f"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0622",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0622-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0622-thumb.webp",
+      "title": "Quarry Pond and Spoil Heap, Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#c6d7e6",
+        "#61686c",
+        "#322e28"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0624",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0624-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0624-thumb.webp",
+      "title": "Quarry Terraces and Cave Openings, Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#6ca8cd",
+        "#0f8cd4",
+        "#4a4239"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0628",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0628-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0628-thumb.webp",
+      "title": "Quarry Lake Terraces, Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b4d2e9",
+        "#93b2ca",
+        "#4c5152"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0632",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0632-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0632-thumb.webp",
+      "title": "Quarry Lake Sun Reflection Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#abb9c7",
+        "#507fa3",
+        "#24292a"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0638",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0638-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0638-thumb.webp",
+      "title": "Flooded Quarry Terraces, Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b2cde1",
+        "#90acbd",
+        "#364951"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0642",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0642-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0642-thumb.webp",
+      "title": "Quarry Lake Terraced Limestone ENCI",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#a3a094",
+        "#5aa1ce",
+        "#3c4342"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0645",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0645-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0645-thumb.webp",
+      "title": "Quarry Path, ENCI Sint-Pietersberg",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#889b9f",
+        "#0f87cb",
+        "#3f484b"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0665",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0665-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0665-thumb.webp",
+      "title": "Gravel Track Along Quarry Face, Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#b2c3d6",
+        "#6e97bd",
+        "#2c2825"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0667",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0667-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0667-thumb.webp",
+      "title": "ENCI Quarry Floor, Sint-Pietersberg",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#97c5e7",
+        "#689cc1",
+        "#343332"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0672",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0672-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0672-thumb.webp",
+      "title": "Sun Reflection ENCI Quarry Lake Dusk",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b5c6d7",
+        "#6f808f",
+        "#221e17"
       ],
       "collections": [],
       "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
