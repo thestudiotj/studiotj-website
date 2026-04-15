@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import type { Collection, Photo } from '@/lib/portfolio'
@@ -51,12 +50,11 @@ export default function CollectionCard({ collection, heroPhoto, index, variant =
 
           {heroPhoto?.thumbnail_url && (
             <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-              <Image
+              <img
                 src={heroPhoto.thumbnail_url}
                 alt={heroPhoto.title || collection.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           )}

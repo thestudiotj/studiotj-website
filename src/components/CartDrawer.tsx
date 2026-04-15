@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { useCart } from '@/lib/cart'
 import { formatPrice } from '@/lib/printify'
 
@@ -77,12 +76,11 @@ export default function CartDrawer() {
                   {/* Image */}
                   <div className="w-16 h-16 flex-shrink-0 bg-dust/20 relative overflow-hidden">
                     {item.imageUrl ? (
-                      <Image
+                      <img
                         src={item.imageUrl}
                         alt={item.productTitle}
-                        fill
-                        sizes="64px"
-                        className="object-cover"
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
                       />
                     ) : (
                       <div className="absolute inset-0 bg-dust/30" />

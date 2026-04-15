@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { getPriceRange, formatPrice, type PrintifyProduct } from '@/lib/printify'
 import { getBlackOrDefaultImages, getProductCategory } from '@/lib/shopHelpers'
@@ -19,22 +18,20 @@ function ProductCard({ product }: { product: PrintifyProduct }) {
       <div className="aspect-square bg-dust/20 relative overflow-hidden mb-4">
         {primary ? (
           <>
-            <Image
+            <img
               src={primary.src}
               alt={product.title}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className={`object-cover transition-opacity duration-500 ease-out ${
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out ${
                 hover ? 'group-hover:opacity-0' : 'group-hover:scale-[1.04]'
               }`}
+              loading="lazy"
             />
             {hover && (
-              <Image
+              <img
                 src={hover.src}
                 alt={`${product.title} — alternate view`}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out absolute inset-0"
+                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"
+                loading="lazy"
               />
             )}
           </>

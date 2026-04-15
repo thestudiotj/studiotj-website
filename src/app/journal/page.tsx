@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import type { Metadata } from 'next'
 import { getAllPosts } from '@/lib/content'
 import { getJournalPhoto } from '@/lib/journal'
@@ -73,12 +72,11 @@ export default async function JournalPage() {
                 >
                   {heroPhoto?.thumbnail_url && (
                     <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]">
-                      <Image
+                      <img
                         src={heroPhoto.thumbnail_url}
                         alt={post.frontmatter.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                   )}

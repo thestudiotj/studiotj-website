@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
-import Image from 'next/image'
 import type { PrintifyImage } from '@/lib/printify'
 
 // ─── Product Lightbox ─────────────────────────────────────────────────────────
@@ -118,13 +117,11 @@ function ProductLightbox({
               aspectRatio: '1 / 1',
             }}
           >
-            <Image
+            <img
               src={image.src}
               alt={`${productTitle} — image ${index + 1}`}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 85vw"
-              priority
+              className="absolute inset-0 w-full h-full object-contain"
+              loading="eager"
             />
 
             {/* Prev arrow */}
@@ -274,13 +271,11 @@ export default function ProductGallery({
           aria-label="View full size"
         >
           {activeImage ? (
-            <Image
+            <img
               src={activeImage.src}
               alt={`${productTitle} — view ${safeIdx + 1}`}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover transition-opacity duration-200"
-              priority
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200"
+              loading="eager"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -326,12 +321,11 @@ export default function ProductGallery({
                     }`}
                     aria-label={`View image ${idx + 1}`}
                   >
-                    <Image
+                    <img
                       src={img.src}
                       alt={`${productTitle} thumbnail ${idx + 1}`}
-                      fill
-                      sizes="64px"
-                      className="object-cover"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </button>
                 )

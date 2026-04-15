@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useCallback, useState } from 'react'
-import Image from 'next/image'
 import type { Photo } from '@/lib/portfolio'
 
 interface LightboxProps {
@@ -122,13 +121,11 @@ export default function Lightbox({ photos, initialIndex, collectionName, onClose
               <div className="w-full h-full" style={{ background: gradient }} />
             ) : (
               <div className="relative w-full h-full">
-                <Image
+                <img
                   src={photo.url}
                   alt={photo.title}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 100vw, 85vw"
-                  priority
+                  className="absolute inset-0 w-full h-full object-contain"
+                  loading="eager"
                 />
               </div>
             )}

@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-14T02:38:21.613045+00:00",
+  "generated_at": "2026-04-15T19:35:12.732466+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -99,7 +99,9 @@
         "2025-02-08-Maastricht-export-dsc-0564",
         "2025-02-08-Maastricht-export-dsc-0638",
         "2025-02-08-Maastricht-export-dsc-0642",
-        "2025-02-08-Maastricht-export-dsc-0663"
+        "2025-02-08-Maastricht-export-dsc-0663",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0550",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0661"
       ],
       "meta_description": "The Signature Collection — architectural photography where the building is the clear subject of the frame, from facade detail to landmark-through-context."
     },
@@ -1675,6 +1677,36 @@
         "monochrome-moods"
       ],
       "shoot_folder": "2025-02-08-Maastricht-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0550",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0550-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0550-thumb.webp",
+      "title": "Cantilevered Viewing Platform, Sint-Pietersberg",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#887560",
+        "#0169b7",
+        "#1e4469"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0661",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0661-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0661-thumb.webp",
+      "title": "Industrial Chimney Stack, ENCI Quarry Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#7a9caa",
+        "#2a7aa8",
+        "#0e5187"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
       "date": "2026-02-08"
     }
   ]

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import Image from 'next/image'
 import type { Photo, Layout } from '@/lib/portfolio'
 import Lightbox from './Lightbox'
 
@@ -70,12 +69,11 @@ function PhotoPlaceholder({ photo, onClick }: { photo: Photo; onClick: () => voi
         />
       ) : (
         <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]">
-          <Image
+          <img
             src={photo.thumbnail_url}
             alt={photo.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            className="w-full h-full object-cover"
+            loading="lazy"
           />
         </div>
       )}

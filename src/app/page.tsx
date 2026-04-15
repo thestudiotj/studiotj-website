@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { getPortfolio, getPhoto, sortCollections } from '@/lib/portfolio'
 import { getAllPosts } from '@/lib/content'
 import type { BlogFrontmatter, JournalFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
@@ -61,12 +60,11 @@ function JournalCard({ post }: { post: PostEntry<JournalFrontmatter> }) {
       >
         {heroPhoto?.thumbnail_url && (
           <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]">
-            <Image
+            <img
               src={heroPhoto.thumbnail_url}
               alt={fm.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 33vw"
+              className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         )}

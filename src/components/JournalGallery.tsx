@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import Image from 'next/image'
 import Masonry from 'react-masonry-css'
 import type { Photo } from '@/lib/portfolio'
 import type { JournalPhoto } from '@/lib/journal'
@@ -52,12 +51,11 @@ export default function JournalGallery({ photos, entryTitle }: JournalGalleryPro
               onKeyDown={(e) => e.key === 'Enter' && openLightbox(i)}
             >
               <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]">
-                <Image
+                <img
                   src={photo.thumbnail_url}
                   alt={photo.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-end p-3">

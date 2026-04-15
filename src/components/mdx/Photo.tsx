@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 interface PhotoProps {
   src: string
   alt: string
@@ -17,12 +15,11 @@ export default function Photo({ src, alt, caption, aspect = 'landscape' }: Photo
   return (
     <figure className="my-6">
       <div className={`relative w-full overflow-hidden ${aspectClasses[aspect]}`}>
-        <Image
+        <img
           src={src}
           alt={alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
         />
       </div>
       {caption && (
