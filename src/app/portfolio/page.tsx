@@ -40,7 +40,7 @@ export default function PortfolioPage() {
         </div>
       ) : (
         <div className="px-6 md:px-12 pb-24">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
               {collections.map((collection, i) => {
                 const photos: Photo[] = collection.photo_ids

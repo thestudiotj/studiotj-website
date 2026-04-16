@@ -81,8 +81,12 @@ export default function Gallery({ photos }: GalleryProps) {
         loop: false,
         wheelToZoom: true,
         spacing: 0.12,
-        // Give the image breathing room from the viewport edges
-        padding: { top: 30, bottom: 80, left: 60, right: 60 },
+        paddingFn: (viewportSize) => ({
+          top: 30,
+          bottom: viewportSize.x < 768 ? 80 : 44, // more space for caption on mobile
+          left: 0,
+          right: 0,
+        }),
       })
 
       // Register a custom caption element that shows title + date
