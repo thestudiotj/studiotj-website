@@ -124,3 +124,41 @@
     margin-bottom: 8px;
   }
 }
+
+/* ─── PhotoSwipe overrides ────────────────────────────────────────────────── */
+
+/* Dark background matching site ink colour */
+.pswp {
+  --pswp-bg: #0d0d0d;
+  font-family: var(--font-body, sans-serif);
+}
+
+/* Custom caption element (registered via uiRegister, appended to .pswp root) */
+.pswp__custom-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 64px 24px 28px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, transparent 100%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.pswp-caption__title {
+  display: block;
+  font-family: var(--font-display, serif);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.pswp-caption__date {
+  display: block;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.68rem;
+  margin-top: 5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}

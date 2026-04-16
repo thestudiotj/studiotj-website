@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
+import 'photoswipe/dist/photoswipe.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import { CartProvider } from '@/lib/cart'

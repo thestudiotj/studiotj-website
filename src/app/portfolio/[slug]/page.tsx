@@ -143,10 +143,7 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
 
       {/* Gallery */}
       <div className="px-6 md:px-12 pb-24">
-        <Gallery
-          photos={photos}
-          collectionName={collection.name}
-        />
+        <Gallery photos={photos} />
       </div>
 
       {/* Footer nav */}
