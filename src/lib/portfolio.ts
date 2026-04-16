@@ -89,6 +89,17 @@ export function getPhoto(id: string): Photo | null {
   return getPortfolio()?.photos.find(p => p.id === id) ?? null
 }
 
+/** Resolve an ordered list of photo IDs to Photo objects, preserving order
+ *  and silently skipping any ID not found in the photos array. */
+export function getPhotosByIds(photoIds: string[]): Photo[] {
+  const data = getPortfolio()
+  if (!data) return []
+  const photoMap = new Map(data.photos.map(p => [p.id, p]))
+  return photoIds
+    .map(id => photoMap.get(id))
+    .filter((p): p is Photo => p !== undefined)
+}
+
 /** Sort collections for display:
  *  1. Pinned collections (`sort_order` present) ascending by that value
  *  2. Unpinned collections descending by most-recent photo date

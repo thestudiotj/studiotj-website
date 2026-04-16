@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { getPortfolio, getPhoto, sortCollections } from '@/lib/portfolio'
+import { getPortfolio, sortCollections } from '@/lib/portfolio'
+import type { Photo } from '@/lib/portfolio'
 import { getAllPosts } from '@/lib/content'
 import type { BlogFrontmatter, JournalFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
 import { getJournalPhoto } from '@/lib/journal'
@@ -137,6 +138,9 @@ export default async function HomePage() {
   const featuredCollections = portfolio
     ? sortCollections(portfolio.collections, portfolio.photos).slice(0, 4)
     : []
+  const photoMap: Map<string, Photo> = portfolio
+    ? new Map(portfolio.photos.map(p => [p.id, p]))
+    : new Map()
 
   // Fetch latest entry from each section (sorted date desc, draft excluded in prod)
   const [blogPosts, journalEntries, subtextPosts] = await Promise.all([
@@ -188,14 +192,14 @@ export default async function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {featuredCollections.map((collection, i) => {
-              const heroPhoto = collection.hero_photo_id
-                ? getPhoto(collection.hero_photo_id)
-                : null
+              const photos: Photo[] = collection.photo_ids
+                .map(id => photoMap.get(id))
+                .filter((p): p is Photo => p !== undefined)
               return (
                 <CollectionCard
                   key={collection.slug}
                   collection={collection}
-                  heroPhoto={heroPhoto}
+                  photos={photos}
                   index={i}
                   variant="homepage"
                 />

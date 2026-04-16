@@ -1,11 +1,18 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { getPortfolio, getCollection, getCollectionPhotos, getMoodTheme, getPhoto } from '@/lib/portfolio'
+import { getPortfolio, getCollection, getMoodTheme, getPhoto } from '@/lib/portfolio'
+import type { Photo } from '@/lib/portfolio'
+import { getWeeklyGallery } from '@/lib/rotation'
 import Gallery from '@/components/Gallery'
+
+// Revalidate every hour so the Monday rotation propagates without a manual deploy.
+export const revalidate = 3600
 
 interface PageProps {
   params: { slug: string }
+  // searchParams is only read in development (see weekOverride below).
+  searchParams?: { week?: string }
 }
 
 export async function generateStaticParams() {
@@ -28,13 +35,33 @@ export async function generateMetadata({ params }: PageProps) {
   }
 }
 
-export default function CollectionPage({ params }: PageProps) {
+export default function CollectionPage({ params, searchParams }: PageProps) {
   const collection = getCollection(params.slug)
   if (!collection) notFound()
 
-  const photos = getCollectionPhotos(params.slug)
-  const theme = getMoodTheme(collection.mood, collection.style_intensity, collection.palette)
+  const data = getPortfolio()
+  if (!data) notFound()
 
+  // ?week=N override: dev-only for rotation testing — ignored in production.
+  const weekOverride =
+    process.env.NODE_ENV === 'development' && searchParams?.week
+      ? parseInt(searchParams.week, 10)
+      : undefined
+
+  // Weekly rotation — returns up to 50 photo IDs for the current week.
+  const weeklyIds = getWeeklyGallery(
+    collection.photo_ids,
+    params.slug,
+    new Date(),
+    weekOverride
+  )
+
+  const photoMap = new Map(data.photos.map(p => [p.id, p]))
+  const photos: Photo[] = weeklyIds
+    .map(id => photoMap.get(id))
+    .filter((p): p is Photo => p !== undefined)
+
+  const theme = getMoodTheme(collection.mood, collection.style_intensity, collection.palette)
   const accentHex = theme.accent
 
   return (
@@ -103,12 +130,6 @@ export default function CollectionPage({ params }: PageProps) {
             <span>{photos.length} {photos.length === 1 ? 'photo' : 'photos'}</span>
             <span style={{ color: theme.border }}>·</span>
             <span style={{ color: accentHex, textTransform: 'capitalize' }}>{collection.mood}</span>
-            {collection.layout !== 'masonry' && (
-              <>
-                <span style={{ color: theme.border }}>·</span>
-                <span style={{ textTransform: 'capitalize' }}>{collection.layout} layout</span>
-              </>
-            )}
           </div>
         </div>
       </div>
@@ -124,7 +145,6 @@ export default function CollectionPage({ params }: PageProps) {
       <div className="px-6 md:px-12 pb-24">
         <Gallery
           photos={photos}
-          layout={collection.layout}
           collectionName={collection.name}
         />
       </div>

@@ -1,29 +1,62 @@
 'use client'
 
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import type { Collection, Photo } from '@/lib/portfolio'
 
 interface CollectionCardProps {
   collection: Collection
-  heroPhoto: Photo | null
+  /** All photo objects for this collection's photo_ids — used for random pick. */
+  photos: Photo[]
   index: number
   variant?: 'portfolio' | 'homepage'
 }
 
-export default function CollectionCard({ collection, heroPhoto, index, variant = 'portfolio' }: CollectionCardProps) {
+export default function CollectionCard({
+  collection,
+  photos,
+  index,
+  variant = 'portfolio',
+}: CollectionCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-60px' })
 
+  // Resolved on mount — null during SSR (shows placeholder gradient only).
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
+  const [imgLoaded, setImgLoaded] = useState(false)
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (photos.length === 0) return
+
+    // Use hero_photo_id as a pinned override if it resolves to a known photo.
+    const heroId = collection.hero_photo_id
+    if (heroId) {
+      const pinned = photos.find((p) => p.id === heroId)
+      if (pinned) {
+        setSelectedPhoto(pinned)
+        return
+      }
+      // hero_photo_id is stale (photo no longer exists) — fall through to random.
+    }
+
+    // Random pick — different every page load.
+    const pick = photos[Math.floor(Math.random() * photos.length)]
+    setSelectedPhoto(pick)
+  }, []) // intentionally run once on mount
+
   const isHomepage = variant === 'homepage'
-
   const accentColor = collection.palette[0] ?? '#C4BEB4'
-  const bgColors = heroPhoto?.dominant_colors ?? collection.palette.slice(0, 3)
 
-  const placeholderGradient = bgColors.length >= 2
-    ? `linear-gradient(145deg, ${bgColors[0]}, ${bgColors[1]}${bgColors[2] ? `, ${bgColors[2]}` : ''})`
-    : `linear-gradient(145deg, ${accentColor}, #1a1a1a)`
+  // Gradient uses the selected photo's dominant colours once known, falling
+  // back to palette colours on SSR / before mount.
+  const bgColors =
+    selectedPhoto?.dominant_colors ?? collection.palette.slice(0, 3)
+  const placeholderGradient =
+    bgColors.length >= 2
+      ? `linear-gradient(145deg, ${bgColors[0]}, ${bgColors[1]}${bgColors[2] ? `, ${bgColors[2]}` : ''})`
+      : `linear-gradient(145deg, ${accentColor}, #1a1a1a)`
 
   return (
     <motion.div
@@ -42,19 +75,25 @@ export default function CollectionCard({ collection, heroPhoto, index, variant =
           className="relative w-full overflow-hidden"
           style={{ aspectRatio: '4 / 5' }}
         >
-          {/* Gradient sits behind the photo — shows during load and as fallback */}
+          {/* Gradient placeholder — always visible, sits behind the photo */}
           <div
             className="absolute inset-0"
             style={{ background: placeholderGradient }}
           />
 
-          {heroPhoto?.thumbnail_url && (
+          {/* Photo fades in once selected on mount and loaded from network */}
+          {selectedPhoto?.thumbnail_url && (
             <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
               <img
-                src={heroPhoto.thumbnail_url}
-                alt={heroPhoto.title || collection.name}
+                src={selectedPhoto.thumbnail_url}
+                alt={selectedPhoto.title || collection.name}
                 className="w-full h-full object-cover"
+                style={{
+                  opacity: imgLoaded ? 1 : 0,
+                  transition: imgLoaded ? 'opacity 0.4s ease' : 'none',
+                }}
                 loading="lazy"
+                onLoad={() => setImgLoaded(true)}
               />
             </div>
           )}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { getPortfolio, getPhoto, sortCollections } from '@/lib/portfolio'
+import { getPortfolio, sortCollections } from '@/lib/portfolio'
+import type { Photo } from '@/lib/portfolio'
 import CollectionCard from '@/components/CollectionCard'
 
 export const metadata: Metadata = {
@@ -10,6 +11,9 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   const data = getPortfolio()
   const collections = data ? sortCollections(data.collections, data.photos) : []
+  const photoMap: Map<string, Photo> = data
+    ? new Map(data.photos.map(p => [p.id, p]))
+    : new Map()
 
   return (
     <div className="min-h-screen bg-paper">
@@ -38,14 +42,14 @@ export default function PortfolioPage() {
         <div className="px-6 md:px-12 pb-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {collections.map((collection, i) => {
-              const heroPhoto = collection.hero_photo_id
-                ? getPhoto(collection.hero_photo_id)
-                : null
+              const photos: Photo[] = collection.photo_ids
+                .map(id => photoMap.get(id))
+                .filter((p): p is Photo => p !== undefined)
               return (
                 <CollectionCard
                   key={collection.slug}
                   collection={collection}
-                  heroPhoto={heroPhoto}
+                  photos={photos}
                   index={i}
                 />
               )
