@@ -40,20 +40,23 @@ export default function PortfolioPage() {
         </div>
       ) : (
         <div className="px-6 md:px-12 pb-24">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-            {collections.map((collection, i) => {
-              const photos: Photo[] = collection.photo_ids
-                .map(id => photoMap.get(id))
-                .filter((p): p is Photo => p !== undefined)
-              return (
-                <CollectionCard
-                  key={collection.slug}
-                  collection={collection}
-                  photos={photos}
-                  index={i}
-                />
-              )
-            })}
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+              {collections.map((collection, i) => {
+                const photos: Photo[] = collection.photo_ids
+                  .map(id => photoMap.get(id))
+                  .filter((p): p is Photo => p !== undefined)
+                return (
+                  <CollectionCard
+                    key={collection.slug}
+                    collection={collection}
+                    photos={photos}
+                    index={i}
+                    size="large"
+                  />
+                )
+              })}
+            </div>
           </div>
         </div>
       )}

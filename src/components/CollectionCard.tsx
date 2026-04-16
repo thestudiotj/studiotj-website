@@ -11,6 +11,9 @@ interface CollectionCardProps {
   photos: Photo[]
   index: number
   variant?: 'portfolio' | 'homepage'
+  /** 'large' uses the full-res URL (1600px); 'small' uses the thumbnail (600px).
+   *  Default 'small'. Use 'large' when cards render above ~700px wide. */
+  size?: 'small' | 'large'
 }
 
 export default function CollectionCard({
@@ -18,6 +21,7 @@ export default function CollectionCard({
   photos,
   index,
   variant = 'portfolio',
+  size = 'small',
 }: CollectionCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-60px' })
@@ -85,7 +89,7 @@ export default function CollectionCard({
           {selectedPhoto?.thumbnail_url && (
             <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
               <img
-                src={selectedPhoto.thumbnail_url}
+                src={size === 'large' ? selectedPhoto.url : selectedPhoto.thumbnail_url}
                 alt={selectedPhoto.title || collection.name}
                 className="w-full h-full object-cover"
                 style={{
