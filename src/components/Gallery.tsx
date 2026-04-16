@@ -76,7 +76,7 @@ export default function Gallery({ photos }: GalleryProps) {
         pswpModule: () => import('photoswipe'),
 
         // Visual options
-        bgOpacity: 0.95,
+        bgOpacity: 1.0,
         showHideAnimationType: 'zoom',
         loop: false,
         wheelToZoom: true,
