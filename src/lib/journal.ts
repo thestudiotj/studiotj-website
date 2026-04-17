@@ -13,6 +13,9 @@ export interface JournalPhoto {
   dominant_colors: string[]
   shoot_folder: string
   date: string
+  caption?: string
+  location?: string
+  og_url?: string
 }
 
 interface JournalData {
@@ -34,6 +37,10 @@ function readJournal(): JournalData | null {
 
 export function getJournalPhoto(id: string): JournalPhoto | null {
   return readJournal()?.photos.find(p => p.id === id) ?? null
+}
+
+export function getAllJournalPhotos(): JournalPhoto[] {
+  return readJournal()?.photos ?? []
 }
 
 export function getJournalPhotos(ids: string[]): JournalPhoto[] {

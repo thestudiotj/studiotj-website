@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/content'
 import { getPortfolio } from '@/lib/portfolio'
+import { getAllJournalPhotos } from '@/lib/journal'
 import { getProducts } from '@/lib/printify'
 
 const BASE_URL = 'https://studiotj.com'
@@ -31,6 +32,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const portfolio = getPortfolio()
   for (const col of portfolio?.collections ?? []) {
     entries.push({ url: `${BASE_URL}/portfolio/${col.slug}` })
+  }
+
+  // Individual photo pages — portfolio first, then journal
+  const buildTime = new Date()
+  for (const photo of portfolio?.photos ?? []) {
+    entries.push({
+      url: `${BASE_URL}/photo/${photo.id}`,
+      lastModified: photo.date ? new Date(photo.date) : buildTime,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
+  }
+  for (const photo of getAllJournalPhotos()) {
+    entries.push({
+      url: `${BASE_URL}/photo/${photo.id}`,
+      lastModified: photo.date ? new Date(photo.date) : buildTime,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
   }
 
   // Blog posts — lastModified from frontmatter.date

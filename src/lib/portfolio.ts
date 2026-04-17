@@ -34,6 +34,9 @@ export interface Photo {
   collections: string[]
   shoot_folder: string
   date: string
+  caption?: string
+  location?: string
+  og_url?: string
 }
 
 export interface PortfolioData {
