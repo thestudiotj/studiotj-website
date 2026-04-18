@@ -71,7 +71,11 @@ export interface PrintifyProduct {
   variants: PrintifyVariant[]
   options: PrintifyOption[]
   visible: boolean
-  sales_channel_properties: unknown[] | null
+  external?: {
+    id: string
+    handle: string
+    type?: number
+  }
 }
 
 interface PrintifyProductsResponse {
@@ -95,7 +99,7 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
     )
     console.log('[printify] getProducts response status: ok, total products:', data.data.length)
     const published = data.data.filter(
-      (p) => p.visible && Array.isArray(p.sales_channel_properties) && p.sales_channel_properties.length > 0
+      (p) => p.visible && p.external && p.external.id
     )
     console.log('[printify] getProducts published-to-store products:', published.length)
     return published
