@@ -175,9 +175,6 @@ export default async function HomePage() {
           </p>
           <div className="flex gap-4">
             <Link href="/portfolio" className="btn-primary">View Portfolio</Link>
-            <Link href="/shop" className="btn-outline border-paper text-paper hover:bg-paper hover:text-ink">
-              Shop Now
-            </Link>
           </div>
         </div>
       </section>
@@ -186,7 +183,10 @@ export default async function HomePage() {
       {featuredCollections.length > 0 && (
         <section className="px-6 md:px-12 py-20">
           <div className="flex items-end justify-between mb-12">
-            <h2 className="section-title">Collections</h2>
+            <div>
+              <h2 className="section-title">On view</h2>
+              <p className="text-muted text-sm mt-1">Rotating weekly</p>
+            </div>
             <Link href="/portfolio" className="nav-link">View all →</Link>
           </div>
 

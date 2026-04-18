@@ -41,7 +41,7 @@ export default async function JournalPage() {
 
       {posts.length === 0 ? (
         <p className="text-muted">
-          Nothing here yet — first gallery in progress.
+          The first gallery is forming. Check back soon.
         </p>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
