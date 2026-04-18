@@ -71,6 +71,7 @@ export interface PrintifyProduct {
   variants: PrintifyVariant[]
   options: PrintifyOption[]
   visible: boolean
+  sales_channel_properties: unknown[] | null
 }
 
 interface PrintifyProductsResponse {
@@ -90,12 +91,14 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
   try {
     const data = await printifyFetch<PrintifyProductsResponse>(
       `/shops/${shopId}/products.json?limit=50`,
-      { next: { revalidate: 300 } }
+      { cache: 'no-store' }
     )
     console.log('[printify] getProducts response status: ok, total products:', data.data.length)
-    const visible = data.data.filter((p) => p.visible)
-    console.log('[printify] getProducts visible products:', visible.length)
-    return visible
+    const published = data.data.filter(
+      (p) => p.visible && Array.isArray(p.sales_channel_properties) && p.sales_channel_properties.length > 0
+    )
+    console.log('[printify] getProducts published-to-store products:', published.length)
+    return published
   } catch (err) {
     console.error('[printify] getProducts error:', err)
     throw err
@@ -107,7 +110,7 @@ export async function getProductById(id: string): Promise<PrintifyProduct | null
   try {
     return await printifyFetch<PrintifyProduct>(
       `/shops/${shopId}/products/${id}.json`,
-      { next: { revalidate: 300 } }
+      { cache: 'no-store' }
     )
   } catch {
     return null
