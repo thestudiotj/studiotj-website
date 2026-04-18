@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-17T14:21:57.129662+00:00",
+  "generated_at": "2026-04-18T22:00:53.795600+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -24,7 +24,26 @@
       "photo_ids": [
         "2026-02-08-Sint-Pietersberg-export-dsc-0558",
         "2026-02-08-Sint-Pietersberg-export-dsc-0560",
-        "2026-02-08-Sint-Pietersberg-export-dsc-0591"
+        "2026-02-08-Sint-Pietersberg-export-dsc-0591",
+        "2025-05-23-Haarlem-export-dsc-0789",
+        "2025-05-23-Haarlem-export-dsc-0791",
+        "2025-05-23-Haarlem-export-dsc-0801",
+        "2025-05-23-Haarlem-export-dsc-0805",
+        "2025-05-23-Haarlem-export-dsc-0813",
+        "2025-05-23-Haarlem-export-dsc-0814",
+        "2025-05-23-Haarlem-export-dsc-0818",
+        "2025-05-23-Haarlem-export-dsc-0824",
+        "2025-05-23-Haarlem-export-dsc-0828",
+        "2025-05-23-Haarlem-export-dsc-0833",
+        "2025-05-23-Haarlem-export-dsc-0836",
+        "2025-05-23-Haarlem-export-dsc-0839",
+        "2025-05-23-Haarlem-export-dsc-0842",
+        "2025-05-23-Haarlem-export-dsc-0869",
+        "2025-05-23-Haarlem-export-dsc-0871",
+        "2025-05-23-Haarlem-export-dsc-0879",
+        "2025-05-23-Haarlem-export-dsc-0882",
+        "2025-05-23-Haarlem-export-dsc-0923",
+        "2025-05-23-Haarlem-export-dsc-0944"
       ],
       "meta_description": "Monochrome Moods — black and white photography that plays the contrasts of light and dark, finding the farthest edges and putting them in one image."
     },
@@ -47,7 +66,34 @@
       "style_intensity": "moderate",
       "photo_ids": [
         "2026-02-08-Sint-Pietersberg-export-dsc-0550",
-        "2026-02-08-Sint-Pietersberg-export-dsc-0661"
+        "2026-02-08-Sint-Pietersberg-export-dsc-0661",
+        "2025-05-23-Haarlem-export-dsc-0797",
+        "2025-05-23-Haarlem-export-dsc-0800",
+        "2025-05-23-Haarlem-export-dsc-0802",
+        "2025-05-23-Haarlem-export-dsc-0806",
+        "2025-05-23-Haarlem-export-dsc-0809",
+        "2025-05-23-Haarlem-export-dsc-0815",
+        "2025-05-23-Haarlem-export-dsc-0822",
+        "2025-05-23-Haarlem-export-dsc-0838",
+        "2025-05-23-Haarlem-export-dsc-0862",
+        "2025-05-23-Haarlem-export-dsc-0864",
+        "2025-05-23-Haarlem-export-dsc-0868",
+        "2025-05-23-Haarlem-export-dsc-0873",
+        "2025-05-23-Haarlem-export-dsc-0892",
+        "2025-05-23-Haarlem-export-dsc-0897",
+        "2025-05-23-Haarlem-export-dsc-0901",
+        "2025-05-23-Haarlem-export-dsc-0902",
+        "2025-05-23-Haarlem-export-dsc-0907",
+        "2025-05-23-Haarlem-export-dsc-0909",
+        "2025-05-23-Haarlem-export-dsc-0913",
+        "2025-05-23-Haarlem-export-dsc-0915",
+        "2025-05-23-Haarlem-export-dsc-0917",
+        "2025-05-23-Haarlem-export-dsc-0919",
+        "2025-05-23-Haarlem-export-dsc-0924",
+        "2025-05-23-Haarlem-export-dsc-0927",
+        "2025-05-23-Haarlem-export-dsc-0930",
+        "2025-05-23-Haarlem-export-dsc-0934",
+        "2025-05-23-Haarlem-export-dsc-0939"
       ],
       "meta_description": "The Signature Collection — architectural photography where the building is the clear subject of the frame, from facade detail to landmark-through-context."
     },
@@ -97,7 +143,16 @@
         "2026-02-08-Sint-Pietersberg-export-dsc-0645",
         "2026-02-08-Sint-Pietersberg-export-dsc-0665",
         "2026-02-08-Sint-Pietersberg-export-dsc-0667",
-        "2026-02-08-Sint-Pietersberg-export-dsc-0672"
+        "2026-02-08-Sint-Pietersberg-export-dsc-0672",
+        "2025-05-23-Haarlem-export-dsc-0788",
+        "2025-05-23-Haarlem-export-dsc-0792",
+        "2025-05-23-Haarlem-export-dsc-0826",
+        "2025-05-23-Haarlem-export-dsc-0830",
+        "2025-05-23-Haarlem-export-dsc-0843",
+        "2025-05-23-Haarlem-export-dsc-0845",
+        "2025-05-23-Haarlem-export-dsc-0846",
+        "2025-05-23-Haarlem-export-dsc-0886",
+        "2025-05-23-Haarlem-export-dsc-0921"
       ],
       "meta_description": "The Atmospheric Collection — photography about the feeling of a place, urban or natural, where the mood of the scene is the subject, not the things in it."
     },
@@ -810,6 +865,996 @@
       "og_url": "https://photos.studiotj.com/og/photos/2026-02-08-Sint-Pietersberg-export-dsc-0672.jpg",
       "caption": "Sun reflected on still quarry lake, ENCI-groeve Sint-Pietersberg, Netherlands.",
       "location": "ENCI-groeve Sint-Pietersberg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0788",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0788-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0788-thumb.webp",
+      "title": "Narrow Brick Street, Haarlem",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#c5ced8",
+        "#6b6c6d",
+        "#2f2c29"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Cobbled residential street flanked by stepped-gable brick facades, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0788.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0792",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0792-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0792-thumb.webp",
+      "title": "Narrow Street Leading Lines Haarlem",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#dce1ea",
+        "#808082",
+        "#312e26"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Cobblestone residential street with brick canal houses receding to vanishing point, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0792.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0797",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0797-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0797-thumb.webp",
+      "title": "Grote Kerk Haarlem Rising to Storm Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#e3e5eb",
+        "#c2c6d4",
+        "#51463f"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Worm's-eye view of Grote Kerk nave and tower facade, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0797.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0800",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0800-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0800-thumb.webp",
+      "title": "Grote Kerk Haarlem Low Angle Gothic Mass",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d1d5e1",
+        "#645e5c",
+        "#29231c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Low-angle view of Grote Kerk (St. Bavo) exterior with gothic spire, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0800.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0802",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0802-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0802-thumb.webp",
+      "title": "Gothic Apse Rising, Haarlem",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#dce7f1",
+        "#696665",
+        "#322e2b"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Low-angle view of Gothic church apse and entrance portal, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0802.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0806",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0806-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0806-thumb.webp",
+      "title": "Gothic Apse Rising Against Overcast Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#e3eaf0",
+        "#99a5b1",
+        "#37302a"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Low-angle view of Gothic church apse and lancet windows, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0806.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0809",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0809-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0809-thumb.webp",
+      "title": "Grote Kerk West Facade Rising",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#e6e7eb",
+        "#b9bfcb",
+        "#3c3631"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "West facade of the Grote Kerk (St. Bavo), shot from low angle against overcast sky, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0809.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0815",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0815-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0815-thumb.webp",
+      "title": "Stepped Gable and Crane, Haarlem",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#d8dbe6",
+        "#c0c6d7",
+        "#484d4b"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Dutch Renaissance stepped gable facade with construction crane, Haarlem, 1902 building.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0815.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0822",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0822-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0822-thumb.webp",
+      "title": "Verwey-Hal Facade Against Dramatic Sky",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#dbdce3",
+        "#b4b9c6",
+        "#38332e"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Moderne Kunst Verwey-Hal facade with balustrade, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0822.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0826",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0826-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0826-thumb.webp",
+      "title": "Spaarne Canal Waterfront, Haarlem",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d1d5de",
+        "#84858a",
+        "#413b37"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Looking east along the Spaarne river from the Gravestenenbrug, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0826.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0830",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0830-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0830-thumb.webp",
+      "title": "Haarlem Canal Houses from the Quay",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#d6d9e3",
+        "#8f8f94",
+        "#34312a"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Historic canal houses and stepped gables along the Spaarne river, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0830.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0838",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0838-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0838-thumb.webp",
+      "title": "Haarlem Church Tower Against Brooding Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#dbdce3",
+        "#b4b8c8",
+        "#5e5d64"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Gothic church tower with clock face, low-angle view against overcast sky, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0838.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0843",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0843-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0843-thumb.webp",
+      "title": "Haarlem Waterway from Dock",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#dadee6",
+        "#9fa3ad",
+        "#2d2c27"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Wooden dock and broad waterway looking toward Haarlem city centre under dramatic clouded sky.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0843.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0845",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0845-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0845-thumb.webp",
+      "title": "Storm Light Over Haarlem Bridge",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#e4e4e9",
+        "#a0a6b6",
+        "#2e2e2e"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Bridge over canal toward city centre under dramatic storm sky, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0845.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0846",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0846-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0846-thumb.webp",
+      "title": "Spaarne River Under Dramatic Haarlem Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#e1e3ea",
+        "#b5b9c5",
+        "#313230"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "View along the Spaarne river toward Haarlem city centre under heavy overcast sky.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0846.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0862",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0862-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0862-thumb.webp",
+      "title": "De Adriaan Windmill Under Stormy Haarlem Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#b8bdcc",
+        "#a1a8bd",
+        "#505157"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "De Adriaan windmill on the Spaarne river, Haarlem, under heavy overcast sky.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0862.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0864",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0864-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0864-thumb.webp",
+      "title": "De Adriaan Windmill Over Spaarne Canal",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c4cad7",
+        "#8b93a4",
+        "#353435"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "De Adriaan windmill on the Spaarne river, Haarlem, under heavy overcast sky.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0864.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0868",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0868-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0868-thumb.webp",
+      "title": "De Adriaan Windmill Over Haarlem Canal",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#b2b8ca",
+        "#9aa3bb",
+        "#53565e"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "De Adriaan windmill on the Spaarne river, Haarlem, under heavy overcast sky.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0868.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0873",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0873-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0873-thumb.webp",
+      "title": "Koepelgevangenis Dome Haarlem",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#dadde7",
+        "#a6a9b4",
+        "#54443c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Circular brick facade and dome of the Koepelgevangenis, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0873.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0886",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0886-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0886-thumb.webp",
+      "title": "Rowing Boats Moored on Haarlem Canal",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#e7e9ee",
+        "#828992",
+        "#343632"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Small boats moored on the Spaarne river, Haarlem, with historic canal houses beyond.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0886.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0892",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0892-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0892-thumb.webp",
+      "title": "Amsterdamse Poort Gate Tower Haarlem",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#ccd1de",
+        "#acb3c7",
+        "#5b565a"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Amsterdamse Poort medieval city gate tower, low angle, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0892.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0897",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0897-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0897-thumb.webp",
+      "title": "Amsterdam Gate Rising Over Haarlem Canal",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#d0d6e1",
+        "#acb7c9",
+        "#3e362d"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Amsterdamse Poort medieval city gate viewed from canal level, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0897.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0901",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0901-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0901-thumb.webp",
+      "title": "Twin Towers Rising, Haarlem Church",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#e1e4ed",
+        "#a2a8bf",
+        "#44362d"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Low-angle view of twin brick towers, Grote Kerk, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0901.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0902",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0902-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0902-thumb.webp",
+      "title": "Amsterdamse Poort Towers Against Storm Sky",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#dfe2ea",
+        "#a9aebf",
+        "#473c32"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Amsterdamse Poort medieval city gate, low angle, stormy sky, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0902.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0907",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0907-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0907-thumb.webp",
+      "title": "Amsterdamse Poort Gate Under Storm Sky",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#dcdee5",
+        "#9ea5b6",
+        "#36312d"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Amsterdamse Poort medieval city gate, viewed from canal bridge, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0907.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0909",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0909-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0909-thumb.webp",
+      "title": "Twin Towers Gateway Haarlem",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#e5e6ef",
+        "#adabb9",
+        "#493a31"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Low-angle view looking up at the twin-towered gatehouse facade, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0909.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0913",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0913-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0913-thumb.webp",
+      "title": "Twin Towers Through Brick Gate Arch",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#dadfe9",
+        "#999ea8",
+        "#3c3227"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Looking up through the arch of the Amsterdamse Poort city gate, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0913.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0915",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0915-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0915-thumb.webp",
+      "title": "Brick Gatehouse Tunnel, Haarlem",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#aa9891",
+        "#513f34",
+        "#1d1410"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Vaulted brick gatehouse passage with hanging lantern, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0915.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0917",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0917-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0917-thumb.webp",
+      "title": "Haarlem Gate Tower Against Dramatic Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#bbbecf",
+        "#a0a6bc",
+        "#635f64"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Low-angle view of historic city gate tower, Haarlem, Netherlands.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0917.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0919",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0919-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0919-thumb.webp",
+      "title": "De Adriaan Windmill on Haarlem Waterfront",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#bfc4d2",
+        "#a0aabe",
+        "#595c65"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "De Adriaan windmill on the Spaarne river, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0919.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0921",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0921-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0921-thumb.webp",
+      "title": "Haarlem Canal Under Brooding Sky",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#e9eaef",
+        "#9b9b96",
+        "#323220"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Tree-lined canal with moored boats and brick townhouses, Haarlem, Netherlands.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0921.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0924",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0924-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0924-thumb.webp",
+      "title": "Hofje Courtyard Garden Under Storm Sky",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#b7bdc9",
+        "#717780",
+        "#2d2d1c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Baroque regent house and formal garden courtyard, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0924.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0927",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0927-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0927-thumb.webp",
+      "title": "Haarlem Station Under Storm Sky",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c8cdd8",
+        "#767983",
+        "#362d28"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Art Nouveau facade of Haarlem railway station under heavy storm clouds, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0927.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0930",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0930-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0930-thumb.webp",
+      "title": "Haarlem Station Facade Under Stormy Sky",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#dbdfe9",
+        "#8b7c78",
+        "#423835"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Art Nouveau facade of Haarlem railway station, low angle view against overcast sky.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0930.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0934",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0934-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0934-thumb.webp",
+      "title": "Victorian Train Shed, Haarlem Station",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#54524f",
+        "#211f1b",
+        "#11100e"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Arched Victorian train shed interior, platform 5, Haarlem station.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0934.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0939",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0939-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0939-thumb.webp",
+      "title": "Victorian Train Shed, Haarlem Station Platform",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#5a594f",
+        "#2a241d",
+        "#1c1813"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Arched Victorian train shed roof over empty platform, Haarlem railway station.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0939.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0789",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0789-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0789-thumb.webp",
+      "title": "Exhibition Banners on Dutch Gabled Facade",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#cecece",
+        "#828282",
+        "#2c2c2c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Low-angle view of historic brick facade with exhibition banners, Frans Hals Museum, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0789.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0791",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0791-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0791-thumb.webp",
+      "title": "Ivy-Clad Brick Facade Under Mackerel Sky",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#dedede",
+        "#919191",
+        "#2b2b2b"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Ivy-covered brick institutional building with cupola, low-angle view, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0791.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0801",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0801-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0801-thumb.webp",
+      "title": "Gothic Gable Against Stormy Haarlem Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#d2d2d2",
+        "#8c8c8c",
+        "#2c2c2c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Stepped brick gable and church facade viewed from low angle, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0801.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0805",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0805-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0805-thumb.webp",
+      "title": "Haarlem Courtyard Tower Dramatic Sky",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#f8f8f8",
+        "#a6a6a6",
+        "#333333"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Historic courtyard with tower and arched gateway, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0805.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0813",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0813-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0813-thumb.webp",
+      "title": "Bronze Figure and Gothic Church, Haarlem",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#dfdfdf",
+        "#b2b2b2",
+        "#3b3b3b"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Bronze statue with raised hand against overcast sky, Gothic church behind, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0813.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0814",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0814-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0814-thumb.webp",
+      "title": "Gothic Gable Silhouette Against Veiled Sun",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#c4c4c4",
+        "#696969",
+        "#2a2a2a"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Ornate stepped gable in silhouette against overcast sky, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0814.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0818",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0818-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0818-thumb.webp",
+      "title": "Grote Kerk Haarlem from the Grote Markt",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#efefef",
+        "#aaaaaa",
+        "#2a2a2a"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Grote Kerk (St. Bavo) and Grote Markt square, Haarlem, Netherlands.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0818.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0824",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0824-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0824-thumb.webp",
+      "title": "Westerkerk Tower Crown Haarlem Sky",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#e5e5e5",
+        "#b3b3b3",
+        "#3c3c3c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Church tower with imperial crown finial rising above brick facades, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0824.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0828",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0828-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0828-thumb.webp",
+      "title": "Teylers Museum Facade Haarlem",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#dedede",
+        "#6a6a6a",
+        "#1c1c1c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Neoclassical facade of Teylers Museum, Haarlem, with bronze sculpture group and red flag.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0828.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0833",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0833-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0833-thumb.webp",
+      "title": "Drawbridge and Step Gables, Haarlem Canal",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#e5e5e5",
+        "#7f7f7f",
+        "#212121"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Modern drawbridge beside Dutch Golden Age step-gable facades on the Spaarne, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0833.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0836",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0836-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0836-thumb.webp",
+      "title": "Haarlem Canal with Stepped Gable Facade",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#dfdfdf",
+        "#797979",
+        "#212121"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Canal with moored barge and stepped gable canal houses, Haarlem, Netherlands.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0836.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0839",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0839-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0839-thumb.webp",
+      "title": "Gothic Chapel Gable, Haarlem",
+      "aspect_ratio": 0.6666,
+      "dominant_colors": [
+        "#e2e2e2",
+        "#595959",
+        "#242424"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Brick chapel facade with gothic arch window and tower beyond, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0839.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0842",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0842-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0842-thumb.webp",
+      "title": "Valkestraat Alley Church Tower Haarlem",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d7d7d7",
+        "#2d2d2d",
+        "#121212"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Narrow alley on Valkestraat with church tower visible beyond rooftops, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0842.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0869",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0869-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0869-thumb.webp",
+      "title": "Domed Gashouder Behind Construction Fence, Haarlem",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#ececec",
+        "#7d7d7d",
+        "#111111"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Renovated gashouder dome and brick annexe behind construction hoarding, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0869.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0871",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0871-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0871-thumb.webp",
+      "title": "Koepelgevangenis Entrance Facade Haarlem",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#f2f2f2",
+        "#bdbdbd",
+        "#393939"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Entrance facade of the Koepelgevangenis prison building, Haarlem, under overcast sky.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0871.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0879",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0879-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0879-thumb.webp",
+      "title": "Prison Wall and Warden's House Haarlem",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#ebebeb",
+        "#8a8a8a",
+        "#1d1d1d"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Perimeter wall with anti-climb wire and Victorian brick administration building, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0879.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0882",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0882-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0882-thumb.webp",
+      "title": "Koepelgevangenis Dome, Haarlem Street",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#f3f3f3",
+        "#a0a0a0",
+        "#2a2a2a"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Panopticon prison dome and brick wing from Harmenjansweg, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0882.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0923",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0923-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0923-thumb.webp",
+      "title": "Hofje Courtyard Under Stormy Haarlem Sky",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#dddddd",
+        "#757575",
+        "#252525"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Historic hofje gatehouse and courtyard facade under dramatic overcast sky, Haarlem.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0923.jpg"
+    },
+    {
+      "id": "2025-05-23-Haarlem-export-dsc-0944",
+      "url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0944-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-05-23-Haarlem-export/DSC_0944-thumb.webp",
+      "title": "Haarlem Station Platform Canopy Interior",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#393939",
+        "#121212",
+        "#060606"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-05-23-Haarlem-export",
+      "date": "2025-05-23",
+      "caption": "Art Nouveau platform canopy and station nameplate, Haarlem railway station.",
+      "location": "Haarlem",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0944.jpg"
     }
   ]
 }
