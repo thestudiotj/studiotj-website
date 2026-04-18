@@ -90,18 +90,34 @@ interface PrintifyProductsResponse {
 
 export async function getProducts(): Promise<PrintifyProduct[]> {
   const shopId = process.env.PRINTIFY_SHOP_ID
-  const url = `${BASE_URL}/shops/${shopId}/products.json?limit=50`
-  console.log('[printify] getProducts fetching:', url)
+  console.log('[printify] getProducts: fetching list from', `/shops/${shopId}/products.json`)
+
   try {
-    const data = await printifyFetch<PrintifyProductsResponse>(
+    // Step 1: fetch product list (IDs only, we'll get detail separately)
+    const list = await printifyFetch<PrintifyProductsResponse>(
       `/shops/${shopId}/products.json?limit=50`,
-      { cache: 'no-store' }
+      { next: { revalidate: 60 } }
     )
-    console.log('[printify] getProducts response status: ok, total products:', data.data.length)
-    const published = data.data.filter(
-      (p) => p.visible && p.external && p.external.id
+    console.log('[printify] getProducts: list returned', list.data.length, 'products')
+
+    // Step 2: parallel-fetch detail for each product, with concurrency cap
+    const CONCURRENCY = 10
+    const details: (PrintifyProduct | null)[] = []
+
+    for (let i = 0; i < list.data.length; i += CONCURRENCY) {
+      const batch = list.data.slice(i, i + CONCURRENCY)
+      const batchResults = await Promise.all(
+        batch.map((p) => getProductById(p.id))
+      )
+      details.push(...batchResults)
+    }
+
+    // Step 3: filter to products that have `external.id` (published to API store)
+    const published = details.filter(
+      (p): p is PrintifyProduct => p !== null && !!p.external && !!p.external.id
     )
-    console.log('[printify] getProducts published-to-store products:', published.length)
+    console.log('[printify] getProducts: published to API store:', published.length)
+
     return published
   } catch (err) {
     console.error('[printify] getProducts error:', err)
@@ -114,7 +130,7 @@ export async function getProductById(id: string): Promise<PrintifyProduct | null
   try {
     return await printifyFetch<PrintifyProduct>(
       `/shops/${shopId}/products/${id}.json`,
-      { cache: 'no-store' }
+      { next: { revalidate: 60 } }
     )
   } catch {
     return null
