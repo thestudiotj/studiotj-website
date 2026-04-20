@@ -80,25 +80,25 @@ export function useScoutData(): ScoutState {
         }
       }
       if (abort.signal.aborted) return;
-      setStatus(s => ({ ...s, geo: 'done', weather: 'loading', pois: 'loading' }));
     } catch (err) {
       setStatus(s => ({ ...s, geo: 'error' }));
       setErrors(e => ({ ...e, geo: (err as Error).message }));
       return;
     }
 
-    // Step 2: sun times (sync, no status needed)
+    // Step 2: sun times are synchronous — set initial data immediately so sun renders right away
     const sunTimes = getSunTimes(location.lat, location.lng, date);
+    setData({ mode, location, origin, targetDate: date, sunTimes, weather: [], pois: [], driveInfo: undefined });
+    setStatus(s => ({ ...s, geo: 'done', weather: 'loading', pois: 'loading' }));
 
-    // Step 3: weather + POIs in parallel
+    // Step 3: weather, POIs, and drive info run independently — each updates data as it lands
     const radiusM = radiusKm * 1000;
-    let weatherHours: Awaited<ReturnType<typeof getWeather>> = [];
-    let pois: Awaited<ReturnType<typeof getPOIs>> = [];
 
     const weatherPromise = getWeather(location.lat, location.lng)
       .then(hours => {
         if (abort.signal.aborted) return;
-        weatherHours = filterWeatherHours(hours, mode, date);
+        const filtered = filterWeatherHours(hours, mode, date);
+        setData(d => d ? { ...d, weather: filtered } : null);
         setStatus(s => ({ ...s, weather: 'done' }));
       })
       .catch(err => {
@@ -110,7 +110,7 @@ export function useScoutData(): ScoutState {
     const poisPromise = getPOIs(location.lat, location.lng, radiusM)
       .then(results => {
         if (abort.signal.aborted) return;
-        pois = results;
+        setData(d => d ? { ...d, pois: results } : null);
         setStatus(s => ({ ...s, pois: 'done' }));
       })
       .catch(err => {
@@ -119,13 +119,11 @@ export function useScoutData(): ScoutState {
         setErrors(e => ({ ...e, pois: (err as Error).message }));
       });
 
-    // Step 4: drive info for detour-to
-    let driveInfo: Awaited<ReturnType<typeof getDriveInfo>> | undefined;
     const drivePromise = (mode === 'detour-to' && origin)
       ? getDriveInfo(origin.lat, origin.lng, location.lat, location.lng)
           .then(info => {
             if (abort.signal.aborted) return;
-            driveInfo = info;
+            setData(d => d ? { ...d, driveInfo: info } : null);
             setStatus(s => ({ ...s, drive: 'done' }));
           })
           .catch(err => {
@@ -136,9 +134,6 @@ export function useScoutData(): ScoutState {
       : Promise.resolve();
 
     await Promise.all([weatherPromise, poisPromise, drivePromise]);
-    if (abort.signal.aborted) return;
-
-    setData({ mode, location, origin, targetDate: date, sunTimes, weather: weatherHours, pois, driveInfo });
   }, []);
 
   return { data, status, errors, fetch, reset };
@@ -154,7 +149,6 @@ function filterWeatherHours(
     const cutoff = new Date(now.getTime() + 6 * 60 * 60 * 1000);
     return hours.filter(h => h.time >= now && h.time <= cutoff);
   }
-  // trip-to / detour-to: daylight hours on target date
   const dayStart = new Date(date);
   dayStart.setHours(6, 0, 0, 0);
   const dayEnd = new Date(date);

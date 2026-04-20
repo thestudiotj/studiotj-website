@@ -36,15 +36,17 @@ function weatherBlock(hours: WeatherHour[], label: string): string {
   return [`Weather ${label}`, ...lines].join('\n');
 }
 
-function poisBlock(pois: POI[], radiusKm: number): string {
+function poisBlock(pois: POI[], radiusKm: number, failed?: boolean): string {
+  const header = `Nearby POIs (${radiusKm}km, photography-tagged)`;
+  if (failed) return `${header}\n- unavailable (public OSM servers under heavy load)`;
   const shown = pois.slice(0, MAX_POIS);
   const remaining = pois.length - shown.length;
   const lines = shown.map(p => `- ${p.name} (${p.matchedTag}, ${formatDistance(p.distance)} ${p.bearing})`);
   if (remaining > 0) lines.push(`[${remaining} more]`);
-  return [`Nearby POIs (${radiusKm}km, photography-tagged)`, ...lines].join('\n');
+  return [header, ...lines].join('\n');
 }
 
-export function formatBlock(data: ScoutData, radiusKm: number): string {
+export function formatBlock(data: ScoutData, radiusKm: number, poisFailed?: boolean): string {
   const { mode, location, origin, targetDate, sunTimes, weather, pois, driveInfo } = data;
   const parts: string[] = ['## Scouting Context'];
 
@@ -80,6 +82,6 @@ export function formatBlock(data: ScoutData, radiusKm: number): string {
     if (weather.length) parts.push('', weatherBlock(weather, `at target on ${targetDate.toLocaleDateString('en-CA')}`));
   }
 
-  parts.push('', poisBlock(pois, radiusKm));
+  parts.push('', poisBlock(pois, radiusKm, poisFailed));
   return parts.join('\n');
 }

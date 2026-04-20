@@ -1,43 +1,25 @@
 import type { POI } from './types';
-import { buildOverpassQuery, matchedTag } from './overpass-tags';
+import { matchedTag } from './overpass-tags';
 import { haversineMetres, bearing } from './distance';
 
-const ENDPOINTS = [
-  'https://overpass-api.de/api/interpreter',
-  'https://overpass.kumi.systems/api/interpreter',
-  'https://overpass.private.coffee/api/interpreter',
-];
-
-const cache = new Map<string, { data: POI[]; ts: number }>();
-
-function cacheKey(lat: number, lng: number, radiusM: number) {
-  return `${lat.toFixed(3)},${lng.toFixed(3)},${radiusM}`;
-}
-
-async function fetchOverpass(query: string): Promise<unknown> {
-  for (const endpoint of ENDPOINTS) {
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `data=${encodeURIComponent(query)}`,
-        signal: AbortSignal.timeout(30000),
-      });
-      if (res.ok) return res.json();
-    } catch {
-      // try next mirror
-    }
-  }
-  throw new Error('All Overpass endpoints failed');
-}
-
 export async function getPOIs(lat: number, lng: number, radiusM: number): Promise<POI[]> {
-  const key = cacheKey(lat, lng, radiusM);
-  const cached = cache.get(key);
-  if (cached && Date.now() - cached.ts < 15 * 60 * 1000) return cached.data;
+  const params = new URLSearchParams({
+    lat: lat.toString(),
+    lng: lng.toString(),
+    radius: radiusM.toString(),
+  });
 
-  const query = buildOverpassQuery(lat, lng, radiusM);
-  const json = await fetchOverpass(query) as { elements: Array<{
+  const res = await fetch(`/api/scout/overpass?${params}`, {
+    signal: AbortSignal.timeout(30000),
+  });
+
+  if (!res.ok) {
+    const json = await res.json().catch(() => ({}));
+    const code = (json as { error?: string }).error;
+    throw new Error(code === 'overpass_unavailable' ? 'overpass_unavailable' : `overpass_error_${res.status}`);
+  }
+
+  const json = await res.json() as { elements: Array<{
     id: number; type: string; tags?: Record<string, string>;
     lat?: number; lon?: number; center?: { lat: number; lon: number };
   }> };
@@ -73,7 +55,5 @@ export async function getPOIs(lat: number, lng: number, radiusM: number): Promis
     });
   }
 
-  const pois = Array.from(seen.values()).sort((a, b) => a.distance - b.distance);
-  cache.set(key, { data: pois, ts: Date.now() });
-  return pois;
+  return Array.from(seen.values()).sort((a, b) => a.distance - b.distance);
 }
