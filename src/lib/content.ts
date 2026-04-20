@@ -28,17 +28,6 @@ const blogNoteSchema = z.object({
 const blogEssaySchema = blogNoteSchema.extend({ type: z.literal('essay') })
 const blogFrontmatterSchema = z.discriminatedUnion('type', [blogNoteSchema, blogEssaySchema])
 
-const journalFrontmatterSchema = z.object({
-  title: z.string(),
-  date: z.string(),
-  summary: z.string(),
-  hero_photo_id: z.string(),
-  photo_ids: z.array(z.string()),
-  location: z.string().optional(),
-  shoot_date: z.string().optional(),
-  draft: z.boolean().default(false),
-})
-
 const subtextEssaySchema = z.object({
   type: z.literal('essay'),
   title: z.string(),
@@ -88,7 +77,6 @@ const gearFrontmatterSchema = z.object({
 })
 
 export type BlogFrontmatter = z.infer<typeof blogFrontmatterSchema>
-export type JournalFrontmatter = z.infer<typeof journalFrontmatterSchema>
 export type SubtextFrontmatter = z.infer<typeof subtextFrontmatterSchema>
 export type GearFrontmatter = z.infer<typeof gearFrontmatterSchema>
 
@@ -132,14 +120,13 @@ export function deriveSummary(mdxBody: string, maxChars = 155): string {
 
 // ─── Internal helpers ─────────────────────────────────────────────────────────
 
-type Section = 'blog' | 'journal' | 'subtext-lab' | 'gear'
+type Section = 'blog' | 'subtext-lab' | 'gear'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
 function getSchema(section: Section) {
   switch (section) {
     case 'blog':        return blogFrontmatterSchema
-    case 'journal':     return journalFrontmatterSchema
     case 'subtext-lab': return subtextFrontmatterSchema
     case 'gear':        return gearFrontmatterSchema
   }
@@ -167,7 +154,7 @@ function computeSummary(section: Section, frontmatter: unknown, content: string)
   if (section === 'blog' || section === 'subtext-lab') {
     return (frontmatter as { summary?: string }).summary ?? deriveSummary(content)
   }
-  // journal and gear both have a required summary field in frontmatter
+  // gear has a required summary field in frontmatter
   return (frontmatter as { summary: string }).summary
 }
 
@@ -188,7 +175,6 @@ export interface PostWithBody<T> extends PostEntry<T> {
 // ─── getAllPosts ───────────────────────────────────────────────────────────────
 
 export async function getAllPosts(section: 'blog'): Promise<PostEntry<BlogFrontmatter>[]>
-export async function getAllPosts(section: 'journal'): Promise<PostEntry<JournalFrontmatter>[]>
 export async function getAllPosts(section: 'subtext-lab'): Promise<PostEntry<SubtextFrontmatter>[]>
 export async function getAllPosts(section: 'gear'): Promise<PostEntry<GearFrontmatter>[]>
 export async function getAllPosts(section: Section): Promise<PostEntry<unknown>[]> {
@@ -224,7 +210,6 @@ export async function getAllPosts(section: Section): Promise<PostEntry<unknown>[
 // ─── getPostBySlug ────────────────────────────────────────────────────────────
 
 export async function getPostBySlug(section: 'blog', slug: string): Promise<PostWithBody<BlogFrontmatter> | null>
-export async function getPostBySlug(section: 'journal', slug: string): Promise<PostWithBody<JournalFrontmatter> | null>
 export async function getPostBySlug(section: 'subtext-lab', slug: string): Promise<PostWithBody<SubtextFrontmatter> | null>
 export async function getPostBySlug(section: 'gear', slug: string): Promise<PostWithBody<GearFrontmatter> | null>
 export async function getPostBySlug(section: Section, slug: string): Promise<PostWithBody<unknown> | null> {

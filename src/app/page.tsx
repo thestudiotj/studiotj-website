@@ -2,8 +2,7 @@ import Link from 'next/link'
 import { getPortfolio, sortCollections } from '@/lib/portfolio'
 import type { Photo } from '@/lib/portfolio'
 import { getAllPosts } from '@/lib/content'
-import type { BlogFrontmatter, JournalFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
-import { getJournalPhoto } from '@/lib/journal'
+import type { BlogFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
 import EmailCapture from '@/components/EmailCapture'
 import HeroImage from '@/components/HeroImage'
 import CollectionCard from '@/components/CollectionCard'
@@ -36,49 +35,7 @@ function BlogCard({ post }: { post: PostEntry<BlogFrontmatter> }) {
   )
 }
 
-// ─── Journal card — photo-forward, 3:2 thumb via journal.json ─────────────────
-
-function JournalCard({ post }: { post: PostEntry<JournalFrontmatter> }) {
-  const fm = post.frontmatter
-  const heroPhoto = getJournalPhoto(fm.hero_photo_id)
-
-  const gradient =
-    heroPhoto && heroPhoto.dominant_colors.length >= 2
-      ? `linear-gradient(145deg, ${heroPhoto.dominant_colors[0]}, ${heroPhoto.dominant_colors[1]}${
-          heroPhoto.dominant_colors[2] ? `, ${heroPhoto.dominant_colors[2]}` : ''
-        })`
-      : 'linear-gradient(145deg, #C4BEB4, #8a8580)'
-
-  const metaLine = [formatDateShort(fm.date), fm.location ?? null]
-    .filter(Boolean)
-    .join(' · ')
-
-  return (
-    <Link href={`/journal/${post.slug}`} className="group block">
-      <div
-        className="relative w-full overflow-hidden mb-3"
-        style={{ aspectRatio: '3 / 2', background: gradient }}
-      >
-        {heroPhoto?.thumbnail_url && (
-          <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03]">
-            <img
-              src={heroPhoto.thumbnail_url}
-              alt={fm.title}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        )}
-      </div>
-      <h3 className="font-display text-xl text-paper group-hover:text-paper/70 transition-colors leading-snug">
-        {fm.title}
-      </h3>
-      <p className="text-paper/70 text-sm mt-1">{metaLine}</p>
-    </Link>
-  )
-}
-
-// ─── Subtext Lab card — three-state: image / video / text-only ────────────────
+// ─── Subtext Lab card ─────────────────────────────────────────────────────────
 
 function thumbUrl(heroUrl: string): string {
   return heroUrl.endsWith('-hero.jpg')
@@ -90,8 +47,13 @@ function SubtextCard({ post }: { post: PostEntry<SubtextFrontmatter> }) {
   const fm = post.frontmatter
   const hasHero = fm.type === 'essay' && 'hero' in fm && fm.hero
   const isVideo = fm.type === 'video'
-  const posterUrl = isVideo && 'video_poster' in fm ? (fm as Extract<SubtextFrontmatter, { type: 'video' }>).video_poster : null
-  const thumbSrc = hasHero ? thumbUrl((fm as Extract<SubtextFrontmatter, { type: 'essay' }>).hero as string) : posterUrl
+  const posterUrl =
+    isVideo && 'video_poster' in fm
+      ? (fm as Extract<SubtextFrontmatter, { type: 'video' }>).video_poster
+      : null
+  const thumbSrc = hasHero
+    ? thumbUrl((fm as Extract<SubtextFrontmatter, { type: 'essay' }>).hero as string)
+    : posterUrl
 
   return (
     <Link href={`/subtext-lab/${post.slug}`} className="group block">
@@ -142,18 +104,14 @@ export default async function HomePage() {
     ? new Map(portfolio.photos.map(p => [p.id, p]))
     : new Map()
 
-  // Fetch latest entry from each section (sorted date desc, draft excluded in prod)
-  const [blogPosts, journalEntries, subtextPosts] = await Promise.all([
+  const [blogPosts, subtextPosts] = await Promise.all([
     getAllPosts('blog'),
-    getAllPosts('journal'),
     getAllPosts('subtext-lab'),
   ])
 
   const latestBlog = blogPosts[0] ?? null
-  const latestJournal = journalEntries[0] ?? null
   const latestSubtext = subtextPosts[0] ?? null
-
-  const hasLatest = latestBlog || latestJournal || latestSubtext
+  const hasLatest = latestBlog || latestSubtext
 
   return (
     <>
@@ -214,7 +172,7 @@ export default async function HomePage() {
         <div className="max-w-2xl">
           <h2 className="section-title mb-6">The work</h2>
           <p className="text-muted leading-relaxed mb-4">
-            StudioTJ is a one-person studio working across photography, print, and writing. The photographs come first; the shop, the journal, and The Subtext Lab are what grew around them.
+            StudioTJ is a one-person studio working across photography, print, and writing. The photographs come first; the shop, the series, and The Subtext Lab are what grew around them.
           </p>
           <p className="text-muted leading-relaxed mb-8">
             Run by T.J. van der Heeft. Prints and products live in the <Link href="/shop">shop</Link>.
@@ -223,13 +181,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Latest strip — one card per section, graceful degradation */}
+      {/* Latest strip */}
       {hasLatest && (
         <section className="bg-ink text-paper px-6 md:px-12 py-20">
           <h2 className="font-display text-4xl md:text-6xl mb-12">Latest</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {latestBlog && <BlogCard post={latestBlog} />}
-            {latestJournal && <JournalCard post={latestJournal} />}
             {latestSubtext && (
               <div className="theme-subtext">
                 <SubtextCard post={latestSubtext} />

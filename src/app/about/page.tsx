@@ -104,15 +104,6 @@ export default function AboutPage() {
           <ul className="space-y-2">
             <li className="text-muted leading-relaxed">
               <Link
-                href="/journal"
-                className="font-medium text-ink hover:text-accent transition-colors"
-              >
-                /journal
-              </Link>{' '}
-              — photo work outside the locked four, gathered by theme or by shoot.
-            </li>
-            <li className="text-muted leading-relaxed">
-              <Link
                 href="/shop"
                 className="font-medium text-ink hover:text-accent transition-colors"
               >

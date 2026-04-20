@@ -47,7 +47,9 @@
       "Bash(python -c \"from PIL import Image; print\\('pillow ok'\\)\")",
       "Bash(py *)",
       "Bash(SCOUT_PASSWORD=test123 npm run dev -- --port 3333)",
-      "Bash(kill %1)"
+      "Bash(kill %1)",
+      "Bash(mkdir -p /c/Users/tjvan/Documents/Projects/studiotj-website/src/types)",
+      "Bash(mkdir -p /c/Users/tjvan/Documents/Projects/studiotj-website/src/app/series/\\\\[series\\\\]/\\\\[slug\\\\]/\\\\[entry\\\\])"
     ]
   }
 }

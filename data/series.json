@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "series": [
+    {
+      "slug": "locations",
+      "display_name": "Locations",
+      "description": "City-scoped entries, accumulating as new shoots land.",
+      "tag_filter": null,
+      "grouping": {
+        "by_tag_prefix": "location:",
+        "excluded_tags": ["location:netherlands", "location:europe"]
+      },
+      "sub_series": null,
+      "evergreen_note": "City names are search terms that survive decades.",
+      "refill_note": "Every new shoot in a new city extends the series.",
+      "active": true,
+      "sort_order": 1
+    },
+    {
+      "slug": "routes",
+      "display_name": "Routes",
+      "description": "Text-forward diaristic one-shoot sequences.",
+      "tag_filter": null,
+      "grouping": {
+        "by_tag_prefix": "route:",
+        "excluded_tags": []
+      },
+      "sub_series": null,
+      "evergreen_note": "A named route through a place is a thing people look for.",
+      "refill_note": "Each Routes-mode shoot produces one entry.",
+      "active": true,
+      "sort_order": 2
+    },
+    {
+      "slug": "flowers-and-trees",
+      "display_name": "Flowers & Trees",
+      "description": "Botanical subjects — blossom canopies, tree studies.",
+      "tag_filter": {"any": ["subject:flower", "subject:tree"]},
+      "grouping": null,
+      "sub_series": null,
+      "evergreen_note": "Timeless subject matter with stable search intent.",
+      "refill_note": "Every bloom season, every tree study extends it.",
+      "active": true,
+      "sort_order": 3
+    },
+    {
+      "slug": "seasons",
+      "display_name": "Seasons",
+      "description": "Cherry blossom, autumn colour, winter light, mist.",
+      "tag_filter": null,
+      "grouping": null,
+      "sub_series": [
+        {"slug": "spring", "tag_filter": {"all": ["season:spring"]}},
+        {"slug": "summer", "tag_filter": {"all": ["season:summer"]}},
+        {"slug": "autumn", "tag_filter": {"all": ["season:autumn"]}},
+        {"slug": "winter", "tag_filter": {"all": ["season:winter"]}}
+      ],
+      "evergreen_note": "Four always-fillable buckets by definition.",
+      "refill_note": "Every shoot carries a season tag. Automatic refill.",
+      "active": true,
+      "sort_order": 4
+    }
+  ]
+}

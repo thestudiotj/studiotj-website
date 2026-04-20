@@ -7,7 +7,7 @@ import { useCart } from '@/lib/cart'
 
 const links: { href: string; label: string; subtextDot?: boolean }[] = [
   { href: '/portfolio', label: 'Portfolio' },
-  { href: '/journal', label: 'Journal' },
+  { href: '/series', label: 'Series' },
   { href: '/blog', label: 'Blog' },
   { href: '/subtext-lab', label: 'Subtext Lab', subtextDot: true },
   { href: '/shop', label: 'Shop' },

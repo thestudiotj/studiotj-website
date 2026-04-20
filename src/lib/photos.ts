@@ -1,7 +1,5 @@
 import { getPortfolio } from './portfolio'
 import type { Photo, Collection } from './portfolio'
-import { getAllJournalPhotos } from './journal'
-import type { JournalPhoto } from './journal'
 
 // ─── Discriminated union for cross-source photo lookup ────────────────────────
 
@@ -11,12 +9,7 @@ export type PortfolioPhotoRecord = {
   collection: Collection | null
 }
 
-export type JournalPhotoRecord = {
-  source: 'journal'
-  photo: JournalPhoto
-}
-
-export type PhotoRecord = PortfolioPhotoRecord | JournalPhotoRecord
+export type PhotoRecord = PortfolioPhotoRecord
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -26,7 +19,7 @@ function getShootPrefix(photoId: string): string {
 
 // ─── Public API ───────────────────────────────────────────────────────────────
 
-/** Look up a photo by ID — portfolio first, journal second. */
+/** Look up a photo by ID from portfolio.json. */
 export function getPhotoRecord(id: string): PhotoRecord | null {
   const portfolio = getPortfolio()
   if (portfolio) {
@@ -36,25 +29,15 @@ export function getPhotoRecord(id: string): PhotoRecord | null {
       return { source: 'portfolio', photo, collection }
     }
   }
-
-  const journalPhoto = getAllJournalPhotos().find(p => p.id === id)
-  if (journalPhoto) return { source: 'journal', photo: journalPhoto }
-
   return null
 }
 
-/** All portfolio + journal photos sharing the same shoot prefix, excluding the given photo. */
-export function getShootPhotos(photoId: string): Array<Photo | JournalPhoto> {
+/** All portfolio photos sharing the same shoot prefix, excluding the given photo. */
+export function getShootPhotos(photoId: string): Photo[] {
   const prefix = getShootPrefix(photoId)
-  const result: Array<Photo | JournalPhoto> = []
+  const result: Photo[] = []
 
   for (const photo of getPortfolio()?.photos ?? []) {
-    if (photo.id !== photoId && getShootPrefix(photo.id) === prefix) {
-      result.push(photo)
-    }
-  }
-
-  for (const photo of getAllJournalPhotos()) {
     if (photo.id !== photoId && getShootPrefix(photo.id) === prefix) {
       result.push(photo)
     }
