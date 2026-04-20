@@ -3,9 +3,11 @@ import { getPortfolio, sortCollections } from '@/lib/portfolio'
 import type { Photo } from '@/lib/portfolio'
 import { getAllPosts } from '@/lib/content'
 import type { BlogFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
+import { getAllSeriesEntryPhotoIds, resolvePhotos } from '@/lib/series'
 import EmailCapture from '@/components/EmailCapture'
 import HeroImage from '@/components/HeroImage'
 import CollectionCard from '@/components/CollectionCard'
+import SeriesRotator from '@/components/SeriesRotator'
 
 // ─── Date formatter ───────────────────────────────────────────────────────────
 
@@ -104,6 +106,9 @@ export default async function HomePage() {
     ? new Map(portfolio.photos.map(p => [p.id, p]))
     : new Map()
 
+  const seriesPhotoIds = getAllSeriesEntryPhotoIds()
+  const seriesPhotos = resolvePhotos(seriesPhotoIds)
+
   const [blogPosts, subtextPosts] = await Promise.all([
     getAllPosts('blog'),
     getAllPosts('subtext-lab'),
@@ -163,6 +168,24 @@ export default async function HomePage() {
                 />
               )
             })}
+          </div>
+        </section>
+      )}
+
+      {/* Series — only rendered when at least one entry exists */}
+      {seriesPhotos.length > 0 && (
+        <section className="border-t border-dust/40 px-6 md:px-12 py-20">
+          <div className="flex flex-col md:flex-row md:items-center gap-10 md:gap-16">
+            <div className="md:w-1/2">
+              <h2 className="section-title mb-6">Series</h2>
+              <p className="text-muted leading-relaxed mb-8">
+                Ongoing sequences of photographs, organized by subject, place, and season.
+              </p>
+              <Link href="/series" className="btn-outline">View Series →</Link>
+            </div>
+            <div className="md:w-1/2">
+              <SeriesRotator photos={seriesPhotos} />
+            </div>
           </div>
         </section>
       )}

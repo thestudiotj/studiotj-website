@@ -104,6 +104,15 @@ export default function AboutPage() {
           <ul className="space-y-2">
             <li className="text-muted leading-relaxed">
               <Link
+                href="/series"
+                className="font-medium text-ink hover:text-accent transition-colors"
+              >
+                /series
+              </Link>{' '}
+              — ongoing sequences of photographs, organized by subject, place, and season.
+            </li>
+            <li className="text-muted leading-relaxed">
+              <Link
                 href="/shop"
                 className="font-medium text-ink hover:text-accent transition-colors"
               >

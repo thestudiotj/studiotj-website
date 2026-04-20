@@ -95,8 +95,7 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
   try {
     // Step 1: fetch product list (IDs only, we'll get detail separately)
     const list = await printifyFetch<PrintifyProductsResponse>(
-      `/shops/${shopId}/products.json?limit=50`,
-      { next: { revalidate: 60 } }
+      `/shops/${shopId}/products.json?limit=50`
     )
     console.log('[printify] getProducts: list returned', list.data.length, 'products')
 
@@ -129,8 +128,7 @@ export async function getProductById(id: string): Promise<PrintifyProduct | null
   const shopId = process.env.PRINTIFY_SHOP_ID
   try {
     return await printifyFetch<PrintifyProduct>(
-      `/shops/${shopId}/products/${id}.json`,
-      { next: { revalidate: 60 } }
+      `/shops/${shopId}/products/${id}.json`
     )
   } catch {
     return null

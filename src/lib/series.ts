@@ -185,6 +185,20 @@ function getCanonicalTagFromFilter(filter: TagFilter): string | null {
   return typeof first === 'string' ? first : null
 }
 
+// ─── Homepage helpers ─────────────────────────────────────────────────────────
+
+/** Flat deduped array of every photo_id across all series entries. */
+export function getAllSeriesEntryPhotoIds(): string[] {
+  const entries = getAllEntries()
+  const seen = new Set<string>()
+  for (const entry of entries) {
+    for (const id of entry.photo_ids) {
+      seen.add(id)
+    }
+  }
+  return Array.from(seen)
+}
+
 // ─── Photo resolution ─────────────────────────────────────────────────────────
 
 export function resolvePhoto(photoId: string): Photo | null {
