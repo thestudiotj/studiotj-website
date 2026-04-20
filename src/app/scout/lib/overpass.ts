@@ -9,9 +9,20 @@ export async function getPOIs(lat: number, lng: number, radiusM: number): Promis
     radius: radiusM.toString(),
   });
 
-  const res = await fetch(`/api/scout/overpass?${params}`, {
-    signal: AbortSignal.timeout(30000),
-  });
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 25_000);
+
+  let res: Response;
+  try {
+    res = await fetch(`/api/scout/overpass?${params}`, { signal: controller.signal });
+  } catch (err) {
+    clearTimeout(timeoutId);
+    if (err instanceof Error && err.name === 'AbortError') {
+      throw new Error('overpass_unavailable');
+    }
+    throw err;
+  }
+  clearTimeout(timeoutId);
 
   if (!res.ok) {
     const json = await res.json().catch(() => ({}));

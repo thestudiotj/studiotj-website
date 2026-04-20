@@ -9,7 +9,7 @@ const MIRRORS = [
   'https://overpass.kumi.systems/api/interpreter',
 ];
 
-const PER_MIRROR_MS = 8000;
+const PER_MIRROR_MS = 6000;
 const UA = 'StudioTJ-Scout/1.0 (https://studiotj.com)';
 const CACHE_TTL = 15 * 60 * 1000;
 
