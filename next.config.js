@@ -38,7 +38,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https://images-api.printify.com https://*.smugmug.com https://photos.studiotj.com",
               "font-src 'self' data:",
-              "connect-src 'self' https://api.stripe.com",
+              "connect-src 'self' https://api.stripe.com https://nominatim.openstreetmap.org https://api.open-meteo.com https://overpass-api.de https://overpass.kumi.systems https://overpass.private.coffee https://router.project-osrm.org",
               "frame-src https://js.stripe.com https://hooks.stripe.com https://www.youtube-nocookie.com https://www.youtube.com",
               "object-src 'none'",
               "base-uri 'self'",
@@ -46,7 +46,7 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
+            value: 'camera=(), microphone=(), geolocation=(self)',
           },
         ],
       },

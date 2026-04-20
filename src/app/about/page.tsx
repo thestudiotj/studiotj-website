@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -37,9 +38,14 @@ export default function AboutPage() {
             The site is curated. Everything here has been chosen, edited, and shipped on purpose.
             The rest waits its turn or stays in the archive.
           </p>
-          {/* TODO: Replace with final studio photo */}
-          <div className="aspect-[4/3] bg-dust/20 border border-dust/30 flex items-center justify-center">
-            <span className="text-muted text-sm tracking-widest uppercase">Photo — to be replaced</span>
+          <div className="w-48 h-48 relative overflow-hidden rounded-full">
+            <Image
+              src="/images/TjeerdvanderHeeft.webp"
+              alt="Tjeerd van der Heeft"
+              fill
+              className="object-cover object-top"
+              sizes="192px"
+            />
           </div>
         </section>
 

@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-18T22:00:53.795600+00:00",
+  "generated_at": "2026-04-18T23:49:26.838387+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -22,9 +22,6 @@
       "layout": "masonry",
       "style_intensity": "bold",
       "photo_ids": [
-        "2026-02-08-Sint-Pietersberg-export-dsc-0558",
-        "2026-02-08-Sint-Pietersberg-export-dsc-0560",
-        "2026-02-08-Sint-Pietersberg-export-dsc-0591",
         "2025-05-23-Haarlem-export-dsc-0789",
         "2025-05-23-Haarlem-export-dsc-0791",
         "2025-05-23-Haarlem-export-dsc-0801",
@@ -43,7 +40,10 @@
         "2025-05-23-Haarlem-export-dsc-0879",
         "2025-05-23-Haarlem-export-dsc-0882",
         "2025-05-23-Haarlem-export-dsc-0923",
-        "2025-05-23-Haarlem-export-dsc-0944"
+        "2025-05-23-Haarlem-export-dsc-0944",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0558",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0560",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0591"
       ],
       "meta_description": "Monochrome Moods — black and white photography that plays the contrasts of light and dark, finding the farthest edges and putting them in one image."
     },
@@ -65,8 +65,6 @@
       "layout": "masonry",
       "style_intensity": "moderate",
       "photo_ids": [
-        "2026-02-08-Sint-Pietersberg-export-dsc-0550",
-        "2026-02-08-Sint-Pietersberg-export-dsc-0661",
         "2025-05-23-Haarlem-export-dsc-0797",
         "2025-05-23-Haarlem-export-dsc-0800",
         "2025-05-23-Haarlem-export-dsc-0802",
@@ -93,7 +91,9 @@
         "2025-05-23-Haarlem-export-dsc-0927",
         "2025-05-23-Haarlem-export-dsc-0930",
         "2025-05-23-Haarlem-export-dsc-0934",
-        "2025-05-23-Haarlem-export-dsc-0939"
+        "2025-05-23-Haarlem-export-dsc-0939",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0550",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0661"
       ],
       "meta_description": "The Signature Collection — architectural photography where the building is the clear subject of the frame, from facade detail to landmark-through-context."
     },
@@ -114,6 +114,15 @@
       "layout": "masonry",
       "style_intensity": "moderate",
       "photo_ids": [
+        "2025-05-23-Haarlem-export-dsc-0788",
+        "2025-05-23-Haarlem-export-dsc-0792",
+        "2025-05-23-Haarlem-export-dsc-0826",
+        "2025-05-23-Haarlem-export-dsc-0830",
+        "2025-05-23-Haarlem-export-dsc-0843",
+        "2025-05-23-Haarlem-export-dsc-0845",
+        "2025-05-23-Haarlem-export-dsc-0846",
+        "2025-05-23-Haarlem-export-dsc-0886",
+        "2025-05-23-Haarlem-export-dsc-0921",
         "2026-02-08-Sint-Pietersberg-export-dsc-0496",
         "2026-02-08-Sint-Pietersberg-export-dsc-0500",
         "2026-02-08-Sint-Pietersberg-export-dsc-0510",
@@ -132,6 +141,7 @@
         "2026-02-08-Sint-Pietersberg-export-dsc-0585",
         "2026-02-08-Sint-Pietersberg-export-dsc-0589",
         "2026-02-08-Sint-Pietersberg-export-dsc-0595",
+        "2026-02-08-Sint-Pietersberg-export-dsc-0603",
         "2026-02-08-Sint-Pietersberg-export-dsc-0607",
         "2026-02-08-Sint-Pietersberg-export-dsc-0611",
         "2026-02-08-Sint-Pietersberg-export-dsc-0622",
@@ -143,16 +153,7 @@
         "2026-02-08-Sint-Pietersberg-export-dsc-0645",
         "2026-02-08-Sint-Pietersberg-export-dsc-0665",
         "2026-02-08-Sint-Pietersberg-export-dsc-0667",
-        "2026-02-08-Sint-Pietersberg-export-dsc-0672",
-        "2025-05-23-Haarlem-export-dsc-0788",
-        "2025-05-23-Haarlem-export-dsc-0792",
-        "2025-05-23-Haarlem-export-dsc-0826",
-        "2025-05-23-Haarlem-export-dsc-0830",
-        "2025-05-23-Haarlem-export-dsc-0843",
-        "2025-05-23-Haarlem-export-dsc-0845",
-        "2025-05-23-Haarlem-export-dsc-0846",
-        "2025-05-23-Haarlem-export-dsc-0886",
-        "2025-05-23-Haarlem-export-dsc-0921"
+        "2026-02-08-Sint-Pietersberg-export-dsc-0672"
       ],
       "meta_description": "The Atmospheric Collection — photography about the feeling of a place, urban or natural, where the mood of the scene is the subject, not the things in it."
     },
@@ -1855,6 +1856,24 @@
       "caption": "Art Nouveau platform canopy and station nameplate, Haarlem railway station.",
       "location": "Haarlem",
       "og_url": "https://photos.studiotj.com/og/photos/2025-05-23-Haarlem-export-dsc-0944.jpg"
+    },
+    {
+      "id": "2026-02-08-Sint-Pietersberg-export-dsc-0603",
+      "url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0603-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2026-02-08-Sint-Pietersberg-export/DSC_0603-thumb.webp",
+      "title": "Quarry Pool Clarity ENCI Sint-Pietersberg",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#9c8871",
+        "#4b7980",
+        "#294d40"
+      ],
+      "collections": [],
+      "shoot_folder": "2026-02-08-Sint-Pietersberg-export",
+      "date": "2026-02-08",
+      "caption": "Flooded limestone quarry pool, ENCI-groeve Sint-Pietersberg, Netherlands.",
+      "location": "ENCI-groeve Sint-Pietersberg",
+      "og_url": "https://photos.studiotj.com/og/photos/2026-02-08-Sint-Pietersberg-export-dsc-0603.jpg"
     }
   ]
 }

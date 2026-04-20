@@ -43,7 +43,11 @@
       "Bash(curl -sI https://photos.studiotj.com/og/studiotj-default.jpg)",
       "Bash(curl -sI https://photos.studiotj.com/og/subtext-lab-default.jpg)",
       "Bash(curl *)",
-      "Bash(npm info *)"
+      "Bash(npm info *)",
+      "Bash(python -c \"from PIL import Image; print\\('pillow ok'\\)\")",
+      "Bash(py *)",
+      "Bash(SCOUT_PASSWORD=test123 npm run dev -- --port 3333)",
+      "Bash(kill %1)"
     ]
   }
 }
