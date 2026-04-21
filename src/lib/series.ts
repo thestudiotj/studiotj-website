@@ -112,6 +112,10 @@ export function getAllPhotoIdsInSeries(): string[] {
   return Array.from(new Set(getAllSeriesPhotos().map(p => p.photo_id)))
 }
 
+export function getPhotoCountForSeries(slug: string): number {
+  return getAllSeriesPhotos().filter(p => p.series_slug === slug).length
+}
+
 // ─── Photo conversion ─────────────────────────────────────────────────────────
 
 export function seriesPhotoToGalleryPhoto(p: SeriesPhoto): Photo {
