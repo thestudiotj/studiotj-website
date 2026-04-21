@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import type { Photo } from './portfolio'
 import type { Series, SeriesPhoto } from '@/types/series'
+import { routeSlugToTitle } from '@/lib/utils'
 
 export const DEFAULT_OG = 'https://photos.studiotj.com/og/studiotj-default.jpg'
 
@@ -87,7 +88,7 @@ export function getRouteEntries(): RouteEntry[] {
       )
       return {
         route_slug,
-        display_name: photos[0].route_display_name ?? route_slug,
+        display_name: photos[0].route_display_name ?? routeSlugToTitle(route_slug),
         shoot_date: photos[0].shoot_date,
         photo_count: photos.length,
         hero_thumb_url: sorted[0]?.thumb_url ?? null,

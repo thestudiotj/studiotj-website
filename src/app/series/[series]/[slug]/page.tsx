@@ -12,6 +12,7 @@ import {
   seriesPhotoToGalleryPhoto,
   DEFAULT_OG,
 } from '@/lib/series'
+import { routeSlugToTitle } from '@/lib/utils'
 import Gallery from '@/components/Gallery'
 import PoolGallery from '@/components/PoolGallery'
 
@@ -48,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     if (photos.length === 0) return {}
     const hero = getDerivedHero(photos)
     const ogImage = hero?.hero_url ?? DEFAULT_OG
-    const displayName = photos[0].route_display_name ?? params.slug
+    const displayName = photos[0].route_display_name ?? routeSlugToTitle(params.slug)
     return {
       title: `${displayName} — Routes`,
       description: series.description,
@@ -86,7 +87,7 @@ export default function SeriesSlugPage({ params }: PageProps) {
     const photos = getPhotosForRoute(params.slug)
     if (photos.length === 0) notFound()
 
-    const displayName = photos[0].route_display_name ?? params.slug
+    const displayName = photos[0].route_display_name ?? routeSlugToTitle(params.slug)
     const shootDate = photos[0].shoot_date
     const galleryPhotos = photos.map(seriesPhotoToGalleryPhoto)
 
