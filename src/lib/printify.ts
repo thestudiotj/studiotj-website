@@ -111,6 +111,23 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
       details.push(...batchResults)
     }
 
+    // TEMPORARY DIAGNOSTIC — remove after root cause identified
+    for (const p of details) {
+      if (p) {
+        const enabledCount = Array.isArray(p.variants)
+          ? p.variants.filter(v => v.is_enabled === true).length
+          : 0
+        const totalCount = Array.isArray(p.variants) ? p.variants.length : 0
+        const externalState = p.external?.id
+          ? `present(${p.external.id})`
+          : 'null'
+        console.log(
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          `[printify-diag] product ${p.id} | title="${(p.title ?? '').slice(0, 40)}" | external.id=${externalState} | visible=${p.visible} | is_locked=${(p as any).is_locked} | variants=${enabledCount}/${totalCount} enabled`
+        )
+      }
+    }
+
     // Step 3: filter to products that are live and buyable.
     // Printify's external.id alone is unreliable — dashboard-deleted legacy
     // products (e.g. Shopify-migration remnants) can retain a stale external.id
