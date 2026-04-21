@@ -138,9 +138,20 @@ export default async function SubtextLabPage({
       )}
 
       {posts.length === 0 ? (
-        <p className="text-muted italic">
-          No entries yet — still watching, still reading, still playing.
-        </p>
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto py-20">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/subtext-lab-header-logo.webp"
+            alt="The Subtext Lab"
+            width={96}
+            height={96}
+            className="mb-6"
+          />
+          <h2 className="font-display text-3xl mb-4">The Subtext Lab</h2>
+          <p className="text-muted leading-relaxed">
+            Media analysis — games, film, TV, anime, manga, comics, books, music, and the digital ground they sit on. Where StudioTJ is about what a photograph sees, The Subtext Lab is about what a text or a screen means. Essays, articles, and video by T.J. van der Heeft.
+          </p>
+        </div>
       ) : visible.length === 0 ? (
         <p className="text-muted italic">
           No entries yet — still watching, still reading, still playing.
