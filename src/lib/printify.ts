@@ -111,10 +111,15 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
       details.push(...batchResults)
     }
 
-    // Step 3: filter to products that have `external.id` (published to API store)
-    const published = details.filter(
-      (p): p is PrintifyProduct => p !== null && !!p.external && !!p.external.id
-    )
+    // Step 3: filter to products that are published AND have at least one enabled variant.
+    // The enabled-variant check guards against dashboard-deleted products that Printify's
+    // list endpoint still returns with a stale external.id but all variants disabled.
+    const published = details.filter((p): p is PrintifyProduct => {
+      if (p === null) return false
+      const hasExternalId = !!p.external?.id
+      const hasEnabledVariant = p.variants?.some(v => v.is_enabled === true) ?? false
+      return hasExternalId && hasEnabledVariant
+    })
     console.log('[printify] getProducts: published to API store:', published.length)
 
     return published
