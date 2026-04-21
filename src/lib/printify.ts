@@ -111,10 +111,19 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
       details.push(...batchResults)
     }
 
-    // Step 3: filter to products that have `external.id` (published to API store)
-    const published = details.filter(
-      (p): p is PrintifyProduct => p !== null && !!p.external?.id
-    )
+    // Step 3: filter to products that are live and buyable.
+    // Printify's external.id alone is unreliable — dashboard-deleted legacy
+    // products (e.g. Shopify-migration remnants) can retain a stale external.id
+    // even after deletion. At least one enabled variant is a secondary signal
+    // that the product is actually live; a legitimately-live product always has
+    // external.id AND >=1 enabled variant.
+    const published = details.filter((p): p is PrintifyProduct => {
+      if (p === null) return false
+      const hasExternalId = !!p.external?.id
+      const hasEnabledVariant = Array.isArray(p.variants)
+        && p.variants.some(v => v.is_enabled === true)
+      return hasExternalId && hasEnabledVariant
+    })
     console.log('[printify] getProducts: published to API store:', published.length)
 
     return published
