@@ -197,9 +197,9 @@ export default async function HomePage() {
             StudioTJ is a one-person studio working across photography, print, and writing. The photographs come first; the shop, the series, and The Subtext Lab are what grew around them.
           </p>
           <p className="text-muted leading-relaxed mb-8">
-            Run by T.J. van der Heeft. Prints and products live in the <Link href="/shop">shop</Link>.
+            Created by Tjeerd van der Heeft.
           </p>
-          <Link href="/about" className="btn-outline">About the studio</Link>
+          <Link href="/about" className="btn-outline">About the studio →</Link>
         </div>
       </section>
 
@@ -220,9 +220,10 @@ export default async function HomePage() {
 
       {/* Email capture */}
       <EmailCapture
+        id="email-capture"
         variant="light"
-        headline="A list for later"
-        subline="Leave your address and it joins the list. When StudioTJ has something worth sending, this is how you'll hear about it first."
+        headline="When there's something to share"
+        subline="New photography, new writing from The Subtext Lab, new work in the shop — gathered into one email when it's worth sending."
       />
     </>
   )

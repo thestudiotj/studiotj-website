@@ -119,7 +119,7 @@ export default function Footer() {
           KvK 75602172 · BTW NL002283139B11 · Postbus: Keurenplein 41 Box D2818, 1069CD Amsterdam
         </p>
         <p className="text-xs text-muted">
-          © {new Date().getFullYear()} StudioTJ — Eenmanszaak, Netherlands
+          © {new Date().getFullYear()} StudioTJ
         </p>
       </div>
     </footer>

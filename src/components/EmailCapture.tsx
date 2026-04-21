@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 interface EmailCaptureProps {
+  id?: string
   variant?: 'light' | 'dark'
   headline?: string
   subline?: string
@@ -10,6 +11,7 @@ interface EmailCaptureProps {
 }
 
 export default function EmailCapture({
+  id,
   variant = 'dark',
   headline = 'Stay close to the work',
   subline = 'An occasional email when something new is ready. No schedule, no noise.',
@@ -56,7 +58,7 @@ export default function EmailCapture({
   }
 
   return (
-    <section className={`${bg} px-6 md:px-12 py-20 border-t ${border}`}>
+    <section id={id} className={`${bg} px-6 md:px-12 py-20 border-t ${border}`}>
       <div className="max-w-xl">
         {/* Cloud mark — subtle, ties to brand */}
         <div className={`mb-6 opacity-20 ${isDark ? 'text-paper' : 'text-ink'}`}>
@@ -107,7 +109,7 @@ export default function EmailCapture({
         )}
 
         <p className={`text-xs ${isDark ? 'text-paper/50' : 'text-muted/50'} mt-4`}>
-          No tracking. Unsubscribe any time. KvK-registered eenmanszaak.
+          Unsubscribe any time.
         </p>
       </div>
     </section>

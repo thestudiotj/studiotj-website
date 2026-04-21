@@ -76,11 +76,11 @@ export const metadata: Metadata = {
     default: 'StudioTJ',
     template: '%s · StudioTJ',
   },
-  description: 'StudioTJ is a one-person studio — photography across four collections, ongoing series, a print shop, and essays at The Subtext Lab.',
+  description: 'StudioTJ is a one-person studio created by Tjeerd van der Heeft — photography, print, and writing. Four collections, a shop, and The Subtext Lab.',
   openGraph: {
     siteName: 'StudioTJ',
     type: 'website',
-    description: 'StudioTJ is a one-person studio — photography across four collections, ongoing series, a print shop, and essays at The Subtext Lab.',
+    description: 'StudioTJ is a one-person studio created by Tjeerd van der Heeft — photography, print, and writing. Four collections, a shop, and The Subtext Lab.',
     images: [
       {
         url: 'https://photos.studiotj.com/og/studiotj-default.jpg',

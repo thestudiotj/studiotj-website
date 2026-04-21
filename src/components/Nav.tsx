@@ -42,9 +42,9 @@ export default function Nav() {
           <img
             src="/images/logo-header.webp"
             alt="StudioTJ"
-            width={132}
-            height={44}
-            style={{ height: '44px', width: 'auto' }}
+            width={48}
+            height={48}
+            style={{ height: '48px', width: '48px' }}
           />
         </Link>
 

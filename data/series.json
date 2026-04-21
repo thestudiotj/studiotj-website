@@ -51,7 +51,7 @@
     {
       "slug": "routes",
       "display_name": "Routes",
-      "description": "Text-forward diaristic one-shoot sequences.",
+      "description": "A single walk, in order. One shoot, photographed as the place unfolded — outdoors, indoors, a building, a museum. Chronological; the sequence matters.",
       "priority": 0,
       "routing": "manual_only",
       "evergreen_note": "A named route through a place is a thing people look for.",

@@ -24,7 +24,7 @@ export default function PortfolioPage() {
           The work
         </h1>
         <p className="text-muted text-lg max-w-xl leading-relaxed">
-          Collections from the Netherlands — light, geometry, and the texture of places that reward a second look.
+          Four collections. Each one answers a different question about what a photograph can be.
         </p>
       </div>
 

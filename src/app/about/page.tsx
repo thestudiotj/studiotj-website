@@ -20,7 +20,7 @@ export default function AboutPage() {
             The studio
           </h2>
           <p className="text-muted leading-relaxed mb-4">
-            StudioTJ is a Dutch photography practice. Colour photography of architecture is the
+            StudioTJ is a Dutch photography practice created by Tjeerd van der Heeft. Colour photography of architecture is the
             main lane — bold geometry, urban form, the lines buildings hold. Monochrome is the
             other lane, and the one I started in. It&apos;s stayed because monochrome carries
             texture, weight, and contrast on its own terms.
@@ -36,7 +36,6 @@ export default function AboutPage() {
           </p>
           <p className="text-muted leading-relaxed mb-8">
             The site is curated. Everything here has been chosen, edited, and shipped on purpose.
-            The rest waits its turn or stays in the archive.
           </p>
           <div className="w-48 h-48 relative overflow-hidden rounded-full">
             <Image
