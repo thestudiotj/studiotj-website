@@ -1,8 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import { getPortfolio } from './portfolio'
 import type { Photo } from './portfolio'
-import type { Series, SeriesEntry, TagFilter, Group, SubSeriesResolved } from '@/types/series'
+import type { Series, SeriesPhoto } from '@/types/series'
 
 export const DEFAULT_OG = 'https://photos.studiotj.com/og/studiotj-default.jpg'
 
@@ -14,9 +13,9 @@ function readSeriesFile(): { version: string; series: Series[] } {
   )
 }
 
-function readEntriesFile(): { version: string; entries: SeriesEntry[] } {
+function readSeriesPhotosFile(): { version: string; photos: SeriesPhoto[] } {
   return JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), 'data', 'series_entries.json'), 'utf-8')
+    fs.readFileSync(path.join(process.cwd(), 'data', 'series-photos.json'), 'utf-8')
   )
 }
 
@@ -33,30 +32,6 @@ function readTagDisplayNames(): Record<string, string> {
   }
 }
 
-// ─── Photo map cache (safe for static builds — one process, one read) ─────────
-
-let _photoMap: Map<string, Photo> | null = null
-
-function getPhotoMap(): Map<string, Photo> {
-  if (!_photoMap) {
-    const data = getPortfolio()
-    _photoMap = data ? new Map(data.photos.map(p => [p.id, p])) : new Map()
-  }
-  return _photoMap
-}
-
-// ─── Recency sort: approved_at → shoot_date → entry_slug (stability) ──────────
-
-function sortByRecency(entries: SeriesEntry[]): SeriesEntry[] {
-  return [...entries].sort((a, b) => {
-    const c1 = b.approved_at.localeCompare(a.approved_at)
-    if (c1 !== 0) return c1
-    const c2 = b.shoot_date.localeCompare(a.shoot_date)
-    if (c2 !== 0) return c2
-    return b.entry_slug.localeCompare(a.entry_slug)
-  })
-}
-
 // ─── Series ───────────────────────────────────────────────────────────────────
 
 export function getAllSeries(): Series[] {
@@ -69,155 +44,101 @@ export function getSeriesBySlug(slug: string): Series | null {
   return getAllSeries().find(s => s.slug === slug) ?? null
 }
 
-export type SeriesShape = 'flat_filter' | 'grouped' | 'sub_series'
+// ─── Series Photos ────────────────────────────────────────────────────────────
 
-export function getSeriesShape(series: Series): SeriesShape {
-  if (series.grouping !== null) return 'grouped'
-  if (series.sub_series !== null) return 'sub_series'
-  return 'flat_filter'
+export function getAllSeriesPhotos(): SeriesPhoto[] {
+  return readSeriesPhotosFile().photos
 }
 
-// ─── Entries ──────────────────────────────────────────────────────────────────
-
-export function getAllEntries(): SeriesEntry[] {
-  return readEntriesFile().entries
+export function getSeriesPhotosBySubPool(seriesSlug: string, subPoolSlug: string): SeriesPhoto[] {
+  // Deterministic server order: datetime_original descending (latest first).
+  // Client-side PoolGallery shuffles on mount.
+  return getAllSeriesPhotos()
+    .filter(p => p.series_slug === seriesSlug && p.sub_pool_slug === subPoolSlug)
+    .sort((a, b) => {
+      const aDate = a.datetime_original ?? a.shoot_date
+      const bDate = b.datetime_original ?? b.shoot_date
+      return bDate.localeCompare(aDate)
+    })
 }
 
-export function getEntriesForSeries(seriesSlug: string): SeriesEntry[] {
-  return sortByRecency(getAllEntries().filter(e => e.series_slug === seriesSlug))
+export type RouteEntry = {
+  route_slug: string
+  display_name: string
+  shoot_date: string
+  photo_count: number
+  hero_thumb_url: string | null
 }
 
-export function getEntryByPath(seriesSlug: string, entrySlug: string): SeriesEntry | null {
-  return getAllEntries().find(
-    e => e.series_slug === seriesSlug && e.entry_slug === entrySlug
-  ) ?? null
+export function getRouteEntries(): RouteEntry[] {
+  const routePhotos = getAllSeriesPhotos().filter(p => p.series_slug === 'routes')
+  const grouped = new Map<string, SeriesPhoto[]>()
+  for (const photo of routePhotos) {
+    if (!photo.route_slug) continue
+    const arr = grouped.get(photo.route_slug) ?? []
+    arr.push(photo)
+    grouped.set(photo.route_slug, arr)
+  }
+  return Array.from(grouped.entries())
+    .map(([route_slug, photos]) => {
+      // Sort chronologically to get the first photo as hero
+      const sorted = [...photos].sort((a, b) =>
+        (a.datetime_original ?? a.shoot_date).localeCompare(b.datetime_original ?? b.shoot_date)
+      )
+      return {
+        route_slug,
+        display_name: photos[0].route_display_name ?? route_slug,
+        shoot_date: photos[0].shoot_date,
+        photo_count: photos.length,
+        hero_thumb_url: sorted[0]?.thumb_url ?? null,
+      }
+    })
+    .sort((a, b) => b.shoot_date.localeCompare(a.shoot_date))
 }
 
-export function getLatestEntry(entries: SeriesEntry[]): SeriesEntry | null {
-  return entries.length > 0 ? sortByRecency(entries)[0] : null
+export function getPhotosForRoute(routeSlug: string): SeriesPhoto[] {
+  return getAllSeriesPhotos()
+    .filter(p => p.series_slug === 'routes' && p.route_slug === routeSlug)
+    .sort((a, b) =>
+      (a.datetime_original ?? a.shoot_date).localeCompare(b.datetime_original ?? b.shoot_date)
+    )
+}
+
+export function getDerivedHero(photos: SeriesPhoto[]): SeriesPhoto | null {
+  return photos.length > 0 ? photos[0] : null
+}
+
+export function getAllPhotoIdsInSeries(): string[] {
+  return Array.from(new Set(getAllSeriesPhotos().map(p => p.photo_id)))
+}
+
+// ─── Photo conversion ─────────────────────────────────────────────────────────
+
+export function seriesPhotoToGalleryPhoto(p: SeriesPhoto): Photo {
+  if (!p.hero_url) {
+    console.warn(`[series] Photo "${p.photo_id}" has no hero_url`)
+  }
+  return {
+    id: p.photo_id,
+    url: p.hero_url,
+    thumbnail_url: p.thumb_url,
+    title: p.alt,
+    aspect_ratio: p.width / p.height,
+    dominant_colors: [],
+    collections: [],
+    shoot_folder: '',
+    date: p.shoot_date,
+  }
 }
 
 // ─── Tag helpers ──────────────────────────────────────────────────────────────
 
-export function matchesTagFilter(entry: SeriesEntry, filter: TagFilter): boolean {
-  if (filter.all) {
-    return filter.all.every(cond =>
-      typeof cond === 'string' ? entry.tags.includes(cond) : matchesTagFilter(entry, cond)
-    )
-  }
-  if (filter.any) {
-    return filter.any.some(cond =>
-      typeof cond === 'string' ? entry.tags.includes(cond) : matchesTagFilter(entry, cond)
-    )
-  }
-  return true
-}
-
 export function getDisplayNameForTag(tagValue: string): string {
   const overrides = readTagDisplayNames()
   if (overrides[tagValue]) return overrides[tagValue]
-  // Title-case the slug part (after the last ':')
   const slug = tagValue.includes(':') ? tagValue.split(':').slice(1).join(':') : tagValue
   return slug
     .split('-')
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ')
-}
-
-// ─── Groups (grouped series) ──────────────────────────────────────────────────
-
-export function getGroupsForSeries(series: Series): Group[] {
-  if (!series.grouping) return []
-  const { by_tag_prefix, excluded_tags } = series.grouping
-  const entries = getEntriesForSeries(series.slug)
-  const groupMap = new Map<string, SeriesEntry[]>()
-
-  for (const entry of entries) {
-    for (const tag of entry.tags) {
-      if (tag.startsWith(by_tag_prefix) && !excluded_tags.includes(tag)) {
-        const slug = tag.slice(by_tag_prefix.length)
-        if (!groupMap.has(slug)) groupMap.set(slug, [])
-        groupMap.get(slug)!.push(entry)
-        break // each entry counted once per group
-      }
-    }
-  }
-
-  const groups: Group[] = Array.from(groupMap.entries()).map(([slug, groupEntries]) => {
-    const sorted = sortByRecency(groupEntries)
-    return {
-      slug,
-      display_name: getDisplayNameForTag(`${by_tag_prefix}${slug}`),
-      entries: sorted,
-      heroEntry: sorted[0] ?? null,
-    }
-  })
-
-  return groups.sort((a, b) =>
-    (b.heroEntry?.approved_at ?? '').localeCompare(a.heroEntry?.approved_at ?? '')
-  )
-}
-
-// ─── Sub-series (sub_series series) ───────────────────────────────────────────
-
-export function getSubSeriesForSeries(series: Series): SubSeriesResolved[] {
-  if (!series.sub_series) return []
-  const allEntries = getEntriesForSeries(series.slug)
-
-  // Preserve the order defined in series.json (spring → summer → autumn → winter)
-  return series.sub_series.map(ss => {
-    const entries = sortByRecency(
-      allEntries.filter(e => matchesTagFilter(e, ss.tag_filter))
-    )
-    const canonicalTag = getCanonicalTagFromFilter(ss.tag_filter) ?? ss.slug
-    return {
-      slug: ss.slug,
-      display_name: getDisplayNameForTag(canonicalTag),
-      tag_filter: ss.tag_filter,
-      entries,
-      heroEntry: entries[0] ?? null,
-    }
-  })
-}
-
-function getCanonicalTagFromFilter(filter: TagFilter): string | null {
-  const first = filter.all?.[0] ?? filter.any?.[0]
-  return typeof first === 'string' ? first : null
-}
-
-// ─── Homepage helpers ─────────────────────────────────────────────────────────
-
-/** Flat deduped array of every photo_id across all series entries. */
-export function getAllSeriesEntryPhotoIds(): string[] {
-  const entries = getAllEntries()
-  const seen = new Set<string>()
-  for (const entry of entries) {
-    for (const id of entry.photo_ids) {
-      seen.add(id)
-    }
-  }
-  return Array.from(seen)
-}
-
-// ─── Photo resolution ─────────────────────────────────────────────────────────
-
-export function resolvePhoto(photoId: string): Photo | null {
-  const photo = getPhotoMap().get(photoId)
-  if (!photo) {
-    if (process.env.NODE_ENV === 'production') {
-      throw new Error(
-        `[series] Photo "${photoId}" not found in portfolio.json — fix series_entries.json`
-      )
-    }
-    console.warn(`[series] Photo "${photoId}" not found in portfolio.json`)
-    return null
-  }
-  return photo
-}
-
-export function resolvePhotos(photoIds: string[]): Photo[] {
-  return photoIds.flatMap(id => {
-    const photo = resolvePhoto(id)
-    return photo ? [photo] : []
-  })
 }

@@ -109,7 +109,7 @@ export default function AboutPage() {
               >
                 /series
               </Link>{' '}
-              — ongoing sequences of photographs, organized by subject, place, and season.
+              — ongoing sequences of photographs, organized by subject, weather, and season.
             </li>
             <li className="text-muted leading-relaxed">
               <Link

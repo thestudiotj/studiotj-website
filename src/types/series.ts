@@ -1,54 +1,36 @@
-export interface TagFilter {
-  all?: (string | TagFilter)[]
-  any?: (string | TagFilter)[]
-}
+export type TagFilter =
+  | { all: string[] }
+  | { any: string[] }
 
-export interface Grouping {
-  by_tag_prefix: string
-  excluded_tags: string[]
-}
-
-export interface SubSeries {
+export type SubPool = {
   slug: string
   tag_filter: TagFilter
 }
 
-export interface Series {
+export type Series = {
   slug: string
   display_name: string
   description: string
-  tag_filter: TagFilter | null
-  grouping: Grouping | null
-  sub_series: SubSeries[] | null
+  priority: number
+  sub_pools?: SubPool[]
+  routing?: 'manual_only'
   evergreen_note: string
   refill_note: string
   active: boolean
   sort_order: number
 }
 
-export interface SeriesEntry {
+export type SeriesPhoto = {
+  photo_id: string
   series_slug: string
-  entry_slug: string
-  display_name: string
+  sub_pool_slug: string | null
+  hero_url: string
+  thumb_url: string
+  width: number
+  height: number
+  alt: string
   shoot_date: string
-  approved_at: string
-  hero_photo_id: string
-  photo_ids: string[]
-  tags: string[]
-  notes?: string
-}
-
-export interface Group {
-  slug: string
-  display_name: string
-  entries: SeriesEntry[]
-  heroEntry: SeriesEntry | null
-}
-
-export interface SubSeriesResolved {
-  slug: string
-  display_name: string
-  tag_filter: TagFilter
-  entries: SeriesEntry[]
-  heroEntry: SeriesEntry | null
+  datetime_original: string | null
+  route_slug?: string
+  route_display_name?: string
 }

@@ -4,16 +4,14 @@ import type { Metadata } from 'next'
 import {
   getAllSeries,
   getSeriesBySlug,
-  getSeriesShape,
-  getEntriesForSeries,
-  getGroupsForSeries,
-  getSubSeriesForSeries,
-  getLatestEntry,
-  resolvePhoto,
+  getAllSeriesPhotos,
+  getSeriesPhotosBySubPool,
+  getDerivedHero,
+  getRouteEntries,
+  getDisplayNameForTag,
   DEFAULT_OG,
 } from '@/lib/series'
 import PhotoCard from '@/components/PhotoCard'
-import ExpandList from '@/components/ExpandList'
 
 export const dynamicParams = false
 
@@ -29,10 +27,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const series = getSeriesBySlug(params.series)
   if (!series) return {}
 
-  const entries = getEntriesForSeries(series.slug)
-  const latest = getLatestEntry(entries)
-  const heroPhoto = latest ? resolvePhoto(latest.hero_photo_id) : null
-  const ogImage = heroPhoto ? (heroPhoto.og_url ?? heroPhoto.url) : DEFAULT_OG
+  const allPhotos = getAllSeriesPhotos()
+  const seriesPhotos = allPhotos.filter(p => p.series_slug === series.slug)
+  const hero = getDerivedHero(seriesPhotos)
+  const ogImage = hero?.hero_url ?? DEFAULT_OG
 
   return {
     title: `${series.display_name} — Series`,
@@ -51,59 +49,14 @@ export default function SeriesLevelPage({ params }: PageProps) {
   const series = getSeriesBySlug(params.series)
   if (!series) notFound()
 
-  const shape = getSeriesShape(series)
+  const isRoutes = series.routing === 'manual_only'
 
-  // ── sub_series: fixed tile grid (always show all, no expand, fixed order) ──
+  // ── Routes: list of route entry cards ──────────────────────────────────────
 
-  if (shape === 'sub_series') {
-    const subSeries = getSubSeriesForSeries(series)
-    return (
-      <div className="min-h-screen bg-paper">
-        <div className="pt-32 pb-16 px-6 md:px-12">
-          <BreadcrumbLine>
-            <Link href="/series" className="hover:text-ink transition-colors">Series</Link>
-            <span>{series.display_name}</span>
-          </BreadcrumbLine>
-          <h1 className="font-display text-5xl md:text-7xl text-ink leading-tight mb-6 mt-4">
-            {series.display_name}
-          </h1>
-          <p className="text-muted text-lg max-w-xl leading-relaxed">{series.description}</p>
-        </div>
+  if (isRoutes) {
+    const routes = getRouteEntries()
 
-        <div className="px-6 md:px-12 mb-12">
-          <div className="h-px bg-dust/40" />
-        </div>
-
-        <div className="px-6 md:px-12 pb-24">
-          <div className="max-w-3xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-              {subSeries.map((ss, i) => {
-                const heroPhoto = ss.heroEntry
-                  ? resolvePhoto(ss.heroEntry.hero_photo_id)
-                  : null
-                return (
-                  <PhotoCard
-                    key={ss.slug}
-                    href={`/series/${series.slug}/${ss.slug}`}
-                    heroUrl={heroPhoto?.thumbnail_url ?? null}
-                    title={ss.display_name}
-                    index={i}
-                  />
-                )
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  // ── grouped: group cards listing ──────────────────────────────────────────
-
-  if (shape === 'grouped') {
-    const groups = getGroupsForSeries(series)
-
-    if (groups.length === 0) {
+    if (routes.length === 0) {
       return <EmptyStatePage series={series} label={series.display_name} />
     }
 
@@ -126,39 +79,32 @@ export default function SeriesLevelPage({ params }: PageProps) {
 
         <div className="px-6 md:px-12 pb-24">
           <div className="max-w-3xl mx-auto">
-            <ExpandList
-              gridClassName="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8"
-            >
-              {groups.map((group, i) => {
-                const heroPhoto = group.heroEntry
-                  ? resolvePhoto(group.heroEntry.hero_photo_id)
-                  : null
-                const meta = `${group.entries.length} ${group.entries.length === 1 ? 'entry' : 'entries'}`
-                return (
-                  <PhotoCard
-                    key={group.slug}
-                    href={`/series/${series.slug}/${group.slug}`}
-                    heroUrl={heroPhoto?.thumbnail_url ?? null}
-                    title={group.display_name}
-                    subtitle={meta}
-                    index={i}
-                  />
-                )
-              })}
-            </ExpandList>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+              {routes.map((route, i) => (
+                <PhotoCard
+                  key={route.route_slug}
+                  href={`/series/routes/${route.route_slug}`}
+                  heroUrl={route.hero_thumb_url}
+                  title={route.display_name}
+                  subtitle={`${formatShootDate(route.shoot_date)} · ${route.photo_count} ${route.photo_count === 1 ? 'photo' : 'photos'}`}
+                  index={i}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
     )
   }
 
-  // ── flat_filter: entry listing ────────────────────────────────────────────
+  // ── Non-Routes: sub_pool tiles ─────────────────────────────────────────────
 
-  const entries = getEntriesForSeries(series.slug)
-
-  if (entries.length === 0) {
-    return <EmptyStatePage series={series} label={series.display_name} />
-  }
+  const subPools = series.sub_pools ?? []
+  // 5-tile weather: 3-col grid; ≤4 tiles: 2-col grid
+  const gridCols =
+    subPools.length >= 5
+      ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+      : 'grid-cols-1 sm:grid-cols-2'
 
   return (
     <div className="min-h-screen bg-paper">
@@ -179,23 +125,21 @@ export default function SeriesLevelPage({ params }: PageProps) {
 
       <div className="px-6 md:px-12 pb-24">
         <div className="max-w-3xl mx-auto">
-          <ExpandList
-            gridClassName="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8"
-          >
-            {entries.map((entry, i) => {
-              const heroPhoto = resolvePhoto(entry.hero_photo_id)
+          <div className={`grid ${gridCols} gap-6 md:gap-8`}>
+            {subPools.map((sp, i) => {
+              const poolPhotos = getSeriesPhotosBySubPool(series.slug, sp.slug)
+              const hero = getDerivedHero(poolPhotos)
               return (
                 <PhotoCard
-                  key={entry.entry_slug}
-                  href={`/series/${series.slug}/${entry.entry_slug}`}
-                  heroUrl={heroPhoto?.thumbnail_url ?? null}
-                  title={entry.display_name}
-                  subtitle={formatShootDate(entry.shoot_date)}
+                  key={sp.slug}
+                  href={`/series/${series.slug}/${sp.slug}`}
+                  heroUrl={hero?.thumb_url ?? null}
+                  title={getDisplayNameForTag(sp.slug)}
                   index={i}
                 />
               )
             })}
-          </ExpandList>
+          </div>
         </div>
       </div>
     </div>

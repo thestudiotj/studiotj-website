@@ -1,4 +1,7 @@
 {
   "version": "1.0",
-  "display_names": {}
+  "display_names": {
+    "golden-hour": "Golden Hour",
+    "blue-hour": "Blue Hour"
+  }
 }

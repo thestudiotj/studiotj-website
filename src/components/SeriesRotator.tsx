@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import type { Photo } from '@/lib/portfolio'
+import type { SeriesPhoto } from '@/types/series'
 
 interface SeriesRotatorProps {
-  photos: Photo[]
+  photos: SeriesPhoto[]
 }
 
 /**
@@ -13,7 +13,7 @@ interface SeriesRotatorProps {
  * Intentional flash matches the CollectionCard pattern.
  */
 export default function SeriesRotator({ photos }: SeriesRotatorProps) {
-  const [photo] = useState<Photo | null>(() =>
+  const [photo] = useState<SeriesPhoto | null>(() =>
     photos.length > 0 ? photos[Math.floor(Math.random() * photos.length)] : null
   )
 
@@ -25,8 +25,8 @@ export default function SeriesRotator({ photos }: SeriesRotatorProps) {
       {photo && (
         /* eslint-disable-next-line @next/next/no-img-element */
         <img
-          src={photo.url}
-          alt={photo.title}
+          src={photo.thumb_url}
+          alt={photo.alt}
           className="absolute inset-0 w-full h-full object-cover"
           loading="lazy"
         />

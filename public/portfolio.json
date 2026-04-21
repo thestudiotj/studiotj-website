@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-04-20T18:43:07.970124+00:00",
+  "generated_at": "2026-04-21T10:37:29.049485+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -3128,6 +3128,348 @@
       "caption": "Mature lime tree in dappled spring light beside the medieval Burcht wall, Leiden.",
       "location": "Leiden walk towards, in and around Burcht",
       "og_url": "https://photos.studiotj.com/og/photos/2025-04-29-Leiden-export-2025-04-29-leiden-97.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0223",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0223-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0223-thumb.webp",
+      "title": "Maas Bridge Backlit Autumn Riverbank",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#a4a7b1",
+        "#5f666d",
+        "#232012"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Road bridge over the Maas river, backlit autumn afternoon, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0223.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0225",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0225-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0225-thumb.webp",
+      "title": "Observatory Dome Rising, Maastricht",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#ccd1df",
+        "#95969e",
+        "#404a56"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Domed observatory tower seen from low angle, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0225.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0232",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0232-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0232-thumb.webp",
+      "title": "Concrete Bridge Over River Maas, Maastricht",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#b0bed5",
+        "#818ea5",
+        "#201f1d"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Low-angle view beneath concrete road bridge over the Maas, Maastricht, autumn.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0232.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0233",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0233-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0233-thumb.webp",
+      "title": "Under the Bridge, Maastricht River",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#c4cbd7",
+        "#817868",
+        "#433623"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Underside of concrete road bridge over the Maas, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0233.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0240",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0240-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0240-thumb.webp",
+      "title": "Under the Bridge, Maastricht River Crossing",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#afb7be",
+        "#66543e",
+        "#372b1c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Underside of concrete road bridge over the Maas, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0240.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0243",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0243-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0243-thumb.webp",
+      "title": "Bouwverkeer Warning Sign Under Maastricht Bridge",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#5e6c79",
+        "#204762",
+        "#252316"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Construction traffic warning sign beneath concrete road bridge over the Maas, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0243.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0245",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0245-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0245-thumb.webp",
+      "title": "Concrete Bridge Over Maas, Maastricht",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#84a6c7",
+        "#4587c2",
+        "#3f443f"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Modern concrete road bridge spanning the Maas river, viewed from the riverbank, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0245.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0252",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0252-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0252-thumb.webp",
+      "title": "Brutalist Bridge Passage, Maastricht",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#8e9eae",
+        "#424243",
+        "#24201c"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Elevated brick and concrete bridge building on pilotis, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0252.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0262",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0262-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0262-thumb.webp",
+      "title": "Concrete Underpass Canal Maastricht",
+      "aspect_ratio": 1.4999,
+      "dominant_colors": [
+        "#a0a3a6",
+        "#716a66",
+        "#48473d"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Concrete pilotis underpass beside canal, brick building above, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0262.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0264",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0264-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0264-thumb.webp",
+      "title": "Beneath the Floating Pavilion, Maastricht",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#a19a92",
+        "#81796e",
+        "#514a39"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Underside of concrete pavilion structure over still water, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0264.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0266",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0266-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0266-thumb.webp",
+      "title": "Brick Faculty Building Over Maastricht Water",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#bab8be",
+        "#9898a2",
+        "#473d32"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Modern brick faculty building elevated on concrete pilotis over water, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0266.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0268",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0268-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0268-thumb.webp",
+      "title": "Government Building on Maastricht Waterfront",
+      "aspect_ratio": 1.5,
+      "dominant_colors": [
+        "#d8e1ee",
+        "#a4a9b1",
+        "#3d352d"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Modernist civic building with Dutch and provincial flags, viewed from the water, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0268.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0272",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0272-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0272-thumb.webp",
+      "title": "Under the Bridge, Maastricht River",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#b0c0cf",
+        "#625e4d",
+        "#363123"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Underside of concrete road bridge over the Maas, with flagpoles and willow, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0272.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0274",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0274-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0274-thumb.webp",
+      "title": "Brutalist Theatre on the Maas",
+      "aspect_ratio": 1.5001,
+      "dominant_colors": [
+        "#c3d3e5",
+        "#aab1bb",
+        "#514a3d"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Brutalist theatre complex viewed across the Maas river, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0274.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0278",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0278-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0278-thumb.webp",
+      "title": "Autumn Gate to the River",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#9e9777",
+        "#6e5c31",
+        "#403015"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Wooden gate beneath autumn oak canopy, riverside path, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0278.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0280",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0280-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0280-thumb.webp",
+      "title": "Country Path Into the Light, Maastricht",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#d0d1d5",
+        "#b1b9c6",
+        "#333322"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Paved rural path stretching toward backlit sun, Maastricht outskirts.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0280.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0288",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0288-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0288-thumb.webp",
+      "title": "Wooden Footbridge Into Autumn Trees",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#b9d4f0",
+        "#85919a",
+        "#40423b"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Wooden pedestrian bridge leading into autumn woodland, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0288.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0298",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0298-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0298-thumb.webp",
+      "title": "Church Spire Through Trees, Maastricht River",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#c8cad0",
+        "#767878",
+        "#1e2116"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Church spire silhouetted through riverside trees across the Maas, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0298.jpg"
+    },
+    {
+      "id": "2025-11-04-Maastricht-maas-walk-dsc-0302",
+      "url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0302-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-11-04-Maastricht-maas-walk/DSC_0302-thumb.webp",
+      "title": "Wooden Footbridge Over River, Maastricht",
+      "aspect_ratio": 0.6667,
+      "dominant_colors": [
+        "#c4d6eb",
+        "#9db6d2",
+        "#38362e"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-11-04-Maastricht-maas-walk",
+      "date": "2025-11-04",
+      "caption": "Wooden pedestrian bridge crossing a river channel, Maastricht.",
+      "location": "Maastricht",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-11-04-Maastricht-maas-walk-dsc-0302.jpg"
     }
   ]
 }

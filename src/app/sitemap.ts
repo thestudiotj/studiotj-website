@@ -2,13 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/content'
 import { getPortfolio } from '@/lib/portfolio'
 import { getProducts } from '@/lib/printify'
-import {
-  getAllSeries,
-  getSeriesShape,
-  getEntriesForSeries,
-  getGroupsForSeries,
-  getSubSeriesForSeries,
-} from '@/lib/series'
+import { getAllSeries, getRouteEntries } from '@/lib/series'
 
 const BASE_URL = 'https://studiotj.com'
 
@@ -55,35 +49,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allSeries = getAllSeries()
   for (const series of allSeries) {
     entries.push({ url: `${BASE_URL}/series/${series.slug}` })
-    const shape = getSeriesShape(series)
 
-    if (shape === 'flat_filter') {
-      for (const entry of getEntriesForSeries(series.slug)) {
-        entries.push({
-          url: `${BASE_URL}/series/${series.slug}/${entry.entry_slug}`,
-          lastModified: new Date(entry.approved_at),
-        })
-      }
-    } else if (shape === 'grouped') {
-      for (const group of getGroupsForSeries(series)) {
-        entries.push({ url: `${BASE_URL}/series/${series.slug}/${group.slug}` })
-        for (const entry of group.entries) {
-          entries.push({
-            url: `${BASE_URL}/series/${series.slug}/${group.slug}/${entry.entry_slug}`,
-            lastModified: new Date(entry.approved_at),
-          })
-        }
+    if (series.routing === 'manual_only') {
+      for (const route of getRouteEntries()) {
+        entries.push({ url: `${BASE_URL}/series/${series.slug}/${route.route_slug}` })
       }
     } else {
-      // sub_series
-      for (const ss of getSubSeriesForSeries(series)) {
-        entries.push({ url: `${BASE_URL}/series/${series.slug}/${ss.slug}` })
-        for (const entry of ss.entries) {
-          entries.push({
-            url: `${BASE_URL}/series/${series.slug}/${ss.slug}/${entry.entry_slug}`,
-            lastModified: new Date(entry.approved_at),
-          })
-        }
+      for (const sp of series.sub_pools ?? []) {
+        entries.push({ url: `${BASE_URL}/series/${series.slug}/${sp.slug}` })
       }
     }
   }

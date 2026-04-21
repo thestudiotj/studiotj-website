@@ -1,20 +1,16 @@
 import type { Metadata } from 'next'
-import {
-  getAllSeries,
-  getEntriesForSeries,
-  getLatestEntry,
-  resolvePhoto,
-} from '@/lib/series'
+import { getAllSeries, getAllSeriesPhotos, getDerivedHero } from '@/lib/series'
 import PhotoCard from '@/components/PhotoCard'
 
 export const metadata: Metadata = {
   title: 'Series',
   description:
-    'Ongoing photo series by StudioTJ — locations, routes, botanical subjects, and seasons.',
+    'Ongoing photo series by StudioTJ — botanical subjects, weather, seasons, and routes.',
 }
 
 export default function SeriesPage() {
   const allSeries = getAllSeries()
+  const allPhotos = getAllSeriesPhotos()
 
   return (
     <div className="min-h-screen bg-paper">
@@ -25,7 +21,7 @@ export default function SeriesPage() {
           Series
         </h1>
         <p className="text-muted text-lg max-w-xl leading-relaxed">
-          Ongoing sequences of photographs, organized by subject, place, and season.
+          Ongoing sequences of photographs, organized by subject, weather, and season.
         </p>
       </div>
 
@@ -39,14 +35,13 @@ export default function SeriesPage() {
         <div className="max-w-3xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             {allSeries.map((series, i) => {
-              const entries = getEntriesForSeries(series.slug)
-              const latest = getLatestEntry(entries)
-              const heroPhoto = latest ? resolvePhoto(latest.hero_photo_id) : null
+              const seriesPhotos = allPhotos.filter(p => p.series_slug === series.slug)
+              const hero = getDerivedHero(seriesPhotos)
               return (
                 <PhotoCard
                   key={series.slug}
                   href={`/series/${series.slug}`}
-                  heroUrl={heroPhoto?.thumbnail_url ?? null}
+                  heroUrl={hero?.thumb_url ?? null}
                   title={series.display_name}
                   subtitle={series.description}
                   index={i}

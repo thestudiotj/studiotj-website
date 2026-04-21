@@ -3,7 +3,7 @@ import { getPortfolio, sortCollections } from '@/lib/portfolio'
 import type { Photo } from '@/lib/portfolio'
 import { getAllPosts } from '@/lib/content'
 import type { BlogFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
-import { getAllSeriesEntryPhotoIds, resolvePhotos } from '@/lib/series'
+import { getAllSeriesPhotos } from '@/lib/series'
 import EmailCapture from '@/components/EmailCapture'
 import HeroImage from '@/components/HeroImage'
 import CollectionCard from '@/components/CollectionCard'
@@ -102,12 +102,11 @@ export default async function HomePage() {
   const featuredCollections = portfolio
     ? sortCollections(portfolio.collections, portfolio.photos).slice(0, 4)
     : []
-  const photoMap: Map<string, Photo> = portfolio
+  const photoMap = portfolio
     ? new Map(portfolio.photos.map(p => [p.id, p]))
     : new Map()
 
-  const seriesPhotoIds = getAllSeriesEntryPhotoIds()
-  const seriesPhotos = resolvePhotos(seriesPhotoIds)
+  const seriesPhotos = getAllSeriesPhotos()
 
   const [blogPosts, subtextPosts] = await Promise.all([
     getAllPosts('blog'),
@@ -179,7 +178,7 @@ export default async function HomePage() {
             <div className="md:w-1/2">
               <h2 className="section-title mb-6">Series</h2>
               <p className="text-muted leading-relaxed mb-8">
-                Ongoing sequences of photographs, organized by subject, place, and season.
+                Ongoing sequences of photographs, organized by subject, weather, and season.
               </p>
               <Link href="/series" className="btn-outline">View Series →</Link>
             </div>
