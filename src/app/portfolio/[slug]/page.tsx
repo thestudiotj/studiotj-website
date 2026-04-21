@@ -62,16 +62,46 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
     .filter((p): p is Photo => p !== undefined)
 
   const theme = getMoodTheme(collection.mood, collection.style_intensity, collection.palette)
+
+  // Brand-accurate bg/text overrides for specific collections.
+  // getMoodTheme drives accent/surface; bg/text/muted/border are controlled here.
+  const COLLECTION_THEMES: Record<string, { bg: string; text: string; textMuted: string; border: string }> = {
+    'the-halcyon-collection': {
+      bg: '#EFD0D8',
+      text: '#0D0D0D',
+      textMuted: '#4A3840',
+      border: '#D9B0BC',
+    },
+    'the-atmospheric-collection': {
+      bg: '#5F5E5A',
+      text: '#F2E4EC',
+      textMuted: 'rgba(242, 228, 236, 0.72)',
+      border: 'rgba(242, 228, 236, 0.25)',
+    },
+    'monochrome-moods': {
+      bg: '#0D0D0D',
+      text: '#F2E4EC',
+      textMuted: 'rgba(242, 228, 236, 0.65)',
+      border: 'rgba(242, 228, 236, 0.2)',
+    },
+  }
+
+  const ct = COLLECTION_THEMES[params.slug]
+  const bg = ct?.bg ?? theme.bg
+  const fg = ct?.text ?? theme.text
+  const fgMuted = ct?.textMuted ?? theme.textMuted
+  const border = ct?.border ?? theme.border
   const accentHex = theme.accent
 
   return (
     <div
+      data-collection-slug={collection.slug}
       style={{
-        backgroundColor: theme.bg,
-        color: theme.text,
+        backgroundColor: bg,
+        color: fg,
         '--col-accent': theme.accent,
-        '--col-muted': theme.textMuted,
-        '--col-border': theme.border,
+        '--col-muted': fgMuted,
+        '--col-border': border,
         '--col-surface': theme.surface,
       } as React.CSSProperties}
       className="min-h-screen"
@@ -82,7 +112,7 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
         <Link
           href="/portfolio"
           className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase mb-10 transition-opacity opacity-50 hover:opacity-100"
-          style={{ color: theme.text }}
+          style={{ color: fg }}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <polyline points="19 12 5 12" />
@@ -100,14 +130,14 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
 
           <h1
             className="font-display text-5xl md:text-7xl leading-tight mb-4"
-            style={{ color: theme.text }}
+            style={{ color: fg }}
           >
             {collection.name}
           </h1>
 
           <p
             className="text-xl md:text-2xl font-display italic leading-relaxed mb-6"
-            style={{ color: theme.textMuted }}
+            style={{ color: fgMuted }}
           >
             {collection.tagline}
           </p>
@@ -116,7 +146,7 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
           {collection.description && (
             <div
               className="collection-description mt-6"
-              style={{ color: theme.textMuted }}
+              style={{ color: fgMuted }}
             >
               <MDXRemote source={collection.description} />
             </div>
@@ -125,10 +155,10 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
           {/* Meta row */}
           <div
             className="flex flex-wrap items-center gap-6 mt-8 pt-6 text-xs tracking-[0.15em] uppercase"
-            style={{ borderTop: `1px solid ${theme.border}`, color: theme.textMuted }}
+            style={{ borderTop: `1px solid ${border}`, color: fgMuted }}
           >
             <span>{photos.length} {photos.length === 1 ? 'photo' : 'photos'}</span>
-            <span style={{ color: theme.border }}>·</span>
+            <span style={{ color: border }}>·</span>
             <span style={{ color: accentHex, textTransform: 'capitalize' }}>{collection.mood}</span>
           </div>
         </div>
@@ -149,12 +179,12 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
       {/* Footer nav */}
       <div
         className="border-t px-6 md:px-12 py-10"
-        style={{ borderColor: theme.border }}
+        style={{ borderColor: border }}
       >
         <Link
           href="/portfolio"
           className="inline-flex items-center gap-3 text-sm tracking-widest uppercase transition-opacity opacity-50 hover:opacity-100"
-          style={{ color: theme.text }}
+          style={{ color: fg }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             <polyline points="19 12 5 12" />
