@@ -122,8 +122,7 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
           ? `present(${p.external.id})`
           : 'null'
         console.log(
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          `[printify-diag] product ${p.id} | title="${(p.title ?? '').slice(0, 40)}" | external.id=${externalState} | visible=${p.visible} | is_locked=${(p as any).is_locked} | variants=${enabledCount}/${totalCount} enabled`
+          `[printify-diag] product ${p.id} | title="${(p.title ?? '').slice(0, 40)}" | external.id=${externalState} | visible=${p.visible} | is_locked=${(p as Record<string, unknown>).is_locked} | variants=${enabledCount}/${totalCount} enabled`
         )
       }
     }
