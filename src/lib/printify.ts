@@ -122,7 +122,7 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
           ? `present(${p.external.id})`
           : 'null'
         console.log(
-          `[printify-diag] product ${p.id} | title="${(p.title ?? '').slice(0, 40)}" | external.id=${externalState} | visible=${p.visible} | is_locked=${(p as Record<string, unknown>).is_locked} | variants=${enabledCount}/${totalCount} enabled`
+          `[printify-diag] product ${p.id} | title="${(p.title ?? '').slice(0, 40)}" | external.id=${externalState} | visible=${p.visible} | is_locked=${(p as unknown as Record<string, unknown>).is_locked} | variants=${enabledCount}/${totalCount} enabled`
         )
       }
     }
