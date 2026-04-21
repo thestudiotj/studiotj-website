@@ -1,5 +1,14 @@
 const BASE_URL = 'https://api.printify.com/v1'
 
+// Products Printify's API returns as live but are broken/ghosted on their side.
+// These products do not exist in the dashboard, return 404 on detail/delete
+// endpoints, but persist in the list endpoint response with external.id populated.
+// Printify support needs to fix their state for these products. Until then,
+// ignore them at the site layer.
+const PRINTIFY_IGNORE_PRODUCT_IDS = new Set<string>([
+  '69caabaebd3379c82a0f43ed', // Azure Ascent The Hague Unisex Tee — ghosted in list endpoint
+])
+
 type FetchOptions = RequestInit & {
   next?: { revalidate?: number | false; tags?: string[] }
 }
@@ -99,35 +108,28 @@ export async function getProducts(): Promise<PrintifyProduct[]> {
     )
     console.log('[printify] getProducts: list returned', list.data.length, 'products')
 
-    // Step 2: parallel-fetch detail for each product, with concurrency cap
+    // Step 2: skip known-broken ghost products before fetching detail
+    const allowedIds = list.data
+      .map((p) => p.id)
+      .filter((id) => !PRINTIFY_IGNORE_PRODUCT_IDS.has(id))
+    const ignoredCount = list.data.length - allowedIds.length
+    if (ignoredCount > 0) {
+      console.log(`[printify] getProducts: ignoring ${ignoredCount} ghost product(s) from list endpoint`)
+    }
+
+    // Step 3: parallel-fetch detail for each allowed product, with concurrency cap
     const CONCURRENCY = 10
     const details: (PrintifyProduct | null)[] = []
 
-    for (let i = 0; i < list.data.length; i += CONCURRENCY) {
-      const batch = list.data.slice(i, i + CONCURRENCY)
+    for (let i = 0; i < allowedIds.length; i += CONCURRENCY) {
+      const batch = allowedIds.slice(i, i + CONCURRENCY)
       const batchResults = await Promise.all(
-        batch.map((p) => getProductById(p.id))
+        batch.map((id) => getProductById(id))
       )
       details.push(...batchResults)
     }
 
-    // TEMPORARY DIAGNOSTIC — remove after root cause identified
-    for (const p of details) {
-      if (p) {
-        const enabledCount = Array.isArray(p.variants)
-          ? p.variants.filter(v => v.is_enabled === true).length
-          : 0
-        const totalCount = Array.isArray(p.variants) ? p.variants.length : 0
-        const externalState = p.external?.id
-          ? `present(${p.external.id})`
-          : 'null'
-        console.log(
-          `[printify-diag] product ${p.id} | title="${(p.title ?? '').slice(0, 40)}" | external.id=${externalState} | visible=${p.visible} | is_locked=${(p as unknown as Record<string, unknown>).is_locked} | variants=${enabledCount}/${totalCount} enabled`
-        )
-      }
-    }
-
-    // Step 3: filter to products that are live and buyable.
+    // Step 4: filter to products that are live and buyable.
     // Printify's external.id alone is unreliable — dashboard-deleted legacy
     // products (e.g. Shopify-migration remnants) can retain a stale external.id
     // even after deletion. At least one enabled variant is a secondary signal
