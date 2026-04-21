@@ -73,7 +73,20 @@ export default async function BlogPage({
       )}
 
       {posts.length === 0 ? (
-        <p className="text-muted">No posts yet.</p>
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto py-20">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/blog-header-logo.webp"
+            alt="StudioTJ"
+            width={96}
+            height={96}
+            className="mb-6"
+          />
+          <h2 className="font-display text-3xl mb-4">The StudioTJ blog</h2>
+          <p className="text-muted leading-relaxed">
+            Notes on photography — shoots, collections, how the work comes together. Essays when the thought needs the room. By T.J. van der Heeft. Published when there&apos;s something worth saying.
+          </p>
+        </div>
       ) : visible.length === 0 ? (
         <p className="text-muted">
           No posts with that tag.{' '}
