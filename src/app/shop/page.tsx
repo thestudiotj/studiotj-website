@@ -15,13 +15,12 @@ export const metadata: Metadata = {
 
 function EmptyState() {
   return (
-    <div className="border border-dust/40 p-12 text-center max-w-lg">
-      <p className="font-display text-2xl text-ink mb-3">Shop coming soon.</p>
-      <p className="text-sm text-muted leading-relaxed">
-        No published products found in your Printify shop yet.
-        <br />
-        Publish products in Printify and they&apos;ll appear here.
+    <div className="flex flex-col items-center text-center max-w-xl mx-auto py-20">
+      <h2 className="font-display text-3xl mb-4">The shop is restocking</h2>
+      <p className="text-muted leading-relaxed mb-8">
+        New products will land here when they&apos;re ready.
       </p>
+      <a href="/#email-capture" className="btn-primary">Join the list</a>
     </div>
   )
 }
