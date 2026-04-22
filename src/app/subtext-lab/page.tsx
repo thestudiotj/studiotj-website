@@ -127,32 +127,30 @@ export default async function SubtextLabPage({
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-5xl">
-      <h1 className="section-title mb-4">The Subtext Lab</h1>
-      <p className="text-muted mb-10 text-lg">
-        Notes on media and digital society. Threads between pieces — an article catches the first
-        thought, an essay develops it, video carries it further.
-      </p>
+      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mb-10">
+        <div className="flex-1">
+          <h1 className="section-title mb-4">The Subtext Lab</h1>
+          <p className="text-muted text-lg leading-relaxed">
+            Notes on media and digital society. Threads between pieces — an article catches the first
+            thought, an essay develops it, video carries it further.
+          </p>
+        </div>
+        <div className="shrink-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/subtext-lab-header-logo.webp"
+            alt="The Subtext Lab"
+            width={188}
+            height={188}
+          />
+        </div>
+      </div>
 
       {showFilter && (
         <SubjectFilter subjects={allSubjects} activeSubject={activeSubject} />
       )}
 
-      {posts.length === 0 ? (
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto py-20">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/subtext-lab-header-logo.webp"
-            alt="The Subtext Lab"
-            width={96}
-            height={96}
-            className="mb-6"
-          />
-          <h2 className="font-display text-3xl mb-4">The Subtext Lab</h2>
-          <p className="text-muted leading-relaxed">
-            Media analysis — games, film, TV, anime, manga, comics, books, music, and the digital ground they sit on. Where StudioTJ is about what a photograph sees, The Subtext Lab is about what a text or a screen means. Essays, articles, and video by T.J. van der Heeft.
-          </p>
-        </div>
-      ) : visible.length === 0 ? (
+      {posts.length === 0 ? null : visible.length === 0 ? (
         <p className="text-muted italic">
           No entries yet — still watching, still reading, still playing.
         </p>

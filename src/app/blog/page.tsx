@@ -43,10 +43,23 @@ export default async function BlogPage({
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-4xl">
-      <h1 className="section-title mb-4">Blog</h1>
-      <p className="text-muted mb-10 text-lg">
-        Short notes from the edit desk. Longer pieces from the walk itself.
-      </p>
+      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mb-10">
+        <div className="flex-1">
+          <h1 className="section-title mb-4">Blog</h1>
+          <p className="text-muted text-lg leading-relaxed">
+            Short notes from the edit desk. Longer pieces from the walk itself.
+          </p>
+        </div>
+        <div className="shrink-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/blog-header-logo.webp"
+            alt="StudioTJ Blog"
+            width={188}
+            height={188}
+          />
+        </div>
+      </div>
 
       {showFilter && (
         <div className="mb-10 flex flex-wrap items-center gap-y-2 text-sm tracking-widest uppercase">
@@ -72,22 +85,7 @@ export default async function BlogPage({
         </div>
       )}
 
-      {posts.length === 0 ? (
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto py-20">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/blog-header-logo.webp"
-            alt="StudioTJ"
-            width={96}
-            height={96}
-            className="mb-6"
-          />
-          <h2 className="font-display text-3xl mb-4">The StudioTJ blog</h2>
-          <p className="text-muted leading-relaxed">
-            Notes on photography — shoots, collections, how the work comes together. Essays when the thought needs the room. By T.J. van der Heeft. Published when there&apos;s something worth saying.
-          </p>
-        </div>
-      ) : visible.length === 0 ? (
+      {posts.length === 0 ? null : visible.length === 0 ? (
         <p className="text-muted">
           No posts with that tag.{' '}
           <Link href="/blog" className="text-[var(--accent)] hover:underline">
