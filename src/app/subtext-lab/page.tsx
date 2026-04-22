@@ -151,7 +151,7 @@ export default async function SubtextLabPage({
             thought, an essay develops it, video carries it further.
           </p>
         </div>
-        <div className="shrink-0">
+        <div className="shrink-0 flex justify-end">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/subtext-lab-header-logo.webp"

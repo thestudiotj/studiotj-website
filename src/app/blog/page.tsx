@@ -100,7 +100,7 @@ export default async function BlogPage({
             Short notes from the edit desk. Longer pieces from the walk itself.
           </p>
         </div>
-        <div className="shrink-0">
+        <div className="shrink-0 flex justify-end">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/blog-header-logo.webp"
