@@ -127,25 +127,6 @@ export default async function SubtextLabPage({
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-5xl">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mb-10">
-        <div className="flex-1">
-          <h1 className="section-title mb-4">The Subtext Lab</h1>
-          <p className="text-muted text-lg leading-relaxed">
-            Notes on media and digital society. Threads between pieces — an article catches the first
-            thought, an essay develops it, video carries it further.
-          </p>
-        </div>
-        <div className="shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/subtext-lab-header-logo.webp"
-            alt="The Subtext Lab"
-            width={188}
-            height={188}
-          />
-        </div>
-      </div>
-
       {showFilter && (
         <SubjectFilter subjects={allSubjects} activeSubject={activeSubject} />
       )}
@@ -161,6 +142,25 @@ export default async function SubtextLabPage({
           ))}
         </div>
       )}
+
+      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-16 pt-12 border-t border-dust/30">
+        <div className="flex-1">
+          <h1 className="section-title mb-4">The Subtext Lab</h1>
+          <p className="text-muted text-lg leading-relaxed">
+            Notes on media and digital society. Threads between pieces — an article catches the first
+            thought, an essay develops it, video carries it further.
+          </p>
+        </div>
+        <div className="shrink-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/subtext-lab-header-logo.webp"
+            alt="The Subtext Lab"
+            width={152}
+            height={152}
+          />
+        </div>
+      </div>
     </div>
   )
 }

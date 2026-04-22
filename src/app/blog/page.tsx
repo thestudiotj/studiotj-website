@@ -43,24 +43,6 @@ export default async function BlogPage({
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-4xl">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mb-10">
-        <div className="flex-1">
-          <h1 className="section-title mb-4">Blog</h1>
-          <p className="text-muted text-lg leading-relaxed">
-            Short notes from the edit desk. Longer pieces from the walk itself.
-          </p>
-        </div>
-        <div className="shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/blog-header-logo.webp"
-            alt="StudioTJ Blog"
-            width={188}
-            height={188}
-          />
-        </div>
-      </div>
-
       {showFilter && (
         <div className="mb-10 flex flex-wrap items-center gap-y-2 text-sm tracking-widest uppercase">
           {pillItems.map((item, i) => (
@@ -110,6 +92,24 @@ export default async function BlogPage({
           ))}
         </div>
       )}
+
+      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-16 pt-12 border-t border-dust/30">
+        <div className="flex-1">
+          <h1 className="section-title mb-4">Blog</h1>
+          <p className="text-muted text-lg leading-relaxed">
+            Short notes from the edit desk. Longer pieces from the walk itself.
+          </p>
+        </div>
+        <div className="shrink-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/blog-header-logo.webp"
+            alt="StudioTJ Blog"
+            width={152}
+            height={152}
+          />
+        </div>
+      </div>
     </div>
   )
 }
