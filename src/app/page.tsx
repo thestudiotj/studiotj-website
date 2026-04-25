@@ -97,7 +97,17 @@ function SubtextCard({ post }: { post: PostEntry<SubtextFrontmatter> }) {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
+// Rotate daily so the hero image changes without client-side JS.
+export const revalidate = 86400
+
+const HERO_IMAGES = [
+  '/images/hero-light.webp',
+  '/images/hero-dark.webp',
+  '/images/hero-subtext.webp',
+]
+
 export default async function HomePage() {
+  const heroSrc = HERO_IMAGES[Math.floor(Date.now() / 86400000) % HERO_IMAGES.length]
   const portfolio = getPortfolio()
   const featuredCollections = portfolio
     ? sortCollections(portfolio.collections, portfolio.photos).slice(0, 4)
@@ -122,7 +132,7 @@ export default async function HomePage() {
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-end pb-16 px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0">
-          <HeroImage />
+          <HeroImage src={heroSrc} />
           <div className="absolute inset-0 bg-black/35" />
           <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent" />
         </div>

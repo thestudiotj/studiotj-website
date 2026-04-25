@@ -107,7 +107,7 @@ export default function CollectionCard({
 
           {/* Content */}
           <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-            <p className="text-paper/60 text-xs tracking-[0.2em] uppercase mb-2">
+            <p className="text-paper/80 text-xs tracking-[0.2em] uppercase mb-2">
               {collection.photo_ids.length} photos
             </p>
             <h2 className="font-display text-2xl md:text-3xl text-paper leading-tight mb-2">
@@ -121,7 +121,7 @@ export default function CollectionCard({
 
             {/* Arrow — portfolio only */}
             {!isHomepage && (
-              <div className="mt-4 flex items-center gap-2 text-paper/50 text-xs tracking-widest uppercase transition-all duration-300 group-hover:text-paper/90 group-hover:gap-3">
+              <div className="mt-4 flex items-center gap-2 text-paper/70 text-xs tracking-widest uppercase transition-all duration-300 group-hover:text-paper/90 group-hover:gap-3">
                 <span>View</span>
                 <span>→</span>
               </div>

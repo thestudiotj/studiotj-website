@@ -15,17 +15,7 @@ const playfairDisplay = localFont({
       style: 'normal',
     },
     {
-      path: '../../public/fonts/playfair-display/playfair-display-latin-ext-normal.woff2',
-      weight: '400 900',
-      style: 'normal',
-    },
-    {
       path: '../../public/fonts/playfair-display/playfair-display-latin-italic.woff2',
-      weight: '400 900',
-      style: 'italic',
-    },
-    {
-      path: '../../public/fonts/playfair-display/playfair-display-latin-ext-italic.woff2',
       weight: '400 900',
       style: 'italic',
     },
@@ -41,11 +31,6 @@ const dmSans = localFont({
       weight: '300 500',
       style: 'normal',
     },
-    {
-      path: '../../public/fonts/dm-sans/dm-sans-latin-ext.woff2',
-      weight: '300 500',
-      style: 'normal',
-    },
   ],
   variable: '--font-body',
   display: 'swap',
@@ -55,11 +40,6 @@ const dmMono = localFont({
   src: [
     {
       path: '../../public/fonts/dm-mono/dm-mono-latin-400.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/dm-mono/dm-mono-latin-ext-400.woff2',
       weight: '400',
       style: 'normal',
     },

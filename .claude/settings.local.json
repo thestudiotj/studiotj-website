@@ -51,7 +51,8 @@
       "Bash(mkdir -p /c/Users/tjvan/Documents/Projects/studiotj-website/src/types)",
       "Bash(mkdir -p /c/Users/tjvan/Documents/Projects/studiotj-website/src/app/series/\\\\[series\\\\]/\\\\[slug\\\\]/\\\\[entry\\\\])",
       "Bash(xargs grep *)",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(vercel *)"
     ]
   }
 }

@@ -58,6 +58,7 @@ function JustifiedPhoto({
           transition: loaded ? 'opacity 0.3s ease, transform 0.7s ease' : 'none',
         }}
         loading={index < 12 ? 'eager' : 'lazy'}
+        fetchPriority={index === 0 ? 'high' : undefined}
         onLoad={() => setLoaded(true)}
       />
 

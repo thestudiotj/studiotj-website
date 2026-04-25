@@ -91,6 +91,7 @@ export default function EmailCapture({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
+              aria-label="Email address"
               required
               className={`flex-1 border px-4 py-3 text-sm outline-none transition-colors duration-200 ${inputBg}`}
             />
@@ -108,7 +109,7 @@ export default function EmailCapture({
           <p className="text-red-400 text-xs mt-2">{errorMsg}</p>
         )}
 
-        <p className={`text-xs ${isDark ? 'text-paper/50' : 'text-muted/50'} mt-4`}>
+        <p className={`text-xs ${isDark ? 'text-paper/50' : 'text-muted'} mt-4`}>
           Unsubscribe any time.
         </p>
       </div>
