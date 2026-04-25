@@ -52,7 +52,18 @@
       "Bash(mkdir -p /c/Users/tjvan/Documents/Projects/studiotj-website/src/app/series/\\\\[series\\\\]/\\\\[slug\\\\]/\\\\[entry\\\\])",
       "Bash(xargs grep *)",
       "Bash(python *)",
-      "Bash(vercel *)"
+      "Bash(vercel *)",
+      "Read(//c/Users/tjvan/Downloads/**)",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/_landing.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/_landing.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/_acties.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/_acties/premium-merken-week-2026-04.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/lezen-_intro.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/lezen/_intro.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/lezen-kobo-libra-colour.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/lezen/kobo-libra-colour.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/lezen-kindle-paperwhite.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/lezen/kindle-paperwhite.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/verzorging-_intro.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/verzorging/_intro.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/verzorging-rituals-homme-foaming-shower-gel.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/verzorging/rituals-homme-foaming-shower-gel.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/verzorging-rituals-sakura-body-cream.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/verzorging/rituals-sakura-body-cream.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/verzorging-rituals-homme-gift-set-small.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/verzorging/rituals-homme-gift-set-small.mdx\")",
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/lego-_intro.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/lego/_intro.mdx\")"
     ]
   }
 }

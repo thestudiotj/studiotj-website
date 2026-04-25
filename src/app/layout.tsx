@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 import 'photoswipe/dist/photoswipe.css'
 import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
+import FooterWrapper from '@/components/FooterWrapper'
 import { CartProvider } from '@/lib/cart'
 import CartDrawer from '@/components/CartDrawer'
 
@@ -89,7 +89,7 @@ export default function RootLayout({
           <main className="flex-1">
             {children}
           </main>
-          <Footer />
+          <FooterWrapper />
         </CartProvider>
       </body>
     </html>

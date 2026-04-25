@@ -82,6 +82,7 @@ export default function Footer() {
       <div className="flex flex-wrap items-center gap-y-2 text-sm tracking-widest uppercase mb-6">
         {[
           { href: '/gear', label: 'Gear' },
+          { href: '/vondsten', label: 'Vondsten' },
           { href: '/contact', label: 'Contact' },
           { href: '/privacy', label: 'Privacy' },
           { href: '/terms', label: 'Terms' },

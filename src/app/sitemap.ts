@@ -3,6 +3,8 @@ import { getAllPosts } from '@/lib/content'
 import { getPortfolio } from '@/lib/portfolio'
 import { getProducts } from '@/lib/printify'
 import { getAllSeries, getRouteEntries } from '@/lib/series'
+import { getProducts as getVondstenProducts } from '@/lib/vondsten/loader'
+import { CATEGORIES } from '@/lib/vondsten/schemas'
 
 const BASE_URL = 'https://studiotj.com'
 
@@ -87,6 +89,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   } catch (err) {
     console.error('[sitemap] Printify fetch failed — omitting shop products:', err)
+  }
+
+  // Vondsten — landing, category indexes, product pages
+  entries.push({ url: `${BASE_URL}/vondsten` })
+  for (const cat of CATEGORIES) {
+    const catProducts = getVondstenProducts(cat)
+    if (catProducts.length === 0) continue
+    entries.push({ url: `${BASE_URL}/vondsten/${cat}` })
+    for (const product of catProducts) {
+      entries.push({ url: `${BASE_URL}/vondsten/${cat}/${product.slug}` })
+    }
   }
 
   return entries

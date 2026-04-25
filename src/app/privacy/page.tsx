@@ -290,7 +290,7 @@ export default function PrivacyPage() {
         </section>
 
         {/* Changes to this policy */}
-        <section>
+        <section className="mb-12">
           <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight mb-6">
             Changes to this policy
           </h2>
@@ -299,6 +299,30 @@ export default function PrivacyPage() {
             product line, a new legal requirement. Material changes are dated at the top of this
             page. The policy in force at the time you placed an order, sent an email, or submitted
             your address is the one that applies to that interaction.
+          </p>
+        </section>
+
+        {/* Amazon Partnerprogramma */}
+        <section>
+          <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight mb-6">
+            Amazon Partnerprogramma
+          </h2>
+          <p className="text-muted leading-relaxed mb-4">
+            StudioTJ neemt deel aan het Amazon Partnerprogramma (amazon.nl). Productpagina&apos;s
+            onder /vondsten linken naar amazon.nl met een Partner-ID gekoppeld aan deze website.
+            Wanneer je via een dergelijke link iets aankoopt op amazon.nl, ontvangt StudioTJ een
+            commissie van Amazon. Deze commissies houden de website mogelijk en sturen niet wat hier
+            gepubliceerd wordt — de selectie en redactie zijn onafhankelijk.
+          </p>
+          <p className="text-muted leading-relaxed mb-4">
+            Amazon&apos;s eigen click-attributie loopt via parameters in de affiliate-URL. StudioTJ
+            zelf voert geen tracking of analytics op uitgaande klikken; alle attributie gebeurt door
+            Amazon na de doorklik. Wie geen affiliate-relatie wil ondersteunen, kan amazon.nl
+            rechtstreeks bezoeken in plaats van via de doorlinks op /vondsten.
+          </p>
+          <p className="text-muted leading-relaxed">
+            Disclosure-tekst per Amazon Operating Agreement: &ldquo;Als Amazon-partner verdien ik
+            aan in aanmerking komende aankopen.&rdquo;
           </p>
         </section>
       </div>
