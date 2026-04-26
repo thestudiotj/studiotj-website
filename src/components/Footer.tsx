@@ -81,7 +81,8 @@ export default function Footer() {
       {/* Top row: text links */}
       <div className="flex flex-wrap items-center gap-y-2 text-sm tracking-widest uppercase mb-6">
         {[
-          { href: '/gear', label: 'Gear' },
+          { href: '/gear', label: 'My Gear' },
+          { href: '/picks', label: 'Picks' },
           { href: '/vondsten', label: 'Vondsten' },
           { href: '/contact', label: 'Contact' },
           { href: '/privacy', label: 'Privacy' },

@@ -303,7 +303,7 @@ export default function PrivacyPage() {
         </section>
 
         {/* Amazon Partnerprogramma */}
-        <section>
+        <section className="mb-12">
           <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight mb-6">
             Amazon Partnerprogramma
           </h2>
@@ -323,6 +323,29 @@ export default function PrivacyPage() {
           <p className="text-muted leading-relaxed">
             Disclosure-tekst per Amazon Operating Agreement: &ldquo;Als Amazon-partner verdien ik
             aan in aanmerking komende aankopen.&rdquo;
+          </p>
+        </section>
+
+        {/* Impact Partnerships */}
+        <section>
+          <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight mb-6">
+            Impact Partnerships
+          </h2>
+          <p className="text-muted leading-relaxed mb-4">
+            StudioTJ participates in affiliate programs managed through Impact, operating under the
+            StudioTJ media-partner profile (KvK 75602172). Brand pages under /picks link to partner
+            brand websites using affiliate URLs. When you click through one of these links and make
+            a qualifying purchase, StudioTJ earns a commission from the brand via Impact.
+          </p>
+          <p className="text-muted leading-relaxed mb-4">
+            Impact&apos;s click attribution runs via parameters embedded in the affiliate URL.
+            StudioTJ does not perform any tracking or analytics on outbound clicks itself; all
+            attribution is handled by Impact after the click. If you prefer not to support the
+            affiliate relationship, you can visit the brand&apos;s website directly rather than
+            using the links on /picks.
+          </p>
+          <p className="text-muted leading-relaxed">
+            {/* Partnerize section — activates when first Partnerize brand goes live */}
           </p>
         </section>
       </div>

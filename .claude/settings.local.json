@@ -63,7 +63,10 @@
       "Bash(cp \"C:/Users/tjvan/Downloads/files/verzorging-rituals-homme-foaming-shower-gel.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/verzorging/rituals-homme-foaming-shower-gel.mdx\")",
       "Bash(cp \"C:/Users/tjvan/Downloads/files/verzorging-rituals-sakura-body-cream.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/verzorging/rituals-sakura-body-cream.mdx\")",
       "Bash(cp \"C:/Users/tjvan/Downloads/files/verzorging-rituals-homme-gift-set-small.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/verzorging/rituals-homme-gift-set-small.mdx\")",
-      "Bash(cp \"C:/Users/tjvan/Downloads/files/lego-_intro.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/lego/_intro.mdx\")"
+      "Bash(cp \"C:/Users/tjvan/Downloads/files/lego-_intro.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/lego/_intro.mdx\")",
+      "Bash(npx tsx -e ' *)",
+      "Bash(rm \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/picks/drawing/wacom.mdx\")",
+      "Bash(rmdir \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/picks/drawing\")"
     ]
   }
 }

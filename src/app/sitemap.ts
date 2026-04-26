@@ -5,6 +5,8 @@ import { getProducts } from '@/lib/printify'
 import { getAllSeries, getRouteEntries } from '@/lib/series'
 import { getProducts as getVondstenProducts } from '@/lib/vondsten/loader'
 import { CATEGORIES } from '@/lib/vondsten/schemas'
+import { loadActiveCategories, loadAllBrandsInCategory } from '@/lib/picks/loader'
+import { loadActiveCategories as loadActiveGearCategories, loadAllItemsInCategory } from '@/lib/gear/loader'
 
 const BASE_URL = 'https://studiotj.com'
 
@@ -14,7 +16,6 @@ const STATIC_PAGES = [
   '/series',
   '/blog',
   '/subtext-lab',
-  '/gear',
   '/shop',
   '/about',
   '/contact',
@@ -89,6 +90,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   } catch (err) {
     console.error('[sitemap] Printify fetch failed — omitting shop products:', err)
+  }
+
+  // Gear — landing, active category indexes, item pages
+  entries.push({ url: `${BASE_URL}/gear` })
+  const activeGearCategories = loadActiveGearCategories()
+  for (const cat of activeGearCategories) {
+    entries.push({ url: `${BASE_URL}/gear/${cat}` })
+    const gearItems = loadAllItemsInCategory(cat)
+    for (const item of gearItems) {
+      entries.push({ url: `${BASE_URL}/gear/${cat}/${item.slug}` })
+    }
+  }
+
+  // Picks — landing, active category indexes, brand pages
+  entries.push({ url: `${BASE_URL}/picks` })
+  const activePicksCategories = loadActiveCategories()
+  for (const cat of activePicksCategories) {
+    entries.push({ url: `${BASE_URL}/picks/${cat}` })
+    const picksbrands = loadAllBrandsInCategory(cat)
+    for (const brand of picksbrands) {
+      entries.push({ url: `${BASE_URL}/picks/${cat}/${brand.slug}` })
+    }
   }
 
   // Vondsten — landing, category indexes, product pages
