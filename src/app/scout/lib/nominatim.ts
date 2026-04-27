@@ -1,7 +1,7 @@
 import type { NominatimResult } from './types';
 
 const BASE = 'https://nominatim.openstreetmap.org';
-const UA = 'StudioTJ-Scout/1.0 (thestudiotj@gmail.com)';
+const UA = 'StudioTJ-Scout/1.0 (info@studiotj.com)';
 
 export async function searchLocation(query: string): Promise<NominatimResult[]> {
   if (query.trim().length < 3) return [];

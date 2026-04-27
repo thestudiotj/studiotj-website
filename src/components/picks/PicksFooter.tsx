@@ -32,7 +32,7 @@ export default function PicksFooter() {
             <br />
             1069CD Amsterdam
             <br />
-            thestudiotj@gmail.com
+            info@studiotj.com
           </p>
         </div>
       </div>

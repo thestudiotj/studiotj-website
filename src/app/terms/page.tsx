@@ -39,8 +39,8 @@ export default function TermsPage() {
             </li>
             <li className="text-muted leading-relaxed">
               <strong>Contact:</strong>{' '}
-              <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-                thestudiotj@gmail.com
+              <a href="mailto:contact@studiotj.com" className="text-accent hover:underline">
+                contact@studiotj.com
               </a>
             </li>
           </ul>
@@ -121,8 +121,8 @@ export default function TermsPage() {
             common cause of failed deliveries, and once an order has been sent to production, the
             address typically cannot be changed. If you spot a mistake immediately after ordering,
             email{' '}
-            <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-              thestudiotj@gmail.com
+            <a href="mailto:contact@studiotj.com" className="text-accent hover:underline">
+              contact@studiotj.com
             </a>{' '}
             straight away and StudioTJ will try to catch it before production starts. If a package
             is returned because the address was incorrect or incomplete, the fulfilment partner
@@ -185,8 +185,8 @@ export default function TermsPage() {
           <ol className="list-decimal list-inside space-y-3 mb-4 text-muted leading-relaxed">
             <li>
               Notify StudioTJ of your withdrawal within the 14-day period by emailing{' '}
-              <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-                thestudiotj@gmail.com
+              <a href="mailto:contact@studiotj.com" className="text-accent hover:underline">
+                contact@studiotj.com
               </a>
               , with your order number and the item(s) you are withdrawing. You can use the{' '}
               <a
@@ -249,8 +249,8 @@ export default function TermsPage() {
           </ul>
           <p className="text-muted leading-relaxed mb-8">
             To report any of these: email{' '}
-            <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-              thestudiotj@gmail.com
+            <a href="mailto:contact@studiotj.com" className="text-accent hover:underline">
+              contact@studiotj.com
             </a>{' '}
             within 30 days of delivery, with your order number and a clear photo of the issue.
             The item does not need to be returned. StudioTJ will arrange a free reprint or a
@@ -305,8 +305,8 @@ export default function TermsPage() {
           </p>
           <p className="text-muted leading-relaxed mb-4">
             To make a complaint, email{' '}
-            <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-              thestudiotj@gmail.com
+            <a href="mailto:contact@studiotj.com" className="text-accent hover:underline">
+              contact@studiotj.com
             </a>{' '}
             with your order number and a description of the issue. Complaints are answered within
             14 days. If a complaint requires longer to resolve, you will receive an

@@ -99,6 +99,11 @@ export default async function BlogPage({
           <p className="text-muted text-lg leading-relaxed">
             Short notes from the edit desk. Longer pieces from the walk itself.
           </p>
+          <p className="text-muted text-sm mt-3">
+            <a href="mailto:contact@studiotj.com" className="hover:text-ink transition-colors">
+              contact@studiotj.com
+            </a>
+          </p>
         </div>
         <div className="shrink-0 flex justify-end">
           {/* eslint-disable-next-line @next/next/no-img-element */}

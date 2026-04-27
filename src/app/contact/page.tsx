@@ -17,10 +17,10 @@ export default function ContactPage() {
         <p className="text-muted leading-relaxed mb-8">
           One inbox for everything:{' '}
           <a
-            href="mailto:thestudiotj@gmail.com"
+            href="mailto:info@studiotj.com"
             className="font-display text-xl text-ink hover:text-accent transition-colors"
           >
-            thestudiotj@gmail.com
+            info@studiotj.com
           </a>
         </p>
 

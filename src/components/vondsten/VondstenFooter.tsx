@@ -29,10 +29,10 @@ export default function VondstenFooter() {
         <div>
           <p className="text-xs text-muted leading-relaxed">
             <a
-              href="mailto:thestudiotj@gmail.com"
+              href="mailto:info@studiotj.com"
               className="hover:text-ink transition-colors"
             >
-              thestudiotj@gmail.com
+              info@studiotj.com
             </a>
           </p>
         </div>

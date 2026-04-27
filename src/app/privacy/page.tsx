@@ -38,8 +38,8 @@ export default function PrivacyPage() {
             </li>
             <li className="text-muted leading-relaxed">
               <strong>Privacy contact:</strong>{' '}
-              <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-                thestudiotj@gmail.com
+              <a href="mailto:privacy@studiotj.com" className="text-accent hover:underline">
+                privacy@studiotj.com
               </a>
             </li>
           </ul>
@@ -81,8 +81,8 @@ export default function PrivacyPage() {
           </h3>
           <p className="text-muted leading-relaxed mb-8">
             If you email{' '}
-            <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-              thestudiotj@gmail.com
+            <a href="mailto:privacy@studiotj.com" className="text-accent hover:underline">
+              privacy@studiotj.com
             </a>
             , your email address and the contents of your message are visible to Google (which
             provides the inbox) and to me. Replies are sent the same way. Email is kept as long as
@@ -158,8 +158,8 @@ export default function PrivacyPage() {
             </li>
             <li className="text-muted leading-relaxed">
               <strong>Google</strong> — inbox provider for{' '}
-              <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-                thestudiotj@gmail.com
+              <a href="mailto:privacy@studiotj.com" className="text-accent hover:underline">
+                privacy@studiotj.com
               </a>
             </li>
           </ul>
@@ -235,8 +235,8 @@ export default function PrivacyPage() {
           </ul>
           <p className="text-muted leading-relaxed mb-4">
             Email{' '}
-            <a href="mailto:thestudiotj@gmail.com" className="text-accent hover:underline">
-              thestudiotj@gmail.com
+            <a href="mailto:privacy@studiotj.com" className="text-accent hover:underline">
+              privacy@studiotj.com
             </a>{' '}
             to exercise any of these. A response goes out within 30 days at the latest.
           </p>

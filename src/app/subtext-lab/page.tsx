@@ -150,6 +150,11 @@ export default async function SubtextLabPage({
             Notes on media and digital society. Threads between pieces — an article catches the first
             thought, an essay develops it, video carries it further.
           </p>
+          <p className="text-muted text-sm mt-3">
+            <a href="mailto:subtext@studiotj.com" className="hover:text-ink transition-colors">
+              subtext@studiotj.com
+            </a>
+          </p>
         </div>
         <div className="shrink-0 flex justify-end">
           {/* eslint-disable-next-line @next/next/no-img-element */}
