@@ -3,21 +3,25 @@ import { GEAR_CATEGORIES } from './categories';
 
 export const ItemSchema = z.object({
   name: z.string(),
-  slug: z.string(),
+  slug: z.string().optional(),
   category: z.enum(GEAR_CATEGORIES),
-  status: z.enum(['current', 'wishlist']),
+  status: z.string(),
   tag: z.string().optional(),
-  hook: z.string(),
-  hero_image: z.string(),
+  summary: z.string(),
+  hero_image: z.string().optional(),
   supporting_images: z.array(z.string()).default([]),
   specs: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
   related_slugs: z.array(z.string()).default([]),
-  image_source: z.string(),
-  image_license: z.string(),
+  image_source: z.string().optional(),
+  image_license: z.string().optional(),
   attribution: z.string().optional(),
+  affiliate_link: z.string().optional(),
+  affiliate_provider: z.string().optional(),
+  date_added: z.string().optional(),
 });
 
-export type Item = z.infer<typeof ItemSchema> & { body: string };
+// slug always present on loaded items — derived from filename
+export type Item = z.infer<typeof ItemSchema> & { body: string; slug: string };
 
 export const LandingSchema = z.object({
   slug: z.literal('gear'),

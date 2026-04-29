@@ -25,13 +25,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const item = loadItem(category, itemSlug);
     const displayName = GEAR_CATEGORY_LABELS[category];
-    return {
+    const meta: Metadata = {
       title: `${item.name} — ${displayName} — My Gear`,
-      description: item.hook + " " + item.body.trim().split(/[.!?]/)[0] + ".",
-      openGraph: {
-        images: [`https://photos.studiotj.com${item.hero_image}`],
-      },
+      description: item.summary + " " + item.body.trim().split(/[.!?]/)[0] + ".",
     };
+    if (item.hero_image) {
+      meta.openGraph = { images: [`https://photos.studiotj.com${item.hero_image}`] };
+    }
+    return meta;
   } catch {
     return {};
   }
@@ -76,7 +77,7 @@ export default async function GearItemPage({ params }: Props) {
         <ItemHero
           name={item.name}
           tag={item.tag}
-          hook={item.hook}
+          summary={item.summary}
           heroImage={item.hero_image}
         />
 

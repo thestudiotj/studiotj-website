@@ -31,7 +31,7 @@ export function loadCategoryIntro(slug: string): CategoryIntro | null {
 export function loadItem(category: string, itemSlug: string): Item {
   const { data, content } = readMdx(`${category}/${itemSlug}.mdx`);
   const fm = ItemSchema.parse(data);
-  return { ...fm, body: content };
+  return { ...fm, slug: itemSlug, body: content };
 }
 
 export function loadAllItemsInCategory(category: string): Item[] {
@@ -42,9 +42,10 @@ export function loadAllItemsInCategory(category: string): Item[] {
     .filter((f) => f.endsWith(".mdx") && f !== "_intro.mdx")
     .sort();
   return files.map((filename) => {
+    const slug = filename.replace(/\.mdx$/, "");
     const { data, content } = readMdx(`${category}/${filename}`);
     const fm = ItemSchema.parse(data);
-    return { ...fm, body: content };
+    return { ...fm, slug, body: content };
   });
 }
 
