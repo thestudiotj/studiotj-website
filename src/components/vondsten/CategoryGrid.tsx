@@ -18,14 +18,16 @@ export default function CategoryGrid({ categories }: CategoryGridProps) {
             href={`/vondsten/${cat.category}`}
             className="group block"
           >
-            <div className="relative overflow-hidden aspect-video mb-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={resolveR2(cat.hero_image)}
-                alt={cat.title}
-                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-              />
-            </div>
+            {cat.hero_image && (
+              <div className="relative overflow-hidden aspect-video mb-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={resolveR2(cat.hero_image)}
+                  alt={cat.title}
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                />
+              </div>
+            )}
             <p className="font-display text-xl text-ink group-hover:text-accent transition-colors">
               {cat.title}
             </p>

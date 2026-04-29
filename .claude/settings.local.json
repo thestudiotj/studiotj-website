@@ -71,7 +71,8 @@
       "Bash(rm \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\content\\\\gear\\\\cameras\\\\dji-osmo-pocket-3.mdx\")",
       "Bash(pnpm build *)",
       "PowerShell($env:PATH -split \";\" | Where-Object { $_ -match \"pnpm|bun|npm\" })",
-      "Bash(git diff *)"
+      "Bash(git diff *)",
+      "Bash(/c/Users/tjvan/AppData/Roaming/npm/npx next *)"
     ]
   }
 }

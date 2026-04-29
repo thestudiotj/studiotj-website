@@ -2,15 +2,23 @@ import { z } from "zod";
 
 export const CATEGORIES = [
   "lezen",
-  "verzorging",
-  "fotografie",
+  "dames-verzorging",
   "amazon-direct",
+  "heren-verzorging",
   "lego",
-  "film-en-anime",
-  "games",
-  "tekenen",
-  "japans-leren",
   "home-media-hardware",
+  "gaming",
+  "fotografie",
+  "film",
+  "muziek",
+  "schrijven",
+  "tekenen",
+  "anime",
+  "manga",
+  "pokemon",
+  "gundam",
+  "fidget-toys",
+  "taal-leren",
 ] as const;
 
 export const VERZORGING_LANES = ["masc", "femme"] as const;
@@ -45,7 +53,7 @@ export const LandingFrontmatter = z.object({
 export const CategoryIntroFrontmatter = z.object({
   slug: z.enum(CATEGORIES),
   title: z.string(),
-  hero_image: z.string().min(1),
+  hero_image: z.string().optional(),
   type: z.literal("category_intro").optional(),
 });
 

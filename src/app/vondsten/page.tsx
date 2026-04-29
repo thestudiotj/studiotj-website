@@ -41,9 +41,13 @@ export default async function VondstenPage() {
         </div>
       )}
 
-      <div className="prose prose-lg max-w-prose mb-10 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
+      <div className="prose prose-lg max-w-prose mb-6 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
         <MDXRemote source={landing.body} />
       </div>
+
+      <p className="text-xs text-muted tracking-wide mb-10">
+        Vondsten runs in Dutch because the products go through amazon.nl. Everything else on the site is English.
+      </p>
 
       <ActiesBlock acties={activeActies} />
 

@@ -12,6 +12,11 @@ const nextConfig = {
         destination: '/portfolio/the-atmospheric-collection',
         permanent: true,
       },
+      {
+        source: '/vondsten/verzorging',
+        destination: '/vondsten',
+        permanent: true,
+      },
     ]
   },
   images: {
