@@ -5,7 +5,7 @@ import { getProducts } from '@/lib/printify'
 import { getAllSeries, getRouteEntries } from '@/lib/series'
 import { getProducts as getVondstenProducts } from '@/lib/vondsten/loader'
 import { CATEGORIES } from '@/lib/vondsten/schemas'
-import { loadActiveCategories, loadAllBrandsInCategory } from '@/lib/picks/loader'
+import { loadActiveCategories, loadAllBrandsInCategory, loadBrandProducts } from '@/lib/picks/loader'
 import { loadActiveCategories as loadActiveGearCategories, loadAllItemsInCategory } from '@/lib/gear/loader'
 
 const BASE_URL = 'https://studiotj.com'
@@ -103,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Picks — landing, active category indexes, brand pages
+  // Picks — landing, active category indexes, brand pages, brand product pages
   entries.push({ url: `${BASE_URL}/picks` })
   const activePicksCategories = loadActiveCategories()
   for (const cat of activePicksCategories) {
@@ -111,6 +111,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const picksbrands = loadAllBrandsInCategory(cat)
     for (const brand of picksbrands) {
       entries.push({ url: `${BASE_URL}/picks/${cat}/${brand.slug}` })
+      const brandProducts = loadBrandProducts(cat, brand.slug)
+      for (const product of brandProducts) {
+        entries.push({ url: `${BASE_URL}/picks/${cat}/${brand.slug}/${product.slug}` })
+      }
     }
   }
 

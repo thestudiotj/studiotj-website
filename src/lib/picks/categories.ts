@@ -1,19 +1,23 @@
 export const PICKS_CATEGORIES = [
   'photography',
-  'drawing',
+  'video',
+  'writing',
   'software',
-  'print',
+  'drawing',
   'site-workflow',
   'workspace',
+  'print',
 ] as const;
 
 export const PICKS_CATEGORY_LABELS: Record<typeof PICKS_CATEGORIES[number], string> = {
   'photography': 'Photography',
-  'drawing': 'Drawing',
+  'video': 'Video',
+  'writing': 'Writing',
   'software': 'Software',
-  'print': 'Print',
+  'drawing': 'Drawing',
   'site-workflow': 'Site & Workflow',
   'workspace': 'Workspace',
+  'print': 'Print',
 };
 
 export type PicksCategory = typeof PICKS_CATEGORIES[number];

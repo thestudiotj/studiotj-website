@@ -4,7 +4,7 @@ import { resolveR2 } from "@/lib/picks/paths";
 interface CategoryEntry {
   category: string;
   title: string;
-  hero_image: string;
+  hero_image?: string;
 }
 
 interface CategoryGridProps {

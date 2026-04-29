@@ -30,7 +30,7 @@ export type Landing = z.infer<typeof LandingSchema> & { body: string };
 export const CategoryIntroSchema = z.object({
   slug: z.enum(GEAR_CATEGORIES),
   title: z.string(),
-  hero_image: z.string(),
+  hero_image: z.string().optional(),
 });
 
 export type CategoryIntro = z.infer<typeof CategoryIntroSchema> & { body: string };

@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { loadBrand, loadAllBrands, loadActiveCategories } from "@/lib/picks/loader";
+import { loadBrand, loadAllBrands, loadActiveCategories, loadBrandProducts } from "@/lib/picks/loader";
 import { isValidPicksCategory, PICKS_CATEGORY_LABELS } from "@/lib/picks/categories";
-import type { Brand } from "@/lib/picks/schemas";
+import type { Brand, BrandProduct } from "@/lib/picks/schemas";
 import { mdxComponents } from "@/components/mdx";
+import { resolveR2 } from "@/lib/picks/paths";
 import BrandHero from "@/components/picks/BrandHero";
 import BrandMakes from "@/components/picks/BrandMakes";
 import BrandGallery from "@/components/picks/BrandGallery";
@@ -59,6 +60,9 @@ export default async function BrandPage({ params }: Props) {
     .map((slug) => allBrands.find((b) => b.slug === slug))
     .filter((b): b is Brand => b !== undefined);
 
+  const allProducts = loadBrandProducts(category, brandSlug);
+  const featuredProducts = allProducts.filter((p) => p.featured);
+
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
       <nav className="text-xs tracking-widest uppercase text-muted mb-8 flex flex-wrap items-center gap-2">
@@ -87,6 +91,34 @@ export default async function BrandPage({ params }: Props) {
         </div>
 
         <BrandMakes makes={brand.makes} />
+
+        {featuredProducts.length > 0 && (
+          <section className="border-t border-dust/30 pt-10 mb-10">
+            <h2 className="font-display text-2xl text-ink mb-6">Featured Products</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredProducts.map((product: BrandProduct) => (
+                <Link
+                  key={product.slug}
+                  href={`/picks/${category}/${brandSlug}/${product.slug}`}
+                  className="group block"
+                >
+                  <div className="relative overflow-hidden aspect-square mb-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={resolveR2(product.hero_image)}
+                      alt={product.hero_image_alt}
+                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    />
+                  </div>
+                  <p className="font-display text-lg text-ink leading-tight mb-2 group-hover:text-accent transition-colors">
+                    {product.title}
+                  </p>
+                  <p className="text-sm text-muted leading-relaxed">{product.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <BrandGallery images={brand.supporting_images} brandName={brand.name} />
 
