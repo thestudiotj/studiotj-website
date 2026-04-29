@@ -66,7 +66,12 @@
       "Bash(cp \"C:/Users/tjvan/Downloads/files/lego-_intro.mdx\" \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/vondsten/lego/_intro.mdx\")",
       "Bash(npx tsx -e ' *)",
       "Bash(rm \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/picks/drawing/wacom.mdx\")",
-      "Bash(rmdir \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/picks/drawing\")"
+      "Bash(rmdir \"C:/Users/tjvan/Documents/Projects/studiotj-website/content/picks/drawing\")",
+      "Bash(rm \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\content\\\\gear\\\\cameras\\\\nikon-z50-ii.mdx\")",
+      "Bash(rm \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\content\\\\gear\\\\cameras\\\\dji-osmo-pocket-3.mdx\")",
+      "Bash(pnpm build *)",
+      "PowerShell($env:PATH -split \";\" | Where-Object { $_ -match \"pnpm|bun|npm\" })",
+      "Bash(git diff *)"
     ]
   }
 }
