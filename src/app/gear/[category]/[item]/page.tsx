@@ -78,7 +78,6 @@ export default async function GearItemPage({ params }: Props) {
           tag={item.tag}
           hook={item.hook}
           heroImage={item.hero_image}
-          status={item.status}
         />
 
         <div className="prose prose-lg max-w-[640px] mb-10 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
