@@ -72,7 +72,12 @@
       "Bash(pnpm build *)",
       "PowerShell($env:PATH -split \";\" | Where-Object { $_ -match \"pnpm|bun|npm\" })",
       "Bash(git diff *)",
-      "Bash(/c/Users/tjvan/AppData/Roaming/npm/npx next *)"
+      "Bash(/c/Users/tjvan/AppData/Roaming/npm/npx next *)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(Test-Path *)",
+      "PowerShell(npm run *)",
+      "Bash(export PATH=\"$PATH:/c/Users/tjvan/AppData/Roaming/npm:/c/Program Files/nodejs\")",
+      "Bash(/c/Users/tjvan/AppData/Roaming/npm/npx.cmd next *)"
     ]
   }
 }
