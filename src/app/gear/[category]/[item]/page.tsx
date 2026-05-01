@@ -8,8 +8,6 @@ import type { Item } from "@/lib/gear/schemas";
 import { mdxComponents } from "@/components/mdx";
 import ItemHero from "@/components/gear/ItemHero";
 import ItemSpecs from "@/components/gear/ItemSpecs";
-import ItemGallery from "@/components/gear/ItemGallery";
-import ItemRelated from "@/components/gear/ItemRelated";
 
 interface Props {
   params: Promise<{ category: string; item: string }>;
@@ -54,10 +52,6 @@ export default async function GearItemPage({ params }: Props) {
   }
 
   const displayName = GEAR_CATEGORY_LABELS[category];
-  const allItems = loadAllItems();
-  const related = item.related_slugs
-    .map((slug) => allItems.find((i) => i.slug === slug))
-    .filter((i): i is Item => i !== undefined);
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
@@ -86,10 +80,6 @@ export default async function GearItemPage({ params }: Props) {
         </div>
 
         <ItemSpecs specs={item.specs} />
-
-        <ItemGallery images={item.supporting_images} itemName={item.name} />
-
-        <ItemRelated items={related} />
       </div>
     </div>
   );

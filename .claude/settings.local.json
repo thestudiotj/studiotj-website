@@ -77,7 +77,8 @@
       "PowerShell(Test-Path *)",
       "PowerShell(npm run *)",
       "Bash(export PATH=\"$PATH:/c/Users/tjvan/AppData/Roaming/npm:/c/Program Files/nodejs\")",
-      "Bash(/c/Users/tjvan/AppData/Roaming/npm/npx.cmd next *)"
+      "Bash(/c/Users/tjvan/AppData/Roaming/npm/npx.cmd next *)",
+      "Bash(npm list *)"
     ]
   }
 }
