@@ -107,9 +107,6 @@ export default function CollectionCard({
 
           {/* Content */}
           <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-            <p className="text-paper/80 text-xs tracking-[0.2em] uppercase mb-2">
-              {collection.photo_ids.length} photos
-            </p>
             <h2 className="font-display text-2xl md:text-3xl text-paper leading-tight mb-2">
               {collection.name}
             </h2>

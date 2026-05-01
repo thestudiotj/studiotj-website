@@ -157,8 +157,6 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
             className="flex flex-wrap items-center gap-6 mt-8 pt-6 text-xs tracking-[0.15em] uppercase"
             style={{ borderTop: `1px solid ${border}`, color: fgMuted }}
           >
-            <span>{photos.length} {photos.length === 1 ? 'photo' : 'photos'}</span>
-            <span style={{ color: border }}>·</span>
             <span style={{ color: accentHex, textTransform: 'capitalize' }}>{collection.mood}</span>
           </div>
         </div>
