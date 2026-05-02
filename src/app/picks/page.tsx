@@ -13,14 +13,28 @@ export const metadata: Metadata = {
     "Brand pages by category — researched, curated, affiliate-linked via Impact. Photography, drawing, software, print, site and workflow, workspace.",
 };
 
+function extractFirstLine(body: string): string {
+  return body
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean)[0] ?? "";
+}
+
 export default async function PicksPage() {
   const landing = loadLanding();
   const activeCategories = loadActiveCategories();
 
   const categoryEntries = activeCategories.map((cat) => {
     const intro = loadCategoryIntro(cat);
-    if (intro) return { category: cat, title: intro.title, hero_image: intro.hero_image };
-    return { category: cat, title: PICKS_CATEGORY_LABELS[cat], hero_image: '' };
+    if (intro) {
+      return {
+        category: cat,
+        title: intro.title,
+        description: extractFirstLine(intro.body),
+      };
+    }
+    return { category: cat, title: PICKS_CATEGORY_LABELS[cat], description: "" };
   });
 
   return (
