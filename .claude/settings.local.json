@@ -80,7 +80,9 @@
       "Bash(/c/Users/tjvan/AppData/Roaming/npm/npx.cmd next *)",
       "Bash(npm list *)",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\" -Recurse -Include \"page.tsx\")",
-      "Bash(Select-Object -ExpandProperty FullName)"
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-content-upload\" -Recurse -Include \"*.py\")",
+      "Bash(Select-Object FullName)"
     ]
   }
 }

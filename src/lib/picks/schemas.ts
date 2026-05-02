@@ -9,6 +9,7 @@ export const BrandSchema = z.object({
   tag: z.string(),
   hook: z.string(),
   hero_image: z.string(),
+  hero_aspect: z.string().optional(),
   supporting_images: z.array(z.string()),
   makes: z.array(z.object({ label: z.string(), value: z.string() })),
   affiliate_url: z.string().url(),
@@ -17,6 +18,7 @@ export const BrandSchema = z.object({
   image_source: z.string(),
   image_license: z.string(),
   attribution: z.string().optional(),
+  impact_catalog_id: z.string().optional(),
 });
 
 export const BrandProductSchema = z.object({
@@ -28,8 +30,9 @@ export const BrandProductSchema = z.object({
   release_year: z.number().int().optional(),
   display_order: z.number().int(),
   featured: z.boolean(),
-  hero_image: z.string(),
-  hero_image_alt: z.string(),
+  hero_image: z.string().optional(),
+  hero_aspect: z.string().optional(),
+  hero_image_alt: z.string().optional(),
   image_source: z.string().optional(),
   image_license: z.string().optional(),
   attribution: z.string().optional(),
@@ -37,6 +40,8 @@ export const BrandProductSchema = z.object({
   // Per-product tracking link; falls back to parent Brand's affiliate_url when absent
   affiliate_url: z.string().url().optional(),
   specs: z.array(z.object({ label: z.string(), value: z.string() })).optional(),
+  impact_catalog_item_id: z.string().optional(),
+  supporting_images: z.array(z.string()).optional(),
 });
 
 export const LandingSchema = z.object({

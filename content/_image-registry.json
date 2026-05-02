@@ -1,0 +1,52 @@
+{
+  "picks/photography/leica-camera-usa/leica-d-lux-8/hero.webp": {
+    "aspect": "193:145",
+    "width": 386,
+    "height": 290
+  },
+  "picks/photography/leica-camera-usa/leica-d-lux-8/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/photography/leica-camera-usa/leica-m11-glossy-black-finish/hero.webp": {
+    "aspect": "193:145",
+    "width": 386,
+    "height": 290
+  },
+  "picks/photography/leica-camera-usa/leica-m11-glossy-black-finish/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/photography/leica-camera-usa/leica-q3-43/hero.webp": {
+    "aspect": "193:145",
+    "width": 386,
+    "height": 290
+  },
+  "picks/photography/leica-camera-usa/leica-q3-43/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/photography/leica-camera-usa/leica-sl3/hero.webp": {
+    "aspect": "193:145",
+    "width": 386,
+    "height": 290
+  },
+  "picks/photography/leica-camera-usa/leica-sl3/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/photography/leica-camera-usa/leica-sofort-2/hero.webp": {
+    "aspect": "193:145",
+    "width": 386,
+    "height": 290
+  },
+  "picks/photography/leica-camera-usa/leica-sofort-2/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  }
+}

@@ -13,6 +13,7 @@ import {
 import { isValidPicksCategory, PICKS_CATEGORY_LABELS } from "@/lib/picks/categories";
 import type { Brand, BrandProduct } from "@/lib/picks/schemas";
 import { mdxComponents } from "@/components/mdx";
+import { resolveAspect } from "@/lib/picks/imageAspect";
 import BrandProductHero from "@/components/picks/BrandProductHero";
 import BrandProductSpecs from "@/components/picks/BrandProductSpecs";
 import AffiliateCTA from "@/components/picks/AffiliateCTA";
@@ -44,9 +45,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: `${product.title} — ${brand.name} — ${displayName} — Picks`,
       description: product.description,
-      openGraph: {
-        images: [`https://photos.studiotj.com${product.hero_image}`],
-      },
+      ...(product.hero_image && {
+        openGraph: {
+          images: [`https://photos.studiotj.com${product.hero_image.startsWith('/') ? product.hero_image : `/${product.hero_image}`}`],
+        },
+      }),
     };
   } catch {
     return {
@@ -100,6 +103,7 @@ export default async function BrandProductPage({ params }: Props) {
           title={product.title}
           description={product.description}
           heroImage={product.hero_image}
+          heroAspect={product.hero_image ? resolveAspect(product.hero_image, 'hero', product.hero_aspect) : undefined}
           heroImageAlt={product.hero_image_alt}
           attribution={product.attribution}
         />

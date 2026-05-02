@@ -3,8 +3,9 @@ import { resolveR2 } from "@/lib/picks/paths";
 interface BrandProductHeroProps {
   title: string;
   description: string;
-  heroImage: string;
-  heroImageAlt: string;
+  heroImage?: string;
+  heroAspect?: string;
+  heroImageAlt?: string;
   attribution?: string;
 }
 
@@ -12,17 +13,27 @@ export default function BrandProductHero({
   title,
   description,
   heroImage,
+  heroAspect,
   heroImageAlt,
   attribution,
 }: BrandProductHeroProps) {
+  if (!heroImage) {
+    return (
+      <div className="mb-12 max-w-xl">
+        <h1 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-5">{title}</h1>
+        <p className="text-lg text-muted leading-relaxed">{description}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-12">
       <div>
-        <div className="relative overflow-hidden" style={{ aspectRatio: "4/5" }}>
+        <div className="relative overflow-hidden" style={{ aspectRatio: heroAspect }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={resolveR2(heroImage)}
-            alt={heroImageAlt}
+            alt={heroImageAlt ?? ""}
             className="w-full h-full object-cover"
           />
         </div>

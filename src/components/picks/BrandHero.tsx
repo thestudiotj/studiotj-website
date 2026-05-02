@@ -6,13 +6,14 @@ interface BrandHeroProps {
   tag: string;
   hook: string;
   heroImage: string;
+  heroAspect: string;
   affiliateUrl: string;
 }
 
-export default function BrandHero({ name, tag, hook, heroImage, affiliateUrl }: BrandHeroProps) {
+export default function BrandHero({ name, tag, hook, heroImage, heroAspect, affiliateUrl }: BrandHeroProps) {
   return (
     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start mb-12">
-      <div className="relative overflow-hidden" style={{ aspectRatio: "4/5" }}>
+      <div className="relative overflow-hidden" style={{ aspectRatio: heroAspect }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={resolveR2(heroImage)}

@@ -17,7 +17,8 @@ export default function BrandGallery({ images, brandName }: BrandGalleryProps) {
             key={src}
             src={resolveR2(src)}
             alt={`${brandName} image ${i + 1}`}
-            className="w-full aspect-square object-cover"
+            className="w-full aspect-square object-contain"
+            style={{ background: "var(--accent-soft)" }}
           />
         ))}
       </div>

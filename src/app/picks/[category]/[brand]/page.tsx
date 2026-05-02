@@ -7,6 +7,7 @@ import { isValidPicksCategory, PICKS_CATEGORY_LABELS } from "@/lib/picks/categor
 import type { Brand, BrandProduct } from "@/lib/picks/schemas";
 import { mdxComponents } from "@/components/mdx";
 import { resolveR2 } from "@/lib/picks/paths";
+import { resolveAspect } from "@/lib/picks/imageAspect";
 import BrandHero from "@/components/picks/BrandHero";
 import BrandMakes from "@/components/picks/BrandMakes";
 import BrandGallery from "@/components/picks/BrandGallery";
@@ -31,12 +32,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${brand.name} — ${displayName} — Picks`,
       description: brand.hook + " " + brand.body.trim().split(/[.!?]/)[0] + ".",
       openGraph: {
-        images: [`https://photos.studiotj.com${brand.hero_image}`],
+        images: [`https://photos.studiotj.com${brand.hero_image.startsWith('/') ? brand.hero_image : `/${brand.hero_image}`}`],
       },
     };
   } catch {
     return {};
   }
+}
+
+function heroToThumb(heroImage: string): string {
+  if (heroImage.endsWith('/hero.webp')) {
+    return heroImage.replace('/hero.webp', '/thumb.webp');
+  }
+  return heroImage;
 }
 
 export default async function BrandPage({ params }: Props) {
@@ -83,6 +91,7 @@ export default async function BrandPage({ params }: Props) {
           tag={brand.tag}
           hook={brand.hook}
           heroImage={brand.hero_image}
+          heroAspect={resolveAspect(brand.hero_image, 'hero', brand.hero_aspect)}
           affiliateUrl={brand.affiliate_url}
         />
 
@@ -102,13 +111,18 @@ export default async function BrandPage({ params }: Props) {
                   href={`/picks/${category}/${brandSlug}/${product.slug}`}
                   className="group block"
                 >
-                  <div className="relative overflow-hidden aspect-square mb-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={resolveR2(product.hero_image)}
-                      alt={product.hero_image_alt}
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                    />
+                  <div
+                    className="relative overflow-hidden mb-3"
+                    style={{ aspectRatio: "4 / 5", background: "var(--accent-soft)" }}
+                  >
+                    {product.hero_image && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={resolveR2(heroToThumb(product.hero_image))}
+                        alt={product.hero_image_alt ?? ""}
+                        className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-500"
+                      />
+                    )}
                   </div>
                   <p className="font-display text-lg text-ink leading-tight mb-2 group-hover:text-accent transition-colors">
                     {product.title}
