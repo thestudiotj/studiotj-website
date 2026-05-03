@@ -1,4 +1,9 @@
 {
+  "picks/photography/leica-camera-usa/hero.webp": {
+    "aspect": "1:1",
+    "width": 820,
+    "height": 820
+  },
   "picks/photography/leica-camera-usa/leica-d-lux-8/hero.webp": {
     "aspect": "193:145",
     "width": 386,
@@ -45,6 +50,26 @@
     "height": 290
   },
   "picks/photography/leica-camera-usa/leica-sofort-2/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/photography/leica-camera-usa/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 692,
+    "height": 692
+  },
+  "picks/photography/leica-camera-usa/supporting-2.webp": {
+    "aspect": "1:1",
+    "width": 692,
+    "height": 692
+  },
+  "picks/photography/leica-camera-usa/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 692,
+    "height": 692
+  },
+  "picks/photography/leica-camera-usa/thumb.webp": {
     "aspect": "4:5",
     "width": 480,
     "height": 600
