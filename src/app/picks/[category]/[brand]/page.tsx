@@ -6,13 +6,13 @@ import { loadBrand, loadAllBrands, loadActiveCategories, loadBrandProducts } fro
 import { isValidPicksCategory, PICKS_CATEGORY_LABELS } from "@/lib/picks/categories";
 import type { Brand, BrandProduct } from "@/lib/picks/schemas";
 import { mdxComponents } from "@/components/mdx";
-import { resolveR2 } from "@/lib/picks/paths";
 import { resolveAspect } from "@/lib/picks/imageAspect";
 import BrandHero from "@/components/picks/BrandHero";
 import BrandMakes from "@/components/picks/BrandMakes";
 import BrandGallery from "@/components/picks/BrandGallery";
 import BrandRelated from "@/components/picks/BrandRelated";
 import AffiliateCTA from "@/components/picks/AffiliateCTA";
+import BrandProductCard from "@/components/picks/BrandProductCard";
 
 interface Props {
   params: Promise<{ category: string; brand: string }>;
@@ -40,13 +40,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-function heroToThumb(heroImage: string): string {
-  if (heroImage.endsWith('/hero.webp')) {
-    return heroImage.replace('/hero.webp', '/thumb.webp');
-  }
-  return heroImage;
-}
-
 export default async function BrandPage({ params }: Props) {
   const { category, brand: brandSlug } = await params;
 
@@ -68,8 +61,7 @@ export default async function BrandPage({ params }: Props) {
     .map((slug) => allBrands.find((b) => b.slug === slug))
     .filter((b): b is Brand => b !== undefined);
 
-  const allProducts = loadBrandProducts(category, brandSlug);
-  const featuredProducts = allProducts.filter((p) => p.featured);
+  const products = loadBrandProducts(category, brandSlug);
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
@@ -101,34 +93,16 @@ export default async function BrandPage({ params }: Props) {
 
         <BrandMakes makes={brand.makes} />
 
-        {featuredProducts.length > 0 && (
+        {products.length > 0 && (
           <section className="border-t border-dust/30 pt-10 mb-10">
             <h2 className="font-display text-2xl text-ink mb-6">Featured Products</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredProducts.map((product: BrandProduct) => (
-                <Link
+              {products.map((product: BrandProduct) => (
+                <BrandProductCard
                   key={product.slug}
+                  product={product}
                   href={`/picks/${category}/${brandSlug}/${product.slug}`}
-                  className="group block"
-                >
-                  <div
-                    className="relative overflow-hidden mb-3"
-                    style={{ aspectRatio: "4 / 5", background: "var(--accent-soft)" }}
-                  >
-                    {product.hero_image && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={resolveR2(heroToThumb(product.hero_image))}
-                        alt={product.hero_image_alt ?? ""}
-                        className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-500"
-                      />
-                    )}
-                  </div>
-                  <p className="font-display text-lg text-ink leading-tight mb-2 group-hover:text-accent transition-colors">
-                    {product.title}
-                  </p>
-                  <p className="text-sm text-muted leading-relaxed">{product.description}</p>
-                </Link>
+                />
               ))}
             </div>
           </section>

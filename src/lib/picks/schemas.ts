@@ -30,6 +30,8 @@ export const BrandProductSchema = z.object({
   release_year: z.number().int().optional(),
   display_order: z.number().int(),
   featured: z.boolean(),
+  tag: z.string().optional(),
+  hook: z.string().optional(),
   hero_image: z.string().optional(),
   hero_aspect: z.string().optional(),
   hero_image_alt: z.string().optional(),
@@ -37,11 +39,11 @@ export const BrandProductSchema = z.object({
   image_license: z.string().optional(),
   attribution: z.string().optional(),
   description: z.string(),
-  // Per-product tracking link; falls back to parent Brand's affiliate_url when absent
   affiliate_url: z.string().url().optional(),
   specs: z.array(z.object({ label: z.string(), value: z.string() })).optional(),
   impact_catalog_item_id: z.string().optional(),
   supporting_images: z.array(z.string()).optional(),
+  related_slugs: z.array(z.string()).default([]),
 });
 
 export const LandingSchema = z.object({

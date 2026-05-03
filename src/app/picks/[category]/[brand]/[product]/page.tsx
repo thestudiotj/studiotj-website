@@ -6,6 +6,7 @@ import {
   loadBrand,
   loadBrandProduct,
   loadBrandProducts,
+  loadBrandProductsBySlugs,
   loadActiveCategories,
   loadAllBrandsInCategory,
   getEffectiveAffiliateUrl,
@@ -17,6 +18,7 @@ import { resolveAspect } from "@/lib/picks/imageAspect";
 import BrandProductHero from "@/components/picks/BrandProductHero";
 import BrandProductSpecs from "@/components/picks/BrandProductSpecs";
 import AffiliateCTA from "@/components/picks/AffiliateCTA";
+import RelatedProducts from "@/components/picks/RelatedProducts";
 
 interface Props {
   params: Promise<{ category: string; brand: string; product: string }>;
@@ -79,6 +81,7 @@ export default async function BrandProductPage({ params }: Props) {
 
   const displayName = PICKS_CATEGORY_LABELS[category];
   const effectiveUrl = getEffectiveAffiliateUrl(product, brand);
+  const relatedProducts = loadBrandProductsBySlugs(product.related_slugs, category, brandSlug);
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
@@ -102,6 +105,8 @@ export default async function BrandProductPage({ params }: Props) {
         <BrandProductHero
           title={product.title}
           description={product.description}
+          tag={product.tag}
+          hook={product.hook}
           heroImage={product.hero_image}
           heroAspect={product.hero_image ? resolveAspect(product.hero_image, 'hero', product.hero_aspect) : undefined}
           heroImageAlt={product.hero_image_alt}
@@ -115,9 +120,15 @@ export default async function BrandProductPage({ params }: Props) {
         <BrandProductSpecs specs={product.specs} />
 
         <div className="border-t border-dust/30 pt-8 mb-10">
-          <p className="text-lg text-muted leading-relaxed mb-6">{product.description}</p>
+          <p className="text-lg text-muted leading-relaxed mb-6">{product.hook ?? product.description}</p>
           <AffiliateCTA url={effectiveUrl} label={`View ${product.title}`} />
         </div>
+
+        <RelatedProducts
+          products={relatedProducts}
+          category={category}
+          brandSlug={brandSlug}
+        />
       </div>
     </div>
   );

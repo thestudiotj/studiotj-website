@@ -128,3 +128,19 @@ export function loadBrandProduct(
 export function getEffectiveAffiliateUrl(product: BrandProduct, brand: Brand): string {
   return product.affiliate_url ?? brand.affiliate_url;
 }
+
+export function loadBrandProductsBySlugs(
+  slugs: string[],
+  category: string,
+  brandSlug: string
+): BrandProduct[] {
+  return slugs
+    .map((slug) => {
+      const parts = slug.split('/');
+      if (parts.length === 3) {
+        return loadBrandProduct(parts[0], parts[1], parts[2]);
+      }
+      return loadBrandProduct(category, brandSlug, slug);
+    })
+    .filter((p): p is BrandProduct => p !== null);
+}
