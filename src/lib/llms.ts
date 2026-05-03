@@ -273,16 +273,6 @@ async function buildData(): Promise<LlmsSectionFull[]> {
           body: `A walk through ${route.display_name} — ${route.photo_count} photographs, chronological sequence.\n\n${series.description}`,
         })
       }
-    } else {
-      for (const sp of series.sub_pools ?? []) {
-        const label = sp.slug.charAt(0).toUpperCase() + sp.slug.slice(1).replace(/-/g, ' ')
-        seriesEntries.push({
-          title: `${series.display_name} — ${label}`,
-          url: `${BASE_URL}/series/${series.slug}/${sp.slug}`,
-          description: truncate(`${series.display_name} photographs — ${label} pool.`),
-          body: `Part of ${series.display_name}. ${series.description}\n\nSubject pool: ${label}.`,
-        })
-      }
     }
   }
   sections.push({ heading: 'Series', entries: seriesEntries })
