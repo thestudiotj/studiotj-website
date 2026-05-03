@@ -127,12 +127,21 @@ export default async function SubtextLabPage({
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-5xl">
-      {/* Body block */}
-      <div className="max-w-prose space-y-5 text-muted leading-relaxed mb-12">
-        <p>The Subtext Lab is analytical work on media and the systems around it — what a film is doing under the surface, what an album is arguing about its own time, what a piece of digital culture reveals about the platform it lives on. It is observation that wants to be written down, with enough room to sit with the question and let it open.</p>
-        <p>An <strong className="font-semibold text-ink">article</strong> is a sharpened observation — sometimes a paragraph that lands, sometimes pages that take their time, but always a complete piece. An <strong className="font-semibold text-ink">essay</strong> is the work of building an argument — a question pursued at length, evidence gathered, claims tested, a position arrived at over time. A <strong className="font-semibold text-ink">video</strong> is the same kind of thinking carried into another medium — the moving image and the voice doing what the page can&apos;t. The same subject can appear in more than one form when a question keeps opening; a later piece returns to something an earlier piece left open.</p>
-        <p>Attention runs across games, film, television, anime, manga, comics, books, music, tech, and society. Within them, certain questions recur — how a piece of work earns its pace, what an artwork carries from the moment that made it, what a system makes possible and what it forecloses. The work crosses media on purpose. A question that surfaces in a film can return in an album, or a game, in another piece of writing later on.</p>
-        <p>The Subtext Lab is for readers willing to follow a thread. Each piece is an attempt at thinking out loud, in writing, with the time the work needs.</p>
+      {/* Header */}
+      <div className="mb-10">
+        <h1 className="section-title mb-4">The Subtext Lab</h1>
+        <p className="text-muted text-lg leading-relaxed">
+          Notes on media and digital society. Threads between pieces — an article catches the first
+          thought, an essay develops it, video carries it further.
+        </p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/subtext-lab-header-logo.webp"
+          alt="The Subtext Lab"
+          width={152}
+          height={152}
+          className="mt-6"
+        />
       </div>
 
       {showFilter && (
@@ -151,28 +160,17 @@ export default async function SubtextLabPage({
         </div>
       )}
 
-      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-16 pt-12 border-t border-dust/30">
-        <div className="flex-1">
-          <h1 className="section-title mb-4">The Subtext Lab</h1>
-          <p className="text-muted text-lg leading-relaxed">
-            Notes on media and digital society. Threads between pieces — an article catches the first
-            thought, an essay develops it, video carries it further.
-          </p>
-          <p className="text-muted text-sm mt-3">
-            <a href="mailto:subtext@studiotj.com" className="hover:text-ink transition-colors">
-              subtext@studiotj.com
-            </a>
-          </p>
-        </div>
-        <div className="shrink-0 flex justify-end">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/subtext-lab-header-logo.webp"
-            alt="The Subtext Lab"
-            width={152}
-            height={152}
-          />
-        </div>
+      {/* Info copy */}
+      <div className="mt-16 pt-12 border-t border-dust/30 space-y-5 text-muted leading-relaxed">
+        <p>The Subtext Lab is analytical work on media and the systems around it — what a film is doing under the surface, what an album is arguing about its own time, what a piece of digital culture reveals about the platform it lives on. It is observation that wants to be written down, with enough room to sit with the question and let it open.</p>
+        <p>An <strong className="font-semibold text-ink">article</strong> is a sharpened observation — sometimes a paragraph that lands, sometimes pages that take their time, but always a complete piece. An <strong className="font-semibold text-ink">essay</strong> is the work of building an argument — a question pursued at length, evidence gathered, claims tested, a position arrived at over time. A <strong className="font-semibold text-ink">video</strong> is the same kind of thinking carried into another medium — the moving image and the voice doing what the page can&apos;t. The same subject can appear in more than one form when a question keeps opening; a later piece returns to something an earlier piece left open.</p>
+        <p>Attention runs across games, film, television, anime, manga, comics, books, music, tech, and society. Within them, certain questions recur — how a piece of work earns its pace, what an artwork carries from the moment that made it, what a system makes possible and what it forecloses. The work crosses media on purpose. A question that surfaces in a film can return in an album, or a game, in another piece of writing later on.</p>
+        <p>The Subtext Lab is for readers willing to follow a thread. Each piece is an attempt at thinking out loud, in writing, with the time the work needs.</p>
+        <p className="text-sm">
+          <a href="mailto:subtext@studiotj.com" className="hover:text-ink transition-colors">
+            subtext@studiotj.com
+          </a>
+        </p>
       </div>
     </div>
   )

@@ -43,6 +43,23 @@ export default async function BlogPage({
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-4xl">
+      {/* Header */}
+      <div className="mb-10">
+        <h1 className="section-title mb-4">Blog</h1>
+        <p className="text-muted text-lg leading-relaxed">
+          Short notes from the edit desk and the studio. Longer pieces from the walk itself.
+        </p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/blog-header-logo.webp"
+          alt="StudioTJ Blog"
+          width={152}
+          height={152}
+          className="mt-6"
+        />
+      </div>
+
+      {/* Filter */}
       {showFilter && (
         <div className="mb-10 flex flex-wrap items-center gap-y-2 text-sm tracking-widest uppercase">
           {pillItems.map((item, i) => (
@@ -67,6 +84,7 @@ export default async function BlogPage({
         </div>
       )}
 
+      {/* Posts */}
       {posts.length === 0 ? null : visible.length === 0 ? (
         <p className="text-muted">
           No posts with that tag.{' '}
@@ -93,32 +111,18 @@ export default async function BlogPage({
         </div>
       )}
 
-      <div className="flex flex-col sm:flex-row sm:items-start gap-8 mt-16 pt-12 border-t border-dust/30">
-        <div className="flex-1">
-          <h1 className="section-title mb-4">Blog</h1>
-          <p className="text-muted text-lg leading-relaxed">
-            Short notes from the edit desk and the studio. Longer pieces from the walk itself.
-          </p>
-          <div className="mt-6 space-y-4 text-muted leading-relaxed">
-            <p>Notes are quick. Something caught the eye in editing, a shoot worked or didn&apos;t, a small decision that came up in running a one-person studio. Essays are slower — a day spent shooting somewhere, written long enough to do justice to the place, or a working-through of a question that needs more than a paragraph.</p>
-            <p>Photography is at the centre: the process, the craft, the choices that make a frame work. Around it, the work of running StudioTJ as a sole proprietorship — decisions about the shop, what&apos;s worth doing, what isn&apos;t. And then whatever else is sitting at the desk on a given day that wants writing down.</p>
-            <p>None of it is advice. Working notes from someone in the middle of figuring it out.</p>
-          </div>
-          <p className="text-muted text-sm mt-6">
-            <a href="mailto:contact@studiotj.com" className="hover:text-ink transition-colors">
-              contact@studiotj.com
-            </a>
-          </p>
+      {/* Info copy */}
+      <div className="mt-16 pt-12 border-t border-dust/30">
+        <div className="space-y-4 text-muted leading-relaxed">
+          <p>Notes are quick. Something caught the eye in editing, a shoot worked or didn&apos;t, a small decision that came up in running a one-person studio. Essays are slower — a day spent shooting somewhere, written long enough to do justice to the place, or a working-through of a question that needs more than a paragraph.</p>
+          <p>Photography is at the centre: the process, the craft, the choices that make a frame work. Around it, the work of running StudioTJ as a sole proprietorship — decisions about the shop, what&apos;s worth doing, what isn&apos;t. And then whatever else is sitting at the desk on a given day that wants writing down.</p>
+          <p>None of it is advice. Working notes from someone in the middle of figuring it out.</p>
         </div>
-        <div className="shrink-0 flex justify-end">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/blog-header-logo.webp"
-            alt="StudioTJ Blog"
-            width={152}
-            height={152}
-          />
-        </div>
+        <p className="text-muted text-sm mt-6">
+          <a href="mailto:contact@studiotj.com" className="hover:text-ink transition-colors">
+            contact@studiotj.com
+          </a>
+        </p>
       </div>
     </div>
   )

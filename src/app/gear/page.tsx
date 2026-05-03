@@ -36,7 +36,13 @@ export default async function GearPage() {
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-5xl">
-      <h1 className="section-title mb-4">{landing.title}</h1>
+      {/* Header */}
+      <div className="mb-10">
+        <h1 className="section-title mb-4">{landing.title}</h1>
+        {landing.description && (
+          <p className="text-muted text-lg leading-relaxed">{landing.description}</p>
+        )}
+      </div>
 
       {landing.hero_image && (
         <div className="relative overflow-hidden aspect-video mb-10">
@@ -49,16 +55,18 @@ export default async function GearPage() {
         </div>
       )}
 
-      {landing.body.trim() && (
-        <div className="prose prose-lg max-w-prose mb-10 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
-          <MDXRemote source={landing.body} />
-        </div>
-      )}
-
-      <section>
+      {/* Categories */}
+      <section className="mb-10">
         <h2 className="font-display text-3xl text-ink mb-6">Categories</h2>
         <CategoryGrid categories={categoryEntries} />
       </section>
+
+      {/* Info copy */}
+      {landing.body.trim() && (
+        <div className="prose prose-lg max-w-prose pt-12 border-t border-dust/30 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
+          <MDXRemote source={landing.body} />
+        </div>
+      )}
     </div>
   );
 }

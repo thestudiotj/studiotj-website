@@ -86,7 +86,9 @@
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\" -Force)",
       "Bash(Select-Object Name, FullName)",
       "Bash(del \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\src\\\\app\\\\robots.ts\")",
-      "Bash(grep -A 12 \"# About$\")"
+      "Bash(grep -A 12 \"# About$\")",
+      "Bash(Get-ChildItem *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\src\\\\app\\\\shop\" -Recurse -File | Where-Object { $_.Name -match \"delay|loading\" })"
     ]
   }
 }

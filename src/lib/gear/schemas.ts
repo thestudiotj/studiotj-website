@@ -26,6 +26,7 @@ export type Item = z.infer<typeof ItemSchema> & { body: string; slug: string };
 export const LandingSchema = z.object({
   slug: z.literal('gear'),
   title: z.literal('My Gear'),
+  description: z.string().optional(),
   hero_image: z.string(),
 });
 
