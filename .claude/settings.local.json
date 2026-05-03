@@ -82,7 +82,11 @@
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\" -Recurse -Include \"page.tsx\")",
       "Bash(Select-Object -ExpandProperty FullName)",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-content-upload\" -Recurse -Include \"*.py\")",
-      "Bash(Select-Object FullName)"
+      "Bash(Select-Object FullName)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\" -Force)",
+      "Bash(Select-Object Name, FullName)",
+      "Bash(del \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\src\\\\app\\\\robots.ts\")",
+      "Bash(grep -A 12 \"# About$\")"
     ]
   }
 }
