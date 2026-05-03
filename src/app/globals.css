@@ -108,6 +108,15 @@
     font-style: italic;
   }
 
+  .collection-description a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .collection-description a:hover {
+    opacity: 0.75;
+  }
+
 }
 
 /* ─── Per-collection background theming ──────────────────────────────────── */

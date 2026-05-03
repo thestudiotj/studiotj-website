@@ -5,6 +5,8 @@ import { getPortfolio, getCollection, getMoodTheme, getPhoto } from '@/lib/portf
 import type { Photo } from '@/lib/portfolio'
 import { getWeeklyGallery } from '@/lib/rotation'
 import Gallery from '@/components/Gallery'
+import RelatedCollections from '@/components/RelatedCollections'
+import { COLLECTION_BODIES } from '@/data/collection-bodies'
 
 // Revalidate every hour so the Monday rotation propagates without a manual deploy.
 export const revalidate = 3600
@@ -173,6 +175,19 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
       <div className="px-6 md:px-12 pb-24">
         <Gallery photos={photos} galleryId={params.slug} />
       </div>
+
+      {/* Body prose block */}
+      {COLLECTION_BODIES[params.slug] && (
+        <div
+          className="collection-description px-6 md:px-12 pb-16"
+          style={{ color: fgMuted }}
+        >
+          <MDXRemote source={COLLECTION_BODIES[params.slug]} />
+        </div>
+      )}
+
+      {/* Related collections */}
+      <RelatedCollections currentSlug={params.slug} fg={fg} border={border} />
 
       {/* Footer nav */}
       <div

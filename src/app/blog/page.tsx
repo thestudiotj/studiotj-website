@@ -93,13 +93,18 @@ export default async function BlogPage({
         </div>
       )}
 
-      <div className="flex flex-col sm:flex-row sm:items-center gap-8 mt-16 pt-12 border-t border-dust/30">
+      <div className="flex flex-col sm:flex-row sm:items-start gap-8 mt-16 pt-12 border-t border-dust/30">
         <div className="flex-1">
           <h1 className="section-title mb-4">Blog</h1>
           <p className="text-muted text-lg leading-relaxed">
-            Short notes from the edit desk. Longer pieces from the walk itself.
+            Short notes from the edit desk and the studio. Longer pieces from the walk itself.
           </p>
-          <p className="text-muted text-sm mt-3">
+          <div className="mt-6 space-y-4 text-muted leading-relaxed">
+            <p>Notes are quick. Something caught the eye in editing, a shoot worked or didn&apos;t, a small decision that came up in running a one-person studio. Essays are slower — a day spent shooting somewhere, written long enough to do justice to the place, or a working-through of a question that needs more than a paragraph.</p>
+            <p>Photography is at the centre: the process, the craft, the choices that make a frame work. Around it, the work of running StudioTJ as a sole proprietorship — decisions about the shop, what&apos;s worth doing, what isn&apos;t. And then whatever else is sitting at the desk on a given day that wants writing down.</p>
+            <p>None of it is advice. Working notes from someone in the middle of figuring it out.</p>
+          </div>
+          <p className="text-muted text-sm mt-6">
             <a href="mailto:contact@studiotj.com" className="hover:text-ink transition-colors">
               contact@studiotj.com
             </a>

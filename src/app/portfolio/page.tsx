@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { getPortfolio, sortCollections } from '@/lib/portfolio'
 import type { Photo } from '@/lib/portfolio'
 import CollectionCard from '@/components/CollectionCard'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { PORTFOLIO_HUB_BODY } from '@/data/collection-bodies'
 
 export const metadata: Metadata = {
   title: 'Portfolio',
@@ -60,6 +62,16 @@ export default function PortfolioPage() {
           </div>
         </div>
       )}
+
+      {/* Hub body block */}
+      <div className="px-6 md:px-12 mb-12">
+        <div className="h-px bg-dust/40" />
+      </div>
+      <div className="px-6 md:px-12 pb-24">
+        <div className="collection-description text-muted">
+          <MDXRemote source={PORTFOLIO_HUB_BODY} />
+        </div>
+      </div>
     </div>
   )
 }
