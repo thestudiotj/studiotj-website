@@ -89,7 +89,8 @@
       "Bash(grep -A 12 \"# About$\")",
       "Bash(Get-ChildItem *)",
       "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\src\\\\app\\\\shop\" -Recurse -File | Where-Object { $_.Name -match \"delay|loading\" })",
-      "Bash(New-Item *)"
+      "Bash(New-Item *)",
+      "Bash(Select-Object Name)"
     ]
   }
 }
