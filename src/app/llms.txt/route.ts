@@ -1,0 +1,11 @@
+import { buildLlmsInventory, formatLlmsTxt } from '@/lib/llms'
+
+export const dynamic = 'force-static'
+
+export async function GET() {
+  const inventory = await buildLlmsInventory()
+  const body = formatLlmsTxt(inventory)
+  return new Response(body, {
+    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+  })
+}
