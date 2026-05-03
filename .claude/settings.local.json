@@ -90,7 +90,8 @@
       "Bash(Get-ChildItem *)",
       "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\src\\\\app\\\\shop\" -Recurse -File | Where-Object { $_.Name -match \"delay|loading\" })",
       "Bash(New-Item *)",
-      "Bash(Select-Object Name)"
+      "Bash(Select-Object Name)",
+      "Bash(PYTHONIOENCODING=utf-8 python ingest.py refresh --brand leica-camera-usa)"
     ]
   }
 }
