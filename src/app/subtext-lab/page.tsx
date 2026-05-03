@@ -127,6 +127,14 @@ export default async function SubtextLabPage({
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-5xl">
+      {/* Body block */}
+      <div className="max-w-prose space-y-5 text-muted leading-relaxed mb-12">
+        <p>The Subtext Lab is analytical work on media and the systems around it — what a film is doing under the surface, what an album is arguing about its own time, what a piece of digital culture reveals about the platform it lives on. It is observation that wants to be written down, with enough room to sit with the question and let it open.</p>
+        <p>An <strong className="font-semibold text-ink">article</strong> is a sharpened observation — sometimes a paragraph that lands, sometimes pages that take their time, but always a complete piece. An <strong className="font-semibold text-ink">essay</strong> is the work of building an argument — a question pursued at length, evidence gathered, claims tested, a position arrived at over time. A <strong className="font-semibold text-ink">video</strong> is the same kind of thinking carried into another medium — the moving image and the voice doing what the page can&apos;t. The same subject can appear in more than one form when a question keeps opening; a later piece returns to something an earlier piece left open.</p>
+        <p>Attention runs across games, film, television, anime, manga, comics, books, music, tech, and society. Within them, certain questions recur — how a piece of work earns its pace, what an artwork carries from the moment that made it, what a system makes possible and what it forecloses. The work crosses media on purpose. A question that surfaces in a film can return in an album, or a game, in another piece of writing later on.</p>
+        <p>The Subtext Lab is for readers willing to follow a thread. Each piece is an attempt at thinking out loud, in writing, with the time the work needs.</p>
+      </div>
+
       {showFilter && (
         <SubjectFilter subjects={allSubjects} activeSubject={activeSubject} />
       )}

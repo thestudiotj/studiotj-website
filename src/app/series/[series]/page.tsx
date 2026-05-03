@@ -60,6 +60,21 @@ export default function SeriesLevelPage({ params }: PageProps) {
       return <EmptyStatePage series={series} label={series.display_name} />
     }
 
+    // "Also in series" cards — target series with at least one photo
+    const TARGET_SLUGS = ['flowers-and-trees', 'weather', 'seasons']
+    const allSeriesData = getAllSeries()
+    const allPhotosData = getAllSeriesPhotos()
+    const alsoInSeriesCards = TARGET_SLUGS
+      .map(slug => {
+        const seriesInfo = allSeriesData.find(s => s.slug === slug)
+        if (!seriesInfo) return null
+        const photos = allPhotosData.filter(p => p.series_slug === slug)
+        if (photos.length === 0) return null
+        const hero = getDerivedHero(photos)
+        return { slug, name: seriesInfo.display_name, thumbUrl: hero?.thumb_url ?? null }
+      })
+      .filter((item): item is { slug: string; name: string; thumbUrl: string | null } => item !== null)
+
     return (
       <div className="min-h-screen bg-paper">
         <div className="pt-32 pb-16 px-6 md:px-12">
@@ -77,7 +92,16 @@ export default function SeriesLevelPage({ params }: PageProps) {
           <div className="h-px bg-dust/40" />
         </div>
 
-        <div className="px-6 md:px-12 pb-24">
+        {/* Body block */}
+        <div className="px-6 md:px-12 mb-16">
+          <div className="max-w-3xl mx-auto space-y-5 text-muted leading-relaxed">
+            <p>A Route is the photography of a walk treated as one piece. The shoot is published as it happened — first frame to last, the sequence the place gave. Most of the walk stays in, so the order holds.</p>
+            <p>Routes hold many forms. An afternoon through a city quarter, all in one light. A walk indoors from one room to the next, the rhythm of attention shifting as the space asks for it. A coastal stretch along a single dyke. A garden in early summer. A path through dune or polder. Whatever the walk was, the Route is its photograph in order.</p>
+            <p>What you see first sets the register for what comes after. The route&apos;s subject is the shift itself — the way light, architecture, and mood change across forty minutes of walking. Reading a Route in order is closer to having taken the walk than to flipping through a gallery.</p>
+          </div>
+        </div>
+
+        <div className="px-6 md:px-12 pb-16">
           <div className="max-w-3xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
               {routes.map((route, i) => (
@@ -93,6 +117,28 @@ export default function SeriesLevelPage({ params }: PageProps) {
             </div>
           </div>
         </div>
+
+        {/* "Also in series" cards — hidden when all target series are empty */}
+        {alsoInSeriesCards.length > 0 && (
+          <div className="px-6 md:px-12 pt-12 pb-16 border-t border-dust/40">
+            <div className="max-w-3xl mx-auto">
+              <p className="text-xs tracking-[0.2em] uppercase text-muted opacity-50 mb-8">
+                Also in series
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+                {alsoInSeriesCards.map((item, i) => (
+                  <PhotoCard
+                    key={item.slug}
+                    href={`/series/${item.slug}`}
+                    heroUrl={item.thumbUrl}
+                    title={item.name}
+                    index={i}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     )
   }
