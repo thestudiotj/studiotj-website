@@ -1,4 +1,154 @@
 {
+  "picks/gaming/chessnut/air-plus/hero.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/gaming/chessnut/air-plus/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 800,
+    "height": 800
+  },
+  "picks/gaming/chessnut/air-plus/supporting-2.webp": {
+    "aspect": "1:1",
+    "width": 800,
+    "height": 800
+  },
+  "picks/gaming/chessnut/air-plus/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 800,
+    "height": 800
+  },
+  "picks/gaming/chessnut/air-plus/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/gaming/chessnut/air/hero.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/gaming/chessnut/air/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/air/supporting-2.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/air/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/air/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/gaming/chessnut/evo/hero.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/gaming/chessnut/evo/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 800,
+    "height": 800
+  },
+  "picks/gaming/chessnut/evo/supporting-2.webp": {
+    "aspect": "1:1",
+    "width": 800,
+    "height": 800
+  },
+  "picks/gaming/chessnut/evo/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 800,
+    "height": 800
+  },
+  "picks/gaming/chessnut/evo/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/gaming/chessnut/go/hero.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/gaming/chessnut/go/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/go/supporting-2.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/go/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/go/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/gaming/chessnut/move/hero.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/gaming/chessnut/move/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/move/supporting-2.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/move/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/move/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
+  "picks/gaming/chessnut/pro/hero.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/gaming/chessnut/pro/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/gaming/chessnut/pro/supporting-2.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/pro/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/gaming/chessnut/pro/thumb.webp": {
+    "aspect": "4:5",
+    "width": 480,
+    "height": 600
+  },
   "picks/photography/leica-camera-usa/hero.webp": {
     "aspect": "1:1",
     "width": 820,
