@@ -1,7 +1,7 @@
 import { getAllPosts, getPostBySlug } from './content'
 import { getPortfolio, sortCollections } from './portfolio'
 import { getProducts as getPrintifyProducts, getPriceRange, formatPrice } from './printify'
-import { getAllSeries, getRouteEntries } from './series'
+import { getAllSeries, getShootBoundEntries } from './series'
 import {
   getProducts as getVondstenProducts,
   getLanding as getVondstenLanding,
@@ -229,10 +229,9 @@ async function buildData(): Promise<LlmsSectionFull[]> {
 
   // ── 2. Series ─────────────────────────────────────────────────────────────────
   const allSeries = getAllSeries()
-  const routeEntries = getRouteEntries()
 
   const seriesOverviewBody = [
-    'Ongoing sequences of photographs, organized by subject, weather, and season.',
+    'Ongoing sequences of photographs — routes, visits, studies, essays, and places.',
     '',
     ...allSeries.flatMap(s => {
       const block = [`## ${s.display_name}`, '', s.description]
@@ -247,7 +246,7 @@ async function buildData(): Promise<LlmsSectionFull[]> {
     {
       title: 'Series',
       url: `${BASE_URL}/series`,
-      description: 'Ongoing sequences of photographs, organized by subject, weather, and season.',
+      description: 'Ongoing sequences of photographs — routes, visits, studies, essays, and places.',
       body: seriesOverviewBody,
     },
   ]
@@ -264,13 +263,13 @@ async function buildData(): Promise<LlmsSectionFull[]> {
       body: seriesBodyParts.join('\n'),
     })
 
-    if (series.routing === 'manual_only') {
-      for (const route of routeEntries) {
+    if (series.mechanism === 'shoot_bound') {
+      for (const entry of getShootBoundEntries(series.slug)) {
         seriesEntries.push({
-          title: route.display_name,
-          url: `${BASE_URL}/series/${series.slug}/${route.route_slug}`,
-          description: truncate(`Walk through ${route.display_name} — ${route.photo_count} photographs, chronological sequence.`),
-          body: `A walk through ${route.display_name} — ${route.photo_count} photographs, chronological sequence.\n\n${series.description}`,
+          title: entry.display_name,
+          url: `${BASE_URL}/series/${series.slug}/${entry.entry_slug}`,
+          description: truncate(`${entry.display_name} — ${entry.photo_count} photographs, chronological sequence.`),
+          body: `${entry.display_name} — ${entry.photo_count} photographs, chronological sequence.\n\n${series.description}`,
         })
       }
     }

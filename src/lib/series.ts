@@ -1,8 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import type { Photo } from './portfolio'
-import type { Series, SeriesPhoto } from '@/types/series'
-import { routeSlugToTitle } from '@/lib/utils'
+import type { Series, SeriesEntry, SeriesEntryPhoto } from '@/types/series'
 
 export const DEFAULT_OG = 'https://photos.studiotj.com/og/studiotj-default.jpg'
 
@@ -14,10 +13,10 @@ function readSeriesFile(): { version: string; series: Series[] } {
   )
 }
 
-function readSeriesPhotosFile(): { version: string; photos: SeriesPhoto[] } {
-  return JSON.parse(
-    fs.readFileSync(path.join(process.cwd(), 'data', 'series-photos.json'), 'utf-8')
-  )
+function readSeriesEntriesFile(): { version: string; entries: SeriesEntry[] } {
+  const filePath = path.join(process.cwd(), 'data', 'series_entries.json')
+  if (!fs.existsSync(filePath)) return { version: '2.0', entries: [] }
+  return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
 }
 
 function readTagDisplayNames(): Record<string, string> {
@@ -45,84 +44,86 @@ export function getSeriesBySlug(slug: string): Series | null {
   return getAllSeries().find(s => s.slug === slug) ?? null
 }
 
-// ─── Series Photos ────────────────────────────────────────────────────────────
+// ─── Series Entries ───────────────────────────────────────────────────────────
 
-export function getAllSeriesPhotos(): SeriesPhoto[] {
-  return readSeriesPhotosFile().photos
+export function getAllSeriesEntries(): SeriesEntry[] {
+  return readSeriesEntriesFile().entries
 }
 
-export function getSeriesPhotosBySubPool(seriesSlug: string, subPoolSlug: string): SeriesPhoto[] {
-  // Deterministic server order: datetime_original descending (latest first).
-  // Client-side PoolGallery shuffles on mount.
-  return getAllSeriesPhotos()
-    .filter(p => p.series_slug === seriesSlug && p.sub_pool_slug === subPoolSlug)
-    .sort((a, b) => {
-      const aDate = a.datetime_original ?? a.shoot_date
-      const bDate = b.datetime_original ?? b.shoot_date
-      return bDate.localeCompare(aDate)
-    })
+export function getEntriesForSeries(seriesSlug: string): SeriesEntry[] {
+  return getAllSeriesEntries()
+    .filter(e => e.series_slug === seriesSlug)
+    .sort((a, b) => b.shoot_date.localeCompare(a.shoot_date))
 }
 
-export type RouteEntry = {
-  route_slug: string
+export function getEntryBySlug(seriesSlug: string, entrySlug: string): SeriesEntry | null {
+  return getAllSeriesEntries().find(
+    e => e.series_slug === seriesSlug && e.entry_slug === entrySlug
+  ) ?? null
+}
+
+export function getPhotosForEntry(seriesSlug: string, entrySlug: string): SeriesEntryPhoto[] {
+  return getEntryBySlug(seriesSlug, entrySlug)?.photos ?? []
+}
+
+export function getPhotoCountForSeries(seriesSlug: string): number {
+  return getEntriesForSeries(seriesSlug).reduce((sum, e) => sum + e.photos.length, 0)
+}
+
+// ─── Route/Visit entry cards ──────────────────────────────────────────────────
+
+export type ShootBoundEntry = {
+  series_slug: string
+  entry_slug: string
   display_name: string
   shoot_date: string
   photo_count: number
   hero_thumb_url: string | null
 }
 
-export function getRouteEntries(): RouteEntry[] {
-  const routePhotos = getAllSeriesPhotos().filter(p => p.series_slug === 'routes')
-  const grouped = new Map<string, SeriesPhoto[]>()
-  for (const photo of routePhotos) {
-    if (!photo.route_slug) continue
-    const arr = grouped.get(photo.route_slug) ?? []
-    arr.push(photo)
-    grouped.set(photo.route_slug, arr)
-  }
-  return Array.from(grouped.entries())
-    .map(([route_slug, photos]) => {
-      // Sort chronologically to get the first photo as hero
-      const sorted = [...photos].sort((a, b) =>
-        (a.datetime_original ?? a.shoot_date).localeCompare(b.datetime_original ?? b.shoot_date)
-      )
-      return {
-        route_slug,
-        display_name: photos[0].route_display_name ?? routeSlugToTitle(route_slug),
-        shoot_date: photos[0].shoot_date,
-        photo_count: photos.length,
-        hero_thumb_url: sorted[0]?.thumb_url ?? null,
-      }
-    })
-    .sort((a, b) => b.shoot_date.localeCompare(a.shoot_date))
+export function getShootBoundEntries(seriesSlug: string): ShootBoundEntry[] {
+  return getEntriesForSeries(seriesSlug).map(entry => ({
+    series_slug: entry.series_slug,
+    entry_slug: entry.entry_slug,
+    display_name: entry.display_name,
+    shoot_date: entry.shoot_date,
+    photo_count: entry.photos.length,
+    hero_thumb_url: entry.photos[0]?.thumb_url ?? null,
+  }))
 }
 
-export function getPhotosForRoute(routeSlug: string): SeriesPhoto[] {
-  return getAllSeriesPhotos()
-    .filter(p => p.series_slug === 'routes' && p.route_slug === routeSlug)
-    .sort((a, b) =>
-      (a.datetime_original ?? a.shoot_date).localeCompare(b.datetime_original ?? b.shoot_date)
-    )
+// Alias for backward compat with page components
+export function getRouteEntries() {
+  return getShootBoundEntries('routes').map(e => ({
+    route_slug: e.entry_slug,
+    display_name: e.display_name,
+    shoot_date: e.shoot_date,
+    photo_count: e.photo_count,
+    hero_thumb_url: e.hero_thumb_url,
+  }))
 }
 
-export function getDerivedHero(photos: SeriesPhoto[]): SeriesPhoto | null {
-  return photos.length > 0 ? photos[0] : null
+// ─── Hero derivation ──────────────────────────────────────────────────────────
+
+export type HeroPhoto = { hero_url: string; thumb_url: string }
+
+export function getDerivedHero(photos: SeriesEntryPhoto[]): HeroPhoto | null {
+  if (photos.length === 0) return null
+  return { hero_url: photos[0].hero_url, thumb_url: photos[0].thumb_url }
 }
 
-export function getAllPhotoIdsInSeries(): string[] {
-  return Array.from(new Set(getAllSeriesPhotos().map(p => p.photo_id)))
-}
+// ─── For series landing page — hero per series ────────────────────────────────
 
-export function getPhotoCountForSeries(slug: string): number {
-  return getAllSeriesPhotos().filter(p => p.series_slug === slug).length
+export function getSeriesHero(seriesSlug: string): HeroPhoto | null {
+  const entries = getEntriesForSeries(seriesSlug)
+  const first = entries[0]?.photos[0]
+  if (!first) return null
+  return { hero_url: first.hero_url, thumb_url: first.thumb_url }
 }
 
 // ─── Photo conversion ─────────────────────────────────────────────────────────
 
-export function seriesPhotoToGalleryPhoto(p: SeriesPhoto): Photo {
-  if (!p.hero_url) {
-    console.warn(`[series] Photo "${p.photo_id}" has no hero_url`)
-  }
+export function entryPhotoToGalleryPhoto(p: SeriesEntryPhoto, shootDate: string): Photo {
   return {
     id: p.photo_id,
     url: p.hero_url,
@@ -132,7 +133,7 @@ export function seriesPhotoToGalleryPhoto(p: SeriesPhoto): Photo {
     dominant_colors: [],
     collections: [],
     shoot_folder: '',
-    date: p.shoot_date,
+    date: shootDate,
   }
 }
 
@@ -146,4 +147,26 @@ export function getDisplayNameForTag(tagValue: string): string {
     .split('-')
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ')
+}
+
+// ─── Legacy compat ────────────────────────────────────────────────────────────
+// Keep these exports to avoid breaking any page that imports them by name.
+
+/** @deprecated Use getPhotosForEntry */
+export function getPhotosForRoute(routeSlug: string): SeriesEntryPhoto[] {
+  return getPhotosForEntry('routes', routeSlug)
+}
+
+/** @deprecated getSeriesPhotosBySubPool no longer applies — series have no sub-pools */
+export function getSeriesPhotosBySubPool(_seriesSlug: string, _subPoolSlug: string): SeriesEntryPhoto[] {
+  return []
+}
+
+/** @deprecated getAllSeriesPhotos no longer applies — use getAllSeriesEntries */
+export function getAllSeriesPhotos(): SeriesEntryPhoto[] {
+  return getAllSeriesEntries().flatMap(e => e.photos)
+}
+
+export function getAllPhotoIdsInSeries(): string[] {
+  return Array.from(new Set(getAllSeriesPhotos().map(p => p.photo_id)))
 }

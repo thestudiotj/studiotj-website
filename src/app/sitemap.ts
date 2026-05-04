@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/content'
 import { getPortfolio } from '@/lib/portfolio'
 import { getProducts } from '@/lib/printify'
-import { getAllSeries, getRouteEntries } from '@/lib/series'
+import { getAllSeries, getShootBoundEntries } from '@/lib/series'
 import { getProducts as getVondstenProducts } from '@/lib/vondsten/loader'
 import { CATEGORIES } from '@/lib/vondsten/schemas'
 import { loadActiveCategories, loadAllBrandsInCategory, loadBrandProducts } from '@/lib/picks/loader'
@@ -53,13 +53,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const series of allSeries) {
     entries.push({ url: `${BASE_URL}/series/${series.slug}` })
 
-    if (series.routing === 'manual_only') {
-      for (const route of getRouteEntries()) {
-        entries.push({ url: `${BASE_URL}/series/${series.slug}/${route.route_slug}` })
-      }
-    } else {
-      for (const sp of series.sub_pools ?? []) {
-        entries.push({ url: `${BASE_URL}/series/${series.slug}/${sp.slug}` })
+    if (series.mechanism === 'shoot_bound') {
+      for (const entry of getShootBoundEntries(series.slug)) {
+        entries.push({ url: `${BASE_URL}/series/${series.slug}/${entry.entry_slug}` })
       }
     }
   }

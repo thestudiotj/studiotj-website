@@ -1,16 +1,15 @@
 import type { Metadata } from 'next'
-import { getAllSeries, getAllSeriesPhotos, getDerivedHero, getPhotoCountForSeries } from '@/lib/series'
+import { getAllSeries, getPhotoCountForSeries, getSeriesHero } from '@/lib/series'
 import PhotoCard from '@/components/PhotoCard'
 
 export const metadata: Metadata = {
   title: 'Series',
   description:
-    'Ongoing photo series by StudioTJ — botanical subjects, weather, seasons, and routes.',
+    'Ongoing photo series by StudioTJ — routes, visits, studies, essays, and places.',
 }
 
 export default function SeriesPage() {
   const allSeries = getAllSeries()
-  const allPhotos = getAllSeriesPhotos()
   const visibleSeries = allSeries.filter(s => getPhotoCountForSeries(s.slug) > 0)
 
   return (
@@ -22,7 +21,7 @@ export default function SeriesPage() {
           Series
         </h1>
         <p className="text-muted text-lg max-w-xl leading-relaxed">
-          Ongoing sequences of photographs, organized by subject, weather, and season.
+          Ongoing sequences of photographs — walks, visits, recurring subjects, and places.
         </p>
       </div>
 
@@ -34,12 +33,12 @@ export default function SeriesPage() {
       {/* Body block */}
       <div className="px-6 md:px-12 mb-16">
         <div className="max-w-3xl mx-auto space-y-5 text-muted leading-relaxed">
-          <p>A series is an organizing axis kept open. Photographs are gathered from across many shoots, and the series fills as the work goes on. Three of the four are pools — photographs that share an inherent quality, regardless of which shoot brought them in. The fourth is structured differently.</p>
-          <p><strong className="font-semibold text-ink">Flowers and Trees</strong> is subject-led — flowers, blossom, trees through their seasons, individual specimens or whole stands. The work happens at low canal-side trees, in town parks and dune scrub, on long avenues that line Dutch suburbs and country roads. A subject this common in the landscape rewards careful attention rather than novelty.</p>
-          <p><strong className="font-semibold text-ink">Weather</strong> is the photograph reading as the weather as much as the place. Mist over polder, snow rare enough that it changes the whole register when it lands, the long golden hour that holds across flat country, blue hour stretching well past sunset in summer, dramatic North Sea fronts. A country with this much sky and this little vertical relief makes weather visible where more dramatic terrain hides it.</p>
-          <p><strong className="font-semibold text-ink">Seasons</strong> is the year as the subject — spring as it actually arrives in the Low Countries, summer green and long evenings, autumn through wet leaf and turning trees, winter short days and bare structure. Each season carries its own light and its own palette. The series is what the year looks like when watched closely from one country.</p>
-          <p><strong className="font-semibold text-ink">Routes</strong> runs on a different logic. A Route is a single walk, photographed in order. One shoot, one place, the sequence as it unfolded — a city quarter, a museum, a building, a park. Where the other three are pools that fill from many shoots, a Route is one shoot kept whole, the order doing as much of the work as the individual frames.</p>
-          <p>Four series, two structures. Pools for what recurs; sequences for what was walked through once.</p>
+          <p>Five series, two structures. Two are shoot-bound — one shoot becomes one entry, published in sequence, the order doing as much work as the individual frames. Three are curatorial — photographs gathered from many shoots, assembled by subject, theme, or place.</p>
+          <p><strong className="font-semibold text-ink">Routes</strong> is a single walk, photographed in order. A city quarter, a park, a stretch of canal — one shoot, kept whole. The sequence is the thing.</p>
+          <p><strong className="font-semibold text-ink">Visits</strong> is the same logic indoors — a museum, a concert, a festival. One event, one sequence, first frame to last.</p>
+          <p><strong className="font-semibold text-ink">Studies</strong> is a recurring subject revisited — a tree, a bridge, a stretch of water — across many shoots and seasons. The subject accumulates.</p>
+          <p><strong className="font-semibold text-ink">Essays</strong> is a theme, not a place. An idea cut across many shoots and assembled editorially — not one walk but one argument.</p>
+          <p><strong className="font-semibold text-ink">Places</strong> is a city or region as subject — Amsterdam, Maastricht, the North Sea coast — drawn from any shoot there. Discovery by geography.</p>
         </div>
       </div>
 
@@ -53,8 +52,7 @@ export default function SeriesPage() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
               {visibleSeries.map((series, i) => {
-                const seriesPhotos = allPhotos.filter(p => p.series_slug === series.slug)
-                const hero = getDerivedHero(seriesPhotos)
+                const hero = getSeriesHero(series.slug)
                 return (
                   <PhotoCard
                     key={series.slug}

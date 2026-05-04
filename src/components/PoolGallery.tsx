@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import type { SeriesPhoto } from '@/types/series'
+import type { SeriesEntryPhoto } from '@/types/series'
 import type { Photo } from '@/lib/portfolio'
 import Gallery from './Gallery'
 
-function toPhoto(p: SeriesPhoto): Photo {
+function toPhoto(p: SeriesEntryPhoto): Photo {
   return {
     id: p.photo_id,
     url: p.hero_url,
@@ -15,7 +15,7 @@ function toPhoto(p: SeriesPhoto): Photo {
     dominant_colors: [],
     collections: [],
     shoot_folder: '',
-    date: p.shoot_date,
+    date: '',
   }
 }
 
@@ -27,8 +27,8 @@ function toPhoto(p: SeriesPhoto): Photo {
  * When a pool exceeds 50 photos, switch the server-side fetch to use
  * getRotatedPhotoIds with a weekly ISO seed — see lib/series.ts.
  */
-export default function PoolGallery({ photos }: { photos: SeriesPhoto[] }) {
-  const [shuffled] = useState<SeriesPhoto[]>(() => {
+export default function PoolGallery({ photos }: { photos: SeriesEntryPhoto[] }) {
+  const [shuffled] = useState<SeriesEntryPhoto[]>(() => {
     const arr = [...photos]
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))

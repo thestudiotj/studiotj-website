@@ -1,63 +1,55 @@
 {
-  "version": "1.1",
+  "version": "2.0",
   "series": [
     {
-      "slug": "flowers-and-trees",
-      "display_name": "Flowers & Trees",
-      "description": "Botanical subjects — blossom canopies, tree studies.",
-      "priority": 1,
-      "sub_pools": [
-        {"slug": "flowers", "tag_filter": {"all": ["subject:flower"]}},
-        {"slug": "trees", "tag_filter": {"all": ["subject:tree"]}}
-      ],
-      "evergreen_note": "Timeless subject matter with stable search intent.",
-      "refill_note": "Every bloom season, every tree study extends it.",
+      "slug": "routes",
+      "display_name": "Routes",
+      "description": "A single walk, photographed in order. One shoot, one place — the sequence as it unfolded.",
+      "mechanism": "shoot_bound",
+      "evergreen_note": "A named route through a place is a thing people look for.",
+      "refill_note": "Each Routes-mode shoot produces one entry.",
       "active": true,
       "sort_order": 1
     },
     {
-      "slug": "weather",
-      "display_name": "Weather",
-      "description": "When weather itself becomes the subject.",
-      "priority": 2,
-      "sub_pools": [
-        {"slug": "mist", "tag_filter": {"all": ["weather:mist"]}},
-        {"slug": "snow", "tag_filter": {"all": ["weather:snow"]}},
-        {"slug": "golden-hour", "tag_filter": {"all": ["weather:golden-hour"]}},
-        {"slug": "blue-hour", "tag_filter": {"all": ["weather:blue-hour"]}},
-        {"slug": "dramatic", "tag_filter": {"all": ["weather:dramatic"]}}
-      ],
-      "evergreen_note": "Visually distinct light and weather conditions.",
-      "refill_note": "Every shoot in notable weather adds to the series.",
+      "slug": "visits",
+      "display_name": "Visits",
+      "description": "A museum, a concert, a festival — one shoot kept whole, the venue as it was walked through.",
+      "mechanism": "shoot_bound",
+      "evergreen_note": "Indoor venues and events as complete sequences.",
+      "refill_note": "Each Visits-mode shoot produces one entry.",
       "active": true,
       "sort_order": 2
     },
     {
-      "slug": "seasons",
-      "display_name": "Seasons",
-      "description": "Cherry blossom, autumn colour, winter light, mist.",
-      "priority": 3,
-      "sub_pools": [
-        {"slug": "spring", "tag_filter": {"all": ["season:spring"]}},
-        {"slug": "summer", "tag_filter": {"all": ["season:summer"]}},
-        {"slug": "autumn", "tag_filter": {"all": ["season:autumn"]}},
-        {"slug": "winter", "tag_filter": {"all": ["season:winter"]}}
-      ],
-      "evergreen_note": "Four always-fillable buckets by definition.",
-      "refill_note": "Every shoot carries a season tag. Automatic refill.",
+      "slug": "studies",
+      "display_name": "Studies",
+      "description": "Recurring subjects revisited across many shoots — a tree, a bridge, a stretch of canal.",
+      "mechanism": "curatorial",
+      "evergreen_note": "The same subject returning in different seasons and light.",
+      "refill_note": "Cross-shoot selection; any shoot can contribute.",
       "active": true,
       "sort_order": 3
     },
     {
-      "slug": "routes",
-      "display_name": "Routes",
-      "description": "A single walk, in order. One shoot, photographed as the place unfolded — outdoors, indoors, a building, a museum. Chronological; the sequence matters.",
-      "priority": 0,
-      "routing": "manual_only",
-      "evergreen_note": "A named route through a place is a thing people look for.",
-      "refill_note": "Each Routes-mode shoot produces one entry.",
+      "slug": "essays",
+      "display_name": "Essays",
+      "description": "Themed sequences cut across shoots — not one walk but one idea, assembled from many mornings.",
+      "mechanism": "curatorial",
+      "evergreen_note": "Editorially coherent sets that work together.",
+      "refill_note": "Cross-shoot curation; entries grow as the idea accumulates.",
       "active": true,
       "sort_order": 4
+    },
+    {
+      "slug": "places",
+      "display_name": "Places",
+      "description": "A city or region as subject — Amsterdam, Maastricht, the North Sea coast — drawn from any shoot there.",
+      "mechanism": "curatorial",
+      "evergreen_note": "Place-led discovery: someone searching a city finds a body of work.",
+      "refill_note": "Every shoot in a city extends it.",
+      "active": true,
+      "sort_order": 5
     }
   ]
 }
