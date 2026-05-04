@@ -19,11 +19,6 @@
     "width": 800,
     "height": 800
   },
-  "picks/gaming/chessnut/air-plus/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/gaming/chessnut/air/hero.webp": {
     "aspect": "1:1",
     "width": 1000,
@@ -43,11 +38,6 @@
     "aspect": "1:1",
     "width": 1200,
     "height": 1200
-  },
-  "picks/gaming/chessnut/air/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/gaming/chessnut/evo/hero.webp": {
     "aspect": "1:1",
@@ -69,11 +59,6 @@
     "width": 800,
     "height": 800
   },
-  "picks/gaming/chessnut/evo/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/gaming/chessnut/go/hero.webp": {
     "aspect": "1:1",
     "width": 1000,
@@ -94,10 +79,10 @@
     "width": 1200,
     "height": 1200
   },
-  "picks/gaming/chessnut/go/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
+  "picks/gaming/chessnut/hero.webp": {
+    "aspect": "859:460",
+    "width": 859,
+    "height": 460
   },
   "picks/gaming/chessnut/move/hero.webp": {
     "aspect": "1:1",
@@ -119,11 +104,6 @@
     "width": 1200,
     "height": 1200
   },
-  "picks/gaming/chessnut/move/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/gaming/chessnut/pro/hero.webp": {
     "aspect": "1:1",
     "width": 1000,
@@ -144,7 +124,22 @@
     "width": 1200,
     "height": 1200
   },
-  "picks/gaming/chessnut/pro/thumb.webp": {
+  "picks/gaming/chessnut/supporting-1.webp": {
+    "aspect": "1000:663",
+    "width": 1000,
+    "height": 663
+  },
+  "picks/gaming/chessnut/supporting-2.webp": {
+    "aspect": "984:497",
+    "width": 984,
+    "height": 497
+  },
+  "picks/gaming/chessnut/supporting-3.webp": {
+    "aspect": "1200:667",
+    "width": 1200,
+    "height": 667
+  },
+  "picks/gaming/chessnut/thumb.webp": {
     "aspect": "4:5",
     "width": 480,
     "height": 600
@@ -159,200 +154,100 @@
     "width": 386,
     "height": 290
   },
-  "picks/photography/leica-camera-usa/leica-battery-bp-dc15-d-lux/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-battery-bp-scl6-q3/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
-  },
-  "picks/photography/leica-camera-usa/leica-battery-bp-scl6-q3/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-battery-bp-scl7-m11-black/hero.webp": {
     "aspect": "193:250",
     "width": 386,
     "height": 500
   },
-  "picks/photography/leica-camera-usa/leica-battery-bp-scl7-m11-black/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-d-lux-8/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
-  },
-  "picks/photography/leica-camera-usa/leica-d-lux-8/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-halfcase-q3-cognac/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
   },
-  "picks/photography/leica-camera-usa/leica-halfcase-q3-cognac/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-lux-grip/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
-  },
-  "picks/photography/leica-camera-usa/leica-lux-grip/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-m-ev1/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
   },
-  "picks/photography/leica-camera-usa/leica-m-ev1/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-m11-d-in-black/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
-  },
-  "picks/photography/leica-camera-usa/leica-m11-d-in-black/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-m11-glossy-black-finish/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
   },
-  "picks/photography/leica-camera-usa/leica-m11-glossy-black-finish/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-m11-protector-olive-green/hero.webp": {
     "aspect": "193:149",
     "width": 386,
     "height": 298
-  },
-  "picks/photography/leica-camera-usa/leica-m11-protector-olive-green/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-noctivid-8x42-green/hero.webp": {
     "aspect": "193:149",
     "width": 386,
     "height": 298
   },
-  "picks/photography/leica-camera-usa/leica-noctivid-8x42-green/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-notebook-the-photojournalist/hero.webp": {
     "aspect": "386:279",
     "width": 386,
     "height": 279
-  },
-  "picks/photography/leica-camera-usa/leica-notebook-the-photojournalist/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-q3-43/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
   },
-  "picks/photography/leica-camera-usa/leica-q3-43/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-q3-monochrom/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
-  },
-  "picks/photography/leica-camera-usa/leica-q3-monochrom/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-q3/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
   },
-  "picks/photography/leica-camera-usa/leica-q3/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-sl3-s/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
-  },
-  "picks/photography/leica-camera-usa/leica-sl3-s/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-sl3/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
   },
-  "picks/photography/leica-camera-usa/leica-sl3/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-sofort-2/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
-  },
-  "picks/photography/leica-camera-usa/leica-sofort-2/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/leica-soft-release-button-brass-blasted/hero.webp": {
     "aspect": "193:145",
     "width": 386,
     "height": 290
   },
-  "picks/photography/leica-camera-usa/leica-soft-release-button-brass-blasted/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
-  },
   "picks/photography/leica-camera-usa/leica-trinovid-10x42-hd/hero.webp": {
     "aspect": "193:149",
     "width": 386,
     "height": 298
-  },
-  "picks/photography/leica-camera-usa/leica-trinovid-10x42-hd/thumb.webp": {
-    "aspect": "4:5",
-    "width": 480,
-    "height": 600
   },
   "picks/photography/leica-camera-usa/supporting-1.webp": {
     "aspect": "1:1",

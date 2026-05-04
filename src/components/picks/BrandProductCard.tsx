@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { resolveR2 } from "@/lib/picks/paths";
+import { resolveAspect } from "@/lib/picks/imageAspect";
 import type { BrandProduct } from "@/lib/picks/schemas";
 
 interface BrandProductCardProps {
@@ -7,26 +8,23 @@ interface BrandProductCardProps {
   href: string;
 }
 
-function heroToThumb(heroImage: string): string {
-  if (heroImage.endsWith('/hero.webp')) {
-    return heroImage.replace('/hero.webp', '/thumb.webp');
-  }
-  return heroImage;
-}
-
 export default function BrandProductCard({ product, href }: BrandProductCardProps) {
+  const aspectRatio = product.hero_image
+    ? resolveAspect(product.hero_image, 'hero', product.hero_aspect)
+    : '4 / 5';
+
   return (
     <Link href={href} className="group block">
       <div
         className="relative overflow-hidden mb-3"
-        style={{ aspectRatio: "4 / 5", background: "var(--accent-soft)" }}
+        style={{ aspectRatio }}
       >
         {product.hero_image && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={resolveR2(heroToThumb(product.hero_image))}
+            src={resolveR2(product.hero_image)}
             alt={product.hero_image_alt ?? ""}
-            className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
           />
         )}
       </div>

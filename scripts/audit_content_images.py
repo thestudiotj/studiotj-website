@@ -34,7 +34,6 @@ CONVENTION_PATTERNS = {
     "unit_thumb":re.compile(r"^(gear|vondsten|picks)/[^/]+/[^/]+/thumb\.webp$"),
     "unit_supp": re.compile(r"^(gear|vondsten|picks)/[^/]+/[^/]+/supporting-[1-3]\.webp$"),
     "bp_hero":   re.compile(r"^picks/[^/]+/[^/]+/[^/]+/hero\.webp$"),
-    "bp_thumb":  re.compile(r"^picks/[^/]+/[^/]+/[^/]+/thumb\.webp$"),
     "bp_supp":   re.compile(r"^picks/[^/]+/[^/]+/[^/]+/supporting-[1-3]\.webp$"),
 }
 
