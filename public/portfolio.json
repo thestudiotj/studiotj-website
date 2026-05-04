@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "generated_at": "2026-05-01T00:38:27.858586+00:00",
+  "generated_at": "2026-05-04T23:35:15.601223+00:00",
   "site": {
     "photo_base_url": "https://photos.studiotj.com"
   },
@@ -7872,6 +7872,240 @@
       "caption": "Cherry blossom branch against dark glazed building facade, with blossom trees reflected in windows, Maastricht.",
       "location": "Maastricht",
       "og_url": "https://photos.studiotj.com/og/photos/2026-04-14-Maastricht-Park-export-dsc-0690.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629192917",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629192917-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629192917-thumb.webp",
+      "title": "Arena Pre-Show Red Light Amsterdam",
+      "aspect_ratio": 0.75,
+      "dominant_colors": [
+        "#3e0a15",
+        "#560001",
+        "#2b0001"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Concert arena interior bathed in red pre-show lighting, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629192917.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629205644",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629205644-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629205644-thumb.webp",
+      "title": "Red Light Crowd Concert Amsterdam",
+      "aspect_ratio": 0.75,
+      "dominant_colors": [
+        "#960000",
+        "#500001",
+        "#1f0000"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Dense concert crowd bathed in red stage lighting, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629205644.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629211426",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629211426-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629211426-thumb.webp",
+      "title": "Drummer Long Hair Stage Dark",
+      "aspect_ratio": 0.75,
+      "dominant_colors": [
+        "#535353",
+        "#07080a",
+        "#010101"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Drummer performing on stage, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629211426.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629211608",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629211608-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629211608-thumb.webp",
+      "title": "Concert Stage Projection Amsterdam",
+      "aspect_ratio": 0.75,
+      "dominant_colors": [
+        "#888f8a",
+        "#555956",
+        "#222222"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Live concert stage with projected black-and-white imagery and silhouetted crowd, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629211608.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629211620",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629211620-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629211620-thumb.webp",
+      "title": "Keyboard Player Stage Light Concert",
+      "aspect_ratio": 0.75,
+      "dominant_colors": [
+        "#6c726f",
+        "#5b5e5b",
+        "#282928"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Musician at keyboard under stage lighting, live concert, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629211620.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629212837",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629212837-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629212837-thumb.webp",
+      "title": "Live Performance Projection Amsterdam",
+      "aspect_ratio": 0.7501,
+      "dominant_colors": [
+        "#464946",
+        "#191d1c",
+        "#020202"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Performer at keyboard beneath large-scale projection, live concert, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629212837.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629213039",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629213039-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629213039-thumb.webp",
+      "title": "Concert Stage Projection Amsterdam",
+      "aspect_ratio": 1.3335,
+      "dominant_colors": [
+        "#414343",
+        "#1c1f23",
+        "#040404"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Live concert stage with projection curtain and audience filming, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629213039.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629214102",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629214102-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629214102-thumb.webp",
+      "title": "Red Smoke Stage Fire Concert Amsterdam",
+      "aspect_ratio": 0.75,
+      "dominant_colors": [
+        "#b43d19",
+        "#710000",
+        "#080000"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Concert stage engulfed in red smoke and pyrotechnics, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629214102.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629214450",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629214450-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629214450-thumb.webp",
+      "title": "Red Smoke Eruption Over Concert Stage",
+      "aspect_ratio": 0.7499,
+      "dominant_colors": [
+        "#371412",
+        "#190202",
+        "#0f0000"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Red pyrotechnic smoke burst above a suspended stage platform, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629214450.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629220737",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629220737-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629220737-thumb.webp",
+      "title": "Blue Haze Live Stage Amsterdam",
+      "aspect_ratio": 0.7499,
+      "dominant_colors": [
+        "#004768",
+        "#01183f",
+        "#01030f"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Band performing under blue and green stage lighting, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629220737.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629220740",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629220740-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629220740-thumb.webp",
+      "title": "Blue Light Concert Crowd Amsterdam",
+      "aspect_ratio": 0.75,
+      "dominant_colors": [
+        "#034dba",
+        "#011384",
+        "#000335"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Live concert stage bathed in blue light with crowd silhouettes, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629220740.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629220755",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629220755-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629220755-thumb.webp",
+      "title": "Concert Stage Projection Amsterdam",
+      "aspect_ratio": 0.75,
+      "dominant_colors": [
+        "#1a1b1f",
+        "#050307",
+        "#000000"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Performer projected on stage screen under spotlight, live concert, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629220755.jpg"
+    },
+    {
+      "id": "2025-06-09-NineInchNails-export-img20250629223625",
+      "url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629223625-hero.webp",
+      "thumbnail_url": "https://photos.studiotj.com/2025-06-09-NineInchNails-export/IMG20250629223625-thumb.webp",
+      "title": "Nine Inch Nails Stage Banners Amsterdam",
+      "aspect_ratio": 1.3334,
+      "dominant_colors": [
+        "#b2b2a8",
+        "#6c6455",
+        "#3a281f"
+      ],
+      "collections": [],
+      "shoot_folder": "2025-06-09-NineInchNails-export",
+      "date": "2025-06-29",
+      "caption": "Nine Inch Nails NIN logo banners on stage, Amsterdam.",
+      "location": "Amsterdam",
+      "og_url": "https://photos.studiotj.com/og/photos/2025-06-09-NineInchNails-export-img20250629223625.jpg"
     }
   ]
 }
