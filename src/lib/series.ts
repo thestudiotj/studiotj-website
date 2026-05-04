@@ -7,16 +7,57 @@ export const DEFAULT_OG = 'https://photos.studiotj.com/og/studiotj-default.jpg'
 
 // ─── Raw data readers ─────────────────────────────────────────────────────────
 
+type RawSeriesEntry = {
+  series_slug: string
+  entry_slug: string
+  display_name: string
+  photo_ids: string[]
+  hero_photo_id: string | null
+  shoot_date: string
+  notes?: string | null
+}
+
+type PortfolioPhotoRecord = {
+  id: string
+  url: string
+  thumbnail_url: string
+  title: string
+  aspect_ratio: number
+  caption?: string
+}
+
 function readSeriesFile(): { version: string; series: Series[] } {
   return JSON.parse(
     fs.readFileSync(path.join(process.cwd(), 'data', 'series.json'), 'utf-8')
   )
 }
 
-function readSeriesEntriesFile(): { version: string; entries: SeriesEntry[] } {
+function readRawSeriesEntries(): RawSeriesEntry[] {
   const filePath = path.join(process.cwd(), 'data', 'series_entries.json')
-  if (!fs.existsSync(filePath)) return { version: '2.0', entries: [] }
-  return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+  if (!fs.existsSync(filePath)) return []
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+    // upload.py writes a flat array; guard against old wrapped format
+    if (Array.isArray(data)) return data as RawSeriesEntry[]
+    return ((data as { entries?: RawSeriesEntry[] }).entries ?? [])
+  } catch {
+    return []
+  }
+}
+
+function readPortfolioPhotosMap(): Map<string, PortfolioPhotoRecord> {
+  const filePath = path.join(process.cwd(), 'public', 'portfolio.json')
+  if (!fs.existsSync(filePath)) return new Map()
+  try {
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as {
+      photos?: PortfolioPhotoRecord[]
+    }
+    const map = new Map<string, PortfolioPhotoRecord>()
+    for (const p of data.photos ?? []) map.set(p.id, p)
+    return map
+  } catch {
+    return new Map()
+  }
 }
 
 function readTagDisplayNames(): Record<string, string> {
@@ -47,7 +88,32 @@ export function getSeriesBySlug(slug: string): Series | null {
 // ─── Series Entries ───────────────────────────────────────────────────────────
 
 export function getAllSeriesEntries(): SeriesEntry[] {
-  return readSeriesEntriesFile().entries
+  const rawEntries = readRawSeriesEntries()
+  const portfolioMap = readPortfolioPhotosMap()
+
+  return rawEntries.map(raw => {
+    const photos: SeriesEntryPhoto[] = []
+    for (const pid of raw.photo_ids) {
+      const p = portfolioMap.get(pid)
+      if (!p) continue
+      const ratio = p.aspect_ratio || 1.5
+      photos.push({
+        photo_id: pid,
+        hero_url: p.url,
+        thumb_url: p.thumbnail_url,
+        width: Math.round(1000 * ratio),
+        height: 1000,
+        alt: p.caption ?? p.title,
+      })
+    }
+    return {
+      series_slug: raw.series_slug,
+      entry_slug: raw.entry_slug,
+      display_name: raw.display_name,
+      shoot_date: raw.shoot_date,
+      photos,
+    }
+  })
 }
 
 export function getEntriesForSeries(seriesSlug: string): SeriesEntry[] {
