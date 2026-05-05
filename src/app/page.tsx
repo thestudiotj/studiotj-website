@@ -145,13 +145,14 @@ export default async function HomePage() {
         <div className="relative z-10 max-w-2xl animate-fade-up">
           <p className="text-paper/70 text-sm tracking-[0.3em] uppercase mb-4">StudioTJ</p>
           <h1 className="font-display text-5xl md:text-7xl text-paper leading-tight mb-6">
-            Architecture, atmosphere, monochrome.
+            Photography, and everything it pulled in.
           </h1>
           <p className="text-paper/70 text-lg mb-8 max-w-md leading-relaxed">
-            A studio built around photography, and everything it kept pulling in.
+            Four photography collections and the prints to match, ongoing series, and The Subtext Lab on media and society.
           </p>
           <div className="flex gap-4">
             <Link href="/portfolio" className="btn-primary">View Portfolio</Link>
+            <Link href="/shop" className="btn-outline">View Shop</Link>
           </div>
         </div>
       </section>
@@ -197,8 +198,10 @@ export default async function HomePage() {
               </p>
               <Link href="/series" className="btn-outline">View Series →</Link>
             </div>
-            <div className="md:w-1/2">
-              <SeriesRotator photos={seriesPhotos} />
+            <div className="md:w-1/2 flex justify-center md:justify-end">
+              <div className="w-full max-w-xs">
+                <SeriesRotator photos={seriesPhotos} />
+              </div>
             </div>
           </div>
         </section>
