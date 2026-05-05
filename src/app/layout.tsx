@@ -86,7 +86,7 @@ export default function RootLayout({
         <CartProvider>
           <Nav />
           <CartDrawer />
-          <main className="flex-1">
+          <main className="flex-1 max-w-[1440px] mx-auto w-full">
             {children}
           </main>
           <FooterWrapper />

@@ -27,6 +27,7 @@
     background-color: #F5F2EC;
     color: #0D0D0D;
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
   }
 
   /* Custom scrollbar */
@@ -72,6 +73,19 @@
   .photo-card-overlay {
     @apply absolute inset-0 bg-ink/0 group-hover:bg-ink/30 transition-all duration-300
            flex items-end p-4 opacity-0 group-hover:opacity-100;
+  }
+
+  /* Full-bleed breakout from the centered <main> max-width container.
+     Apply to sections that need edge-to-edge backgrounds (hero image, solid color strips).
+     overflow-x: clip on <html> prevents the 100vw scrollbar-width gap in Firefox. */
+  .breakout {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  /* Inner content cap for breakout sections that still need bounded readable content. */
+  .site-wrap {
+    @apply max-w-[1440px] mx-auto w-full px-6 md:px-12;
   }
 
   .btn-primary {

@@ -4,10 +4,12 @@ import type { Photo } from '@/lib/portfolio'
 import { getAllPosts } from '@/lib/content'
 import type { BlogFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
 import { getAllSeriesPhotos } from '@/lib/series'
+import { getElsewhereData } from '@/lib/elsewhere'
 import EmailCapture from '@/components/EmailCapture'
 import HeroImage from '@/components/HeroImage'
 import CollectionCard from '@/components/CollectionCard'
 import SeriesRotator from '@/components/SeriesRotator'
+import ElsewhereHomeGrid from '@/components/ElsewhereHomeGrid'
 
 // ─── Date formatter ───────────────────────────────────────────────────────────
 
@@ -118,6 +120,9 @@ export default async function HomePage() {
 
   const seriesPhotos = getAllSeriesPhotos()
 
+  const elsewhereItems = getElsewhereData().items.slice(0, 8)
+  const showElsewhere = elsewhereItems.length >= 3
+
   const [blogPosts, subtextPosts] = await Promise.all([
     getAllPosts('blog'),
     getAllPosts('subtext-lab'),
@@ -129,8 +134,8 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-end pb-16 px-6 md:px-12 overflow-hidden">
+      {/* Hero — breakout so the image remains edge-to-edge despite <main> max-width */}
+      <section className="breakout relative min-h-[60vh] max-h-[900px] flex items-end pb-16 px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0">
           <HeroImage src={heroSrc} />
           <div className="absolute inset-0 bg-black/35" />
@@ -199,6 +204,20 @@ export default async function HomePage() {
         </section>
       )}
 
+      {/* Elsewhere — hidden until at least 3 items exist */}
+      {showElsewhere && (
+        <section className="border-t border-dust/40 px-6 md:px-12 py-20">
+          <div className="flex items-end justify-between mb-10">
+            <div>
+              <h2 className="section-title">Elsewhere</h2>
+              <p className="text-muted text-sm mt-1 italic">Lately, off-site.</p>
+            </div>
+            <Link href="/elsewhere" className="nav-link">See more →</Link>
+          </div>
+          <ElsewhereHomeGrid items={elsewhereItems} />
+        </section>
+      )}
+
       {/* About strip */}
       <section className="border-t border-dust/40 px-6 md:px-12 py-20">
         <div className="max-w-2xl">
@@ -213,9 +232,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Latest strip */}
+      {/* Latest strip — breakout so bg-ink spans edge-to-edge */}
       {hasLatest && (
-        <section className="bg-ink text-paper px-6 md:px-12 py-20">
+        <section className="breakout bg-ink text-paper px-6 md:px-12 py-20">
           <h2 className="font-display text-4xl md:text-6xl mb-12">Latest</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {latestBlog && <BlogCard post={latestBlog} />}
