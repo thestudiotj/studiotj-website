@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useCart } from '@/lib/cart'
 
-const links: { href: string; label: string; subtextDot?: boolean }[] = [
+const links: { href: string; label: string; exact?: boolean; subtextDot?: boolean }[] = [
+  { href: '/', label: 'Home', exact: true },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/series', label: 'Series' },
   { href: '/blog', label: 'Blog' },
@@ -55,8 +56,8 @@ export default function Nav() {
               <Link
                 href={link.href}
                 className={`text-xs tracking-[0.2em] uppercase transition-colors duration-200 flex items-center ${
-                  pathname.startsWith(link.href)
-                    ? isHome && !scrolled ? 'text-paper' : 'text-ink' // active link
+                  (link.exact ? pathname === link.href : pathname.startsWith(link.href))
+                    ? isHome && !scrolled ? 'text-paper' : 'text-ink'
                     : linkColor
                 }`}
               >
