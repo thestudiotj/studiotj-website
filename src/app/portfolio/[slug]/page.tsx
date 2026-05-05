@@ -106,7 +106,7 @@ export default function CollectionPage({ params, searchParams }: PageProps) {
         '--col-border': border,
         '--col-surface': theme.surface,
       } as React.CSSProperties}
-      className="min-h-screen"
+      className="min-h-screen breakout"
     >
       {/* Header section */}
       <div className="pt-28 pb-12 px-6 md:px-12">
