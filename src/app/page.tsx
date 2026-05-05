@@ -135,7 +135,7 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero — breakout so the image remains edge-to-edge despite <main> max-width */}
-      <section className="breakout relative min-h-[60vh] max-h-[900px] flex items-end pb-16 px-6 md:px-12 overflow-hidden">
+      <section className="breakout relative min-h-[85vh] md:min-h-[60vh] max-h-[900px] flex items-end pb-16 px-6 md:px-12 overflow-hidden">
         <div className="absolute inset-0">
           <HeroImage src={heroSrc} />
           <div className="absolute inset-0 bg-black/35" />

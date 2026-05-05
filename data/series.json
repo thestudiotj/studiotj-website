@@ -4,10 +4,15 @@
     {
       "slug": "routes",
       "display_name": "Routes",
-      "description": "A single walk, photographed in order. One shoot, one place — the sequence as it unfolded.",
+      "description": "A photo walk outside, kept in the order it was walked. First step to last.",
       "mechanism": "shoot_bound",
       "evergreen_note": "A named route through a place is a thing people look for.",
       "refill_note": "Each Routes-mode shoot produces one entry.",
+      "body_text": [
+        "A Route is a single walk, photographed outside, published in the order it was walked. Streets, canals, a neighbourhood at the start of an evening, a park in autumn light, a stretch of polder under heavy weather — whatever the day actually had. The first frame is the first thing seen, the last is where the walk ended, and everything between is what got picked up along the way.",
+        "The discipline is keeping the walk intact. The order on the page is the order on the ground; chronological by capture time, frames where the walk put them. The in-between moments earn their place because they're part of how the strong frames got reached. A place at walking pace shows its rhythm across the whole run.",
+        "Routes exist because a walk is the closest a still photograph gets to being a story. The sequence carries time, distance, and weather — the slow shift in light from start to end, the mood change after a turn, the way a place looks different on the way back. That arc is what a Route is for, and it holds together whatever made the individual frames."
+      ],
       "active": true,
       "sort_order": 1
     },
@@ -18,6 +23,11 @@
       "mechanism": "shoot_bound",
       "evergreen_note": "Indoor venues and events as complete sequences.",
       "refill_note": "Each Visits-mode shoot produces one entry.",
+      "body_text": [
+        "A Visit is a single event, photographed in the order it unfolded. A concert from the doors opening to the encore, a museum from the entrance to the last room, a festival across a day or a weekend. The full event — every space it used, indoor and outdoor alike. A museum garden between exhibitions, a venue forecourt before the show, a festival ground at the change of acts. The boundary is the event, not the building.",
+        "The discipline is keeping the event intact. Chronological by capture time, every frame in the order the event happened. A concert lives in the arc the night actually had — the build, the long middle, the peak, the room as it cleared. A museum visit lives in the route through the rooms, the unexpected work in a side gallery, the quiet between two crowded halls. The sequence is what was actually there.",
+        "Visits exist because events are one-offs. The lighting, the crowd, the order the rooms were walked, the way the night built — these arrive once. A Visit is the record of having been there at the pace it actually had, every frame in the order the event made it, with whatever camera the venue allowed in."
+      ],
       "active": true,
       "sort_order": 2
     },

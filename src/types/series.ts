@@ -5,6 +5,7 @@ export type Series = {
   mechanism: 'shoot_bound' | 'curatorial'
   evergreen_note: string
   refill_note: string
+  body_text?: string[]
   active: boolean
   sort_order: number
 }

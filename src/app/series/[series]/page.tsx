@@ -51,7 +51,7 @@ export default function SeriesLevelPage({ params }: PageProps) {
   if (isShootBound) {
     const entries = getShootBoundEntries(series.slug)
 
-    if (entries.length === 0) {
+    if (entries.length === 0 && !series.body_text?.length) {
       return <EmptyStatePage series={series} label={series.display_name} />
     }
 
@@ -72,22 +72,34 @@ export default function SeriesLevelPage({ params }: PageProps) {
           <div className="h-px bg-dust/40" />
         </div>
 
-        <div className="px-6 md:px-12 pb-16">
-          <div className="max-w-3xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-              {entries.map((entry, i) => (
-                <PhotoCard
-                  key={entry.entry_slug}
-                  href={`/series/${series.slug}/${entry.entry_slug}`}
-                  heroUrl={entry.hero_thumb_url}
-                  title={entry.display_name}
-                  subtitle={`${formatShootDate(entry.shoot_date)} · ${entry.photo_count} ${entry.photo_count === 1 ? 'photo' : 'photos'}`}
-                  index={i}
-                />
+        {entries.length > 0 && (
+          <div className={`px-6 md:px-12 ${series.body_text?.length ? 'pb-16' : 'pb-24'}`}>
+            <div className="max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+                {entries.map((entry, i) => (
+                  <PhotoCard
+                    key={entry.entry_slug}
+                    href={`/series/${series.slug}/${entry.entry_slug}`}
+                    heroUrl={entry.hero_thumb_url}
+                    title={entry.display_name}
+                    subtitle={`${formatShootDate(entry.shoot_date)} · ${entry.photo_count} ${entry.photo_count === 1 ? 'photo' : 'photos'}`}
+                    index={i}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {series.body_text?.length ? (
+          <div className="px-6 md:px-12 pb-24">
+            <div className="max-w-3xl mx-auto space-y-5 text-muted leading-relaxed">
+              {series.body_text.map((para, i) => (
+                <p key={i}>{para}</p>
               ))}
             </div>
           </div>
-        </div>
+        ) : null}
       </div>
     )
   }
