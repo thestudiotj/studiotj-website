@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { getProductById } from '@/lib/printify'
+import { getProductBySlug } from '@/lib/catalogue'
+import { verifyPrice } from '@/lib/checkout/pricing'
+import { resolveShipping, getRequestCountry } from '@/lib/checkout/shipping'
+import { imageUrl } from '@/lib/checkout/images'
 
 function getStripe(): Stripe {
   const key = process.env.STRIPE_SECRET_KEY
@@ -10,127 +13,154 @@ function getStripe(): Stripe {
 
 interface CartItemInput {
   productId: string
-  variantId: number
+  price: number        // cents — geo-computed at add-to-cart on product page
   quantity: number
 }
 
+const ALLOWED_COUNTRIES = [
+  'NL', 'BE', 'DE', 'FR', 'GB', 'IT', 'ES', 'AT', 'CH', 'DK', 'SE',
+  'NO', 'FI', 'PL', 'PT', 'IE', 'US', 'CA', 'AU', 'NZ', 'JP',
+] as const
+
 export async function POST(req: NextRequest) {
   const stripe = getStripe()
-  // ── Parse & validate input ────────────────────────────────────────────────
-  let items: CartItemInput[]
 
+  // ── Parse & validate input ─────────────────────────────────────────────
+  let items: CartItemInput[]
   try {
     const body = await req.json()
     if (!Array.isArray(body.items) || body.items.length === 0) throw new Error()
     items = body.items.map((i: any) => ({
       productId: String(i.productId ?? ''),
-      variantId: Number(i.variantId),
+      price: Math.floor(Number(i.price)),
       quantity: Math.max(1, Math.floor(Number(i.quantity) || 1)),
     }))
-    if (items.some((i) => !i.productId || !i.variantId)) throw new Error()
+    if (items.some((i) => !i.productId || !Number.isFinite(i.price) || i.price <= 0)) {
+      throw new Error()
+    }
   } catch {
     return NextResponse.json(
-      { error: 'items must be a non-empty array of {productId, variantId, quantity}' },
-      { status: 400 }
+      { error: 'items must be a non-empty array of {productId, price, quantity}' },
+      { status: 400 },
     )
   }
 
-  // ── Resolve site origin ───────────────────────────────────────────────────
-  const origin =
-    process.env.SITE_URL ??
-    req.headers.get('origin') ??
-    'http://localhost:3000'
+  // ── Resolve products from catalogue ─────────────────────────────────────
+  const resolvedItems: Array<{
+    product: NonNullable<ReturnType<typeof getProductBySlug>>
+    price: number
+    quantity: number
+  }> = []
 
-  // ── Build Stripe line items ───────────────────────────────────────────────
-  const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = []
-  // Store all product/variant pairs for the webhook
-  const metaPairs: string[] = []
-
-  for (const { productId, variantId, quantity } of items) {
-    const product = await getProductById(productId)
+  for (const { productId, price, quantity } of items) {
+    const product = getProductBySlug(productId)
     if (!product) {
       return NextResponse.json({ error: `Product not found: ${productId}` }, { status: 404 })
     }
+    if (!product.available) {
+      return NextResponse.json({ error: `Product unavailable: ${productId}` }, { status: 404 })
+    }
 
-    const variant = product.variants.find((v) => v.id === variantId)
-    if (!variant || !variant.is_enabled) {
+    if (!product.print_areas[0]?.default_asset_r2) {
       return NextResponse.json(
-        { error: `Variant not found or unavailable: ${variantId}` },
-        { status: 404 }
+        { error: `Catalogue authoring error: missing print_areas[0].default_asset_r2 for ${productId}` },
+        { status: 500 },
       )
     }
 
-    const image =
-      product.images.find((img) => img.variant_ids.includes(variant.id)) ??
-      product.images.find((img) => img.is_default) ??
-      product.images[0] ??
-      null
+    const bounds = verifyPrice(product, price)
+    if (bounds.expected.length > 0 && !bounds.ok) {
+      console.warn('[checkout] Price bounds rejection', {
+        productId,
+        received: bounds.received,
+        expected: bounds.expected,
+      })
+      return NextResponse.json(
+        { error: `Invalid price for product: ${productId}` },
+        { status: 400 },
+      )
+    }
+    if (bounds.expected.length === 0) {
+      console.warn('[checkout] Price bounds skipped (no base prices in catalogue)', { productId })
+    }
 
+    resolvedItems.push({ product, price, quantity })
+  }
+
+  // ── Resolve shipping via Prodigi Quote ──────────────────────────────────
+  const country = getRequestCountry(req.headers)
+  const shipping = await resolveShipping(
+    resolvedItems.map(({ product, quantity }) => ({
+      product,
+      copies: quantity,
+      assetUrl: imageUrl(product.print_areas[0].default_asset_r2),
+    })),
+    country,
+  )
+
+  if (shipping.source === 'fallback') {
+    console.warn('[checkout] Shipping fell back to flat rate', {
+      country,
+      itemCount: resolvedItems.length,
+    })
+  }
+
+  // ── Resolve site origin ─────────────────────────────────────────────────
+  const origin =
+    process.env.SITE_URL ?? req.headers.get('origin') ?? 'http://localhost:3000'
+
+  // ── Build Stripe line items ─────────────────────────────────────────────
+  const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = []
+  const metaPairs: string[] = []
+
+  for (const { product, price, quantity } of resolvedItems) {
+    const heroPath = product.print_areas[0].default_asset_r2
     lineItems.push({
       price_data: {
         currency: 'eur',
-        unit_amount: variant.price,
+        unit_amount: price,
         product_data: {
-          name:
-            product.options.length > 0
-              ? `${product.title} — ${variant.title}`
-              : product.title,
-          description: product.description
-            ? product.description.replace(/<[^>]+>/g, '').slice(0, 500)
-            : undefined,
-          images: image ? [image.src] : [],
+          name: product.title,
+          description: product.description.slice(0, 500),
+          images: [imageUrl(heroPath)],
           metadata: {
-            printify_product_id: productId,
-            printify_variant_id: String(variantId),
+            studiotj_product_id: product.id,
+            studiotj_product_type: product.type,
           },
         },
       },
       quantity,
     })
-
-    metaPairs.push(`${productId}:${variantId}:${quantity}`)
+    metaPairs.push(`${product.id}:${quantity}`)
   }
 
-  // ── Create Stripe Checkout Session ────────────────────────────────────────
+  // ── Create Stripe Checkout Session ──────────────────────────────────────
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     line_items: lineItems,
 
     shipping_address_collection: {
-      allowed_countries: [
-        'NL', 'BE', 'DE', 'FR', 'GB', 'IT', 'ES', 'AT', 'CH', 'DK', 'SE',
-        'NO', 'FI', 'PL', 'PT', 'IE', 'US', 'CA', 'AU', 'NZ', 'JP',
-      ],
+      allowed_countries: [...ALLOWED_COUNTRIES] as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection['allowed_countries'],
     },
 
     shipping_options: [
       {
         shipping_rate_data: {
           type: 'fixed_amount',
-          fixed_amount: { amount: 499, currency: 'eur' },
+          fixed_amount: { amount: shipping.amountCents, currency: 'eur' },
           display_name: 'Standard shipping',
           delivery_estimate: {
-            minimum: { unit: 'business_day', value: 5 },
-            maximum: { unit: 'business_day', value: 10 },
-          },
-        },
-      },
-      {
-        shipping_rate_data: {
-          type: 'fixed_amount',
-          fixed_amount: { amount: 0, currency: 'eur' },
-          display_name: 'Free shipping (orders over €75)',
-          delivery_estimate: {
-            minimum: { unit: 'business_day', value: 7 },
-            maximum: { unit: 'business_day', value: 14 },
+            minimum: { unit: 'business_day', value: shipping.deliveryMinDays },
+            maximum: { unit: 'business_day', value: shipping.deliveryMaxDays },
           },
         },
       },
     ],
 
-    // Encode all items as "productId:variantId:qty" joined by "|" for the webhook
     metadata: {
       order_items: metaPairs.join('|'),
+      shipping_source: shipping.source,
+      ip_country: country,
     },
 
     success_url: `${origin}/shop/order-confirmed?session_id={CHECKOUT_SESSION_ID}`,

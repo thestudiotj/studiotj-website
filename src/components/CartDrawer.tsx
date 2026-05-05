@@ -21,7 +21,7 @@ export default function CartDrawer() {
         body: JSON.stringify({
           items: items.map((i) => ({
             productId: i.productId,
-            variantId: i.variantId,
+            price: i.price,
             quantity: i.quantity,
           })),
         }),
@@ -72,7 +72,7 @@ export default function CartDrawer() {
           ) : (
             <ul className="flex flex-col divide-y divide-dust/20">
               {items.map((item) => (
-                <li key={`${item.productId}-${item.variantId}`} className="py-5 flex gap-4">
+                <li key={item.productId} className="py-5 flex gap-4">
                   {/* Image */}
                   <div className="w-16 h-16 flex-shrink-0 bg-dust/20 relative overflow-hidden">
                     {item.imageUrl ? (
@@ -93,7 +93,6 @@ export default function CartDrawer() {
                     <p className="text-sm font-medium text-ink leading-snug truncate">
                       {item.productTitle}
                     </p>
-                    <p className="text-xs text-muted mt-0.5">{item.variantLabel}</p>
                     <p className="text-sm text-ink mt-1">
                       {formatPrice(item.price * item.quantity)}
                     </p>
@@ -102,9 +101,7 @@ export default function CartDrawer() {
                     <div className="flex items-center gap-3 mt-3">
                       <div className="flex items-center border border-dust">
                         <button
-                          onClick={() =>
-                            updateQuantity(item.productId, item.variantId, item.quantity - 1)
-                          }
+                          onClick={() => updateQuantity(item.productId, item.quantity - 1)}
                           className="w-7 h-7 flex items-center justify-center text-muted hover:text-ink transition-colors"
                           aria-label="Decrease quantity"
                         >
@@ -112,9 +109,7 @@ export default function CartDrawer() {
                         </button>
                         <span className="w-6 text-center text-xs">{item.quantity}</span>
                         <button
-                          onClick={() =>
-                            updateQuantity(item.productId, item.variantId, item.quantity + 1)
-                          }
+                          onClick={() => updateQuantity(item.productId, item.quantity + 1)}
                           className="w-7 h-7 flex items-center justify-center text-muted hover:text-ink transition-colors"
                           aria-label="Increase quantity"
                         >
@@ -122,7 +117,7 @@ export default function CartDrawer() {
                         </button>
                       </div>
                       <button
-                        onClick={() => removeItem(item.productId, item.variantId)}
+                        onClick={() => removeItem(item.productId)}
                         className="text-xs text-muted hover:text-ink transition-colors uppercase tracking-wider"
                       >
                         Remove

@@ -276,9 +276,7 @@ export default function ProductDetail({ product }: { product: PrintifyProduct })
     const sizeTitle = sizeOption?.values.find((v) => v.id === selectedSizeId)?.title ?? ''
     addItem({
       productId: product.id,
-      variantId: activeVariant.id,
       productTitle: product.title,
-      variantLabel: [colorTitle, sizeTitle].filter(Boolean).join(' / '),
       price: activeVariant.price,
       imageUrl: image?.src ?? null,
     })

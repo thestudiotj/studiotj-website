@@ -13,9 +13,7 @@ import {
 
 export interface CartItem {
   productId: string
-  variantId: number
   productTitle: string
-  variantLabel: string
   price: number       // cents
   imageUrl: string | null
   quantity: number
@@ -28,8 +26,8 @@ interface CartState {
 
 type CartAction =
   | { type: 'ADD_ITEM'; item: Omit<CartItem, 'quantity'> }
-  | { type: 'REMOVE_ITEM'; productId: string; variantId: number }
-  | { type: 'UPDATE_QTY'; productId: string; variantId: number; qty: number }
+  | { type: 'REMOVE_ITEM'; productId: string }
+  | { type: 'UPDATE_QTY'; productId: string; qty: number }
   | { type: 'CLEAR' }
   | { type: 'OPEN_DRAWER' }
   | { type: 'CLOSE_DRAWER' }
@@ -39,9 +37,7 @@ type CartAction =
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'ADD_ITEM': {
-      const existing = state.items.findIndex(
-        (i) => i.productId === action.item.productId && i.variantId === action.item.variantId
-      )
+      const existing = state.items.findIndex((i) => i.productId === action.item.productId)
       if (existing >= 0) {
         const items = [...state.items]
         items[existing] = { ...items[existing], quantity: items[existing].quantity + 1 }
@@ -52,25 +48,19 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     case 'REMOVE_ITEM':
       return {
         ...state,
-        items: state.items.filter(
-          (i) => !(i.productId === action.productId && i.variantId === action.variantId)
-        ),
+        items: state.items.filter((i) => i.productId !== action.productId),
       }
     case 'UPDATE_QTY': {
       if (action.qty <= 0) {
         return {
           ...state,
-          items: state.items.filter(
-            (i) => !(i.productId === action.productId && i.variantId === action.variantId)
-          ),
+          items: state.items.filter((i) => i.productId !== action.productId),
         }
       }
       return {
         ...state,
         items: state.items.map((i) =>
-          i.productId === action.productId && i.variantId === action.variantId
-            ? { ...i, quantity: action.qty }
-            : i
+          i.productId === action.productId ? { ...i, quantity: action.qty } : i
         ),
       }
     }
@@ -93,8 +83,8 @@ interface CartContextValue {
   subtotal: number
   drawerOpen: boolean
   addItem: (item: Omit<CartItem, 'quantity'>) => void
-  removeItem: (productId: string, variantId: number) => void
-  updateQuantity: (productId: string, variantId: number, qty: number) => void
+  removeItem: (productId: string) => void
+  updateQuantity: (productId: string, qty: number) => void
   clearCart: () => void
   openDrawer: () => void
   closeDrawer: () => void
@@ -110,7 +100,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [], drawerOpen: false })
   const [hydrated, setHydrated] = useState(false)
 
-  // Load persisted cart after mount (avoid SSR mismatch)
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
@@ -124,7 +113,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setHydrated(true)
   }, [])
 
-  // Persist items on every change
   useEffect(() => {
     if (!hydrated) return
     try {
@@ -143,10 +131,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     subtotal,
     drawerOpen: state.drawerOpen,
     addItem: (item) => dispatch({ type: 'ADD_ITEM', item }),
-    removeItem: (productId, variantId) =>
-      dispatch({ type: 'REMOVE_ITEM', productId, variantId }),
-    updateQuantity: (productId, variantId, qty) =>
-      dispatch({ type: 'UPDATE_QTY', productId, variantId, qty }),
+    removeItem: (productId) => dispatch({ type: 'REMOVE_ITEM', productId }),
+    updateQuantity: (productId, qty) => dispatch({ type: 'UPDATE_QTY', productId, qty }),
     clearCart: () => dispatch({ type: 'CLEAR' }),
     openDrawer: () => dispatch({ type: 'OPEN_DRAWER' }),
     closeDrawer: () => dispatch({ type: 'CLOSE_DRAWER' }),
