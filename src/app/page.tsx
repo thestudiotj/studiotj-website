@@ -199,7 +199,7 @@ export default async function HomePage() {
               <Link href="/series" className="btn-outline">View Series →</Link>
             </div>
             <div className="md:w-1/2 flex justify-center md:justify-end">
-              <div className="w-full max-w-xs">
+              <div className="w-full max-w-sm">
                 <SeriesRotator photos={seriesPhotos} />
               </div>
             </div>
