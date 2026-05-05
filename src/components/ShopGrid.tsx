@@ -18,6 +18,7 @@ function ProductCard({ product }: { product: PrintifyProduct }) {
       <div className="aspect-square bg-dust/20 relative overflow-hidden mb-4">
         {primary ? (
           <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={primary.src}
               alt={product.title}
@@ -27,6 +28,7 @@ function ProductCard({ product }: { product: PrintifyProduct }) {
               loading="lazy"
             />
             {hover && (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={hover.src}
                 alt={`${product.title} — alternate view`}

@@ -15,6 +15,7 @@ export default function Photo({ src, alt, caption, aspect = 'landscape' }: Photo
   return (
     <figure className="my-6">
       <div className={`relative w-full overflow-hidden ${aspectClasses[aspect]}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
           alt={alt}

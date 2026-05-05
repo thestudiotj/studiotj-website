@@ -76,6 +76,7 @@ export default function CartDrawer() {
                   {/* Image */}
                   <div className="w-16 h-16 flex-shrink-0 bg-dust/20 relative overflow-hidden">
                     {item.imageUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={item.imageUrl}
                         alt={item.productTitle}

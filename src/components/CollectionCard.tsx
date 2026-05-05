@@ -48,6 +48,7 @@ export default function CollectionCard({
     // Random pick — different every page load.
     const pick = photos[Math.floor(Math.random() * photos.length)]
     setSelectedPhoto(pick)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []) // intentionally run once on mount
 
   const isHomepage = variant === 'homepage'
@@ -88,6 +89,7 @@ export default function CollectionCard({
           {/* Photo fades in once selected on mount and loaded from network */}
           {selectedPhoto?.thumbnail_url && (
             <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={size === 'large' ? selectedPhoto.url : selectedPhoto.thumbnail_url}
                 alt={selectedPhoto.title || collection.name}

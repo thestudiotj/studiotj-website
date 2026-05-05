@@ -117,6 +117,7 @@ function ProductLightbox({
               aspectRatio: '1 / 1',
             }}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image.src}
               alt={`${productTitle} — image ${index + 1}`}
@@ -271,6 +272,7 @@ export default function ProductGallery({
           aria-label="View full size"
         >
           {activeImage ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={activeImage.src}
               alt={`${productTitle} — view ${safeIdx + 1}`}
@@ -321,6 +323,7 @@ export default function ProductGallery({
                     }`}
                     aria-label={`View image ${idx + 1}`}
                   >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={img.src}
                       alt={`${productTitle} thumbnail ${idx + 1}`}

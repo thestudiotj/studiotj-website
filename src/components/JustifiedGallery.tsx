@@ -49,6 +49,7 @@ function JustifiedPhoto({
       {/* Dominant-colour placeholder shown until image loads */}
       <div className="absolute inset-0" style={{ background: gradient }} />
 
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={photo.thumbnail_url}
         alt={photo.title}
