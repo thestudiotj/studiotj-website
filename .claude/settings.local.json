@@ -94,7 +94,9 @@
       "Bash(PYTHONIOENCODING=utf-8 python ingest.py refresh --brand leica-camera-usa)",
       "Bash(git -C \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\" status)",
       "Bash(git -C \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\" diff --stat)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "PowerShell(ls *)",
+      "Bash(powershell -Command ' *)"
     ]
   }
 }

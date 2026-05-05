@@ -123,8 +123,9 @@ export function getWeeklyGallery(
   if (slice.length < 30) {
     const nextCycleSeed = hashString(`${collectionSlug}${cycleNumber + 1}`)
     const nextCycleOrder = seededShuffle(photoIds, nextCycleSeed)
-    const needed = 50 - slice.length
-    slice = [...slice, ...nextCycleOrder.slice(0, needed)]
+    const sliceSet = new Set(slice)
+    const padding = nextCycleOrder.filter((id) => !sliceSet.has(id)).slice(0, 50 - slice.length)
+    slice = [...slice, ...padding]
   }
 
   // Week-level shuffle for presentation order (different each week)

@@ -133,7 +133,7 @@ export default function JustifiedGallery({ photos, onPhotoClick }: JustifiedGall
     >
       {layout.boxes.map((box, i) => (
         <JustifiedPhoto
-          key={photos[i].id}
+          key={`${photos[i].id}-${i}`}
           photo={photos[i]}
           box={box}
           index={i}
