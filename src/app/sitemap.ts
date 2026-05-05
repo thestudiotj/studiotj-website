@@ -7,6 +7,7 @@ import { getProducts as getVondstenProducts } from '@/lib/vondsten/loader'
 import { CATEGORIES } from '@/lib/vondsten/schemas'
 import { loadActiveCategories, loadAllBrandsInCategory, loadBrandProducts } from '@/lib/picks/loader'
 import { loadActiveCategories as loadActiveGearCategories, loadAllItemsInCategory } from '@/lib/gear/loader'
+import { getElsewhereData } from '@/lib/elsewhere'
 
 const BASE_URL = 'https://studiotj.com'
 
@@ -30,6 +31,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const page of STATIC_PAGES) {
     entries.push({ url: `${BASE_URL}${page}` })
   }
+
+  // Elsewhere — lastModified from the aggregator's generated_at timestamp
+  const elsewhereData = getElsewhereData()
+  entries.push({
+    url: `${BASE_URL}/elsewhere`,
+    lastModified: new Date(elsewhereData.generated_at),
+    changeFrequency: 'daily',
+    priority: 0.8,
+  })
 
   // Portfolio collections
   const portfolio = getPortfolio()
