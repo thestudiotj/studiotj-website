@@ -54,7 +54,8 @@ export function getElsewhereData(): ElsewhereData {
   try {
     const raw = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
     return ElsewhereSchema.parse(raw)
-  } catch {
+  } catch (err) {
+    console.error('[elsewhere] Failed to parse _elsewhere.json:', err)
     return EMPTY
   }
 }
