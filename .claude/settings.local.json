@@ -103,7 +103,8 @@
       "Bash(Select-String -Path \"package.json\" -Pattern \"gray-matter|next-mdx-remote|zod|typescript\")",
       "Bash(Select-Object -ExpandProperty Line)",
       "Bash(Select-String -Pattern \"resend|react-email\")",
-      "Bash(npm view *)"
+      "Bash(npm view *)",
+      "Bash(Select-Object -First 30)"
     ]
   }
 }
