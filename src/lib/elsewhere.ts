@@ -7,7 +7,7 @@ import { z } from 'zod'
 const ChannelSchema = z.object({
   platform: z.enum(['bluesky', 'mastodon', 'pixelfed', 'instagram', 'pinterest', 'tiktok', 'youtube']),
   public_url: z.string().url(),
-  posted_at: z.string().datetime(),
+  posted_at: z.string().datetime({ offset: true }),
 })
 
 const ItemSchema = z.object({
@@ -16,13 +16,13 @@ const ItemSchema = z.object({
   primary_image_url: z.string().url().nullable(),
   aspect_ratio: z.number(),
   copy: z.string(),
-  earliest_posted_at: z.string().datetime(),
+  earliest_posted_at: z.string().datetime({ offset: true }),
   channels: z.array(ChannelSchema).min(1),
 })
 
 const ElsewhereSchema = z.object({
   schema_version: z.literal(1),
-  generated_at: z.string().datetime(),
+  generated_at: z.string().datetime({ offset: true }),
   items: z.array(ItemSchema),
   meta: z.record(z.string(), z.unknown()),
 })
