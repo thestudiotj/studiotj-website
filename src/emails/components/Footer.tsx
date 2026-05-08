@@ -8,7 +8,7 @@ export function Footer() {
         StudioTJ · Maastricht, Netherlands · KvK 75602172
       </Text>
       <Text className="text-xs text-neutral-500">
-        <Link href="https://www.studiotj.com" className="text-neutral-700 underline">
+        <Link href="https://studiotj.com" className="text-neutral-700 underline">
           studiotj.com
         </Link>
         {' · '}

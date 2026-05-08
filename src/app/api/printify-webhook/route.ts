@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({
           external: {
             id: productId,
-            handle: `https://www.studiotj.com/shop/${productId}`,
+            handle: `https://studiotj.com/shop/${productId}`,
           },
         }),
       })
