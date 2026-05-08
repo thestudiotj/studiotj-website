@@ -2,8 +2,29 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { SCOUT_COOKIE, hashPassword } from './app/scout/lib/auth';
 
+// GSC audit (May 2026, first run): ~850+ URLs in "not indexed" buckets are Shopify
+// migration debris. Returning 410 Gone signals permanent removal; Google deindexes
+// 410s faster than 404s and stops recrawling, freeing crawl budget for real pages.
+const SHOPIFY_LEGACY_PATTERNS: RegExp[] = [
+  /^\/services\/login_with_shop(\/|$)/,
+  /^\/customer_authentication(\/|$)/,
+  /^\/cart(\/|$)/,
+  /^\/policies(\/|$)/,
+  /^\/password$/,
+  /^\/v1(\/|$)/,
+  /^\/home\.html$/,
+  /^\/pages(\/|$)/,
+  /^\/nl(\/|$)/,
+  /^\/de(\/|$)/,
+  /^\/88644583751(\/|$)/,
+];
+
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  if (SHOPIFY_LEGACY_PATTERNS.some(p => p.test(pathname))) {
+    return new NextResponse(null, { status: 410 });
+  }
 
   if (!pathname.startsWith('/scout')) return NextResponse.next();
 
@@ -22,5 +43,28 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/scout', '/scout/:path*'],
+  matcher: [
+    '/scout',
+    '/scout/:path*',
+    '/services/login_with_shop',
+    '/services/login_with_shop/:path*',
+    '/customer_authentication',
+    '/customer_authentication/:path*',
+    '/cart',
+    '/cart/:path*',
+    '/policies',
+    '/policies/:path*',
+    '/password',
+    '/v1',
+    '/v1/:path*',
+    '/home.html',
+    '/pages',
+    '/pages/:path*',
+    '/nl',
+    '/nl/:path*',
+    '/de',
+    '/de/:path*',
+    '/88644583751',
+    '/88644583751/:path*',
+  ],
 };
