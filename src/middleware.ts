@@ -2,9 +2,12 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { SCOUT_COOKIE, hashPassword } from './app/scout/lib/auth';
 
-// GSC audit (May 2026, first run): ~850+ URLs in "not indexed" buckets are Shopify
+// GSC audit (May 2026, step 2): ~850+ URLs in "not indexed" buckets are Shopify
 // migration debris. Returning 410 Gone signals permanent removal; Google deindexes
 // 410s faster than 404s and stops recrawling, freeing crawl budget for real pages.
+// Step 3 (May 2026): /products/* and /collections/* added — investigation confirmed
+// neither path exists as a current or planned route (shop is at /shop); all requests
+// were falling through to the Next.js default 404.
 const SHOPIFY_LEGACY_PATTERNS: RegExp[] = [
   /^\/services\/login_with_shop(\/|$)/,
   /^\/customer_authentication(\/|$)/,
@@ -17,6 +20,8 @@ const SHOPIFY_LEGACY_PATTERNS: RegExp[] = [
   /^\/nl(\/|$)/,
   /^\/de(\/|$)/,
   /^\/88644583751(\/|$)/,
+  /^\/products(\/|$)/,
+  /^\/collections(\/|$)/,
 ];
 
 export async function middleware(req: NextRequest) {
@@ -66,5 +71,9 @@ export const config = {
     '/de/:path*',
     '/88644583751',
     '/88644583751/:path*',
+    '/products',
+    '/products/:path*',
+    '/collections',
+    '/collections/:path*',
   ],
 };
