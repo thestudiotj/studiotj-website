@@ -47,19 +47,6 @@ export default function ContactPage() {
           Email only. No form, no portal — direct email is the whole interface.
         </p>
 
-        <p className="text-muted leading-relaxed mb-12">
-          For more casual visual updates, my personal Instagram is{' '}
-          <a
-            href="https://www.instagram.com/tjvanderheeft"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            @tjvanderheeft
-          </a>
-          .
-        </p>
-
         {/* Business details */}
         <div className="border-t border-dust/30 pt-8">
           <p className="text-xs text-muted leading-relaxed">

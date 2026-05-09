@@ -20,22 +20,49 @@ export default function AboutPage() {
             The studio
           </h2>
           <p className="text-muted leading-relaxed mb-4">
-            StudioTJ is a Dutch photography practice created by Tjeerd van der Heeft. Colour photography of architecture is the
-            main lane — bold geometry, urban form, the lines buildings hold. Monochrome is the
-            other lane, and the one I started in. It&apos;s stayed because monochrome carries
-            texture, weight, and contrast on its own terms.
+            StudioTJ is the practice of T.J. (Tjeerd) van der Heeft — one person in Maastricht
+            working across photography and design, writing, and the software that runs the studio.
           </p>
           <p className="text-muted leading-relaxed mb-4">
-            StudioTJ shares the site with{' '}
+            The photography sits in four collections —{' '}
+            <Link href="/portfolio/the-signature-collection" className="text-accent hover:underline">
+              The Signature Collection
+            </Link>
+            ,{' '}
+            <Link href="/portfolio/monochrome-moods" className="text-accent hover:underline">
+              Monochrome Moods
+            </Link>
+            ,{' '}
+            <Link href="/portfolio/the-atmospheric-collection" className="text-accent hover:underline">
+              The Atmospheric Collection
+            </Link>
+            ,{' '}
+            <Link href="/portfolio/the-halcyon-collection" className="text-accent hover:underline">
+              The Halcyon Collection
+            </Link>{' '}
+            — alongside{' '}
+            <Link href="/series" className="text-accent hover:underline">
+              Series
+            </Link>
+            , which holds the chronological work: Routes for photo walks, Visits for museums and
+            concerts.
+          </p>
+          <p className="text-muted leading-relaxed mb-4">
+            The writing happens at{' '}
             <Link href="/subtext-lab" className="text-accent hover:underline">
               The Subtext Lab
             </Link>{' '}
-            — essays and video about games, film, TV, music, and the way digital society is
-            shaping all of them. The lens is analytical and Dutch. The Dutch part stays even when
-            the writing is in English.
+            — essays and video reading film, games, music, and the works around them as one
+            conversation, and the society and culture moving through them.
+          </p>
+          <p className="text-muted leading-relaxed mb-4">
+            Both practices share a method: the lens. Literal in the photographs, critical in the
+            writing. Zoom in until the geometry of a thing shows itself, zoom out until you see
+            what it&apos;s part of. Same instinct, different surfaces.
           </p>
           <p className="text-muted leading-relaxed mb-8">
-            The site is curated. Everything here has been chosen, edited, and shipped on purpose.
+            The site is the practice in one place. Photographs, essays, prints, the software
+            underneath — all of it built, edited, and shipped by one person, on purpose.
           </p>
           <div className="w-48 h-48 relative overflow-hidden rounded-full">
             <Image
@@ -101,23 +128,23 @@ export default function AboutPage() {
           </div>
           <p className="text-muted leading-relaxed mb-4">Beyond the four collections:</p>
           <ul className="space-y-2">
-            <li className="text-muted leading-relaxed">
+            <li className="text-ink leading-relaxed">
               <Link
                 href="/series"
                 className="font-medium text-ink hover:text-accent transition-colors"
               >
                 /series
               </Link>{' '}
-              — ongoing sequences of photographs, organized by subject, weather, and season.
+              — Routes for photo walks, Visits for museums and concerts. The chronological record.
             </li>
-            <li className="text-muted leading-relaxed">
+            <li className="text-ink leading-relaxed">
               <Link
                 href="/shop"
                 className="font-medium text-ink hover:text-accent transition-colors"
               >
                 /shop
               </Link>{' '}
-              — apparel and prints, fulfilled by print-on-demand partners.
+              — prints and apparel, made to order.
             </li>
             <li className="text-muted leading-relaxed">
               <Link
@@ -130,12 +157,39 @@ export default function AboutPage() {
             </li>
             <li className="text-muted leading-relaxed">
               <Link
+                href="/picks"
+                className="font-medium text-ink hover:text-accent transition-colors"
+              >
+                /picks
+              </Link>{' '}
+              — recommended cameras, lenses, software, and the gear that&apos;s actually stayed in the bag.
+            </li>
+            <li className="text-muted leading-relaxed">
+              <Link
+                href="/vondsten"
+                className="font-medium text-ink hover:text-accent transition-colors"
+              >
+                /vondsten
+              </Link>{' '}
+              — a curiosity cabinet: things found, collected, and annotated.
+            </li>
+            <li className="text-ink leading-relaxed">
+              <Link
                 href="/subtext-lab"
                 className="font-medium text-ink hover:text-accent transition-colors"
               >
                 /subtext-lab
               </Link>{' '}
-              — essays and video, by the same person.
+              — essays and video reading film, games, music, and the culture moving through them.
+            </li>
+            <li className="text-muted leading-relaxed">
+              <Link
+                href="/elsewhere"
+                className="font-medium text-ink hover:text-accent transition-colors"
+              >
+                /elsewhere
+              </Link>{' '}
+              — where the work lives off-site.
             </li>
           </ul>
         </section>
@@ -145,24 +199,12 @@ export default function AboutPage() {
           <h2 className="font-display text-3xl md:text-4xl text-ink leading-tight mb-6">
             Get in touch
           </h2>
-          <p className="text-muted leading-relaxed mb-4">
+          <p className="text-muted leading-relaxed">
             For commissions, licensing, or anything else,{' '}
             <Link href="/contact" className="text-accent hover:underline">
               /contact
             </Link>{' '}
             has the details — single inbox, plain email, no form to fill out.
-          </p>
-          <p className="text-muted leading-relaxed">
-            For more casual visual updates, my personal Instagram is{' '}
-            <a
-              href="https://www.instagram.com/tjvanderheeft"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:underline"
-            >
-              @tjvanderheeft
-            </a>
-            .
           </p>
         </section>
       </div>
