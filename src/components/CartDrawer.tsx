@@ -2,7 +2,10 @@
 
 import { useState } from 'react'
 import { useCart } from '@/lib/cart'
-import { formatPrice } from '@/lib/printify'
+
+function formatPrice(cents: number): string {
+  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
+}
 
 export default function CartDrawer() {
   const { items, itemCount, subtotal, drawerOpen, removeItem, updateQuantity, closeDrawer } =

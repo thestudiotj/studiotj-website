@@ -102,8 +102,8 @@ export default function TermsPage() {
             How fulfilment works
           </h3>
           <p className="text-muted leading-relaxed mb-4">
-            Products are produced on demand by a third-party print-on-demand partner — currently
-            Printify — which means each item is printed after you order it. Production typically
+            Products are produced on demand by a third-party print-on-demand partner — Prodigi —
+            which means each item is printed after you order it. Production typically
             takes a few business days, after which the item ships. Delivery times depend on the
             destination and the shipping option chosen at checkout.
           </p>
@@ -274,20 +274,11 @@ export default function TermsPage() {
           </p>
 
           <h3 className="font-display text-xl md:text-2xl text-ink leading-tight mb-4">
-            Current fulfilment partner: Printify
+            Current fulfilment partner: Prodigi
           </h3>
           <p className="text-muted leading-relaxed">
-            Printify&apos;s published reprint and refund policy, summarised above, is documented
-            at:{' '}
-            <a
-              href="https://help.printify.com/hc/en-us/articles/4483630299025"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:underline"
-            >
-              help.printify.com
-            </a>
-            .
+            Prodigi&apos;s published reprint and refund policy, summarised above, governs these
+            cases. Details are available at prodigi.com.
           </p>
         </section>
 

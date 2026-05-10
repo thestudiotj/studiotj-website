@@ -23,7 +23,6 @@ const nextConfig = {
     remotePatterns: [
       // Add your SmugMug domain here if migrating photos
       { protocol: 'https', hostname: '*.smugmug.com' },
-      { protocol: 'https', hostname: 'images-api.printify.com' },
       { protocol: 'https', hostname: 'photos.studiotj.com' },
     ],
   },
@@ -41,7 +40,7 @@ const nextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: blob: https://images-api.printify.com https://*.smugmug.com https://photos.studiotj.com",
+              "img-src 'self' data: blob: https://*.smugmug.com https://photos.studiotj.com",
               "font-src 'self' data:",
               "connect-src 'self' https://api.stripe.com https://nominatim.openstreetmap.org https://api.open-meteo.com https://overpass-api.de https://overpass.kumi.systems https://overpass.private.coffee https://router.project-osrm.org",
               "frame-src https://js.stripe.com https://hooks.stripe.com https://www.youtube-nocookie.com https://www.youtube.com",

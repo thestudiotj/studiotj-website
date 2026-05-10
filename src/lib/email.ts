@@ -43,6 +43,15 @@ export async function sendOrderShipped(to: string, props: OrderShippedProps) {
   })
 }
 
+export async function sendAdminAlert({ subject, body }: { subject: string; body: string }) {
+  return getResend().emails.send({
+    from: getFromAddress(),
+    to: getAdminEmail(),
+    subject,
+    text: body,
+  })
+}
+
 export async function sendOrderNeedsAttention(props: OrderNeedsAttentionProps) {
   return getResend().emails.send({
     from: getFromAddress(),

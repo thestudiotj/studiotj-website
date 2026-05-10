@@ -1,65 +1,49 @@
-import { getProductById, getEnabledVariants, getPriceRange, getDefaultImage } from '@/lib/printify'
-import type { PrintifyProduct } from '@/lib/printify'
+import { getProductBySlug } from '@/lib/catalogue'
+import type { Product } from '@/lib/catalogue'
 import { notFound } from 'next/navigation'
 import ProductDetail from './ProductDetail'
 
 const PRODUCT_URL = (id: string) => `https://studiotj.com/shop/${id}`
 
-function getPlainDescription(product: PrintifyProduct): string {
-  const raw = product.description?.replace(/<[^>]+>/g, '').trim() ?? ''
-  return raw.length >= 40
-    ? raw
-    : `${product.title} — a StudioTJ print available as ${product.tags[0] ?? 'fine art print'}, shipped worldwide via Printify partners.`
+function getPlainDescription(product: Product): string {
+  const raw = product.description.trim()
+  return raw.length >= 40 ? raw : `${product.title} — a StudioTJ print, shipped worldwide.`
 }
 
-function buildJsonLd(product: PrintifyProduct) {
-  const { min, max } = getPriceRange(product)
-  const lowPrice = (min / 100).toFixed(2)
-  const highPrice = (max / 100).toFixed(2)
-  const singlePrice = min === max
-  const enabledVariants = getEnabledVariants(product)
+function buildJsonLd(product: Product) {
+  const price = product.price_cents != null ? (product.price_cents / 100).toFixed(2) : null
 
-  const offer = singlePrice
+  const offer = price
     ? {
         '@type': 'Offer',
-        price: lowPrice,
+        price,
         priceCurrency: 'EUR',
-        availability: 'https://schema.org/InStock',
+        availability: product.available
+          ? 'https://schema.org/InStock'
+          : 'https://schema.org/OutOfStock',
         itemCondition: 'https://schema.org/NewCondition',
         url: PRODUCT_URL(product.id),
       }
-    : {
-        '@type': 'AggregateOffer',
-        lowPrice,
-        highPrice,
-        priceCurrency: 'EUR',
-        offerCount: enabledVariants.length,
-        availability: 'https://schema.org/InStock',
-        url: PRODUCT_URL(product.id),
-      }
+    : undefined
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.title,
     description: getPlainDescription(product),
-    image: product.images.map((img) => img.src),
+    image: [product.hero_image],
     sku: product.id,
     brand: { '@type': 'Brand', name: 'StudioTJ' },
-    offers: offer,
+    ...(offer ? { offers: offer } : {}),
   }
 }
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  const product = await getProductById(params.id)
+  const product = getProductBySlug(params.id)
   if (!product) return { title: 'Product not found' }
 
   const description = getPlainDescription(product).slice(0, 160)
-  const defaultImage = getDefaultImage(product)
-  const { min, max } = getPriceRange(product)
-  const lowPrice = (min / 100).toFixed(2)
-  const highPrice = (max / 100).toFixed(2)
-  const singlePrice = min === max
+  const price = product.price_cents != null ? (product.price_cents / 100).toFixed(2) : null
 
   return {
     title: product.title,
@@ -68,20 +52,23 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       type: 'website',
       title: product.title,
       description,
-      ...(defaultImage ? { images: [defaultImage.src] } : {}),
+      images: [product.hero_image],
     },
-    other: {
-      'og:type': 'product',
-      'product:price:amount': lowPrice,
-      'product:price:currency': 'EUR',
-      'product:availability': 'instock',
-      ...(singlePrice ? {} : { 'product:price:amount:high': highPrice }),
-    },
+    ...(price
+      ? {
+          other: {
+            'og:type': 'product',
+            'product:price:amount': price,
+            'product:price:currency': 'EUR',
+            'product:availability': product.available ? 'instock' : 'oos',
+          },
+        }
+      : {}),
   }
 }
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
-  const product = await getProductById(params.id)
+export default function ProductPage({ params }: { params: { id: string } }) {
+  const product = getProductBySlug(params.id)
   if (!product) notFound()
 
   const jsonLd = buildJsonLd(product)

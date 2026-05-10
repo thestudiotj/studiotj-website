@@ -104,7 +104,8 @@
       "Bash(Select-Object -ExpandProperty Line)",
       "Bash(Select-String -Pattern \"resend|react-email\")",
       "Bash(npm view *)",
-      "Bash(Select-Object -First 30)"
+      "Bash(Select-Object -First 30)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\" -Directory | ForEach-Object { $_.Name })"
     ]
   }
 }

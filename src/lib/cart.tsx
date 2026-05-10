@@ -94,7 +94,7 @@ const CartContext = createContext<CartContextValue | null>(null)
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = 'studiotj_cart'
+const STORAGE_KEY = 'studiotj_cart_v2'
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [], drawerOpen: false })

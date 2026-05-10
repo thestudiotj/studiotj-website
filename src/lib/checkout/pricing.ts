@@ -1,6 +1,11 @@
 import type { Product, Lab } from '@/lib/catalogue'
 
-const ALL_LABS: Lab[] = ['EU', 'UK', 'US']
+// base_prices[lab] is in the lab's native currency (lab-native pricing).
+// EU and UK both use the UK lab, so their values are GBP.
+// US uses the US lab for routed products → USD.
+// AU uses the AU lab for routed products → AUD.
+// Currency conversion from lab native to buyer currency happens at checkout.
+const ALL_LABS: Lab[] = ['EU', 'UK', 'US', 'AU']
 const TOLERANCE_CENTS = 5
 
 interface PriceBoundsResult {
@@ -28,8 +33,7 @@ export function verifyPrice(product: Product, claimedCents: number): PriceBounds
   return { ok, expected: candidates, received: claimedCents }
 }
 
-// Stub until Session 12a adds base_prices to catalogue products.
-// Returns null → verifyPrice returns expected:[] → route trusts cart price with a warning.
-function getLabBasePrice(_product: Product, _lab: Lab): number | null {
-  return null
+function getLabBasePrice(product: Product, lab: Lab): number | null {
+  if (!product.base_prices) return null
+  return product.base_prices[lab] ?? null
 }

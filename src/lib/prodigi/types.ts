@@ -1,5 +1,5 @@
 export type ISO2 = string
-export type Lab = 'EU' | 'UK' | 'US'
+export type Lab = 'EU' | 'UK' | 'US' | 'AU'
 export type ShippingMethod = 'Budget' | 'Standard' | 'StandardPlus' | 'Express' | 'Overnight'
 export type SizingMode = 'fillPrintArea' | 'fitPrintArea' | 'stretchToPrintArea' | 'crop'
 
@@ -71,7 +71,7 @@ export interface ProdigiOrder {
 }
 
 export interface ProdigiOrderResponse {
-  outcome: 'Created' | 'OnHold' | 'CreatedWithIssues' | 'AlreadyExists'
+  outcome: 'Ok' | 'Created' | 'OnHold' | 'CreatedWithIssues' | 'AlreadyExists' | 'Failed'
   order: ProdigiOrder
 }
 

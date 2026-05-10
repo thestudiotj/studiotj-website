@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/content'
 import { getPortfolio } from '@/lib/portfolio'
-import { getProducts } from '@/lib/printify'
+import { getAvailableProducts } from '@/lib/catalogue'
 import { getAllSeries, getShootBoundEntries } from '@/lib/series'
 import { getProducts as getVondstenProducts } from '@/lib/vondsten/loader'
 import { CATEGORIES } from '@/lib/vondsten/schemas'
@@ -89,13 +89,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Shop products
-  try {
-    const products = await getProducts()
-    for (const product of products) {
-      entries.push({ url: `${BASE_URL}/shop/${product.id}` })
-    }
-  } catch (err) {
-    console.error('[sitemap] Printify fetch failed — omitting shop products:', err)
+  for (const product of getAvailableProducts()) {
+    entries.push({ url: `${BASE_URL}/shop/${product.id}` })
   }
 
   // Gear — landing, active category indexes, item pages

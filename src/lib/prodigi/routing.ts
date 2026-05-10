@@ -2,7 +2,7 @@ import type { ISO2, Lab } from './types'
 
 export const DEFAULT_FALLBACK_LAB: Lab = 'US'
 
-// 27 EU member states + UK + US. Extend as Prodigi labs expand.
+// 27 EU member states + UK + US + AU. Extend as Prodigi labs expand.
 export const COUNTRY_TO_LAB: Record<string, Lab> = {
   // EU 27
   AT: 'EU', BE: 'EU', BG: 'EU', HR: 'EU', CY: 'EU', CZ: 'EU', DK: 'EU',
@@ -13,6 +13,9 @@ export const COUNTRY_TO_LAB: Record<string, Lab> = {
   GB: 'UK',
   // US
   US: 'US',
+  // AU region (AU lab)
+  AU: 'AU',
+  NZ: 'AU',
 }
 
 export function resolveLab(country: ISO2): Lab {

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { getAvailableProducts } from '@/lib/catalogue'
+import ShopGrid from '@/components/ShopGrid'
 
 export const metadata: Metadata = {
   title: 'Shop',
@@ -18,6 +20,8 @@ function EmptyState() {
 }
 
 export default function ShopPage() {
+  const products = getAvailableProducts()
+
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
       {/* Header */}
@@ -31,7 +35,7 @@ export default function ShopPage() {
         </p>
       </div>
 
-      <EmptyState />
+      {products.length > 0 ? <ShopGrid products={products} /> : <EmptyState />}
 
       {/* Info copy */}
       <div className="max-w-prose space-y-5 text-muted leading-relaxed mt-16 pt-12 border-t border-dust/30">

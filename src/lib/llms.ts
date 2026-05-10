@@ -1,6 +1,6 @@
 import { getAllPosts, getPostBySlug } from './content'
 import { getPortfolio, sortCollections } from './portfolio'
-import { getProducts as getPrintifyProducts, getPriceRange, formatPrice } from './printify'
+import { getAvailableProducts } from './catalogue'
 import { getAllSeries, getShootBoundEntries } from './series'
 import {
   getProducts as getVondstenProducts,
@@ -456,25 +456,26 @@ async function buildData(): Promise<LlmsSectionFull[]> {
       title: 'Shop',
       url: `${BASE_URL}/shop`,
       description: 'Fine art prints and objects. Printed on demand, shipped from the Netherlands.',
-      body: 'Fine art prints and objects. Printed on demand, shipped from the Netherlands. Fulfilled via Printify partners.',
+      body: 'Fine art prints and objects. Printed on demand, shipped from the Netherlands.',
     },
   ]
 
-  try {
-    const shopProducts = await getPrintifyProducts()
-    for (const product of shopProducts) {
-      const firstSentence = (product.description.split(/[.!?]\s/)[0] ?? product.title).trim()
-      const { min, max } = getPriceRange(product)
-      const priceStr = min === max ? formatPrice(min) : `${formatPrice(min)} – ${formatPrice(max)}`
-      shopEntries.push({
-        title: product.title,
-        url: `${BASE_URL}/shop/${product.id}`,
-        description: truncate(firstSentence),
-        body: [`${product.description}`, '', `Price: ${priceStr}`, 'Available: Yes'].join('\n'),
-      })
-    }
-  } catch (err) {
-    console.error('[llms] Printify fetch failed — omitting shop products:', err)
+  const shopProducts = getAvailableProducts()
+  for (const product of shopProducts) {
+    const priceStr =
+      product.price_cents != null
+        ? new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(
+            product.price_cents / 100,
+          )
+        : null
+    shopEntries.push({
+      title: product.title,
+      url: `${BASE_URL}/shop/${product.id}`,
+      description: truncate(product.description),
+      body: [product.description, '', priceStr ? `Price: ${priceStr}` : '', 'Available: Yes']
+        .filter(Boolean)
+        .join('\n'),
+    })
   }
   sections.push({ heading: 'Shop', entries: shopEntries })
 

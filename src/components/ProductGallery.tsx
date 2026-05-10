@@ -1,7 +1,10 @@
 'use client'
 
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
-import type { PrintifyImage } from '@/lib/printify'
+
+export interface ProductImage {
+  src: string
+}
 
 // ─── Product Lightbox ─────────────────────────────────────────────────────────
 
@@ -11,7 +14,7 @@ function ProductLightbox({
   productTitle,
   onClose,
 }: {
-  images: PrintifyImage[]
+  images: ProductImage[]
   initialIndex: number
   productTitle: string
   onClose: () => void
@@ -162,7 +165,7 @@ function ProductLightbox({
         </div>
 
         {/* Dot navigation */}
-        {images.length <= 20 && (
+        {images.length > 1 && images.length <= 20 && (
           <div className="flex-shrink-0 py-5 flex justify-center gap-1.5">
             {images.map((_, i) => (
               <button
@@ -200,74 +203,33 @@ function ProductLightbox({
   )
 }
 
-// ─── Image filtering ──────────────────────────────────────────────────────────
-
-function filterImagesByVariantIds(
-  images: PrintifyImage[],
-  variantIds: number[]
-): PrintifyImage[] {
-  if (variantIds.length === 0) return images
-
-  const variantImages = images.filter((img) =>
-    img.variant_ids.some((id) => variantIds.includes(id))
-  )
-
-  if (variantImages.length === 0) return images
-
-  // Deduplicate by position — one image per angle
-  const seen = new Set<string>()
-  return variantImages.filter((img) => {
-    if (seen.has(img.position)) return false
-    seen.add(img.position)
-    return true
-  })
-}
-
 // ─── ProductGallery ───────────────────────────────────────────────────────────
 
 const THUMBS_VISIBLE = 7
 
 export default function ProductGallery({
   images,
-  colorVariantIds,
   productTitle,
 }: {
-  images: PrintifyImage[]
-  colorVariantIds: number[]
+  images: ProductImage[]
   productTitle: string
 }) {
-  const filtered = useMemo(
-    () => filterImagesByVariantIds(images, colorVariantIds),
-    [images, colorVariantIds]
-  )
-
   const [selectedIdx, setSelectedIdx] = useState(0)
   const [thumbOffset, setThumbOffset] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
-  // Reset gallery when color selection changes
-  const colorKey = colorVariantIds.join(',')
-  const prevColorKey = useRef(colorKey)
-  useEffect(() => {
-    if (prevColorKey.current !== colorKey) {
-      prevColorKey.current = colorKey
-      setSelectedIdx(0)
-      setThumbOffset(0)
-    }
-  }, [colorKey])
-
-  const safeIdx = Math.min(selectedIdx, Math.max(0, filtered.length - 1))
-  const activeImage = filtered[safeIdx] ?? null
+  const safeIdx = Math.min(selectedIdx, Math.max(0, images.length - 1))
+  const activeImage = images[safeIdx] ?? null
 
   const canScrollPrev = thumbOffset > 0
-  const canScrollNext = thumbOffset + THUMBS_VISIBLE < filtered.length
+  const canScrollNext = thumbOffset + THUMBS_VISIBLE < images.length
 
   return (
     <>
       <div className="flex flex-col gap-3">
         {/* Featured image */}
         <button
-          onClick={() => filtered.length > 0 && setLightboxOpen(true)}
+          onClick={() => images.length > 0 && setLightboxOpen(true)}
           className="relative aspect-square bg-dust/20 overflow-hidden w-full cursor-zoom-in group"
           aria-label="View full size"
         >
@@ -293,7 +255,7 @@ export default function ProductGallery({
         </button>
 
         {/* Thumbnail strip */}
-        {filtered.length > 1 && (
+        {images.length > 1 && (
           <div className="flex items-center gap-2">
             {/* Prev button */}
             <button
@@ -312,7 +274,7 @@ export default function ProductGallery({
 
             {/* Thumbnails */}
             <div className="flex gap-2 flex-1 overflow-hidden">
-              {filtered.slice(thumbOffset, thumbOffset + THUMBS_VISIBLE).map((img, i) => {
+              {images.slice(thumbOffset, thumbOffset + THUMBS_VISIBLE).map((img, i) => {
                 const idx = i + thumbOffset
                 return (
                   <button
@@ -338,7 +300,7 @@ export default function ProductGallery({
             {/* Next button */}
             <button
               onClick={() =>
-                setThumbOffset(Math.min(filtered.length - THUMBS_VISIBLE, thumbOffset + 1))
+                setThumbOffset(Math.min(images.length - THUMBS_VISIBLE, thumbOffset + 1))
               }
               disabled={!canScrollNext}
               className="w-7 h-7 flex-shrink-0 flex items-center justify-center
@@ -356,9 +318,9 @@ export default function ProductGallery({
       </div>
 
       {/* Lightbox */}
-      {lightboxOpen && filtered.length > 0 && (
+      {lightboxOpen && images.length > 0 && (
         <ProductLightbox
-          images={filtered}
+          images={images}
           initialIndex={safeIdx}
           productTitle={productTitle}
           onClose={() => setLightboxOpen(false)}

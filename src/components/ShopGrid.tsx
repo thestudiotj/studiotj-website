@@ -2,41 +2,35 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { getPriceRange, formatPrice, type PrintifyProduct } from '@/lib/printify'
-import { getBlackOrDefaultImages, getProductCategory } from '@/lib/shopHelpers'
+import type { Product } from '@/lib/catalogue'
+
+const COLLECTION_LABELS: Record<string, string> = {
+  'the-signature-collection': 'Signature',
+  'monochrome-moods': 'Monochrome',
+  'the-atmospheric-collection': 'Atmospheric',
+  'the-halcyon-collection': 'Halcyon',
+}
+
+function formatPrice(cents: number): string {
+  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
+}
 
 // ─── Product card ─────────────────────────────────────────────────────────────
 
-function ProductCard({ product }: { product: PrintifyProduct }) {
-  const { primary, hover } = getBlackOrDefaultImages(product)
-  const { min, max } = getPriceRange(product)
-  const priceLabel =
-    min === max ? formatPrice(min) : `${formatPrice(min)} – ${formatPrice(max)}`
+function ProductCard({ product }: { product: Product }) {
+  const priceLabel = product.price_cents != null ? formatPrice(product.price_cents) : null
 
   return (
     <Link href={`/shop/${product.id}`} className="group">
       <div className="aspect-square bg-dust/20 relative overflow-hidden mb-4">
-        {primary ? (
-          <>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={primary.src}
-              alt={product.title}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-out ${
-                hover ? 'group-hover:opacity-0' : 'group-hover:scale-[1.04]'
-              }`}
-              loading="lazy"
-            />
-            {hover && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={hover.src}
-                alt={`${product.title} — alternate view`}
-                className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"
-                loading="lazy"
-              />
-            )}
-          </>
+        {product.hero_image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={product.hero_image}
+            alt={product.title}
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+            loading="lazy"
+          />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-muted text-xs tracking-widest uppercase">No image</span>
@@ -45,7 +39,7 @@ function ProductCard({ product }: { product: PrintifyProduct }) {
       </div>
       <div>
         <h3 className="text-sm font-medium text-ink leading-snug">{product.title}</h3>
-        <p className="text-muted text-sm mt-1">{priceLabel}</p>
+        {priceLabel && <p className="text-muted text-sm mt-1">{priceLabel}</p>}
       </div>
     </Link>
   )
@@ -53,22 +47,62 @@ function ProductCard({ product }: { product: PrintifyProduct }) {
 
 // ─── ShopGrid ─────────────────────────────────────────────────────────────────
 
-export default function ShopGrid({ products }: { products: PrintifyProduct[] }) {
+export default function ShopGrid({ products }: { products: Product[] }) {
   const [query, setQuery] = useState('')
+  const [activeCollection, setActiveCollection] = useState<string | null>(null)
+
+  const collections = useMemo(() => {
+    const seen = new Set<string>()
+    const result: string[] = []
+    for (const p of products) {
+      if (p.type === 'photo' && p.collection && !seen.has(p.collection)) {
+        seen.add(p.collection)
+        result.push(p.collection)
+      }
+    }
+    return result
+  }, [products])
 
   const filtered = useMemo(() => {
+    let result = activeCollection
+      ? products.filter((p) => p.type === 'photo' && p.collection === activeCollection)
+      : products
     const q = query.trim().toLowerCase()
-    if (!q) return products
-    return products.filter((p) => {
-      const title = p.title.toLowerCase()
-      const category = getProductCategory(p).toLowerCase()
-      const tags = p.tags.join(' ').toLowerCase()
-      return title.includes(q) || category.includes(q) || tags.includes(q)
-    })
-  }, [products, query])
+    if (q) result = result.filter((p) => p.title.toLowerCase().includes(q))
+    return result
+  }, [products, query, activeCollection])
 
   return (
     <>
+      {/* Collection filter */}
+      {collections.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-8">
+          <button
+            onClick={() => setActiveCollection(null)}
+            className={`px-4 py-1.5 text-xs tracking-wider uppercase border transition-colors ${
+              activeCollection === null
+                ? 'bg-ink text-paper border-ink'
+                : 'border-dust text-muted hover:border-ink hover:text-ink'
+            }`}
+          >
+            All
+          </button>
+          {collections.map((c) => (
+            <button
+              key={c}
+              onClick={() => setActiveCollection(c)}
+              className={`px-4 py-1.5 text-xs tracking-wider uppercase border transition-colors ${
+                activeCollection === c
+                  ? 'bg-ink text-paper border-ink'
+                  : 'border-dust text-muted hover:border-ink hover:text-ink'
+              }`}
+            >
+              {COLLECTION_LABELS[c] ?? c}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Search bar */}
       <div className="relative mb-8 max-w-sm">
         <svg

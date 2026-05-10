@@ -66,7 +66,7 @@ export default function PrivacyPage() {
           <p className="text-muted leading-relaxed mb-4">
             After payment, Stripe sends StudioTJ the order details: your name, email, shipping
             address, and what you ordered. That information is then sent to the print-on-demand
-            fulfilment partner — currently Printify — which produces and ships the order. Legal
+            fulfilment partner — Prodigi — which produces and ships the order. Legal
             basis: performance of a contract (AVG Art. 6(1)(b)) — without these details, the
             order cannot be fulfilled.
           </p>
@@ -138,7 +138,7 @@ export default function PrivacyPage() {
             </li>
             <li className="text-muted leading-relaxed">
               <strong>
-                Print-on-demand fulfilment partner (currently Printify)
+                Prodigi — print-on-demand fulfilment
               </strong>{' '}
               — order fulfilment, and through them, the print provider that physically produces
               and ships your order
