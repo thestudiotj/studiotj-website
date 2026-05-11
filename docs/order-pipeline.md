@@ -120,31 +120,31 @@ process real orders. **As of 2026-05-11 these paths are 404 — upload to R2 is 
 
 ## Fragilities and known issues
 
-### 1. Frame color not passed to Prodigi (HIGH RISK)
-FAP variants with different frame colors (black / natural-oak / white) all use the same
-Prodigi SKU (`FRA-CLA-HPR-NM-GLA-A3`, `FRA-CLA-HPR-NM-GLA-A4`). The webhook builds
-the Prodigi `ProdigiItem` without any `attributes` field. If Prodigi selects a default
-frame color for this SKU (presumably black) regardless of the variant the customer chose,
-customers ordering natural-oak or white frames will receive black frames.
+### 1. Frame color and canvas wrap — FIXED (2026-05-11)
+FAP variants require a `color` attribute; canvas variants require a `wrap` attribute.
+Both are now computed in `resolveProdigiAttributes()` in `src/lib/catalogue/loader.ts`
+and passed through `CheckoutProduct.prodigi_attributes` to both the shipping quote
+and the Prodigi order item in the webhook.
 
-**Fix required before launch:** Either (a) confirm with Prodigi that `FRA-CLA-HPR-NM-GLA-*`
-always produces natural-oak (and rename MDX variants accordingly), or (b) obtain the
-separate Prodigi SKUs per frame color and update the MDX `sku` field per variant, or
-(c) pass a frame color `attribute` in the Prodigi order item.
+| Format | Attribute | Values (MDX → Prodigi) |
+|---|---|---|
+| canvas | `wrap` | always `"ImageWrap"` |
+| framed | `color` | `"black"→"black"`, `"natural-oak"→"natural"`, `"white"→"white"` |
+
+Verified against Prodigi sandbox: all 5 combinations accepted (2026-05-11).
 
 ### 2. Print assets not in R2 (LAUNCH BLOCKER)
 All 798 variants reference `print/photography/…/master.jpg` paths that return 404 on
 `https://photos.studiotj.com`. Prodigi would fail when downloading print assets.
 Upload of full-resolution master JPEGs is required before live orders can be fulfilled.
 
-### 3. `getProductBySlug` is deprecated in webhook context
-The webhook calls `getProductBySlug(productId)` which first tries `getGroupById(slug)`.
+### 3. `getProductBySlug` was deprecated in webhook context — FIXED (2026-05-11)
+The webhook previously called `getProductBySlug(productId)` which first tries `getGroupById(slug)`.
 If a group ID ever ends up in session metadata (shouldn't happen with current checkout code,
 which correctly puts variant IDs), the webhook would use the default variant's SKU instead
 of the ordered variant's. Low risk in practice; higher risk if checkout code changes.
 
-**Fix:** Replace `getProductBySlug` call in the webhook with `getVariantForCheckout` directly,
-eliminating the group-lookup path.
+Fixed: webhook now calls `getVariantForCheckout` directly.
 
 ### 4. `regional_skus` not populated for grouped products
 `getVariantForCheckout` doesn't populate `regional_skus` on `CheckoutProduct`, so
