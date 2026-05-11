@@ -32,7 +32,7 @@ export async function resolveShipping(
     items: items.map(({ product, copies }) => ({
       sku: resolveSku(product, destinationCountry),
       copies,
-      attributes: {},
+      ...(product.prodigi_attributes ? { attributes: product.prodigi_attributes } : {}),
       assets: [{ printArea: 'default' }],
     })),
   }
