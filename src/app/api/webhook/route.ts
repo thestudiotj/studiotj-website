@@ -61,6 +61,56 @@ function slog(fields: Record<string, unknown>): void {
   console.log(JSON.stringify(fields))
 }
 
+// ── Prodigi error classification ──────────────────────────────────────────────
+
+interface ApiErrorClassification {
+  prodigiOutcome: string | null
+  action: 'stop_notify' | 'retry_notify' | 'retry_silent'
+  metadataStatus: string
+  suggestedFix?: string
+}
+
+function classifyApiError(err: ProdigiApiError): ApiErrorClassification {
+  let prodigiOutcome: string | null = null
+  try {
+    const parsed = JSON.parse(err.body)
+    if (typeof parsed?.outcome === 'string') prodigiOutcome = parsed.outcome
+  } catch {}
+
+  switch (prodigiOutcome) {
+    case 'PaymentFailed':
+      return {
+        prodigiOutcome,
+        action: 'retry_notify',
+        metadataStatus: 'payment_failed',
+        suggestedFix:
+          'Stripe will continue retrying for up to 3 days. Top up your Prodigi billing balance within that window and the order auto-completes.',
+      }
+    case 'InvalidAddress':
+      return {
+        prodigiOutcome,
+        action: 'stop_notify',
+        metadataStatus: 'invalid_address',
+        suggestedFix:
+          'Contact the customer to verify their shipping address, then re-submit the order manually.',
+      }
+    case 'ValidationFailed':
+      return {
+        prodigiOutcome,
+        action: 'stop_notify',
+        metadataStatus: 'validation_failed',
+        suggestedFix:
+          'Order data is malformed. Check the Prodigi error details and correct the product configuration.',
+      }
+    default:
+      return {
+        prodigiOutcome,
+        action: err.isTransient ? 'retry_silent' : 'stop_notify',
+        metadataStatus: 'needs_attention',
+      }
+  }
+}
+
 // ── Route handler ─────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
@@ -224,36 +274,44 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         stripe_session_id: sessionId,
         error_category: 'unknown',
         error_message: err instanceof Error ? err.message : String(err),
-        is_transient: true,
+        action: 'retry_silent',
       })
       return NextResponse.json({ error: 'Unexpected error calling Prodigi' }, { status: 503 })
     }
+
+    const { prodigiOutcome, action, metadataStatus, suggestedFix } = classifyApiError(err)
 
     slog({
       phase: 'webhook.prodigi_error',
       event_id: event.id,
       stripe_session_id: sessionId,
-      error_category: err.isTransient ? 'transient' : 'hard_rejection',
+      prodigi_outcome: prodigiOutcome,
+      error_category: action === 'retry_silent' ? 'transient' : action === 'retry_notify' ? 'payment_failed' : 'hard_rejection',
       error_message: err.message,
-      is_transient: err.isTransient,
+      http_status: err.status,
+      action,
     })
 
-    if (err.isTransient) {
+    if (action === 'retry_silent') {
       return NextResponse.json({ error: 'Prodigi transient error — Stripe will retry' }, { status: 503 })
     }
 
-    // Hard rejection (4xx) — capture failure, notify admin, return 200
+    // stop_notify or retry_notify — write metadata, send admin email
     const errorBody = err.body.slice(0, 500)
+    const metaUpdate: Record<string, string> = {
+      prodigi_status: metadataStatus,
+      prodigi_error: errorBody,
+    }
+    if (prodigiOutcome) metaUpdate.prodigi_outcome = prodigiOutcome
 
     try {
-      await stripe.checkout.sessions.update(sessionId, {
-        metadata: { prodigi_status: 'needs_attention', prodigi_error: errorBody },
-      })
+      await stripe.checkout.sessions.update(sessionId, { metadata: metaUpdate })
       slog({
         phase: 'webhook.metadata_written',
         event_id: event.id,
         stripe_session_id: sessionId,
-        prodigi_status: 'needs_attention',
+        prodigi_status: metadataStatus,
+        prodigi_outcome: prodigiOutcome,
       })
     } catch (metaErr: unknown) {
       slog({
@@ -262,7 +320,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         stripe_session_id: sessionId,
         error_message: metaErr instanceof Error ? metaErr.message : String(metaErr),
       })
-      return NextResponse.json({ error: 'Metadata write failed after hard rejection' }, { status: 503 })
+      // For stop_notify, bail with 503 so Stripe retries — we need the metadata breadcrumb
+      // For retry_notify we're returning 503 anyway, so just fall through
+      if (action === 'stop_notify') {
+        return NextResponse.json({ error: 'Metadata write failed after rejection' }, { status: 503 })
+      }
     }
 
     try {
@@ -272,6 +334,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         customerName: shippingName,
         prodigiErrorStatus: err.status,
         prodigiErrorBody: err.body,
+        prodigiOutcome: prodigiOutcome ?? undefined,
+        suggestedFix,
         itemSummary: resolvedItems.map(i => ({
           title: i.product.title,
           sku: i.sku,
@@ -283,6 +347,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         event_id: event.id,
         stripe_session_id: sessionId,
         template: 'OrderNeedsAttention',
+        prodigi_outcome: prodigiOutcome,
       })
     } catch (resendErr: unknown) {
       slog({
@@ -298,12 +363,20 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       phase: 'webhook.complete',
       event_id: event.id,
       stripe_session_id: sessionId,
-      prodigi_status: 'needs_attention',
-      returned_status_code: 200,
+      prodigi_status: metadataStatus,
+      prodigi_outcome: prodigiOutcome,
+      returned_status_code: action === 'retry_notify' ? 503 : 200,
       duration_ms: Date.now() - startMs,
       ip_country_at_checkout: ipCountryAtCheckout,
       ship_to_country: shipToCountry,
     })
+
+    if (action === 'retry_notify') {
+      return NextResponse.json(
+        { error: 'Prodigi PaymentFailed — admin notified; Stripe retrying' },
+        { status: 503 },
+      )
+    }
     return NextResponse.json({ received: true })
   }
 
@@ -474,6 +547,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         customerName: shippingName,
         prodigiErrorStatus: 0,
         prodigiErrorBody: errorSummary,
+        prodigiOutcome: outcome,
         itemSummary: resolvedItems.map(i => ({
           title: i.product.title,
           sku: i.sku,
@@ -485,6 +559,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         event_id: event.id,
         stripe_session_id: sessionId,
         template: 'OrderNeedsAttention',
+        prodigi_outcome: outcome,
       })
     } catch (resendErr: unknown) {
       slog({
@@ -501,6 +576,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       event_id: event.id,
       stripe_session_id: sessionId,
       prodigi_status: 'needs_attention',
+      prodigi_outcome: outcome,
       returned_status_code: 200,
       duration_ms: Date.now() - startMs,
       ip_country_at_checkout: ipCountryAtCheckout,

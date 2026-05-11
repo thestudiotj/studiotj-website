@@ -54,10 +54,11 @@ export async function sendAdminAlert({ subject, body }: { subject: string; body:
 }
 
 export async function sendOrderNeedsAttention(props: OrderNeedsAttentionProps) {
+  const outcomeLabel = props.prodigiOutcome ?? String(props.prodigiErrorStatus)
   return getResend().emails.send({
     from: getFromAddress(),
     to: getAdminEmail(),
-    subject: `[StudioTJ] Order ${props.stripeSessionId.slice(-8)} needs attention — Prodigi ${props.prodigiErrorStatus}`,
+    subject: `[StudioTJ] Order ${props.stripeSessionId.slice(-8)} needs attention — Prodigi ${outcomeLabel}`,
     html: await render(OrderNeedsAttention(props)),
   })
 }

@@ -94,7 +94,7 @@ const CartContext = createContext<CartContextValue | null>(null)
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
-const STORAGE_KEY = 'studiotj_cart_v2'
+export const CART_STORAGE_KEY = 'studiotj_cart_v2'
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [], drawerOpen: false })
@@ -102,7 +102,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY)
+      const stored = localStorage.getItem(CART_STORAGE_KEY)
       if (stored) {
         const items: CartItem[] = JSON.parse(stored)
         items.forEach((item) => dispatch({ type: 'ADD_ITEM', item }))
@@ -116,7 +116,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!hydrated) return
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items))
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(state.items))
     } catch {
       // ignore storage errors
     }

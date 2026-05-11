@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Stripe from 'stripe'
+import { CartClearer } from '@/components/CartClearer'
 
 export const metadata = {
   title: 'Order confirmed — StudioTJ',
@@ -47,6 +48,7 @@ export default async function OrderConfirmedPage({
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 min-h-[70vh]">
+      {sessionId && <CartClearer />}
       <div className="max-w-lg">
 
         {/* Header */}
@@ -65,13 +67,15 @@ export default async function OrderConfirmedPage({
           {email ? (
             <>
               <p className="text-muted leading-relaxed">
-                We&apos;ll send a shipping confirmation to{' '}
-                <span className="text-ink">{email}</span> once your order dispatches.
+                We&apos;ve sent your order confirmation to{' '}
+                <span className="text-ink">{email}</span>. We&apos;ll send tracking details
+                when your order dispatches.
               </p>
             </>
           ) : (
             <p className="text-muted leading-relaxed">
-              We&apos;ll send a shipping confirmation to your email once your order dispatches.
+              We&apos;ve sent your order confirmation to your email. We&apos;ll send tracking
+              details when your order dispatches.
             </p>
           )}
           <p className="text-muted leading-relaxed">

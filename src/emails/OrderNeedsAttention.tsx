@@ -7,24 +7,31 @@ export interface OrderNeedsAttentionProps {
   customerName: string
   prodigiErrorStatus: number
   prodigiErrorBody: string
+  prodigiOutcome?: string
   suggestedFix?: string
   itemSummary: Array<{ title: string; sku: string; quantity: number }>
 }
 
 export function OrderNeedsAttention({
   stripeSessionId, customerEmail, customerName,
-  prodigiErrorStatus, prodigiErrorBody, suggestedFix, itemSummary,
+  prodigiErrorStatus, prodigiErrorBody, prodigiOutcome, suggestedFix, itemSummary,
 }: OrderNeedsAttentionProps) {
+  const outcomeLabel = prodigiOutcome ?? String(prodigiErrorStatus)
+  const isPaymentFailed = prodigiOutcome === 'PaymentFailed'
+
   return (
     <Layout
-      preview={`Order ${stripeSessionId.slice(-8)} needs attention — Prodigi ${prodigiErrorStatus}`}
+      preview={`Order ${stripeSessionId.slice(-8)} needs attention — Prodigi ${outcomeLabel}`}
       heading="Order needs attention"
     >
       <Section className="mt-6">
         <Text>
-          Prodigi rejected order <strong>{stripeSessionId.slice(-8)}</strong> with HTTP{' '}
-          <strong>{prodigiErrorStatus}</strong>. Stripe captured payment; the order is held
-          pending manual resolution.
+          Prodigi returned <strong>{outcomeLabel}</strong> for order{' '}
+          <strong>{stripeSessionId.slice(-8)}</strong>
+          {prodigiErrorStatus > 0 ? ` (HTTP ${prodigiErrorStatus})` : ''}.{' '}
+          {isPaymentFailed
+            ? 'Stripe will continue retrying for up to 3 days. Resolve the Prodigi billing balance within that window and the order auto-completes without manual intervention.'
+            : 'Stripe captured payment; the order is held pending manual resolution.'}
         </Text>
       </Section>
 
