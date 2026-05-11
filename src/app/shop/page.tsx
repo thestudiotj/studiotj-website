@@ -20,7 +20,6 @@ const FAMILY_DESCRIPTIONS: Record<string, string> = {
   'wall-art':        'TODO: copy — Wall art description',
   'prints-posters':  'TODO: copy — Prints & posters description',
   'cards-stationery': 'TODO: copy — Cards & stationery description',
-  'books':           'TODO: copy — Books description',
 }
 
 // Families whose hero pool skips certain codes (cal is unavailable)
@@ -28,7 +27,6 @@ const FAMILY_HERO_CODES: Record<string, string[]> = {
   'wall-art':        ['can', 'fap'],
   'prints-posters':  ['hpr', 'hge', 'ema', 'clp'],
   'cards-stationery': ['gre', 'pos'],
-  'books':           ['hpb', 'spb'],
 }
 
 export default function ShopPage() {
@@ -99,7 +97,7 @@ export default function ShopPage() {
       {/* Shop by product */}
       <div className="mb-16 pt-10 border-t border-dust/30">
         <h2 className="text-xs tracking-[0.3em] uppercase text-muted mb-8">Shop by product</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
           {families.map((fam) => (
             <ShopCollectionCard
               key={fam.slug}

@@ -37,22 +37,11 @@ export const FAMILY_CONFIG: FamilyMeta[] = [
   {
     slug: 'cards-stationery',
     name: 'Cards & stationery',
-    familyCodes: ['gre', 'pos', 'cal'],
+    familyCodes: ['gre', 'pos'],
     variantDropdownLabel: 'Type',
     variantOptions: [
       { value: 'gre', label: 'Greeting cards' },
       { value: 'pos', label: 'Postcards' },
-      { value: 'cal', label: 'Calendars' },
-    ],
-  },
-  {
-    slug: 'books',
-    name: 'Books',
-    familyCodes: ['hpb', 'spb'],
-    variantDropdownLabel: 'Binding',
-    variantOptions: [
-      { value: 'hpb', label: 'Hardcover' },
-      { value: 'spb', label: 'Softcover' },
     ],
   },
 ]

@@ -23,7 +23,6 @@ const FAMILY_DESCRIPTIONS: Record<string, string> = {
   'wall-art':         'TODO: copy — Wall art description',
   'prints-posters':   'TODO: copy — Prints & posters description',
   'cards-stationery': 'TODO: copy — Cards & stationery description',
-  'books':            'TODO: copy — Books description',
 }
 
 export function generateStaticParams() {
