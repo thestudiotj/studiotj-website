@@ -8,6 +8,7 @@ interface ShopCollectionCardProps {
   name: string
   description: string
   heroImages: string[]
+  ctaText?: string
 }
 
 export default function ShopCollectionCard({
@@ -15,6 +16,7 @@ export default function ShopCollectionCard({
   name,
   description,
   heroImages,
+  ctaText = 'Browse collection →',
 }: ShopCollectionCardProps) {
   const [heroImage, setHeroImage] = useState<string | null>(null)
   const [imgLoaded, setImgLoaded] = useState(false)
@@ -47,7 +49,7 @@ export default function ShopCollectionCard({
         </h2>
         <p className="text-muted text-sm leading-relaxed">{description}</p>
         <p className="text-xs tracking-widest uppercase text-muted mt-3 group-hover:text-ink transition-colors">
-          Browse collection →
+          {ctaText}
         </p>
       </div>
     </Link>

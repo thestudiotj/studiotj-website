@@ -5,7 +5,10 @@ import {
   COLLECTION_CONFIG,
   SLUG_TO_COLLECTION,
 } from '@/lib/catalogue'
+import { FAMILY_CONFIG, SLUG_TO_FAMILY } from '@/lib/catalogue/families'
 import ShopGrid from '@/components/ShopGrid'
+import ShopFamilyGrid from '@/components/ShopFamilyGrid'
+import ShopPageShell from '@/components/ShopPageShell'
 import Breadcrumb from '@/components/Breadcrumb'
 
 // TODO: copy — replace placeholder descriptions before launch
@@ -16,13 +19,30 @@ const COLLECTION_DESCRIPTIONS: Record<string, string> = {
   signature:   'TODO: copy — Signature collection description',
 }
 
+const FAMILY_DESCRIPTIONS: Record<string, string> = {
+  'wall-art':         'TODO: copy — Wall art description',
+  'prints-posters':   'TODO: copy — Prints & posters description',
+  'cards-stationery': 'TODO: copy — Cards & stationery description',
+  'books':            'TODO: copy — Books description',
+}
+
 export function generateStaticParams() {
-  return COLLECTION_CONFIG.map(({ slug }) => ({ collection: slug }))
+  const collectionParams = COLLECTION_CONFIG.map(({ slug }) => ({ collection: slug }))
+  const familyParams = FAMILY_CONFIG.map(({ slug }) => ({ collection: slug }))
+  return [...collectionParams, ...familyParams]
 }
 
 export async function generateMetadata(
   { params }: { params: { collection: string } }
 ): Promise<Metadata> {
+  const family = SLUG_TO_FAMILY[params.collection]
+  if (family) {
+    return {
+      title: `${family.name} — Shop`,
+      description: `Shop ${family.name.toLowerCase()} — fine art prints and objects by StudioTJ.`,
+    }
+  }
+
   const col = COLLECTION_CONFIG.find((c) => c.slug === params.collection)
   if (!col) return { title: 'Collection not found' }
   return {
@@ -31,19 +51,53 @@ export async function generateMetadata(
   }
 }
 
-export default function CollectionPage({
+export default function CollectionOrFamilyPage({
   params,
 }: {
   params: { collection: string }
 }) {
-  const col = COLLECTION_CONFIG.find((c) => c.slug === params.collection)
+  const { collection: segment } = params
+
+  // ── Family browse page ────────────────────────────────────────────────────
+  const familyMeta = SLUG_TO_FAMILY[segment]
+  if (familyMeta) {
+    const allProducts = getAvailableGroups()
+    const familyProducts = allProducts.filter((g) =>
+      familyMeta.familyCodes.includes(g.family)
+    )
+
+    return (
+      <ShopPageShell>
+        <Breadcrumb
+          segments={[
+            { label: 'Shop', href: '/shop' },
+            { label: familyMeta.name },
+          ]}
+        />
+
+        <div className="mb-10 mt-8">
+          <h1 className="font-display text-5xl md:text-7xl text-ink leading-none mb-4">
+            {familyMeta.name}
+          </h1>
+          <p className="text-muted max-w-md leading-relaxed">
+            {FAMILY_DESCRIPTIONS[segment] ?? ''}
+          </p>
+        </div>
+
+        <ShopFamilyGrid products={familyProducts} familyMeta={familyMeta} />
+      </ShopPageShell>
+    )
+  }
+
+  // ── Collection browse page ─────────────────────────────────────────────────
+  const col = COLLECTION_CONFIG.find((c) => c.slug === segment)
   if (!col) notFound()
 
-  const collectionKey = SLUG_TO_COLLECTION[params.collection]
+  const collectionKey = SLUG_TO_COLLECTION[segment]
   const products = getAvailableGroups().filter((g) => g.collection === collectionKey)
 
   return (
-    <div className="pt-24 px-6 md:px-12 pb-20">
+    <ShopPageShell>
       <Breadcrumb
         segments={[
           { label: 'Shop', href: '/shop' },
@@ -56,7 +110,7 @@ export default function CollectionPage({
           {col.name}
         </h1>
         <p className="text-muted max-w-md leading-relaxed">
-          {COLLECTION_DESCRIPTIONS[params.collection] ?? ''}
+          {COLLECTION_DESCRIPTIONS[segment] ?? ''}
         </p>
       </div>
 
@@ -70,6 +124,6 @@ export default function CollectionPage({
           </p>
         </div>
       )}
-    </div>
+    </ShopPageShell>
   )
 }

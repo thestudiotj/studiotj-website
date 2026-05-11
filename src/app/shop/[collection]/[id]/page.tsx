@@ -9,6 +9,7 @@ import {
 import type { GroupedProduct } from '@/lib/catalogue'
 import { notFound } from 'next/navigation'
 import ProductDetail from './ProductDetail'
+import ShopPageShell from '@/components/ShopPageShell'
 
 const PRODUCT_URL = (collection: string, id: string) =>
   `https://studiotj.com/shop/${collection}/${id}`
@@ -106,11 +107,14 @@ export default function ProductPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ProductDetail
-        group={group}
-        collectionSlug={params.collection}
-        collectionName={col.name}
-      />
+      <ShopPageShell>
+        <ProductDetail
+          group={group}
+          collectionSlug={params.collection}
+          collectionName={col.name}
+          noPadding
+        />
+      </ShopPageShell>
     </>
   )
 }

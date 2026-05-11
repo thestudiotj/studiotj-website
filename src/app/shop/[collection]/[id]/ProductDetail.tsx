@@ -50,10 +50,12 @@ export default function ProductDetail({
   group,
   collectionSlug,
   collectionName,
+  noPadding = false,
 }: {
   group: GroupedProduct
   collectionSlug: string
   collectionName: string
+  noPadding?: boolean
 }) {
   const defaultIdx = Math.min(group.default_variant, group.variants.length - 1)
   const defaultVariant = group.variants[defaultIdx]
@@ -144,7 +146,7 @@ export default function ProductDetail({
   const orientation = group.orientation ?? 'landscape'
 
   return (
-    <div className="pt-24 px-6 md:px-12 pb-20">
+    <div className={noPadding ? '' : 'pt-24 px-6 md:px-12 pb-20'}>
       {/* Breadcrumb */}
       <Breadcrumb
         segments={[
