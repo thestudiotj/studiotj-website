@@ -44,7 +44,6 @@ async function maybeQuoteForLab(
       copies: quantity,
       assets: product.print_areas.map(area => ({
         printArea: area.slot,
-        url: imageUrl(area.default_asset_r2),
         ...(area.page_count != null ? { pageCount: area.page_count } : {}),
       })),
     })),

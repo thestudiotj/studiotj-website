@@ -93,7 +93,6 @@ export async function POST(req: NextRequest) {
     resolvedItems.map(({ product, quantity }) => ({
       product,
       copies: quantity,
-      assetUrl: imageUrl(product.print_areas[0].default_asset_r2),
     })),
     country,
   )

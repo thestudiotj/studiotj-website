@@ -21,7 +21,7 @@ export interface ShippingResolution {
 }
 
 export async function resolveShipping(
-  items: Array<{ product: Product; copies: number; assetUrl: string }>,
+  items: Array<{ product: Product; copies: number }>,
   destinationCountry: ISO2,
   method: ShippingMethod = 'Standard',
 ): Promise<ShippingResolution> {
@@ -29,11 +29,11 @@ export async function resolveShipping(
     shippingMethod: method,
     destinationCountryCode: destinationCountry.toUpperCase(),
     currencyCode: 'EUR',
-    items: items.map(({ product, copies, assetUrl }) => ({
+    items: items.map(({ product, copies }) => ({
       sku: resolveSku(product, destinationCountry),
       copies,
       attributes: {},
-      assets: [{ printArea: 'default', url: assetUrl }],
+      assets: [{ printArea: 'default' }],
     })),
   }
 

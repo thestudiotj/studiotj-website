@@ -75,11 +75,18 @@ export interface ProdigiOrderResponse {
   order: ProdigiOrder
 }
 
+export interface ProdigiQuoteItem {
+  sku: string
+  copies: number
+  attributes?: Record<string, string>
+  assets: Array<{ printArea: string; pageCount?: number }>
+}
+
 export interface ProdigiQuoteRequest {
   shippingMethod: ShippingMethod
   destinationCountryCode: ISO2
   currencyCode: string
-  items: Omit<ProdigiItem, 'sizing'>[]
+  items: ProdigiQuoteItem[]
 }
 
 export interface ProdigiQuote {
