@@ -314,11 +314,22 @@ def build_photo_paper_lookup(files: list, price_index: dict) -> dict:
     """
     {(paper_code, size_key): sku} for fine art photo papers: HPR, HGE, EMA.
     Also builds {('CLP', size_key): sku} for C-type Lustre Pro.
+    Excludes framed-prints and canvas CSVs: those contain EMA/HPR/HGE rows but
+    the SKUs are framed products, not bare paper prints.
+
+    Priority for each (paper_code, size_key):
+      tier1: canonical single-print SKUs — GLOBAL-FAP-* (EMA), GLOBAL-HGE-* (HGE),
+              GLOBAL-HPR-* or ART-PAP-HPR-* (HPR), ART-PAP-LPP-* (CLP)
+      tier2: other single-print variants (ART-FAP-EMA-*, P-FIN-HGE-*, etc.)
+    SET2/SET3/SET6 packs and MINI format are always excluded.
     """
-    lookup = {}
+    tier1 = {}
+    tier2 = {}
     seen_candidates = []
     for f in files:
         fn = f["filename"].lower()
+        if "framed" in fn or "canvas" in fn:
+            continue
         if "print" not in fn and "photo" not in fn and "art" not in fn:
             continue
         for row in f["rows"]:
@@ -326,17 +337,34 @@ def build_photo_paper_lookup(files: list, price_index: dict) -> dict:
             if "europe" not in region:
                 continue
             sku = row.get("sku", "")
-            paper = row.get("paper_type", row.get("paper", row.get("finish", "")))
-            size_in = row.get("size_inches", row.get("size_in", ""))
             if not sku:
                 continue
+            u = sku.upper()
+            # Exclude set packs and mini format
+            if u.startswith(("SET2-", "SET3-", "SET6-")) or "MINI" in u:
+                continue
+            paper = row.get("paper_type", row.get("paper", row.get("finish", "")))
+            size_in = row.get("size_inches", row.get("size_in", ""))
             paper_code = classify_paper(paper, sku)
-            if paper_code:
-                size_key = parse_csv_size_inches(size_in)
-                if size_key:
-                    seen_candidates.append({"sku": sku, "paper": paper,
-                                            "code": paper_code, "size": size_key})
-                    lookup[(paper_code, size_key)] = sku
+            if not paper_code:
+                continue
+            size_key = parse_csv_size_inches(size_in)
+            if not size_key:
+                continue
+            seen_candidates.append({"sku": sku, "paper": paper,
+                                    "code": paper_code, "size": size_key})
+            key = (paper_code, size_key)
+            is_canonical = (
+                (paper_code == "EMA" and u.startswith("GLOBAL-FAP-")) or
+                (paper_code == "HGE" and u.startswith("GLOBAL-HGE-")) or
+                (paper_code == "HPR" and (u.startswith("GLOBAL-HPR-") or u.startswith("ART-PAP-HPR-"))) or
+                (paper_code == "CLP" and u.startswith("ART-PAP-LPP-"))
+            )
+            if is_canonical:
+                tier1[key] = sku
+            else:
+                tier2.setdefault(key, sku)
+    lookup = {**tier2, **tier1}  # tier1 (canonical) wins
     return lookup, seen_candidates
 
 
@@ -466,7 +494,8 @@ def classify_paper(paper_col: str, sku: str) -> str:
         return "HPR"
     if "german etching" in combined or "hge" in combined:
         return "HGE"
-    if "enhanced matte" in combined or "ema" in combined or "matte art" in combined:
+    if ("enhanced matte" in combined or "ema" in combined or "matte art" in combined
+            or "fap" in combined):
         return "EMA"
     if ("lustre" in combined or "lpp" in combined or "c-type" in combined
             or "ctype" in combined or "c type" in combined):
@@ -783,11 +812,11 @@ def derive_sku(fm: dict, family: str, price_index: dict,
         sku = lookups.get("photo-paper", {}).get((family, size_key))
         if sku and sku in price_index:
             return sku, "exact"
-        # Fallback: derive from known patterns
+        # Fallback: derive from known canonical patterns
         fallback = {
             "HPR": f"ART-PAP-HPR-{size_key}",
-            "HGE": f"ART-PAP-HGE-{size_key}",
-            "EMA": f"ART-PAP-EMA-{size_key}",
+            "HGE": f"GLOBAL-HGE-{size_key}",
+            "EMA": f"GLOBAL-FAP-{size_key}",
             "CLP": f"ART-PAP-LPP-{size_key}",
         }
         candidate = fallback[family]
@@ -1073,9 +1102,14 @@ def print_summary(counts, unmatched, margin_flags, samples, outliers, dry_run):
 # ─── Acceptance check ─────────────────────────────────────────────────────────
 
 def run_acceptance_check(products_dir: Path) -> None:
-    """Check no GLOBAL-* SKUs remain (except cards/postcards which are legitimately GLOBAL-)."""
+    """Check no unexpected GLOBAL-* SKUs remain.
+
+    Legitimate GLOBAL- prefixes: GRE (greeting cards), POST (postcards),
+    FAP (EMA fine art prints), HGE (German Etching prints), HPR (Photo Rag prints),
+    PAP (photo paper prints, e.g. CLP 20x30).
+    """
     print("\nRunning acceptance check ...")
-    placeholder_pattern = re.compile(r"^prodigi_sku: GLOBAL-(?!GRE|POST)", re.MULTILINE)
+    placeholder_pattern = re.compile(r"^prodigi_sku: GLOBAL-(?!GRE|POST|FAP|HGE|HPR|PAP)", re.MULTILINE)
     remaining = []
     for path in products_dir.glob("*.mdx"):
         text = path.read_text(encoding="utf-8")

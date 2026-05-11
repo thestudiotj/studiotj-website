@@ -107,7 +107,11 @@
       "Bash(Select-Object -First 30)",
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\" -Directory | ForEach-Object { $_.Name })",
       "Bash(not exist *)",
-      "Bash(dir docs *)"
+      "Bash(dir docs *)",
+      "PowerShell(& \"C:\\\\Python314\\\\python.exe\" \"scripts\\\\extract-prodigi-pricing.py\" --update --dry-run --csv-dir \"C:\\\\Users\\\\tjvan\\\\Desktop\\\\prodigi\" --products-dir \"content\\\\products\" 2>&1)",
+      "PowerShell(& \"C:\\\\Python314\\\\python.exe\" \"scripts\\\\extract-prodigi-pricing.py\" --update --csv-dir \"C:\\\\Users\\\\tjvan\\\\Desktop\\\\prodigi\" --products-dir \"content\\\\products\" 2>&1)",
+      "Bash(Select-Object -First 5)",
+      "Bash(Select-Object -First 10)"
     ]
   }
 }
