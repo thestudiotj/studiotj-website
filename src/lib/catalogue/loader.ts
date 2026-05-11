@@ -88,6 +88,8 @@ export function getVariantForCheckout(variantId: string): CheckoutProduct | null
   const variantSuffix = buildVariantSuffix(group, variant)
   const title = variantSuffix ? `${group.title}, ${variantSuffix}` : group.title
 
+  const prodigi_attributes = resolveProdigiAttributes(group.format, variant.color)
+
   return {
     id: variantId,
     type: "photo",
@@ -98,6 +100,7 @@ export function getVariantForCheckout(variantId: string): CheckoutProduct | null
     base_prices: variant.base_prices as ProductBasePrices | undefined,
     margin_pct: group.margin_pct,
     prodigi_sku: variant.sku,
+    ...(prodigi_attributes ? { prodigi_attributes } : {}),
   }
 }
 
@@ -113,6 +116,33 @@ export function groupDefaultVariant(group: GroupedProduct): ProductVariant {
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
+
+// MDX color → Prodigi attribute color name mapping for framed prints.
+const FRAME_COLOR_MAP: Record<string, string> = {
+  black: "black",
+  "natural-oak": "natural",
+  white: "white",
+}
+
+/**
+ * Returns the Prodigi `attributes` map required for the given product format and
+ * variant color.  Returns null when no attributes are needed (most formats).
+ *
+ * Determined from the Prodigi sandbox products endpoint:
+ *   - canvas: requires `wrap` (ImageWrap per product description)
+ *   - framed: requires `color` (mapped from MDX color field)
+ */
+function resolveProdigiAttributes(
+  format: string,
+  color: string | undefined,
+): Record<string, string> | null {
+  if (format === "canvas") return { wrap: "ImageWrap" }
+  if (format === "framed" && color) {
+    const mapped = FRAME_COLOR_MAP[color]
+    if (mapped) return { color: mapped }
+  }
+  return null
+}
 
 function buildVariantSuffix(group: GroupedProduct, variant: ProductVariant): string {
   const parts: string[] = []

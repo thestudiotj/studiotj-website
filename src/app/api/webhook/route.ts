@@ -198,6 +198,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       sku,
       copies: quantity,
       sizing: 'fillPrintArea' as const,
+      ...(product.prodigi_attributes ? { attributes: product.prodigi_attributes } : {}),
       assets: product.print_areas.map(area => ({
         printArea: area.slot,
         url: imageUrl(area.default_asset_r2),
