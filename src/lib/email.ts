@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+import { render } from '@react-email/components'
 import { OrderReceived, type OrderReceivedProps } from '@/emails/OrderReceived'
 import { OrderShipped, type OrderShippedProps } from '@/emails/OrderShipped'
 import { OrderNeedsAttention, type OrderNeedsAttentionProps } from '@/emails/OrderNeedsAttention'
@@ -30,7 +31,7 @@ export async function sendOrderReceived(to: string, props: OrderReceivedProps) {
     from: getFromAddress(),
     to,
     subject: `Your StudioTJ order ${props.orderRef} is on its way`,
-    react: OrderReceived(props),
+    html: await render(OrderReceived(props)),
   })
 }
 
@@ -39,7 +40,7 @@ export async function sendOrderShipped(to: string, props: OrderShippedProps) {
     from: getFromAddress(),
     to,
     subject: `Your StudioTJ order ${props.orderRef} has shipped`,
-    react: OrderShipped(props),
+    html: await render(OrderShipped(props)),
   })
 }
 
@@ -57,6 +58,6 @@ export async function sendOrderNeedsAttention(props: OrderNeedsAttentionProps) {
     from: getFromAddress(),
     to: getAdminEmail(),
     subject: `[StudioTJ] Order ${props.stripeSessionId.slice(-8)} needs attention — Prodigi ${props.prodigiErrorStatus}`,
-    react: OrderNeedsAttention(props),
+    html: await render(OrderNeedsAttention(props)),
   })
 }
