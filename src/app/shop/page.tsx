@@ -8,18 +8,17 @@ export const metadata: Metadata = {
   description: 'Fine art prints from StudioTJ — photographs from the Netherlands, printed on demand and shipped worldwide.',
 }
 
-// TODO: copy — replace placeholder descriptions before launch
 const COLLECTION_DESCRIPTIONS: Record<string, string> = {
-  atmospheric: 'TODO: copy — Atmospheric collection description',
-  halcyon:     'TODO: copy — Halcyon collection description',
-  mono:        'TODO: copy — Mono collection description',
-  signature:   'TODO: copy — Signature collection description',
+  atmospheric: 'Moody landscape photography where the weather is the subject.',
+  halcyon:     'Warm-toned landscape photography — pink, peach, coral, gold.',
+  mono:        'Black and white photography — contrast pushed to its edges.',
+  signature:   'Architecture photography with the building given the frame to itself.',
 }
 
 const FAMILY_DESCRIPTIONS: Record<string, string> = {
-  'wall-art':        'TODO: copy — Wall art description',
-  'prints-posters':  'TODO: copy — Prints & posters description',
-  'cards-stationery': 'TODO: copy — Cards & stationery description',
+  'wall-art':         'Framed prints and stretched canvas — the photograph at the size it deserves, finished and ready to hang. Heavy paper or woven canvas, either way it arrives feeling like a real object.',
+  'prints-posters':   'Fine art prints and posters on heavy art paper — substantial in the hand, matte enough to read cleanly on the wall. Frame to taste.',
+  'cards-stationery': 'Greeting cards and postcards on heavy uncoated paper — weighty in the hand, soft enough to write on, with the matte finish that lets a photograph carry. Sent or kept.',
 }
 
 // Families whose hero pool skips certain codes (cal is unavailable)
