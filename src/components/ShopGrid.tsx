@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import type { GroupedProduct, ProductVariant } from '@/lib/catalogue/types'
 import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
+import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 
 function groupMinPriceCents(group: GroupedProduct): number {
   return Math.min(...group.variants.map((v) => v.price_cents))
@@ -24,6 +25,10 @@ const COLLECTION_LABELS: Record<string, string> = {
 function formatPrice(cents: number): string {
   return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
 }
+
+const pillBase = 'px-4 py-1.5 text-xs tracking-wider uppercase border transition-colors'
+const pillActive = 'bg-ink text-paper border-ink'
+const pillInactive = 'border-dust text-muted hover:border-ink hover:text-ink'
 
 // ─── Product card ─────────────────────────────────────────────────────────────
 
@@ -65,7 +70,9 @@ function ProductCard({ group }: { group: GroupedProduct }) {
 export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
   const [query, setQuery] = useState('')
   const [activeCollection, setActiveCollection] = useState<string | null>(null)
+  const [activeFamily, setActiveFamily] = useState<string | null>(null)
 
+  // Collection filter list (hidden when only one collection present)
   const collections = useMemo(() => {
     const seen = new Set<string>()
     const result: string[] = []
@@ -78,27 +85,43 @@ export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
     return result
   }, [products])
 
+  // Product families present in this product set, in FAMILY_CONFIG order
+  const presentFamilies = useMemo(() => {
+    const productFamilyCodes = new Set(products.map((g) => g.family))
+    return FAMILY_CONFIG.filter((fam) =>
+      fam.familyCodes.some((code) => productFamilyCodes.has(code))
+    )
+  }, [products])
+
   const filtered = useMemo(() => {
     let result = activeCollection
       ? products.filter((g) => g.collection === activeCollection)
       : products
+    if (activeFamily) {
+      const famMeta = FAMILY_CONFIG.find((f) => f.slug === activeFamily)
+      if (famMeta) result = result.filter((g) => famMeta.familyCodes.includes(g.family))
+    }
     const q = query.trim().toLowerCase()
     if (q) result = result.filter((g) => g.title.toLowerCase().includes(q))
     return result
-  }, [products, query, activeCollection])
+  }, [products, query, activeCollection, activeFamily])
+
+  const hasActiveFilter = activeFamily !== null || query !== ''
+
+  function clearAll() {
+    setQuery('')
+    setActiveFamily(null)
+    setActiveCollection(null)
+  }
 
   return (
     <>
       {/* Collection filter — only shown when multiple collections are present */}
       {collections.length > 1 && (
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-6">
           <button
             onClick={() => setActiveCollection(null)}
-            className={`px-4 py-1.5 text-xs tracking-wider uppercase border transition-colors ${
-              activeCollection === null
-                ? 'bg-ink text-paper border-ink'
-                : 'border-dust text-muted hover:border-ink hover:text-ink'
-            }`}
+            className={`${pillBase} ${activeCollection === null ? pillActive : pillInactive}`}
           >
             All
           </button>
@@ -106,13 +129,30 @@ export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
             <button
               key={c}
               onClick={() => setActiveCollection(c)}
-              className={`px-4 py-1.5 text-xs tracking-wider uppercase border transition-colors ${
-                activeCollection === c
-                  ? 'bg-ink text-paper border-ink'
-                  : 'border-dust text-muted hover:border-ink hover:text-ink'
-              }`}
+              className={`${pillBase} ${activeCollection === c ? pillActive : pillInactive}`}
             >
               {COLLECTION_LABELS[c] ?? c}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Product category filter — shown when 2+ families present */}
+      {presentFamilies.length > 1 && (
+        <div className="flex flex-wrap gap-2 mb-8">
+          <button
+            onClick={() => setActiveFamily(null)}
+            className={`${pillBase} ${activeFamily === null ? pillActive : pillInactive}`}
+          >
+            All
+          </button>
+          {presentFamilies.map((fam) => (
+            <button
+              key={fam.slug}
+              onClick={() => setActiveFamily(fam.slug)}
+              className={`${pillBase} ${activeFamily === fam.slug ? pillActive : pillInactive}`}
+            >
+              {fam.name}
             </button>
           ))}
         </div>
@@ -165,14 +205,18 @@ export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
         <div className="border border-dust/40 p-12 text-center max-w-sm">
           <p className="font-display text-xl text-ink mb-2">No results</p>
           <p className="text-sm text-muted">
-            Nothing matched &ldquo;{query}&rdquo;. Try a different search.
+            {query
+              ? `Nothing matched “${query}”.`
+              : 'No products match the current filters.'}
           </p>
-          <button
-            onClick={() => setQuery('')}
-            className="mt-4 text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors underline underline-offset-4"
-          >
-            Clear search
-          </button>
+          {hasActiveFilter && (
+            <button
+              onClick={clearAll}
+              className="mt-4 text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors underline underline-offset-4"
+            >
+              Clear filters
+            </button>
+          )}
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">

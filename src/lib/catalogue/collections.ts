@@ -3,14 +3,16 @@
 export interface CollectionMeta {
   slug: string
   key: string
-  name: string
+  name: string        // short — sidebar, breadcrumbs, card labels
+  displayName: string // full — page h1 and metadata title
 }
 
+// Order: Atmospheric, Halcyon, Signature, Monochrome Moods
 export const COLLECTION_CONFIG: CollectionMeta[] = [
-  { slug: 'atmospheric', key: 'the-atmospheric-collection', name: 'Atmospheric' },
-  { slug: 'halcyon',     key: 'the-halcyon-collection',     name: 'Halcyon'     },
-  { slug: 'mono',        key: 'monochrome-moods',            name: 'Mono'        },
-  { slug: 'signature',   key: 'the-signature-collection',   name: 'Signature'   },
+  { slug: 'atmospheric', key: 'the-atmospheric-collection', name: 'Atmospheric', displayName: 'The Atmospheric Collection' },
+  { slug: 'halcyon',     key: 'the-halcyon-collection',     name: 'Halcyon',     displayName: 'The Halcyon Collection'     },
+  { slug: 'signature',   key: 'the-signature-collection',   name: 'Signature',   displayName: 'The Signature Collection'   },
+  { slug: 'mono',        key: 'monochrome-moods',            name: 'Mono',        displayName: 'Monochrome Moods'           },
 ]
 
 /** MDX collection key → URL slug (e.g. "the-atmospheric-collection" → "atmospheric") */

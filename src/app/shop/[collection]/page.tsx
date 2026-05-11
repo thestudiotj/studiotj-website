@@ -11,12 +11,11 @@ import ShopFamilyGrid from '@/components/ShopFamilyGrid'
 import ShopPageShell from '@/components/ShopPageShell'
 import Breadcrumb from '@/components/Breadcrumb'
 
-// TODO: copy — replace placeholder descriptions before launch
 const COLLECTION_DESCRIPTIONS: Record<string, string> = {
-  atmospheric: 'TODO: copy — Atmospheric collection description',
-  halcyon:     'TODO: copy — Halcyon collection description',
-  mono:        'TODO: copy — Mono collection description',
-  signature:   'TODO: copy — Signature collection description',
+  atmospheric: 'Moody landscape photography where the weather is the subject and the place is the setting. Fog, low cloud, water-heavy air, the particular grey that carries its own colour — never warm, never softened. Not only a photograph of somewhere, but the conditions that decided what the photograph could be.',
+  halcyon:     'Warm-toned landscape photography — pink, peach, coral, warm gold, dusty lilac washing the whole frame. A grade the whole image lives inside, not a tint laid on top. Not only pretty light, but the kind of pretty that earns the second look because the composition holds underneath.',
+  signature:   'Architecture photography at full attention — palette-agnostic, mood-agnostic, the building given the frame to itself. Not only a record of what\'s there, but the angle and the light that make the structure look like it could not have stood any other way.',
+  mono:        'Black and white photography at its best — it plays between the contrasts of light and dark, finds the farthest edges between them, and puts them in one image. Not only stripping a photo to its essence, but finding a new truth.',
 }
 
 const FAMILY_DESCRIPTIONS: Record<string, string> = {
@@ -45,8 +44,8 @@ export async function generateMetadata(
   const col = COLLECTION_CONFIG.find((c) => c.slug === params.collection)
   if (!col) return { title: 'Collection not found' }
   return {
-    title: `${col.name} — Shop`,
-    description: `Shop the ${col.name} collection — fine art prints and objects by StudioTJ.`,
+    title: `${col.displayName} — Shop`,
+    description: `Shop ${col.displayName} — fine art prints and objects by StudioTJ.`,
   }
 }
 
@@ -106,7 +105,7 @@ export default function CollectionOrFamilyPage({
 
       <div className="mb-10 mt-8">
         <h1 className="font-display text-5xl md:text-7xl text-ink leading-none mb-4">
-          {col.name}
+          {col.displayName}
         </h1>
         <p className="text-muted max-w-md leading-relaxed">
           {COLLECTION_DESCRIPTIONS[segment] ?? ''}
