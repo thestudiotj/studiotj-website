@@ -1,0 +1,237 @@
+Loading CSVs from: C:\Users\tjvan\Desktop\prodigi
+  Loaded 39 CSV files.
+Building price index ...
+  8404 unique SKUs indexed.
+
+Processing 1696 MDX files ...
+
+============================================================
+Session 12c-pricing -- [DRY RUN] Run Summary
+============================================================
+  Total MDX files:        1696
+  Updated:                1175
+  Unmatched (flagged):    521
+  Parse errors (skipped): 0
+  Price warnings:         1175
+
+Family breakdown:
+  CLP                       135
+  EMA                       135
+  HGE                       135
+  HPR                       136
+  book-hardcover            20
+  book-softcover            8
+  calendar                  8
+  canvas-framed             108
+  canvas-stretched          135
+  card                      360
+  framed                    324
+  postcard                  192
+
+MARGIN MISMATCHES (1 -- do not auto-correct):
+  photo-halcyon-001-hpr-a3.mdx: margin_pct=60 but table says 50 (family=HPR)
+
+Before/after sample diffs:
+  [exact] cal-atmospheric-a4l.mdx
+    SKU:       GLOBAL-CAL-A4L -> CALENDAR-A4-L-UNDATED
+    base_prices: {'EU': 12.0, 'UK': 12.0, 'US': 16.0, 'AU': 22.0} -> {'EU': 9.95, 'UK': 9.95, 'US': 9.95}
+    price_cents: 2400 -> 1990
+  [exact] cal-atmospheric-a5l.mdx
+    SKU:       GLOBAL-CAL-A5L -> CALENDAR-A5-L-UNDATED
+    base_prices: {'EU': 9.0, 'UK': 9.0, 'US': 12.0, 'AU': 16.0} -> {'EU': 8.95, 'UK': 8.95, 'US': 8.95}
+    price_cents: 1800 -> 1790
+  [exact] cal-halcyon-a4l.mdx
+    SKU:       GLOBAL-CAL-A4L -> CALENDAR-A4-L-UNDATED
+    base_prices: {'EU': 12.0, 'UK': 12.0, 'US': 16.0, 'AU': 22.0} -> {'EU': 9.95, 'UK': 9.95, 'US': 9.95}
+    price_cents: 2400 -> 1990
+  [exact] cal-halcyon-a5l.mdx
+    SKU:       GLOBAL-CAL-A5L -> CALENDAR-A5-L-UNDATED
+    base_prices: {'EU': 9.0, 'UK': 9.0, 'US': 12.0, 'AU': 16.0} -> {'EU': 8.95, 'UK': 8.95, 'US': 8.95}
+    price_cents: 1800 -> 1790
+  [exact] cal-mono-a4l.mdx
+    SKU:       GLOBAL-CAL-A4L -> CALENDAR-A4-L-UNDATED
+    base_prices: {'EU': 12.0, 'UK': 12.0, 'US': 16.0, 'AU': 22.0} -> {'EU': 9.95, 'UK': 9.95, 'US': 9.95}
+    price_cents: 2400 -> 1990
+
+Unmatched products (521) -- need human review:
+  book-atmospheric-hardcover-83sq.mdx: no SKU match (family=book-hardcover, size=8.3" Square, derived='BOOK-FE-83SQ-HARD-MHK')
+  book-atmospheric-hardcover-a4l.mdx: no SKU match (family=book-hardcover, size=A4 Landscape, derived='BOOK-FE-A4L-HARD-MHK')
+  book-atmospheric-hardcover-a4p.mdx: no SKU match (family=book-hardcover, size=A4 Portrait, derived='BOOK-FE-A4P-HARD-MHK')
+  book-atmospheric-hardcover-a5l.mdx: no SKU match (family=book-hardcover, size=A5 Landscape, derived='BOOK-FE-A5L-HARD-MHK')
+  book-atmospheric-hardcover-a5p.mdx: no SKU match (family=book-hardcover, size=A5 Portrait, derived='BOOK-FE-A5P-HARD-MHK')
+  book-atmospheric-softcover-a4p.mdx: no SKU match (family=book-softcover, size=A4 Portrait, derived='BOOK-FE-A4P-SOFT-MHK')
+  book-atmospheric-softcover-a5p.mdx: no SKU match (family=book-softcover, size=A5 Portrait, derived='BOOK-FE-A5P-SOFT-MHK')
+  book-halcyon-hardcover-83sq.mdx: no SKU match (family=book-hardcover, size=8.3" Square, derived='BOOK-FE-83SQ-HARD-MHK')
+  book-halcyon-hardcover-a4l.mdx: no SKU match (family=book-hardcover, size=A4 Landscape, derived='BOOK-FE-A4L-HARD-MHK')
+  book-halcyon-hardcover-a4p.mdx: no SKU match (family=book-hardcover, size=A4 Portrait, derived='BOOK-FE-A4P-HARD-MHK')
+  book-halcyon-hardcover-a5l.mdx: no SKU match (family=book-hardcover, size=A5 Landscape, derived='BOOK-FE-A5L-HARD-MHK')
+  book-halcyon-hardcover-a5p.mdx: no SKU match (family=book-hardcover, size=A5 Portrait, derived='BOOK-FE-A5P-HARD-MHK')
+  book-halcyon-softcover-a4p.mdx: no SKU match (family=book-softcover, size=A4 Portrait, derived='BOOK-FE-A4P-SOFT-MHK')
+  book-halcyon-softcover-a5p.mdx: no SKU match (family=book-softcover, size=A5 Portrait, derived='BOOK-FE-A5P-SOFT-MHK')
+  book-mono-hardcover-83sq.mdx: no SKU match (family=book-hardcover, size=8.3" Square, derived='BOOK-FE-83SQ-HARD-MHK')
+  book-mono-hardcover-a4l.mdx: no SKU match (family=book-hardcover, size=A4 Landscape, derived='BOOK-FE-A4L-HARD-MHK')
+  book-mono-hardcover-a4p.mdx: no SKU match (family=book-hardcover, size=A4 Portrait, derived='BOOK-FE-A4P-HARD-MHK')
+  book-mono-hardcover-a5l.mdx: no SKU match (family=book-hardcover, size=A5 Landscape, derived='BOOK-FE-A5L-HARD-MHK')
+  book-mono-hardcover-a5p.mdx: no SKU match (family=book-hardcover, size=A5 Portrait, derived='BOOK-FE-A5P-HARD-MHK')
+  book-mono-softcover-a4p.mdx: no SKU match (family=book-softcover, size=A4 Portrait, derived='BOOK-FE-A4P-SOFT-MHK')
+  ... and 501 more (see _unmatched.txt)
+
+Pricing outliers (153) -- verify manually:
+  photo-atmospheric-leiden-017-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-atmospheric-leiden-068-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-atmospheric-leiden-074-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-atmospheric-leiden-091-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-atmospheric-leiden-122-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-atmospheric-leiden-151-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-atmospheric-leiden-167-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-katwijk-221-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-katwijk-275-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-katwijk-281-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-katwijk-293-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-katwijk-315-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-katwijk-338-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-katwijk-405-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-katwijk-444-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-roelof-068-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-roelof-159-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-halcyon-roelof-182-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-mono-asp-240-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-mono-asp-272-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-mono-asp-273-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-mono-asp-312-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-signature-thehague-148-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-signature-thehague-153-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-signature-thehague-187-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-signature-thehague-194-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-signature-thehague-218-ema-24x36.mdx: price_cents=31280, family median=8330
+  photo-atmospheric-leiden-017-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-017-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-068-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-068-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-074-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-074-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-091-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-091-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-122-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-122-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-151-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-151-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-167-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-167-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-221-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-221-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-275-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-275-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-281-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-281-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-293-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-293-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-315-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-315-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-338-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-338-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-405-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-405-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-444-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-katwijk-444-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-roelof-068-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-roelof-068-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-roelof-159-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-roelof-159-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-roelof-182-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-halcyon-roelof-182-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-mono-asp-240-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-mono-asp-240-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-mono-asp-272-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-mono-asp-272-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-mono-asp-273-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-mono-asp-273-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-mono-asp-312-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-mono-asp-312-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-signature-thehague-148-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-signature-thehague-148-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-signature-thehague-153-gre-6x4-pack10.mdx: price_cents=2800, family median=12600
+  photo-signature-thehague-153-gre-7x5-pack10.mdx: price_cents=2800, family median=12600
+  photo-atmospheric-leiden-017-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-atmospheric-leiden-068-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-atmospheric-leiden-074-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-atmospheric-leiden-091-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-atmospheric-leiden-122-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-atmospheric-leiden-151-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-atmospheric-leiden-167-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-katwijk-221-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-katwijk-275-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-katwijk-281-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-katwijk-293-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-katwijk-315-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-katwijk-338-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-katwijk-405-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-katwijk-444-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-roelof-068-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-roelof-159-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-halcyon-roelof-182-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-mono-asp-240-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-mono-asp-272-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-mono-asp-273-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-mono-asp-312-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-signature-thehague-148-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-signature-thehague-153-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-signature-thehague-187-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-signature-thehague-194-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-signature-thehague-218-hge-24x36.mdx: price_cents=5850, family median=1800
+  photo-atmospheric-leiden-017-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-atmospheric-leiden-068-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-atmospheric-leiden-074-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-atmospheric-leiden-091-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-atmospheric-leiden-122-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-atmospheric-leiden-151-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-atmospheric-leiden-167-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-katwijk-221-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-katwijk-275-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-katwijk-281-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-katwijk-293-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-katwijk-315-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-katwijk-338-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-katwijk-405-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-katwijk-444-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-roelof-068-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-roelof-159-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-halcyon-roelof-182-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-mono-asp-240-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-mono-asp-272-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-mono-asp-273-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-mono-asp-312-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-signature-thehague-148-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-signature-thehague-153-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-signature-thehague-187-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-signature-thehague-194-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-signature-thehague-218-hpr-a5.mdx: price_cents=600, family median=7950
+  photo-atmospheric-leiden-017-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-atmospheric-leiden-068-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-atmospheric-leiden-074-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-atmospheric-leiden-091-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-atmospheric-leiden-122-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-atmospheric-leiden-151-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-atmospheric-leiden-167-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-katwijk-221-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-katwijk-275-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-katwijk-281-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-katwijk-293-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-katwijk-315-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-katwijk-338-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-katwijk-405-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-katwijk-444-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-roelof-068-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-roelof-159-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-halcyon-roelof-182-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-mono-asp-240-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-mono-asp-272-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-mono-asp-273-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-mono-asp-312-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-signature-thehague-148-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+  photo-signature-thehague-153-pos-6x4-pack10.mdx: price_cents=2700, family median=11250
+
+============================================================
+
+
+Unmatched product list: content\scripts\_unmatched.txt
