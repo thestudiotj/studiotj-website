@@ -72,6 +72,7 @@ export const groupedProductSchema = z.object({
   photo_id: z.string().nullable().optional(),
   format: z.string().min(1),
   family: z.string().min(1),
+  orientation: z.enum(["portrait", "landscape", "square"]).optional(),
   margin_pct: z.number().nonnegative(),
   print_areas: z.array(printAreaSchema).min(1),
   variant_axes: z.array(z.enum(["size", "color", "pack"])).default(["size"]),

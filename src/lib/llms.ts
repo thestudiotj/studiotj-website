@@ -1,6 +1,6 @@
 import { getAllPosts, getPostBySlug } from './content'
 import { getPortfolio, sortCollections } from './portfolio'
-import { getAvailableProducts } from './catalogue'
+import { getAvailableProducts, COLLECTION_TO_SLUG } from './catalogue'
 import { getAllSeries, getShootBoundEntries } from './series'
 import {
   getProducts as getVondstenProducts,
@@ -468,9 +468,10 @@ async function buildData(): Promise<LlmsSectionFull[]> {
     const priceStr = minVariantPrice != null
       ? new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(minVariantPrice / 100)
       : null
+    const colSlug = COLLECTION_TO_SLUG[product.collection] ?? product.collection
     shopEntries.push({
       title: product.title,
-      url: `${BASE_URL}/shop/${product.id}`,
+      url: `${BASE_URL}/shop/${colSlug}/${product.id}`,
       description: truncate(product.description),
       body: [product.description, '', priceStr ? `From: ${priceStr}` : '', 'Available: Yes']
         .filter(Boolean)

@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Link from 'next/link'
 import type { GroupedProduct, ProductVariant } from '@/lib/catalogue'
 import { useCart } from '@/lib/cart'
 import ProductGallery from '@/components/ProductGallery'
+import Breadcrumb from '@/components/Breadcrumb'
 
 function formatPrice(cents: number): string {
   return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
@@ -46,7 +46,15 @@ function PickerButton({
 
 // ─── ProductDetail ────────────────────────────────────────────────────────────
 
-export default function ProductDetail({ group }: { group: GroupedProduct }) {
+export default function ProductDetail({
+  group,
+  collectionSlug,
+  collectionName,
+}: {
+  group: GroupedProduct
+  collectionSlug: string
+  collectionName: string
+}) {
   const defaultIdx = Math.min(group.default_variant, group.variants.length - 1)
   const defaultVariant = group.variants[defaultIdx]
 
@@ -60,7 +68,6 @@ export default function ProductDetail({ group }: { group: GroupedProduct }) {
   const hasColor = group.variant_axes.includes('color')
   const hasPack = group.variant_axes.includes('pack')
 
-  // Unique sizes across all variants
   const sizes = useMemo(() => {
     const seen = new Set<string>()
     return group.variants
@@ -72,7 +79,6 @@ export default function ProductDetail({ group }: { group: GroupedProduct }) {
       .map((v) => ({ size: v.size, label: v.size_label }))
   }, [group.variants])
 
-  // Colors available for selected size
   const colors = useMemo(() => {
     if (!hasColor) return []
     const seen = new Set<string>()
@@ -81,7 +87,6 @@ export default function ProductDetail({ group }: { group: GroupedProduct }) {
       .map((v) => v.color!)
   }, [group.variants, selectedSize, hasColor])
 
-  // Packs available for selected size
   const packs = useMemo(() => {
     if (!hasPack) return []
     const seen = new Set<number>()
@@ -90,7 +95,6 @@ export default function ProductDetail({ group }: { group: GroupedProduct }) {
       .map((v) => v.pack!)
   }, [group.variants, selectedSize, hasPack])
 
-  // Find the matching variant
   const selectedVariant: ProductVariant | undefined = useMemo(() => {
     return group.variants.find((v) => {
       if (v.size !== selectedSize) return false
@@ -103,7 +107,6 @@ export default function ProductDetail({ group }: { group: GroupedProduct }) {
   const activeVariant = selectedVariant ?? group.variants[defaultIdx]
   const price = formatPrice(activeVariant.price_cents)
 
-  // Gallery: hero → photo_url → mock1 → mock2 → example_image
   const galleryImages = useMemo(() => {
     const imgs: string[] = []
     if (activeVariant.hero) imgs.push(activeVariant.hero)
@@ -116,7 +119,6 @@ export default function ProductDetail({ group }: { group: GroupedProduct }) {
 
   function handleSizeChange(size: string) {
     setSelectedSize(size)
-    // Reset secondary axes if the new size doesn't have the current selection
     if (hasColor) {
       const firstColorForSize = group.variants.find((v) => v.size === size)?.color ?? ''
       setSelectedColor(firstColorForSize)
@@ -139,17 +141,20 @@ export default function ProductDetail({ group }: { group: GroupedProduct }) {
     setTimeout(() => setAdded(false), 2000)
   }
 
+  const orientation = group.orientation ?? 'landscape'
+
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
-      {/* Back link */}
-      <Link
-        href="/shop"
-        className="text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors inline-flex items-center gap-2 mb-10"
-      >
-        <span>←</span> Shop
-      </Link>
+      {/* Breadcrumb */}
+      <Breadcrumb
+        segments={[
+          { label: 'Shop', href: '/shop' },
+          { label: collectionName, href: `/shop/${collectionSlug}` },
+          { label: group.title },
+        ]}
+      />
 
-      <div className="flex flex-col md:grid md:grid-cols-2 md:grid-rows-[auto_1fr] md:gap-x-20">
+      <div className="flex flex-col md:grid md:grid-cols-2 md:grid-rows-[auto_1fr] md:gap-x-20 mt-10">
         {/* Title + price — mobile: 1st. Desktop: right col top */}
         <div className="order-1 md:order-none md:col-start-2 md:row-start-1 mb-6 md:mb-0">
           <h1 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-4">
@@ -160,7 +165,11 @@ export default function ProductDetail({ group }: { group: GroupedProduct }) {
 
         {/* Gallery — mobile: 2nd. Desktop: left col, both rows */}
         <div className="order-2 md:order-none md:col-start-1 md:row-start-1 md:row-span-2 mb-8 md:mb-0">
-          <ProductGallery images={galleryImages} productTitle={group.title} />
+          <ProductGallery
+            images={galleryImages}
+            productTitle={group.title}
+            orientation={orientation}
+          />
         </div>
 
         {/* Pickers + add-to-cart + description — mobile: 3rd. Desktop: right col bottom */}

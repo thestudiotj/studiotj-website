@@ -1,31 +1,43 @@
 import type { Metadata } from 'next'
-import { getAvailableGroups } from '@/lib/catalogue'
-import ShopGrid from '@/components/ShopGrid'
+import { getAvailableGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
+import ShopCollectionCard from '@/components/ShopCollectionCard'
 
 export const metadata: Metadata = {
   title: 'Shop',
   description: 'Fine art prints from StudioTJ — photographs from the Netherlands, printed on demand and shipped worldwide.',
 }
 
-function EmptyState() {
-  return (
-    <div className="flex flex-col items-center text-center max-w-xl mx-auto py-20">
-      <h2 className="font-display text-3xl mb-4">The shop is restocking</h2>
-      <p className="text-muted leading-relaxed mb-8">
-        New products will land here when they&apos;re ready.
-      </p>
-      <a href="/#email-capture" className="btn-primary">Join the list</a>
-    </div>
-  )
+// TODO: copy — replace placeholder descriptions before launch
+const COLLECTION_DESCRIPTIONS: Record<string, string> = {
+  atmospheric: 'TODO: copy — Atmospheric collection description',
+  halcyon:     'TODO: copy — Halcyon collection description',
+  mono:        'TODO: copy — Mono collection description',
+  signature:   'TODO: copy — Signature collection description',
 }
 
 export default function ShopPage() {
-  const products = getAvailableGroups()
+  const allProducts = getAvailableGroups()
+
+  const collections = COLLECTION_CONFIG.map((col) => {
+    const products = allProducts.filter((g) => g.collection === col.key)
+    const heroImages = products
+      .map((g) => {
+        const v = groupDefaultVariant(g)
+        return v.hero ?? v.mock1 ?? null
+      })
+      .filter((url): url is string => url !== null)
+
+    return {
+      ...col,
+      description: COLLECTION_DESCRIPTIONS[col.slug] ?? '',
+      heroImages,
+    }
+  })
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">
       {/* Header */}
-      <div className="mb-10">
+      <div className="mb-12">
         <p className="text-xs tracking-[0.3em] uppercase text-muted mb-3">StudioTJ</p>
         <h1 className="font-display text-5xl md:text-7xl text-ink leading-none mb-6">
           Shop
@@ -35,7 +47,18 @@ export default function ShopPage() {
         </p>
       </div>
 
-      {products.length > 0 ? <ShopGrid products={products} /> : <EmptyState />}
+      {/* Collection grid — 2 × 2 on desktop, stacked on mobile */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-14">
+        {collections.map((col) => (
+          <ShopCollectionCard
+            key={col.slug}
+            slug={col.slug}
+            name={col.name}
+            description={col.description}
+            heroImages={col.heroImages}
+          />
+        ))}
+      </div>
 
       {/* Info copy */}
       <div className="max-w-prose space-y-5 text-muted leading-relaxed mt-16 pt-12 border-t border-dust/30">

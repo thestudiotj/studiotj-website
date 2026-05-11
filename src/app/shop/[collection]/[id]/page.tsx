@@ -1,16 +1,24 @@
-import { getGroupById, groupMinPriceCents } from '@/lib/catalogue'
+import {
+  getGroupById,
+  getAllGroups,
+  groupMinPriceCents,
+  COLLECTION_CONFIG,
+  SLUG_TO_COLLECTION,
+  COLLECTION_TO_SLUG,
+} from '@/lib/catalogue'
 import type { GroupedProduct } from '@/lib/catalogue'
 import { notFound } from 'next/navigation'
 import ProductDetail from './ProductDetail'
 
-const PRODUCT_URL = (id: string) => `https://studiotj.com/shop/${id}`
+const PRODUCT_URL = (collection: string, id: string) =>
+  `https://studiotj.com/shop/${collection}/${id}`
 
 function getPlainDescription(group: GroupedProduct): string {
   const raw = group.description.trim()
   return raw.length >= 40 ? raw : `${group.title} — a StudioTJ print, shipped worldwide.`
 }
 
-function buildJsonLd(group: GroupedProduct) {
+function buildJsonLd(group: GroupedProduct, collection: string) {
   const minPrice = groupMinPriceCents(group)
   const priceStr = (minPrice / 100).toFixed(2)
   const defaultVariant = group.variants[Math.min(group.default_variant, group.variants.length - 1)]
@@ -31,12 +39,25 @@ function buildJsonLd(group: GroupedProduct) {
       availability: group.available
         ? 'https://schema.org/InStock'
         : 'https://schema.org/OutOfStock',
-      url: PRODUCT_URL(group.id),
+      url: PRODUCT_URL(collection, group.id),
     },
   }
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export function generateStaticParams() {
+  return getAllGroups()
+    .filter((g) => COLLECTION_TO_SLUG[g.collection])
+    .map((g) => ({
+      collection: COLLECTION_TO_SLUG[g.collection],
+      id: g.id,
+    }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { collection: string; id: string }
+}) {
   const group = getGroupById(params.id)
   if (!group) return { title: 'Product not found' }
 
@@ -63,11 +84,21 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   }
 }
 
-export default function ProductPage({ params }: { params: { id: string } }) {
+export default function ProductPage({
+  params,
+}: {
+  params: { collection: string; id: string }
+}) {
+  const col = COLLECTION_CONFIG.find((c) => c.slug === params.collection)
+  if (!col) notFound()
+
   const group = getGroupById(params.id)
   if (!group) notFound()
 
-  const jsonLd = buildJsonLd(group)
+  // Ensure the product actually belongs to this collection
+  if (COLLECTION_TO_SLUG[group.collection] !== params.collection) notFound()
+
+  const jsonLd = buildJsonLd(group, params.collection)
 
   return (
     <>
@@ -75,7 +106,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ProductDetail group={group} />
+      <ProductDetail
+        group={group}
+        collectionSlug={params.collection}
+        collectionName={col.name}
+      />
     </>
   )
 }

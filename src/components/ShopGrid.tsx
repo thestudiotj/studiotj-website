@@ -2,7 +2,8 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import type { GroupedProduct, ProductVariant } from '@/lib/catalogue'
+import type { GroupedProduct, ProductVariant } from '@/lib/catalogue/types'
+import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
 
 function groupMinPriceCents(group: GroupedProduct): number {
   return Math.min(...group.variants.map((v) => v.price_cents))
@@ -33,7 +34,7 @@ function ProductCard({ group }: { group: GroupedProduct }) {
   const hasMultipleVariants = group.variants.length > 1
 
   return (
-    <Link href={`/shop/${group.id}`} className="group">
+    <Link href={`/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`} className="group">
       <div className="aspect-square bg-dust/20 relative overflow-hidden mb-4">
         {heroImage ? (
           // eslint-disable-next-line @next/next/no-img-element

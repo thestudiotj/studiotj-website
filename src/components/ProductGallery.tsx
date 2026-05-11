@@ -210,9 +210,11 @@ const THUMBS_VISIBLE = 7
 export default function ProductGallery({
   images,
   productTitle,
+  orientation = 'landscape',
 }: {
   images: ProductImage[]
   productTitle: string
+  orientation?: 'portrait' | 'landscape' | 'square'
 }) {
   const [selectedIdx, setSelectedIdx] = useState(0)
   const [thumbOffset, setThumbOffset] = useState(0)
@@ -224,13 +226,18 @@ export default function ProductGallery({
   const canScrollPrev = thumbOffset > 0
   const canScrollNext = thumbOffset + THUMBS_VISIBLE < images.length
 
+  const aspectClass =
+    orientation === 'portrait' ? 'aspect-[2/3]' :
+    orientation === 'square'   ? 'aspect-square' :
+                                 'aspect-[3/2]'
+
   return (
     <>
       <div className="flex flex-col gap-3">
         {/* Featured image */}
         <button
           onClick={() => images.length > 0 && setLightboxOpen(true)}
-          className="relative aspect-square bg-dust/20 overflow-hidden w-full cursor-zoom-in group"
+          className={`relative ${aspectClass} bg-dust/20 overflow-hidden w-full cursor-zoom-in group`}
           aria-label="View full size"
         >
           {activeImage ? (
@@ -238,7 +245,7 @@ export default function ProductGallery({
             <img
               src={activeImage.src}
               alt={`${productTitle} — view ${safeIdx + 1}`}
-              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200"
+              className="absolute inset-0 w-full h-full object-contain transition-opacity duration-200"
               loading="eager"
             />
           ) : (
@@ -289,7 +296,7 @@ export default function ProductGallery({
                     <img
                       src={img.src}
                       alt={`${productTitle} thumbnail ${idx + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-contain"
                       loading="lazy"
                     />
                   </button>
