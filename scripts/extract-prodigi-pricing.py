@@ -257,10 +257,23 @@ def build_canvas_framed_lookup(files: list, price_index: dict) -> dict:
 
 def build_framed_prints_lookup(files: list, price_index: dict) -> dict:
     """
-    {(size_key, color_key): sku} for framed art prints (Classic frame, EMA paper).
+    {(size_key, color_key): sku} for framed art prints (Classic frame).
     Locked colors: black, white, natural-oak.
+
+    Preferred product: HPR paper, No Mount, Float Glass (matches MDX "no mount, glass glaze").
+    Falls back to any Classic frame entry for sizes where NM variant is unavailable.
+
+    CSV column layout (framed-prints files):
+      "Frame"       -> row["frame"]       : frame style, e.g. "Classic"
+      "Color"       -> row["color"]       : frame finish, e.g. "black", "white", "natural"
+      "Mount"       -> row["mount"]       : mount type, e.g. "No mount / Mat", "1.4mm"
+      "Paper type"  -> row["paper_type"]  : paper substrate, e.g. "HPR", "EMA", "LPP"
+      "Mount color" -> row["mount_color"] : mat board color (NOT the frame color)
     """
-    lookup = {}
+    # Three priority tiers: HPR-NM (best) > any-NM > mounted (fallback)
+    tier1 = {}  # HPR paper + no-mount: exact match for "no mount, glass glaze" MDX products
+    tier2 = {}  # no-mount, non-HPR paper
+    tier3 = {}  # mounted variants (any Classic frame)
     seen_candidates = []
     for f in files:
         fn = f["filename"].lower()
@@ -271,20 +284,29 @@ def build_framed_prints_lookup(files: list, price_index: dict) -> dict:
             if "europe" not in region:
                 continue
             sku = row.get("sku", "")
-            style = row.get("style", row.get("frame_style", ""))
-            color = (row.get("mount_color", row.get("frame_colour",
-                             row.get("color", row.get("colour", "")))))
+            frame = row.get("frame", row.get("style", ""))
+            color_raw = row.get("color", row.get("colour", ""))
             size_in = row.get("size_inches", row.get("size_in", ""))
+            mount = row.get("mount", "").lower()
+            paper = row.get("paper_type", "").upper()
             if not sku:
                 continue
-            is_classic = "classic" in style.lower() or not style
-            color_key = normalize_frame_color(color or extract_color_from_sku(sku))
-            seen_candidates.append({"sku": sku, "style": style, "color": color,
-                                     "size_in": size_in, "color_key": color_key})
+            is_classic = "classic" in frame.lower() or not frame
+            is_no_mount = "no" in mount
+            color_key = normalize_frame_color(color_raw or extract_color_from_sku(sku))
+            seen_candidates.append({"sku": sku, "frame": frame, "color_raw": color_raw,
+                                     "size_in": size_in, "color_key": color_key,
+                                     "paper": paper, "is_no_mount": is_no_mount})
             if is_classic and color_key in ("black", "white", "natural-oak"):
                 size_key = parse_csv_size_inches(size_in)
                 if size_key:
-                    lookup[(size_key, color_key)] = sku
+                    if is_no_mount and paper == "HPR":
+                        tier1[(size_key, color_key)] = sku
+                    elif is_no_mount:
+                        tier2[(size_key, color_key)] = sku
+                    else:
+                        tier3[(size_key, color_key)] = sku
+    lookup = {**tier3, **tier2, **tier1}  # tier1 (HPR-NM) wins
     return lookup, seen_candidates
 
 
