@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createOrder, createQuote, ProdigiApiError, resolveSku } from '@/lib/prodigi'
 import type { ISO2, ProdigiOrderRequest, ProdigiOrderResponse, ProdigiQuoteResponse } from '@/lib/prodigi'
-import { getProductBySlug } from '@/lib/catalogue'
+import { getVariantForCheckout } from '@/lib/catalogue'
 import { sendOrderReceived, sendOrderNeedsAttention } from '@/lib/email'
 import { imageUrl } from '@/lib/checkout/images'
 
@@ -19,7 +19,7 @@ function getStripe(): Stripe {
 }
 
 interface ResolvedItem {
-  product: NonNullable<ReturnType<typeof getProductBySlug>>
+  product: NonNullable<ReturnType<typeof getVariantForCheckout>>
   quantity: number
   sku: string
 }
@@ -147,7 +147,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const resolvedItems: ResolvedItem[] = []
 
   for (const { productId, quantity } of parsedItems) {
-    const product = getProductBySlug(productId)
+    const product = getVariantForCheckout(productId)
     if (!product) {
       return NextResponse.json({ error: `Product not found: ${productId}` }, { status: 400 })
     }
