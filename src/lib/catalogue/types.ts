@@ -1,17 +1,11 @@
 import { z } from "zod"
 
-// ---------- shared primitives
+// ─── Shared primitives ────────────────────────────────────────────────────────
 
 export const labSchema = z.enum(["EU", "UK", "US", "AU"])
 export type Lab = z.infer<typeof labSchema>
 
-// base_prices keys are the customer's shipping region, NOT the lab itself.
-// Values are in the lab's native currency (lab-native pricing):
-//   EU → UK lab, price in GBP
-//   UK → UK lab, price in GBP
-//   US → US lab where routed, price in USD; else UK lab GBP
-//   AU → AU lab where routed, price in AUD; else UK lab GBP
-// Conversion from lab currency to buyer currency happens at checkout.
+// base_prices keys are the customer's shipping region.
 const basePricesSchema = z.object({
   EU: z.number().nonnegative().optional(),
   UK: z.number().nonnegative().optional(),
@@ -40,14 +34,53 @@ const regionalAssetsSchema = z
   })
   .partial()
 
-const printAreaSchema = z.object({
+export const printAreaSchema = z.object({
   slot: z.string().min(1),
   default_asset_r2: z.string().min(1),
   page_count: z.number().int().positive().optional(),
   regional_assets: regionalAssetsSchema.optional(),
 })
+export type PrintArea = z.infer<typeof printAreaSchema>
 
-// ---------- shared base fields (spread into each branch to avoid .and() on ZodEffects)
+// ─── Grouped product (new canonical format) ───────────────────────────────────
+
+export const productVariantSchema = z.object({
+  variantId: z.string().min(1),
+  size: z.string().min(1),
+  size_label: z.string().min(1),
+  color: z.string().optional(),         // fap: "black" | "natural-oak" | "white"
+  pack: z.number().int().positive().optional(), // gre/pos: 10 | 20 | 50 | 100
+  orientation: z.string().optional(),   // "landscape" | "portrait" | ""
+  sku: z.string().min(1),
+  price_cents: z.number().int().positive(),
+  base_prices: basePricesSchema.optional(),
+  hero: z.string().optional(),
+  mock1: z.string().optional(),
+  mock2: z.string().optional(),
+})
+export type ProductVariant = z.infer<typeof productVariantSchema>
+
+export const groupedProductSchema = z.object({
+  type: z.literal("grouped"),
+  id: z.string().min(1),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  photo_url: z.string().nullable().optional(),
+  example_image: z.string().nullable().optional(),
+  available: z.boolean(),
+  collection: z.string().min(1),
+  photo_id: z.string().nullable().optional(),
+  format: z.string().min(1),
+  family: z.string().min(1),
+  margin_pct: z.number().nonnegative(),
+  print_areas: z.array(printAreaSchema).min(1),
+  variant_axes: z.array(z.enum(["size", "color", "pack"])).default(["size"]),
+  default_variant: z.number().int().nonnegative().default(0),
+  variants: z.array(productVariantSchema).min(1),
+})
+export type GroupedProduct = z.infer<typeof groupedProductSchema>
+
+// ─── Legacy flat product types (kept for type compatibility, no longer loaded) ─
 
 const baseFields = {
   id: z.string().min(1),
@@ -69,11 +102,9 @@ const skuRefine = (data: { prodigi_sku?: string; regional_skus?: Record<string, 
   Boolean(data.regional_skus && Object.keys(data.regional_skus).length > 0)
 
 const skuRefineMessage = {
-  message: "Product must have either prodigi_sku (globally cloned) or regional_skus (regional)",
+  message: "Product must have either prodigi_sku or regional_skus",
   path: ["prodigi_sku"],
 }
-
-// ---------- photo branch
 
 export const photoProductSchema = z
   .object({
@@ -90,8 +121,6 @@ export const photoProductSchema = z
   })
   .refine(skuRefine, skuRefineMessage)
 
-// ---------- typography branch
-
 export const typographyProductSchema = z
   .object({
     ...baseFields,
@@ -104,10 +133,25 @@ export const typographyProductSchema = z
   })
   .refine(skuRefine, skuRefineMessage)
 
-// ---------- the union
+export const flatProductSchema = z.union([photoProductSchema, typographyProductSchema])
+export type FlatProduct = z.infer<typeof flatProductSchema>
 
-export const productSchema = z.union([photoProductSchema, typographyProductSchema])
+// Alias kept for any remaining import sites
+export type Product = FlatProduct
 
-export type Product = z.infer<typeof productSchema>
-export type PhotoProduct = Extract<Product, { type: "photo" }>
-export type TypographyProduct = Extract<Product, { type: "typography" }>
+// ─── Checkout-compatible product view ─────────────────────────────────────────
+// Constructed in the catalogue loader from a GroupedProduct + variant.
+// Satisfies what verifyPrice, resolveShipping, and the checkout route need.
+
+export interface CheckoutProduct {
+  id: string
+  type: string
+  available: boolean
+  title: string
+  description: string
+  print_areas: PrintArea[]
+  base_prices: ProductBasePrices | undefined
+  margin_pct: number
+  prodigi_sku: string           // variant's SKU for Prodigi shipping quote
+  regional_skus?: Record<string, string | undefined>
+}

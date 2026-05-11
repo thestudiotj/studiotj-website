@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getAvailableProducts } from '@/lib/catalogue'
+import { getAvailableGroups } from '@/lib/catalogue'
 import ShopGrid from '@/components/ShopGrid'
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ function EmptyState() {
 }
 
 export default function ShopPage() {
-  const products = getAvailableProducts()
+  const products = getAvailableGroups()
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20">

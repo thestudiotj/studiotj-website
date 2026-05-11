@@ -1,77 +1,73 @@
-import { getProductBySlug } from '@/lib/catalogue'
-import type { Product } from '@/lib/catalogue'
+import { getGroupById, groupMinPriceCents } from '@/lib/catalogue'
+import type { GroupedProduct } from '@/lib/catalogue'
 import { notFound } from 'next/navigation'
 import ProductDetail from './ProductDetail'
 
 const PRODUCT_URL = (id: string) => `https://studiotj.com/shop/${id}`
 
-function getPlainDescription(product: Product): string {
-  const raw = product.description.trim()
-  return raw.length >= 40 ? raw : `${product.title} — a StudioTJ print, shipped worldwide.`
+function getPlainDescription(group: GroupedProduct): string {
+  const raw = group.description.trim()
+  return raw.length >= 40 ? raw : `${group.title} — a StudioTJ print, shipped worldwide.`
 }
 
-function buildJsonLd(product: Product) {
-  const price = product.price_cents != null ? (product.price_cents / 100).toFixed(2) : null
-
-  const offer = price
-    ? {
-        '@type': 'Offer',
-        price,
-        priceCurrency: 'EUR',
-        availability: product.available
-          ? 'https://schema.org/InStock'
-          : 'https://schema.org/OutOfStock',
-        itemCondition: 'https://schema.org/NewCondition',
-        url: PRODUCT_URL(product.id),
-      }
-    : undefined
+function buildJsonLd(group: GroupedProduct) {
+  const minPrice = groupMinPriceCents(group)
+  const priceStr = (minPrice / 100).toFixed(2)
+  const defaultVariant = group.variants[Math.min(group.default_variant, group.variants.length - 1)]
+  const heroImage = defaultVariant.hero ?? defaultVariant.mock1
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: product.title,
-    description: getPlainDescription(product),
-    image: [product.hero_image],
-    sku: product.id,
+    name: group.title,
+    description: getPlainDescription(group),
+    ...(heroImage ? { image: [heroImage] } : {}),
+    sku: group.id,
     brand: { '@type': 'Brand', name: 'StudioTJ' },
-    ...(offer ? { offers: offer } : {}),
+    offers: {
+      '@type': 'AggregateOffer',
+      lowPrice: priceStr,
+      priceCurrency: 'EUR',
+      availability: group.available
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/OutOfStock',
+      url: PRODUCT_URL(group.id),
+    },
   }
 }
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  const product = getProductBySlug(params.id)
-  if (!product) return { title: 'Product not found' }
+  const group = getGroupById(params.id)
+  if (!group) return { title: 'Product not found' }
 
-  const description = getPlainDescription(product).slice(0, 160)
-  const price = product.price_cents != null ? (product.price_cents / 100).toFixed(2) : null
+  const description = getPlainDescription(group).slice(0, 160)
+  const minPrice = (groupMinPriceCents(group) / 100).toFixed(2)
+  const defaultVariant = group.variants[Math.min(group.default_variant, group.variants.length - 1)]
+  const heroImage = defaultVariant.hero ?? defaultVariant.mock1
 
   return {
-    title: product.title,
+    title: group.title,
     description,
     openGraph: {
       type: 'website',
-      title: product.title,
+      title: group.title,
       description,
-      images: [product.hero_image],
+      ...(heroImage ? { images: [heroImage] } : {}),
     },
-    ...(price
-      ? {
-          other: {
-            'og:type': 'product',
-            'product:price:amount': price,
-            'product:price:currency': 'EUR',
-            'product:availability': product.available ? 'instock' : 'oos',
-          },
-        }
-      : {}),
+    other: {
+      'og:type': 'product',
+      'product:price:amount': minPrice,
+      'product:price:currency': 'EUR',
+      'product:availability': group.available ? 'instock' : 'oos',
+    },
   }
 }
 
 export default function ProductPage({ params }: { params: { id: string } }) {
-  const product = getProductBySlug(params.id)
-  if (!product) notFound()
+  const group = getGroupById(params.id)
+  if (!group) notFound()
 
-  const jsonLd = buildJsonLd(product)
+  const jsonLd = buildJsonLd(group)
 
   return (
     <>
@@ -79,7 +75,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ProductDetail product={product} />
+      <ProductDetail group={group} />
     </>
   )
 }

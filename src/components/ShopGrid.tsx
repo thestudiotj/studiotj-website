@@ -2,7 +2,16 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import type { Product } from '@/lib/catalogue'
+import type { GroupedProduct, ProductVariant } from '@/lib/catalogue'
+
+function groupMinPriceCents(group: GroupedProduct): number {
+  return Math.min(...group.variants.map((v) => v.price_cents))
+}
+
+function groupDefaultVariant(group: GroupedProduct): ProductVariant {
+  const idx = Math.min(group.default_variant, group.variants.length - 1)
+  return group.variants[idx]
+}
 
 const COLLECTION_LABELS: Record<string, string> = {
   'the-signature-collection': 'Signature',
@@ -17,17 +26,20 @@ function formatPrice(cents: number): string {
 
 // ─── Product card ─────────────────────────────────────────────────────────────
 
-function ProductCard({ product }: { product: Product }) {
-  const priceLabel = product.price_cents != null ? formatPrice(product.price_cents) : null
+function ProductCard({ group }: { group: GroupedProduct }) {
+  const minPrice = groupMinPriceCents(group)
+  const defaultVariant = groupDefaultVariant(group)
+  const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
+  const hasMultipleVariants = group.variants.length > 1
 
   return (
-    <Link href={`/shop/${product.id}`} className="group">
+    <Link href={`/shop/${group.id}`} className="group">
       <div className="aspect-square bg-dust/20 relative overflow-hidden mb-4">
-        {product.hero_image ? (
+        {heroImage ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={product.hero_image}
-            alt={product.title}
+            src={heroImage}
+            alt={group.title}
             className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
             loading="lazy"
           />
@@ -38,8 +50,10 @@ function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div>
-        <h3 className="text-sm font-medium text-ink leading-snug">{product.title}</h3>
-        {priceLabel && <p className="text-muted text-sm mt-1">{priceLabel}</p>}
+        <h3 className="text-sm font-medium text-ink leading-snug">{group.title}</h3>
+        <p className="text-muted text-sm mt-1">
+          {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}
+        </p>
       </div>
     </Link>
   )
@@ -47,17 +61,17 @@ function ProductCard({ product }: { product: Product }) {
 
 // ─── ShopGrid ─────────────────────────────────────────────────────────────────
 
-export default function ShopGrid({ products }: { products: Product[] }) {
+export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
   const [query, setQuery] = useState('')
   const [activeCollection, setActiveCollection] = useState<string | null>(null)
 
   const collections = useMemo(() => {
     const seen = new Set<string>()
     const result: string[] = []
-    for (const p of products) {
-      if (p.type === 'photo' && p.collection && !seen.has(p.collection)) {
-        seen.add(p.collection)
-        result.push(p.collection)
+    for (const g of products) {
+      if (g.collection && !seen.has(g.collection)) {
+        seen.add(g.collection)
+        result.push(g.collection)
       }
     }
     return result
@@ -65,10 +79,10 @@ export default function ShopGrid({ products }: { products: Product[] }) {
 
   const filtered = useMemo(() => {
     let result = activeCollection
-      ? products.filter((p) => p.type === 'photo' && p.collection === activeCollection)
+      ? products.filter((g) => g.collection === activeCollection)
       : products
     const q = query.trim().toLowerCase()
-    if (q) result = result.filter((p) => p.title.toLowerCase().includes(q))
+    if (q) result = result.filter((g) => g.title.toLowerCase().includes(q))
     return result
   }, [products, query, activeCollection])
 
@@ -161,8 +175,8 @@ export default function ShopGrid({ products }: { products: Product[] }) {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
-          {filtered.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {filtered.map((group) => (
+            <ProductCard key={group.id} group={group} />
           ))}
         </div>
       )}

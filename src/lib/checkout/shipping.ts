@@ -6,7 +6,7 @@ import type {
   ISO2,
 } from '@/lib/prodigi'
 import { resolveSku } from '@/lib/prodigi'
-import type { Product } from '@/lib/catalogue'
+import type { CheckoutProduct } from '@/lib/catalogue'
 
 const FALLBACK_SHIPPING_CENTS = 2500
 const FALLBACK_DELIVERY_MIN = 5
@@ -21,7 +21,7 @@ export interface ShippingResolution {
 }
 
 export async function resolveShipping(
-  items: Array<{ product: Product; copies: number }>,
+  items: Array<{ product: CheckoutProduct; copies: number }>,
   destinationCountry: ISO2,
   method: ShippingMethod = 'Standard',
 ): Promise<ShippingResolution> {

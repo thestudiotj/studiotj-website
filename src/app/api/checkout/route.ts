@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { getProductBySlug } from '@/lib/catalogue'
+import { getVariantForCheckout } from '@/lib/catalogue'
+import type { CheckoutProduct } from '@/lib/catalogue'
 import { verifyPrice } from '@/lib/checkout/pricing'
 import { resolveShipping, getRequestCountry } from '@/lib/checkout/shipping'
 import { imageUrl } from '@/lib/checkout/images'
@@ -47,13 +48,13 @@ export async function POST(req: NextRequest) {
 
   // ── Resolve products from catalogue ─────────────────────────────────────
   const resolvedItems: Array<{
-    product: NonNullable<ReturnType<typeof getProductBySlug>>
+    product: CheckoutProduct
     price: number
     quantity: number
   }> = []
 
   for (const { productId, price, quantity } of items) {
-    const product = getProductBySlug(productId)
+    const product = getVariantForCheckout(productId)
     if (!product) {
       return NextResponse.json({ error: `Product not found: ${productId}` }, { status: 404 })
     }

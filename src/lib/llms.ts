@@ -462,17 +462,17 @@ async function buildData(): Promise<LlmsSectionFull[]> {
 
   const shopProducts = getAvailableProducts()
   for (const product of shopProducts) {
-    const priceStr =
-      product.price_cents != null
-        ? new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(
-            product.price_cents / 100,
-          )
-        : null
+    const minVariantPrice = product.variants.length > 0
+      ? Math.min(...product.variants.map((v) => v.price_cents))
+      : null
+    const priceStr = minVariantPrice != null
+      ? new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(minVariantPrice / 100)
+      : null
     shopEntries.push({
       title: product.title,
       url: `${BASE_URL}/shop/${product.id}`,
       description: truncate(product.description),
-      body: [product.description, '', priceStr ? `Price: ${priceStr}` : '', 'Available: Yes']
+      body: [product.description, '', priceStr ? `From: ${priceStr}` : '', 'Available: Yes']
         .filter(Boolean)
         .join('\n'),
     })
