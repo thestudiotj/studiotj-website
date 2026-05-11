@@ -30,7 +30,7 @@ export default function ShopCollectionCard({
 
   return (
     <Link href={`/shop/${slug}`} className="group block">
-      <div className="relative aspect-[3/2] bg-dust/20 overflow-hidden mb-4">
+      <div className="relative aspect-[3/2] max-h-[280px] bg-dust/20 overflow-hidden mb-4">
         {heroImage && (
           // eslint-disable-next-line @next/next/no-img-element
           <img

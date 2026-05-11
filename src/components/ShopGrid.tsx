@@ -89,8 +89,8 @@ export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
 
   return (
     <>
-      {/* Collection filter */}
-      {collections.length > 0 && (
+      {/* Collection filter — only shown when multiple collections are present */}
+      {collections.length > 1 && (
         <div className="flex flex-wrap gap-2 mb-8">
           <button
             onClick={() => setActiveCollection(null)}
