@@ -1,6 +1,6 @@
 # Order Pipeline — StudioTJ Shop
 
-**Last updated:** 2026-05-11 (Session 12 — Prodigi Verification Audit)
+**Last updated:** 2026-05-12 (Session 12 — Task C smoke tests completed)
 
 ---
 
@@ -175,6 +175,33 @@ node scripts/audit-prodigi.mjs
 ```
 
 Output: `_audit/prodigi-verification.csv`
+
+---
+
+## Task C smoke tests (2026-05-12) — ✓ GREEN
+
+10 end-to-end scenarios run via `scripts/smoke-test.mjs`: each creates a real Stripe test
+checkout session, fires a signed `checkout.session.completed` webhook event, and verifies
+that the Prodigi order ID is written back to Stripe session metadata.
+
+Prodigi sandbox accepts orders with 404 asset URLs (sandbox skips asset download).
+**Live mode will not** — R2 upload is still required before flipping to live.
+
+| Family | Variant tested | Prodigi order ID | Result |
+|---|---|---|---|
+| can | photo-atmospheric-leiden-017-can-16x12 | ord_1157536 | PASS |
+| fap (black) | photo-atmospheric-leiden-017-fap-a4-black | ord_1157537 | PASS |
+| fap (natural-oak) | photo-atmospheric-leiden-017-fap-a4-natural-oak | ord_1157538 | PASS |
+| fap (white) | photo-atmospheric-leiden-017-fap-a4-white | ord_1157539 | PASS |
+| hpr | photo-atmospheric-leiden-017-hpr-a3 | ord_1157540 | PASS |
+| hge | photo-atmospheric-leiden-017-hge-a3 | ord_1157541 | PASS |
+| ema | photo-atmospheric-leiden-017-ema-a3 | ord_1157542 | PASS |
+| clp | photo-atmospheric-leiden-068-clp-16x20 | ord_1157543 | PASS |
+| gre | photo-atmospheric-leiden-068-gre-6x4-pack10 | ord_1157544 | PASS |
+| pos | photo-atmospheric-leiden-017-pos-6x4-pack10 | ord_1157545 | PASS |
+
+All 10/10 passed. Canvas `wrap:ImageWrap` and FAP `color:{black,natural,white}` attributes
+confirmed flowing correctly through both checkout quote and Prodigi order creation.
 
 ---
 
