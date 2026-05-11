@@ -111,7 +111,22 @@
       "PowerShell(& \"C:\\\\Python314\\\\python.exe\" \"scripts\\\\extract-prodigi-pricing.py\" --update --dry-run --csv-dir \"C:\\\\Users\\\\tjvan\\\\Desktop\\\\prodigi\" --products-dir \"content\\\\products\" 2>&1)",
       "PowerShell(& \"C:\\\\Python314\\\\python.exe\" \"scripts\\\\extract-prodigi-pricing.py\" --update --csv-dir \"C:\\\\Users\\\\tjvan\\\\Desktop\\\\prodigi\" --products-dir \"content\\\\products\" 2>&1)",
       "Bash(Select-Object -First 5)",
-      "Bash(Select-Object -First 10)"
+      "Bash(Select-Object -First 10)",
+      "Bash(Select-String resend *)",
+      "PowerShell(ls \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\node_modules\" | Where-Object { $_.Name -match 'resend' })",
+      "PowerShell(git *)",
+      "WebFetch(domain:photos.studiotj.com)",
+      "Bash(Measure-Object)",
+      "Bash(Select-Object -ExpandProperty Count)",
+      "Bash(pip list *)",
+      "Bash(pip install *)",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\" -Depth 3 -File | Where-Object { $_.Name -match \"composite|mockup\" } | Select-Object FullName)",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\" -Depth 3 -File | Where-Object { $_.Extension -match \"\\\\.py$\" -and $_.FullName -notmatch \"venv|__pycache__|site-packages\" } | Select-Object FullName, LastWriteTime | Sort-Object LastWriteTime -Descending | Select-Object -First 20)",
+      "PowerShell($data = Get-Content \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\public\\\\portfolio.json\" | ConvertFrom-Json; $data.photos | Where-Object { $_.aspect_ratio -ge 1 } | Select-Object id, aspect_ratio, title | Format-Table -AutoSize)",
+      "PowerShell($data = Get-Content \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\public\\\\portfolio.json\" | ConvertFrom-Json; $data.photos | Where-Object { $_.id -match \"mono\" -and $_.aspect_ratio -ge 1 } | Select-Object id, aspect_ratio, title | Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-website\\\\content\\\\products\" | Where-Object { $_.Name -match \"mono\" } | Select-Object -First 5 Name)",
+      "PowerShell(dir \"C:\\\\Users\\\\tjvan\\\\Documents\\\\Projects\\\\studiotj-mockups\\\\_output\\\\mockups-phase2\" -Recurse | Where-Object { $_.Extension -eq \".jpg\" } | Select-Object -First 20 FullName)",
+      "Bash(pip show *)"
     ]
   }
 }
