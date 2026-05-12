@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getAllGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 import ShopCollectionCard from '@/components/ShopCollectionCard'
+import ShopGrid from '@/components/ShopGrid'
 
 export const metadata: Metadata = {
   title: 'Shop',
@@ -108,6 +109,12 @@ export default function ShopPage() {
             />
           ))}
         </div>
+      </div>
+
+      {/* Browse all — compact grid with location filter + sort */}
+      <div className="mb-16 pt-10 border-t border-dust/30">
+        <h2 className="text-xs tracking-[0.3em] uppercase text-muted mb-8">Browse all</h2>
+        <ShopGrid products={allProducts.filter((g) => g.available)} compact />
       </div>
 
       {/* Info copy */}

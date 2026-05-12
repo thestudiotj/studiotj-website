@@ -1,10 +1,19 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, Suspense } from 'react'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import type { GroupedProduct, ProductVariant } from '@/lib/catalogue/types'
-import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
+import { COLLECTION_TO_SLUG, COLLECTION_CONFIG } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
+import {
+  LOCATION_ORDER,
+  LOCATION_LABELS,
+  extractLocation,
+  extractShootDate,
+} from '@/lib/catalogue/locations'
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function groupMinPriceCents(group: GroupedProduct): number {
   return Math.min(...group.variants.map((v) => v.price_cents))
@@ -15,31 +24,118 @@ function groupDefaultVariant(group: GroupedProduct): ProductVariant {
   return group.variants[idx]
 }
 
-const COLLECTION_LABELS: Record<string, string> = {
-  'the-signature-collection': 'Signature',
-  'monochrome-moods': 'Monochrome',
-  'the-atmospheric-collection': 'Atmospheric',
-  'the-halcyon-collection': 'Halcyon',
-}
-
 function formatPrice(cents: number): string {
   return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
 }
+
+const COLLECTION_LABELS: Record<string, string> = {
+  'the-signature-collection':    'Signature',
+  'monochrome-moods':            'Monochrome',
+  'the-atmospheric-collection':  'Atmospheric',
+  'the-halcyon-collection':      'Halcyon',
+}
+
+// ─── Sort ─────────────────────────────────────────────────────────────────────
+
+const SORT_OPTIONS = [
+  { value: 'featured',   label: 'Featured'           },
+  { value: 'price-asc',  label: 'Price: Low to High' },
+  { value: 'price-desc', label: 'Price: High to Low' },
+  { value: 'az',         label: 'A–Z'                },
+  { value: 'location',   label: 'By Location'        },
+] as const
+type SortKey = (typeof SORT_OPTIONS)[number]['value']
+
+function sortProducts(products: GroupedProduct[], sort: SortKey): GroupedProduct[] {
+  const arr = [...products]
+  const minP = (g: GroupedProduct) => Math.min(...g.variants.map((v) => v.price_cents))
+  switch (sort) {
+    case 'price-asc':
+      return arr.sort((a, b) => minP(a) - minP(b))
+    case 'price-desc':
+      return arr.sort((a, b) => minP(b) - minP(a))
+    case 'az':
+      return arr.sort((a, b) => a.title.localeCompare(b.title))
+    case 'location': {
+      return arr.sort((a, b) => {
+        const la = LOCATION_ORDER.indexOf(extractLocation(a.id) as (typeof LOCATION_ORDER)[number])
+        const lb = LOCATION_ORDER.indexOf(extractLocation(b.id) as (typeof LOCATION_ORDER)[number])
+        return (la < 0 ? 999 : la) - (lb < 0 ? 999 : lb)
+      })
+    }
+    case 'featured':
+    default:
+      // Newest shoot first — date from photo_id prefix naturally interleaves locations
+      return arr.sort((a, b) =>
+        extractShootDate(b.photo_id).localeCompare(extractShootDate(a.photo_id))
+      )
+  }
+}
+
+// ─── Pill styles ──────────────────────────────────────────────────────────────
 
 const pillBase = 'px-4 py-1.5 text-xs tracking-wider uppercase border transition-colors'
 const pillActive = 'bg-ink text-paper border-ink'
 const pillInactive = 'border-dust text-muted hover:border-ink hover:text-ink'
 
-// ─── Product card ─────────────────────────────────────────────────────────────
+// ─── Sort dropdown ────────────────────────────────────────────────────────────
+
+function SortDropdown({ value, onChange }: { value: SortKey; onChange: (v: SortKey) => void }) {
+  const [open, setOpen] = useState(false)
+  const selected = SORT_OPTIONS.find((o) => o.value === value) ?? SORT_OPTIONS[0]
+
+  return (
+    <div className="relative inline-block">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-2 px-4 py-2 text-sm border border-dust/60 text-ink hover:border-ink transition-colors bg-paper"
+        aria-expanded={open}
+      >
+        <span className="text-xs tracking-widest uppercase text-muted mr-1">Sort:</span>
+        <span>{selected.label}</span>
+        <svg
+          width="10"
+          height="6"
+          viewBox="0 0 10 6"
+          fill="currentColor"
+          className={`text-muted transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+        >
+          <path d="M0 0l5 6 5-6z" />
+        </svg>
+      </button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} aria-hidden />
+          <div className="absolute top-full left-0 mt-1 z-20 bg-paper border border-dust/60 shadow-sm min-w-[200px]">
+            {SORT_OPTIONS.map((opt) => (
+              <button
+                key={opt.value}
+                onClick={() => { onChange(opt.value); setOpen(false) }}
+                className={`w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-dust/20 ${
+                  value === opt.value ? 'font-medium text-ink' : 'text-muted'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
+// ─── Product cards ─────────────────────────────────────────────────────────────
 
 function ProductCard({ group }: { group: GroupedProduct }) {
   const minPrice = groupMinPriceCents(group)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
   const hasMultipleVariants = group.variants.length > 1
+  const href = `/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`
 
   return (
-    <Link href={`/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`} className="group">
+    <Link href={href} className="group">
       <div className="aspect-square bg-dust/20 relative overflow-hidden mb-4">
         {heroImage ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -55,25 +151,85 @@ function ProductCard({ group }: { group: GroupedProduct }) {
           </div>
         )}
       </div>
-      <div>
-        <h3 className="text-sm font-medium text-ink leading-snug">{group.title}</h3>
-        <p className="text-muted text-sm mt-1">
-          {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}
-        </p>
-      </div>
+      <h3 className="text-sm font-medium text-ink leading-snug">{group.title}</h3>
+      <p className="text-muted text-sm mt-1">
+        {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}
+      </p>
     </Link>
   )
 }
 
-// ─── ShopGrid ─────────────────────────────────────────────────────────────────
+function CompactProductCard({ group }: { group: GroupedProduct }) {
+  const minPrice = groupMinPriceCents(group)
+  const defaultVariant = groupDefaultVariant(group)
+  const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
+  const href = `/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`
 
-export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
+  return (
+    <Link href={href} className="group">
+      <div className="aspect-square bg-dust/20 relative overflow-hidden mb-2">
+        {heroImage ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={heroImage}
+            alt={group.title}
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out"
+            loading="lazy"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-muted text-xs tracking-widest uppercase">No image</span>
+          </div>
+        )}
+      </div>
+      <h3 className="text-xs font-medium text-ink leading-snug line-clamp-1">{group.title}</h3>
+      <p className="text-muted text-xs mt-0.5">{formatPrice(minPrice)}</p>
+    </Link>
+  )
+}
+
+// ─── Inner grid (uses useSearchParams) ────────────────────────────────────────
+
+function ShopGridInner({
+  products,
+  compact = false,
+}: {
+  products: GroupedProduct[]
+  compact?: boolean
+}) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  const sort = (searchParams.get('sort') as SortKey | null) ?? 'featured'
+  const activeLocation = searchParams.get('location')
+  const activeCollection = compact ? null : searchParams.get('collection')
+  const activeFamily = compact ? null : searchParams.get('family')
   const [query, setQuery] = useState('')
-  const [activeCollection, setActiveCollection] = useState<string | null>(null)
-  const [activeFamily, setActiveFamily] = useState<string | null>(null)
 
-  // Collection filter list (hidden when only one collection present)
-  const collections = useMemo(() => {
+  function updateParams(updates: Record<string, string | null>) {
+    const params = new URLSearchParams(searchParams.toString())
+    for (const [key, val] of Object.entries(updates)) {
+      if (val !== null) params.set(key, val)
+      else params.delete(key)
+    }
+    const qs = params.toString()
+    router.replace(`${pathname}${qs ? `?${qs}` : ''}`, { scroll: false })
+  }
+
+  // Locations present in this product set, in canonical order
+  const presentLocations = useMemo(() => {
+    const seen = new Set<string>()
+    for (const g of products) {
+      const loc = extractLocation(g.id)
+      if (loc) seen.add(loc)
+    }
+    return LOCATION_ORDER.filter((l) => seen.has(l))
+  }, [products])
+
+  // Collections present (full mode only)
+  const presentCollections = useMemo(() => {
+    if (compact) return []
     const seen = new Set<string>()
     const result: string[] = []
     for (const g of products) {
@@ -83,65 +239,77 @@ export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
       }
     }
     return result
-  }, [products])
+  }, [products, compact])
 
-  // Product families present in this product set, in FAMILY_CONFIG order
+  // Families present (full mode only)
   const presentFamilies = useMemo(() => {
-    const productFamilyCodes = new Set(products.map((g) => g.family))
-    return FAMILY_CONFIG.filter((fam) =>
-      fam.familyCodes.some((code) => productFamilyCodes.has(code))
-    )
-  }, [products])
+    if (compact) return []
+    const codes = new Set(products.map((g) => g.family))
+    return FAMILY_CONFIG.filter((fam) => fam.familyCodes.some((code) => codes.has(code)))
+  }, [products, compact])
 
-  const filtered = useMemo(() => {
-    let result = activeCollection
-      ? products.filter((g) => g.collection === activeCollection)
-      : products
-    if (activeFamily) {
-      const famMeta = FAMILY_CONFIG.find((f) => f.slug === activeFamily)
-      if (famMeta) result = result.filter((g) => famMeta.familyCodes.includes(g.family))
+  // Filter then sort
+  const displayed = useMemo(() => {
+    let result = products
+
+    if (activeCollection) {
+      const col = COLLECTION_CONFIG.find((c) => c.slug === activeCollection)
+      if (col) result = result.filter((g) => g.collection === col.key)
     }
-    const q = query.trim().toLowerCase()
-    if (q) result = result.filter((g) => g.title.toLowerCase().includes(q))
-    return result
-  }, [products, query, activeCollection, activeFamily])
+    if (activeFamily) {
+      const fam = FAMILY_CONFIG.find((f) => f.slug === activeFamily)
+      if (fam) result = result.filter((g) => fam.familyCodes.includes(g.family))
+    }
+    if (activeLocation) {
+      result = result.filter((g) => extractLocation(g.id) === activeLocation)
+    }
+    if (!compact && query.trim()) {
+      const q = query.trim().toLowerCase()
+      result = result.filter((g) => g.title.toLowerCase().includes(q))
+    }
 
-  const hasActiveFilter = activeFamily !== null || query !== ''
+    return sortProducts(result, sort)
+  }, [products, activeCollection, activeFamily, activeLocation, query, sort, compact])
+
+  const hasActiveFilter =
+    !!activeCollection || !!activeFamily || !!activeLocation || !!query.trim() || sort !== 'featured'
 
   function clearAll() {
     setQuery('')
-    setActiveFamily(null)
-    setActiveCollection(null)
+    updateParams({ collection: null, family: null, location: null, sort: null })
   }
 
   return (
     <>
-      {/* Collection filter — only shown when multiple collections are present */}
-      {collections.length > 1 && (
+      {/* Collection filter — full mode, 2+ collections */}
+      {!compact && presentCollections.length > 1 && (
         <div className="flex flex-wrap gap-2 mb-6">
           <button
-            onClick={() => setActiveCollection(null)}
+            onClick={() => updateParams({ collection: null })}
             className={`${pillBase} ${activeCollection === null ? pillActive : pillInactive}`}
           >
             All
           </button>
-          {collections.map((c) => (
-            <button
-              key={c}
-              onClick={() => setActiveCollection(c)}
-              className={`${pillBase} ${activeCollection === c ? pillActive : pillInactive}`}
-            >
-              {COLLECTION_LABELS[c] ?? c}
-            </button>
-          ))}
+          {presentCollections.map((c) => {
+            const slug = COLLECTION_TO_SLUG[c] ?? c
+            return (
+              <button
+                key={c}
+                onClick={() => updateParams({ collection: slug })}
+                className={`${pillBase} ${activeCollection === slug ? pillActive : pillInactive}`}
+              >
+                {COLLECTION_LABELS[c] ?? c}
+              </button>
+            )
+          })}
         </div>
       )}
 
-      {/* Product category filter — shown when 2+ families present */}
-      {presentFamilies.length > 1 && (
-        <div className="flex flex-wrap gap-2 mb-8">
+      {/* Family filter — full mode, 2+ families */}
+      {!compact && presentFamilies.length > 1 && (
+        <div className="flex flex-wrap gap-2 mb-6">
           <button
-            onClick={() => setActiveFamily(null)}
+            onClick={() => updateParams({ family: null })}
             className={`${pillBase} ${activeFamily === null ? pillActive : pillInactive}`}
           >
             All
@@ -149,7 +317,7 @@ export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
           {presentFamilies.map((fam) => (
             <button
               key={fam.slug}
-              onClick={() => setActiveFamily(fam.slug)}
+              onClick={() => updateParams({ family: fam.slug })}
               className={`${pillBase} ${activeFamily === fam.slug ? pillActive : pillInactive}`}
             >
               {fam.name}
@@ -158,73 +326,126 @@ export default function ShopGrid({ products }: { products: GroupedProduct[] }) {
         </div>
       )}
 
-      {/* Search bar */}
-      <div className="relative mb-8 max-w-sm">
-        <svg
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none"
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg>
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search products…"
-          className="w-full pl-9 pr-4 py-2 text-sm border border-dust/60 bg-transparent text-ink placeholder-dust focus:outline-none focus:border-ink transition-colors"
-        />
-        {query && (
+      {/* Location filter — shown when 2+ locations present */}
+      {presentLocations.length > 1 && (
+        <div className="flex flex-wrap gap-2 mb-6">
           <button
-            onClick={() => setQuery('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink transition-colors"
-            aria-label="Clear search"
+            onClick={() => updateParams({ location: null })}
+            className={`${pillBase} ${activeLocation === null ? pillActive : pillInactive}`}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            All
           </button>
-        )}
-      </div>
-
-      {/* Count */}
-      <p className="text-xs tracking-widest uppercase text-muted mb-8">
-        {filtered.length} {filtered.length === 1 ? 'item' : 'items'}
-        {query && ` for "${query}"`}
-      </p>
-
-      {filtered.length === 0 ? (
-        <div className="border border-dust/40 p-12 text-center max-w-sm">
-          <p className="font-display text-xl text-ink mb-2">No results</p>
-          <p className="text-sm text-muted">
-            {query
-              ? `Nothing matched “${query}”.`
-              : 'No products match the current filters.'}
-          </p>
-          {hasActiveFilter && (
+          {presentLocations.map((loc) => (
             <button
-              onClick={clearAll}
-              className="mt-4 text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors underline underline-offset-4"
+              key={loc}
+              onClick={() => updateParams({ location: loc })}
+              className={`${pillBase} ${activeLocation === loc ? pillActive : pillInactive}`}
             >
-              Clear filters
+              {LOCATION_LABELS[loc] ?? loc}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Search bar — full mode only */}
+      {!compact && (
+        <div className="relative mb-6 max-w-sm">
+          <svg
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search products…"
+            className="w-full pl-9 pr-4 py-2 text-sm border border-dust/60 bg-transparent text-ink placeholder-dust focus:outline-none focus:border-ink transition-colors"
+          />
+          {query && (
+            <button
+              onClick={() => setQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink transition-colors"
+              aria-label="Clear search"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
             </button>
           )}
         </div>
+      )}
+
+      {/* Sort + count row */}
+      <div className="flex items-center justify-between gap-4 mb-8">
+        <p className="text-xs tracking-widest uppercase text-muted">
+          {displayed.length} {displayed.length === 1 ? 'item' : 'items'}
+          {!compact && query && ` for "${query}"`}
+        </p>
+        <div className="flex items-center gap-3">
+          <SortDropdown value={sort} onChange={(v) => updateParams({ sort: v })} />
+          {hasActiveFilter && (
+            <button
+              onClick={clearAll}
+              className="text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors underline underline-offset-4"
+            >
+              Clear
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Grid or empty state */}
+      {displayed.length === 0 ? (
+        <div className="border border-dust/40 p-12 text-center max-w-sm">
+          <p className="font-display text-xl text-ink mb-2">No results</p>
+          <p className="text-sm text-muted">No products match the current filters.</p>
+          <button
+            onClick={clearAll}
+            className="mt-4 text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors underline underline-offset-4"
+          >
+            Clear filters
+          </button>
+        </div>
+      ) : compact ? (
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
+          {displayed.map((group) => (
+            <CompactProductCard key={group.id} group={group} />
+          ))}
+        </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
-          {filtered.map((group) => (
+          {displayed.map((group) => (
             <ProductCard key={group.id} group={group} />
           ))}
         </div>
       )}
     </>
+  )
+}
+
+// ─── Public export (wraps inner in Suspense for useSearchParams) ──────────────
+
+export default function ShopGrid({
+  products,
+  compact = false,
+}: {
+  products: GroupedProduct[]
+  compact?: boolean
+}) {
+  return (
+    <Suspense>
+      <ShopGridInner products={products} compact={compact} />
+    </Suspense>
   )
 }
