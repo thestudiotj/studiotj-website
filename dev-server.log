@@ -1,0 +1,536 @@
+
+> studiotj-portfolio@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.0
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.3s
+ ○ Compiling /shop ...
+ ✓ Compiled /shop in 2.2s (682 modules)
+ ✓ Compiled in 435ms (268 modules)
+ GET /shop 200 in 2923ms
+ ✓ Compiled /shop/[id] in 397ms (682 modules)
+ GET /shop/photo-atmospheric-leiden-017-can 200 in 929ms
+ GET /shop/photo-atmospheric-leiden-017-fap 200 in 56ms
+ GET /shop/photo-atmospheric-leiden-068-gre 200 in 59ms
+ GET /shop 200 in 355ms
+ ✓ Compiled in 530ms (271 modules)
+ ✓ Compiled in 195ms (271 modules)
+ ✓ Compiled in 191ms (271 modules)
+ ✓ Compiled in 248ms (271 modules)
+ ✓ Compiled in 170ms (271 modules)
+ ✓ Compiled in 156ms (271 modules)
+ ✓ Compiled in 186ms (271 modules)
+ ✓ Compiled in 190ms (271 modules)
+ ✓ Compiled in 247ms (271 modules)
+ ✓ Compiled in 318ms (271 modules)
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⚠ Failed to reload dynamic routes: Error: You cannot use different slug names for the same dynamic path ('id' !== 'collection').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:558:65)
+Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ unhandledRejection: Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ unhandledRejection: Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⚠ Failed to reload dynamic routes: Error: You cannot use different slug names for the same dynamic path ('id' !== 'collection').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:558:65)
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⚠ Failed to reload dynamic routes: Error: You cannot use different slug names for the same dynamic path ('id' !== 'collection').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:558:65)
+Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ unhandledRejection: Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ unhandledRejection: Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⚠ Failed to reload dynamic routes: Error: You cannot use different slug names for the same dynamic path ('id' !== 'collection').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:558:65)
+Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ unhandledRejection: Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ unhandledRejection: Error: You cannot use different slug names for the same dynamic path ('collection' !== 'id').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\default-route-matcher-manager.js:112:55)
+    at async DevRouteMatcherManager.reload (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\future\route-matcher-managers\dev-route-matcher-manager.js:112:9)
+    at async Object.propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\render-server.js:75:13)
+    at async propagateServerField (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:134:5)
+    at async Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:627:17)
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⚠ Failed to reload dynamic routes: Error: You cannot use different slug names for the same dynamic path ('id' !== 'collection').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:558:65)
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⚠ Failed to reload dynamic routes: Error: You cannot use different slug names for the same dynamic path ('id' !== 'collection').
+    at handleSlug (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:94:31)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:131:17)
+    at UrlNode._insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:142:40)
+    at UrlNode.insert (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:13:14)
+    at C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:46
+    at Array.forEach (<anonymous>)
+    at getSortedRoutes (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\shared\lib\router\utils\sorted-routes.js:165:21)
+    at Watchpack.<anonymous> (C:\Users\tjvan\Documents\Projects\studiotj-website\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js:558:65)
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ⨯ ./src/lib/catalogue/loader.ts:1:1
+Module not found: Can't resolve 'fs'
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m fs [36mfrom[39m [32m"fs"[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m [36mimport[39m path [36mfrom[39m [32m"path"[39m[0m
+[0m [90m 3 |[39m [36mimport[39m matter [36mfrom[39m [32m"gray-matter"[39m[0m
+[0m [90m 4 |[39m [36mimport[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/lib/catalogue/index.ts
+./src/components/ShopGrid.tsx
+ ✓ Compiled in 396ms (269 modules)
+ ✓ Compiled in 275ms (269 modules)
+ ✓ Compiled in 179ms (269 modules)
+ ✓ Compiled in 173ms (269 modules)
+ ✓ Compiled in 140ms (269 modules)
+ ✓ Compiled in 150ms (269 modules)
+ ✓ Compiled in 164ms (269 modules)
+ ✓ Compiled in 202ms (269 modules)
+ ✓ Compiled in 157ms (269 modules)
+ ✓ Compiled in 152ms (269 modules)
+ ✓ Compiled in 162ms (269 modules)
+ ✓ Compiled in 158ms (269 modules)
+ ✓ Compiled in 155ms (269 modules)
+ ✓ Compiled in 249ms (269 modules)
+ ✓ Compiled in 232ms (269 modules)
+ ✓ Compiled in 203ms (269 modules)
+ ✓ Compiled in 154ms (269 modules)
+ ✓ Compiled in 181ms (269 modules)
+ ✓ Compiled in 249ms (269 modules)
+ ✓ Compiled in 172ms (269 modules)
+ ✓ Compiled in 167ms (269 modules)
+ ✓ Compiled in 151ms (255 modules)
+ ✓ Compiled in 307ms (270 modules)
+ ✓ Compiled in 158ms (270 modules)
+ ✓ Compiled in 156ms (270 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Users\tjvan\Documents\Projects\studiotj-website\.next\cache\webpack\client-development\10.pack.gz_' -> 'C:\Users\tjvan\Documents\Projects\studiotj-website\.next\cache\webpack\client-development\10.pack.gz'
+ ✓ Compiled in 240ms (270 modules)
+ ✓ Compiled in 225ms (270 modules)
+ ✓ Compiled in 196ms (270 modules)
+ ✓ Compiled in 273ms (270 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Users\tjvan\Documents\Projects\studiotj-website\.next\cache\webpack\client-development\0.pack.gz_' -> 'C:\Users\tjvan\Documents\Projects\studiotj-website\.next\cache\webpack\client-development\0.pack.gz'
+ ✓ Compiled /api/checkout in 474ms (357 modules)
+ POST /api/checkout 400 in 666ms
+ POST /api/checkout 400 in 9ms
+ POST /api/checkout 200 in 5400ms
+ ○ Compiling /api/webhook ...
+ ✓ Compiled /api/webhook in 634ms (692 modules)
+{"phase":"webhook.received","event_id":"evt_smoke_1778537015360_an-16x12","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1PWRD467OoVUsEmLSmosl7ViPg9Tk3ZUTIUba3p1sWSPw21xh6ktfaMAs","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537015360_an-16x12","stripe_session_id":"cs_test_a1PWRD467OoVUsEmLSmosl7ViPg9Tk3ZUTIUba3p1sWSPw21xh6ktfaMAs","idempotency_key":"evt_smoke_1778537015360_an-16x12","outcome":"Created","prodigi_order_id":"ord_1157536","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537015360_an-16x12","stripe_session_id":"cs_test_a1PWRD467OoVUsEmLSmosl7ViPg9Tk3ZUTIUba3p1sWSPw21xh6ktfaMAs","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537015360_an-16x12","stripe_session_id":"cs_test_a1PWRD467OoVUsEmLSmosl7ViPg9Tk3ZUTIUba3p1sWSPw21xh6ktfaMAs","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537015360_an-16x12","stripe_session_id":"cs_test_a1PWRD467OoVUsEmLSmosl7ViPg9Tk3ZUTIUba3p1sWSPw21xh6ktfaMAs","prodigi_status":"created","returned_status_code":200,"duration_ms":5468,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 6955ms
+ POST /api/checkout 200 in 2269ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537024880_a4-black","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1oenFamt9ApJQKc7MzXUOmofuqSM5ivqFcZwjZ8vpOz2l9VLDgTczYYTr","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537024880_a4-black","stripe_session_id":"cs_test_a1oenFamt9ApJQKc7MzXUOmofuqSM5ivqFcZwjZ8vpOz2l9VLDgTczYYTr","idempotency_key":"evt_smoke_1778537024880_a4-black","outcome":"Created","prodigi_order_id":"ord_1157537","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537024880_a4-black","stripe_session_id":"cs_test_a1oenFamt9ApJQKc7MzXUOmofuqSM5ivqFcZwjZ8vpOz2l9VLDgTczYYTr","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537024880_a4-black","stripe_session_id":"cs_test_a1oenFamt9ApJQKc7MzXUOmofuqSM5ivqFcZwjZ8vpOz2l9VLDgTczYYTr","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537024880_a4-black","stripe_session_id":"cs_test_a1oenFamt9ApJQKc7MzXUOmofuqSM5ivqFcZwjZ8vpOz2l9VLDgTczYYTr","prodigi_status":"created","returned_status_code":200,"duration_ms":1423,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1430ms
+ POST /api/checkout 200 in 1592ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537028218_ural-oak","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1CTMeKZJpFHx4NiIa97EdoCxTL0Z74O7Uhos97jxCT2k8SxlmnfuEzu58","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537028218_ural-oak","stripe_session_id":"cs_test_a1CTMeKZJpFHx4NiIa97EdoCxTL0Z74O7Uhos97jxCT2k8SxlmnfuEzu58","idempotency_key":"evt_smoke_1778537028218_ural-oak","outcome":"Created","prodigi_order_id":"ord_1157538","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537028218_ural-oak","stripe_session_id":"cs_test_a1CTMeKZJpFHx4NiIa97EdoCxTL0Z74O7Uhos97jxCT2k8SxlmnfuEzu58","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537028218_ural-oak","stripe_session_id":"cs_test_a1CTMeKZJpFHx4NiIa97EdoCxTL0Z74O7Uhos97jxCT2k8SxlmnfuEzu58","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537028218_ural-oak","stripe_session_id":"cs_test_a1CTMeKZJpFHx4NiIa97EdoCxTL0Z74O7Uhos97jxCT2k8SxlmnfuEzu58","prodigi_status":"created","returned_status_code":200,"duration_ms":1512,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1519ms
+ POST /api/checkout 200 in 1887ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537031898_a4-white","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1DaBRBaSlbF1kh1MslMnmIn8hxJUfING05Sgq75gsAmldG12un9hLGJRR","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537031898_a4-white","stripe_session_id":"cs_test_a1DaBRBaSlbF1kh1MslMnmIn8hxJUfING05Sgq75gsAmldG12un9hLGJRR","idempotency_key":"evt_smoke_1778537031898_a4-white","outcome":"Created","prodigi_order_id":"ord_1157539","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537031898_a4-white","stripe_session_id":"cs_test_a1DaBRBaSlbF1kh1MslMnmIn8hxJUfING05Sgq75gsAmldG12un9hLGJRR","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537031898_a4-white","stripe_session_id":"cs_test_a1DaBRBaSlbF1kh1MslMnmIn8hxJUfING05Sgq75gsAmldG12un9hLGJRR","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537031898_a4-white","stripe_session_id":"cs_test_a1DaBRBaSlbF1kh1MslMnmIn8hxJUfING05Sgq75gsAmldG12un9hLGJRR","prodigi_status":"created","returned_status_code":200,"duration_ms":1605,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1613ms
+ POST /api/checkout 200 in 1036ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537034831_7-hpr-a3","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1DgOTshGE7cALhA5KikCqfTnQtrse4xo3Zt7NehGDLN2oFyAiNcwJn8Vi","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537034831_7-hpr-a3","stripe_session_id":"cs_test_a1DgOTshGE7cALhA5KikCqfTnQtrse4xo3Zt7NehGDLN2oFyAiNcwJn8Vi","idempotency_key":"evt_smoke_1778537034831_7-hpr-a3","outcome":"Created","prodigi_order_id":"ord_1157540","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537034831_7-hpr-a3","stripe_session_id":"cs_test_a1DgOTshGE7cALhA5KikCqfTnQtrse4xo3Zt7NehGDLN2oFyAiNcwJn8Vi","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537034831_7-hpr-a3","stripe_session_id":"cs_test_a1DgOTshGE7cALhA5KikCqfTnQtrse4xo3Zt7NehGDLN2oFyAiNcwJn8Vi","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537034831_7-hpr-a3","stripe_session_id":"cs_test_a1DgOTshGE7cALhA5KikCqfTnQtrse4xo3Zt7NehGDLN2oFyAiNcwJn8Vi","prodigi_status":"created","returned_status_code":200,"duration_ms":1242,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1248ms
+ POST /api/checkout 200 in 966ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537037280_7-hge-a3","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a15DN1nuPwp7fBqzRovvCM2LGqQDWi2bnzZuKZucOqdgNCvi4VjwpEDyMG","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537037280_7-hge-a3","stripe_session_id":"cs_test_a15DN1nuPwp7fBqzRovvCM2LGqQDWi2bnzZuKZucOqdgNCvi4VjwpEDyMG","idempotency_key":"evt_smoke_1778537037280_7-hge-a3","outcome":"Created","prodigi_order_id":"ord_1157541","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537037280_7-hge-a3","stripe_session_id":"cs_test_a15DN1nuPwp7fBqzRovvCM2LGqQDWi2bnzZuKZucOqdgNCvi4VjwpEDyMG","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537037280_7-hge-a3","stripe_session_id":"cs_test_a15DN1nuPwp7fBqzRovvCM2LGqQDWi2bnzZuKZucOqdgNCvi4VjwpEDyMG","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537037280_7-hge-a3","stripe_session_id":"cs_test_a15DN1nuPwp7fBqzRovvCM2LGqQDWi2bnzZuKZucOqdgNCvi4VjwpEDyMG","prodigi_status":"created","returned_status_code":200,"duration_ms":2182,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 2190ms
+ POST /api/checkout 200 in 2122ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537041834_7-ema-a3","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1MnRUDhTXBH6fPmRbNNPKG2DApPI8wKXqcOu4H9Jwxs6SNC5bweNQzcUT","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537041834_7-ema-a3","stripe_session_id":"cs_test_a1MnRUDhTXBH6fPmRbNNPKG2DApPI8wKXqcOu4H9Jwxs6SNC5bweNQzcUT","idempotency_key":"evt_smoke_1778537041834_7-ema-a3","outcome":"Created","prodigi_order_id":"ord_1157542","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537041834_7-ema-a3","stripe_session_id":"cs_test_a1MnRUDhTXBH6fPmRbNNPKG2DApPI8wKXqcOu4H9Jwxs6SNC5bweNQzcUT","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537041834_7-ema-a3","stripe_session_id":"cs_test_a1MnRUDhTXBH6fPmRbNNPKG2DApPI8wKXqcOu4H9Jwxs6SNC5bweNQzcUT","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537041834_7-ema-a3","stripe_session_id":"cs_test_a1MnRUDhTXBH6fPmRbNNPKG2DApPI8wKXqcOu4H9Jwxs6SNC5bweNQzcUT","prodigi_status":"created","returned_status_code":200,"duration_ms":1284,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1292ms
+ POST /api/checkout 200 in 1852ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537045218_lp-16x20","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1FOWFDIzzEG7VsJ6thaEtNm6r04H9jqfSkkV30xXKDXp7bcsERpLzumR6","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537045218_lp-16x20","stripe_session_id":"cs_test_a1FOWFDIzzEG7VsJ6thaEtNm6r04H9jqfSkkV30xXKDXp7bcsERpLzumR6","idempotency_key":"evt_smoke_1778537045218_lp-16x20","outcome":"Created","prodigi_order_id":"ord_1157543","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537045218_lp-16x20","stripe_session_id":"cs_test_a1FOWFDIzzEG7VsJ6thaEtNm6r04H9jqfSkkV30xXKDXp7bcsERpLzumR6","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537045218_lp-16x20","stripe_session_id":"cs_test_a1FOWFDIzzEG7VsJ6thaEtNm6r04H9jqfSkkV30xXKDXp7bcsERpLzumR6","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537045218_lp-16x20","stripe_session_id":"cs_test_a1FOWFDIzzEG7VsJ6thaEtNm6r04H9jqfSkkV30xXKDXp7bcsERpLzumR6","prodigi_status":"created","returned_status_code":200,"duration_ms":1361,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1369ms
+ POST /api/checkout 200 in 1940ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537048846_4-pack10","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a12CsGaB5QyyREn0GiKch0K2MFYXJ15RhXBJhkzhq1gcRYI8bTHrqHsIK5","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537048846_4-pack10","stripe_session_id":"cs_test_a12CsGaB5QyyREn0GiKch0K2MFYXJ15RhXBJhkzhq1gcRYI8bTHrqHsIK5","idempotency_key":"evt_smoke_1778537048846_4-pack10","outcome":"Created","prodigi_order_id":"ord_1157544","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537048846_4-pack10","stripe_session_id":"cs_test_a12CsGaB5QyyREn0GiKch0K2MFYXJ15RhXBJhkzhq1gcRYI8bTHrqHsIK5","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537048846_4-pack10","stripe_session_id":"cs_test_a12CsGaB5QyyREn0GiKch0K2MFYXJ15RhXBJhkzhq1gcRYI8bTHrqHsIK5","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537048846_4-pack10","stripe_session_id":"cs_test_a12CsGaB5QyyREn0GiKch0K2MFYXJ15RhXBJhkzhq1gcRYI8bTHrqHsIK5","prodigi_status":"created","returned_status_code":200,"duration_ms":1381,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1389ms
+ POST /api/checkout 200 in 1729ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778537052191_4-pack10","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1TCnfSrXuzqHcrdqaLUSlxNiwDDYrFUmTecTKX7j824zNOcr2Yopz2t2x","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778537052191_4-pack10","stripe_session_id":"cs_test_a1TCnfSrXuzqHcrdqaLUSlxNiwDDYrFUmTecTKX7j824zNOcr2Yopz2t2x","idempotency_key":"evt_smoke_1778537052191_4-pack10","outcome":"Created","prodigi_order_id":"ord_1157545","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778537052191_4-pack10","stripe_session_id":"cs_test_a1TCnfSrXuzqHcrdqaLUSlxNiwDDYrFUmTecTKX7j824zNOcr2Yopz2t2x","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778537052191_4-pack10","stripe_session_id":"cs_test_a1TCnfSrXuzqHcrdqaLUSlxNiwDDYrFUmTecTKX7j824zNOcr2Yopz2t2x","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778537052191_4-pack10","stripe_session_id":"cs_test_a1TCnfSrXuzqHcrdqaLUSlxNiwDDYrFUmTecTKX7j824zNOcr2Yopz2t2x","prodigi_status":"created","returned_status_code":200,"duration_ms":1461,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1470ms
+ POST /api/checkout 400 in 11ms
+ POST /api/checkout 200 in 3151ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538063743_an-16x12","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1oaMKEH4IPrOPwu6Gb0AQbfyE3j85AcLoltKu5bxdsDrcdUTbkCOnOlrn","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538063743_an-16x12","stripe_session_id":"cs_test_a1oaMKEH4IPrOPwu6Gb0AQbfyE3j85AcLoltKu5bxdsDrcdUTbkCOnOlrn","idempotency_key":"evt_smoke_1778538063743_an-16x12","outcome":"Created","prodigi_order_id":"ord_1157546","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538063743_an-16x12","stripe_session_id":"cs_test_a1oaMKEH4IPrOPwu6Gb0AQbfyE3j85AcLoltKu5bxdsDrcdUTbkCOnOlrn","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538063743_an-16x12","stripe_session_id":"cs_test_a1oaMKEH4IPrOPwu6Gb0AQbfyE3j85AcLoltKu5bxdsDrcdUTbkCOnOlrn","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538063743_an-16x12","stripe_session_id":"cs_test_a1oaMKEH4IPrOPwu6Gb0AQbfyE3j85AcLoltKu5bxdsDrcdUTbkCOnOlrn","prodigi_status":"created","returned_status_code":200,"duration_ms":2315,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 2324ms
+ POST /api/checkout 200 in 1708ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538068065_a4-black","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1LTuqtXQ2PtYgbyOyIEbecH5tzJZ5JHCaJkz1ZTGiDEMsgt1HK5vZolpZ","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538068065_a4-black","stripe_session_id":"cs_test_a1LTuqtXQ2PtYgbyOyIEbecH5tzJZ5JHCaJkz1ZTGiDEMsgt1HK5vZolpZ","idempotency_key":"evt_smoke_1778538068065_a4-black","outcome":"Created","prodigi_order_id":"ord_1157547","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538068065_a4-black","stripe_session_id":"cs_test_a1LTuqtXQ2PtYgbyOyIEbecH5tzJZ5JHCaJkz1ZTGiDEMsgt1HK5vZolpZ","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538068065_a4-black","stripe_session_id":"cs_test_a1LTuqtXQ2PtYgbyOyIEbecH5tzJZ5JHCaJkz1ZTGiDEMsgt1HK5vZolpZ","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538068065_a4-black","stripe_session_id":"cs_test_a1LTuqtXQ2PtYgbyOyIEbecH5tzJZ5JHCaJkz1ZTGiDEMsgt1HK5vZolpZ","prodigi_status":"created","returned_status_code":200,"duration_ms":1211,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1219ms
+ POST /api/checkout 200 in 1297ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538070814_ural-oak","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a10HpEoXiE1qdh2rgWHvvButuWoTQGUFCLylZDXkPDU9SCOjZGjnUNnWJd","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538070814_ural-oak","stripe_session_id":"cs_test_a10HpEoXiE1qdh2rgWHvvButuWoTQGUFCLylZDXkPDU9SCOjZGjnUNnWJd","idempotency_key":"evt_smoke_1778538070814_ural-oak","outcome":"Created","prodigi_order_id":"ord_1157548","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538070814_ural-oak","stripe_session_id":"cs_test_a10HpEoXiE1qdh2rgWHvvButuWoTQGUFCLylZDXkPDU9SCOjZGjnUNnWJd","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538070814_ural-oak","stripe_session_id":"cs_test_a10HpEoXiE1qdh2rgWHvvButuWoTQGUFCLylZDXkPDU9SCOjZGjnUNnWJd","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538070814_ural-oak","stripe_session_id":"cs_test_a10HpEoXiE1qdh2rgWHvvButuWoTQGUFCLylZDXkPDU9SCOjZGjnUNnWJd","prodigi_status":"created","returned_status_code":200,"duration_ms":1262,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1270ms
+ POST /api/checkout 200 in 3329ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538075642_a4-white","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1fskMm17UPH5kl3DhHi4zQm40YDiRAOEtVyEVnUnQjGB3bKuCg5lrjD3d","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538075642_a4-white","stripe_session_id":"cs_test_a1fskMm17UPH5kl3DhHi4zQm40YDiRAOEtVyEVnUnQjGB3bKuCg5lrjD3d","idempotency_key":"evt_smoke_1778538075642_a4-white","outcome":"Created","prodigi_order_id":"ord_1157549","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538075642_a4-white","stripe_session_id":"cs_test_a1fskMm17UPH5kl3DhHi4zQm40YDiRAOEtVyEVnUnQjGB3bKuCg5lrjD3d","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538075642_a4-white","stripe_session_id":"cs_test_a1fskMm17UPH5kl3DhHi4zQm40YDiRAOEtVyEVnUnQjGB3bKuCg5lrjD3d","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538075642_a4-white","stripe_session_id":"cs_test_a1fskMm17UPH5kl3DhHi4zQm40YDiRAOEtVyEVnUnQjGB3bKuCg5lrjD3d","prodigi_status":"created","returned_status_code":200,"duration_ms":1265,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1283ms
+ POST /api/checkout 200 in 954ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538078111_7-hpr-a3","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1ZqvbqBmXuCg32mA3aR7BhtjmQVmc8o1JTjB0T8RIj9MNduLT7jzOEynk","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538078111_7-hpr-a3","stripe_session_id":"cs_test_a1ZqvbqBmXuCg32mA3aR7BhtjmQVmc8o1JTjB0T8RIj9MNduLT7jzOEynk","idempotency_key":"evt_smoke_1778538078111_7-hpr-a3","outcome":"Created","prodigi_order_id":"ord_1157550","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538078111_7-hpr-a3","stripe_session_id":"cs_test_a1ZqvbqBmXuCg32mA3aR7BhtjmQVmc8o1JTjB0T8RIj9MNduLT7jzOEynk","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538078111_7-hpr-a3","stripe_session_id":"cs_test_a1ZqvbqBmXuCg32mA3aR7BhtjmQVmc8o1JTjB0T8RIj9MNduLT7jzOEynk","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538078111_7-hpr-a3","stripe_session_id":"cs_test_a1ZqvbqBmXuCg32mA3aR7BhtjmQVmc8o1JTjB0T8RIj9MNduLT7jzOEynk","prodigi_status":"created","returned_status_code":200,"duration_ms":1213,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1223ms
+ POST /api/checkout 200 in 985ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538080568_7-hge-a3","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1EtzWkxLNihA1cd9ZfOjI6P8Ry9Ogm3b9jKzMFG4GhlT6HzRFXDXJ5fhO","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538080568_7-hge-a3","stripe_session_id":"cs_test_a1EtzWkxLNihA1cd9ZfOjI6P8Ry9Ogm3b9jKzMFG4GhlT6HzRFXDXJ5fhO","idempotency_key":"evt_smoke_1778538080568_7-hge-a3","outcome":"Created","prodigi_order_id":"ord_1157551","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538080568_7-hge-a3","stripe_session_id":"cs_test_a1EtzWkxLNihA1cd9ZfOjI6P8Ry9Ogm3b9jKzMFG4GhlT6HzRFXDXJ5fhO","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538080568_7-hge-a3","stripe_session_id":"cs_test_a1EtzWkxLNihA1cd9ZfOjI6P8Ry9Ogm3b9jKzMFG4GhlT6HzRFXDXJ5fhO","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538080568_7-hge-a3","stripe_session_id":"cs_test_a1EtzWkxLNihA1cd9ZfOjI6P8Ry9Ogm3b9jKzMFG4GhlT6HzRFXDXJ5fhO","prodigi_status":"created","returned_status_code":200,"duration_ms":1359,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1367ms
+ POST /api/checkout 200 in 1245ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538083405_7-ema-a3","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a16nDreOzJeHdb8lMjt5DU5cSMj69DC0TeqyBnkBTmdLhc9peo5sWMpMBh","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538083405_7-ema-a3","stripe_session_id":"cs_test_a16nDreOzJeHdb8lMjt5DU5cSMj69DC0TeqyBnkBTmdLhc9peo5sWMpMBh","idempotency_key":"evt_smoke_1778538083405_7-ema-a3","outcome":"Created","prodigi_order_id":"ord_1157552","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538083405_7-ema-a3","stripe_session_id":"cs_test_a16nDreOzJeHdb8lMjt5DU5cSMj69DC0TeqyBnkBTmdLhc9peo5sWMpMBh","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538083405_7-ema-a3","stripe_session_id":"cs_test_a16nDreOzJeHdb8lMjt5DU5cSMj69DC0TeqyBnkBTmdLhc9peo5sWMpMBh","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538083405_7-ema-a3","stripe_session_id":"cs_test_a16nDreOzJeHdb8lMjt5DU5cSMj69DC0TeqyBnkBTmdLhc9peo5sWMpMBh","prodigi_status":"created","returned_status_code":200,"duration_ms":1283,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1290ms
+ POST /api/checkout 200 in 972ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538085897_lp-16x20","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1AEZIRX89ejpCpmWysHwQU9pYiOMoXEFNwvDL5S6xGRiLFWopVpcMTL39","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538085897_lp-16x20","stripe_session_id":"cs_test_a1AEZIRX89ejpCpmWysHwQU9pYiOMoXEFNwvDL5S6xGRiLFWopVpcMTL39","idempotency_key":"evt_smoke_1778538085897_lp-16x20","outcome":"Created","prodigi_order_id":"ord_1157553","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538085897_lp-16x20","stripe_session_id":"cs_test_a1AEZIRX89ejpCpmWysHwQU9pYiOMoXEFNwvDL5S6xGRiLFWopVpcMTL39","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538085897_lp-16x20","stripe_session_id":"cs_test_a1AEZIRX89ejpCpmWysHwQU9pYiOMoXEFNwvDL5S6xGRiLFWopVpcMTL39","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538085897_lp-16x20","stripe_session_id":"cs_test_a1AEZIRX89ejpCpmWysHwQU9pYiOMoXEFNwvDL5S6xGRiLFWopVpcMTL39","prodigi_status":"created","returned_status_code":200,"duration_ms":2193,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 2201ms
+ POST /api/checkout 200 in 1012ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538089342_4-pack10","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1lgETmGbGLoM5ruyDP72M6RpmdkwDxhVZFaTxQLOQs6IeDqF3vPUJqyhY","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538089342_4-pack10","stripe_session_id":"cs_test_a1lgETmGbGLoM5ruyDP72M6RpmdkwDxhVZFaTxQLOQs6IeDqF3vPUJqyhY","idempotency_key":"evt_smoke_1778538089342_4-pack10","outcome":"Created","prodigi_order_id":"ord_1157554","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538089342_4-pack10","stripe_session_id":"cs_test_a1lgETmGbGLoM5ruyDP72M6RpmdkwDxhVZFaTxQLOQs6IeDqF3vPUJqyhY","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538089342_4-pack10","stripe_session_id":"cs_test_a1lgETmGbGLoM5ruyDP72M6RpmdkwDxhVZFaTxQLOQs6IeDqF3vPUJqyhY","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538089342_4-pack10","stripe_session_id":"cs_test_a1lgETmGbGLoM5ruyDP72M6RpmdkwDxhVZFaTxQLOQs6IeDqF3vPUJqyhY","prodigi_status":"created","returned_status_code":200,"duration_ms":1215,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1222ms
+ POST /api/checkout 200 in 953ms
+{"phase":"webhook.received","event_id":"evt_smoke_1778538091750_4-pack10","event_type":"checkout.session.completed","stripe_session_id":"cs_test_a1iT86wF6sQ5r8GZ4KhaanblFHh4UVEnwtEoH1TzzqmqEy3IUts60FbaEF","route":"/api/webhook"}
+{"phase":"webhook.prodigi_posted","event_id":"evt_smoke_1778538091750_4-pack10","stripe_session_id":"cs_test_a1iT86wF6sQ5r8GZ4KhaanblFHh4UVEnwtEoH1TzzqmqEy3IUts60FbaEF","idempotency_key":"evt_smoke_1778538091750_4-pack10","outcome":"Created","prodigi_order_id":"ord_1157555","attempted_quote":false}
+{"phase":"webhook.metadata_written","event_id":"evt_smoke_1778538091750_4-pack10","stripe_session_id":"cs_test_a1iT86wF6sQ5r8GZ4KhaanblFHh4UVEnwtEoH1TzzqmqEy3IUts60FbaEF","prodigi_status":"created"}
+{"phase":"webhook.resend_sent","event_id":"evt_smoke_1778538091750_4-pack10","stripe_session_id":"cs_test_a1iT86wF6sQ5r8GZ4KhaanblFHh4UVEnwtEoH1TzzqmqEy3IUts60FbaEF","template":"OrderReceived"}
+{"phase":"webhook.complete","event_id":"evt_smoke_1778538091750_4-pack10","stripe_session_id":"cs_test_a1iT86wF6sQ5r8GZ4KhaanblFHh4UVEnwtEoH1TzzqmqEy3IUts60FbaEF","prodigi_status":"created","returned_status_code":200,"duration_ms":1184,"ip_country_at_checkout":"NL","ship_to_country":"NL"}
+ POST /api/webhook 200 in 1191ms
+ ✓ Compiled in 255ms (270 modules)
+ ✓ Compiled in 228ms (270 modules)
+ ✓ Compiled in 461ms (270 modules)
+ ✓ Compiled in 206ms (270 modules)
+ ✓ Compiled in 84ms (256 modules)
+ ✓ Compiled in 208ms (270 modules)
+ ✓ Compiled in 274ms (270 modules)
+ ✓ Compiled in 177ms (270 modules)
+ ✓ Compiled in 184ms (270 modules)
+ ✓ Compiled in 33ms
+ ✓ Compiled in 208ms (270 modules)
+ ✓ Compiled in 237ms (270 modules)
+ ✓ Compiled in 205ms (270 modules)
+ ✓ Compiled in 294ms (270 modules)
+ ✓ Compiled in 196ms (270 modules)
+ ✓ Compiled in 223ms (270 modules)
