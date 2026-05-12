@@ -8,7 +8,7 @@ import { COLLECTION_TO_SLUG, COLLECTION_CONFIG } from '@/lib/catalogue/collectio
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 import {
   LOCATION_ORDER,
-  LOCATION_LABELS,
+  locationLabel,
   extractLocation,
   extractShootDate,
 } from '@/lib/catalogue/locations'
@@ -78,11 +78,21 @@ const pillBase = 'px-4 py-1.5 text-xs tracking-wider uppercase border transition
 const pillActive = 'bg-ink text-paper border-ink'
 const pillInactive = 'border-dust text-muted hover:border-ink hover:text-ink'
 
-// ─── Sort dropdown ────────────────────────────────────────────────────────────
+// ─── Shared dropdown ──────────────────────────────────────────────────────────
 
-function SortDropdown({ value, onChange }: { value: SortKey; onChange: (v: SortKey) => void }) {
+function FilterDropdown<T extends string>({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string
+  options: { value: T; label: string }[]
+  value: T | null
+  onChange: (v: T | null) => void
+}) {
   const [open, setOpen] = useState(false)
-  const selected = SORT_OPTIONS.find((o) => o.value === value) ?? SORT_OPTIONS[0]
+  const selected = options.find((o) => o.value === value)
 
   return (
     <div className="relative inline-block">
@@ -91,8 +101,8 @@ function SortDropdown({ value, onChange }: { value: SortKey; onChange: (v: SortK
         className="flex items-center gap-2 px-4 py-2 text-sm border border-dust/60 text-ink hover:border-ink transition-colors bg-paper"
         aria-expanded={open}
       >
-        <span className="text-xs tracking-widest uppercase text-muted mr-1">Sort:</span>
-        <span>{selected.label}</span>
+        <span className="text-xs tracking-widest uppercase text-muted mr-1">{label}:</span>
+        <span>{selected ? selected.label : 'All'}</span>
         <svg
           width="10"
           height="6"
@@ -107,13 +117,17 @@ function SortDropdown({ value, onChange }: { value: SortKey; onChange: (v: SortK
         <>
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} aria-hidden />
           <div className="absolute top-full left-0 mt-1 z-20 bg-paper border border-dust/60 shadow-sm min-w-[200px]">
-            {SORT_OPTIONS.map((opt) => (
+            <button
+              onClick={() => { onChange(null); setOpen(false) }}
+              className={`w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-dust/20 ${value === null ? 'font-medium text-ink' : 'text-muted'}`}
+            >
+              All
+            </button>
+            {options.map((opt) => (
               <button
                 key={opt.value}
                 onClick={() => { onChange(opt.value); setOpen(false) }}
-                className={`w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-dust/20 ${
-                  value === opt.value ? 'font-medium text-ink' : 'text-muted'
-                }`}
+                className={`w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-dust/20 ${value === opt.value ? 'font-medium text-ink' : 'text-muted'}`}
               >
                 {opt.label}
               </button>
@@ -122,6 +136,19 @@ function SortDropdown({ value, onChange }: { value: SortKey; onChange: (v: SortK
         </>
       )}
     </div>
+  )
+}
+
+// ─── Sort dropdown ────────────────────────────────────────────────────────────
+
+function SortDropdown({ value, onChange }: { value: SortKey; onChange: (v: SortKey) => void }) {
+  return (
+    <FilterDropdown
+      label="Sort"
+      options={[...SORT_OPTIONS]}
+      value={value}
+      onChange={(v) => onChange(v ?? 'featured')}
+    />
   )
 }
 
@@ -217,14 +244,16 @@ function ShopGridInner({
     router.replace(`${pathname}${qs ? `?${qs}` : ''}`, { scroll: false })
   }
 
-  // Locations present in this product set, in canonical order
+  // Locations present in this product set — known cities in canonical order, new ones appended alphabetically
   const presentLocations = useMemo(() => {
     const seen = new Set<string>()
     for (const g of products) {
       const loc = extractLocation(g.id)
       if (loc) seen.add(loc)
     }
-    return LOCATION_ORDER.filter((l) => seen.has(l))
+    const known = LOCATION_ORDER.filter((l) => seen.has(l))
+    const novel = Array.from(seen).filter((l) => !(LOCATION_ORDER as readonly string[]).includes(l)).sort()
+    return [...known, ...novel]
   }, [products])
 
   // Collections present (full mode only)
@@ -326,27 +355,6 @@ function ShopGridInner({
         </div>
       )}
 
-      {/* Location filter — shown when 2+ locations present */}
-      {presentLocations.length > 1 && (
-        <div className="flex flex-wrap gap-2 mb-6">
-          <button
-            onClick={() => updateParams({ location: null })}
-            className={`${pillBase} ${activeLocation === null ? pillActive : pillInactive}`}
-          >
-            All
-          </button>
-          {presentLocations.map((loc) => (
-            <button
-              key={loc}
-              onClick={() => updateParams({ location: loc })}
-              className={`${pillBase} ${activeLocation === loc ? pillActive : pillInactive}`}
-            >
-              {LOCATION_LABELS[loc] ?? loc}
-            </button>
-          ))}
-        </div>
-      )}
-
       {/* Search bar — full mode only */}
       {!compact && (
         <div className="relative mb-6 max-w-sm">
@@ -386,23 +394,29 @@ function ShopGridInner({
         </div>
       )}
 
-      {/* Sort + count row */}
-      <div className="flex items-center justify-between gap-4 mb-8">
-        <p className="text-xs tracking-widest uppercase text-muted">
+      {/* Controls row: location dropdown + sort dropdown + count + clear */}
+      <div className="flex flex-wrap items-center gap-3 mb-8">
+        {presentLocations.length > 1 && (
+          <FilterDropdown
+            label="Location"
+            options={presentLocations.map((loc) => ({ value: loc, label: locationLabel(loc) }))}
+            value={activeLocation}
+            onChange={(v) => updateParams({ location: v })}
+          />
+        )}
+        <SortDropdown value={sort} onChange={(v) => updateParams({ sort: v })} />
+        <p className="text-xs tracking-widest uppercase text-muted ml-auto">
           {displayed.length} {displayed.length === 1 ? 'item' : 'items'}
           {!compact && query && ` for "${query}"`}
         </p>
-        <div className="flex items-center gap-3">
-          <SortDropdown value={sort} onChange={(v) => updateParams({ sort: v })} />
-          {hasActiveFilter && (
-            <button
-              onClick={clearAll}
-              className="text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors underline underline-offset-4"
-            >
-              Clear
-            </button>
-          )}
-        </div>
+        {hasActiveFilter && (
+          <button
+            onClick={clearAll}
+            className="text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors underline underline-offset-4"
+          >
+            Clear
+          </button>
+        )}
       </div>
 
       {/* Grid or empty state */}

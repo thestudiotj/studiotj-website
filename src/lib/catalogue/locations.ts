@@ -1,12 +1,17 @@
+// Known cities in preferred display order. New slugs not listed here appear alphabetically after.
 export const LOCATION_ORDER = ['leiden', 'katwijk', 'thehague', 'roelof', 'asp'] as const
-export type LocationSlug = (typeof LOCATION_ORDER)[number]
 
 export const LOCATION_LABELS: Record<string, string> = {
   leiden:   'Leiden',
   katwijk:  'Katwijk',
   thehague: 'The Hague',
-  roelof:   'Roelof',
-  asp:      'Asp',
+  roelof:   'Roelofarendsveen',
+  asp:      'Amsterdam',
+}
+
+/** Returns the display label for any location slug, known or new. */
+export function locationLabel(slug: string): string {
+  return LOCATION_LABELS[slug] ?? slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ')
 }
 
 /** Extracts location slug from a photo product ID: photo-{collection}-{location}-{photoId}-{family} */
