@@ -5,7 +5,7 @@ import Stripe from 'stripe'
 import { createOrder, createQuote, ProdigiApiError, resolveSku } from '@/lib/prodigi'
 import type { ISO2, ProdigiOrderRequest, ProdigiOrderResponse, ProdigiQuoteResponse } from '@/lib/prodigi'
 import { getVariantForCheckout } from '@/lib/catalogue'
-import { sendOrderReceived, sendOrderNeedsAttention } from '@/lib/email'
+import { sendOrderReceived, sendOrderNeedsAttention, sendAdminAlert } from '@/lib/email'
 import { imageUrl } from '@/lib/checkout/images'
 
 // 'pending' is reserved for partial-failure recovery in future sessions;
@@ -192,6 +192,114 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const customerEmail = session.customer_details?.email ?? ''
   const shipToCountry: ISO2 = addr?.country ?? 'NL'
   const ipCountryAtCheckout = session.metadata?.ip_country ?? 'unknown'
+
+  // ── Phase 2b: refund guard ───────────────────────────────────────────────
+  // Re-fetch the session with the payment intent's latest charge expanded so we
+  // see the *current* refund state, not the state when the event was originally
+  // fired. Stripe's up-to-3-day retry window means a charge refunded after a
+  // failed delivery can still reach this handler on a later retry attempt.
+  let refundGuardCharge: Stripe.Charge | null = null
+  try {
+    const expandedSession = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ['payment_intent.latest_charge'],
+    })
+    const pi = expandedSession.payment_intent
+    if (pi && typeof pi !== 'string' && pi.latest_charge && typeof pi.latest_charge !== 'string') {
+      refundGuardCharge = pi.latest_charge
+    }
+  } catch (expandErr: unknown) {
+    slog({
+      phase: 'webhook.expand_error',
+      event_id: event.id,
+      stripe_session_id: sessionId,
+      error_message: expandErr instanceof Error ? expandErr.message : String(expandErr),
+    })
+    return NextResponse.json({ error: 'Could not retrieve session details' }, { status: 503 })
+  }
+
+  if (refundGuardCharge && (refundGuardCharge.refunded || refundGuardCharge.amount_refunded > 0)) {
+    const charge = refundGuardCharge
+    const refundedAtMs = charge.refunds?.data[0]?.created
+      ? charge.refunds.data[0].created * 1000
+      : null
+    const refundedAtStr = refundedAtMs ? new Date(refundedAtMs).toISOString() : 'unknown'
+
+    slog({
+      phase: 'webhook.refund_guard',
+      event_id: event.id,
+      stripe_session_id: sessionId,
+      charge_id: charge.id,
+      refunded: charge.refunded,
+      amount_refunded: charge.amount_refunded,
+      action: 'skipped_refunded',
+    })
+
+    try {
+      await stripe.checkout.sessions.update(sessionId, {
+        metadata: { prodigi_status: 'skipped_refunded' },
+      })
+      slog({
+        phase: 'webhook.metadata_written',
+        event_id: event.id,
+        stripe_session_id: sessionId,
+        prodigi_status: 'skipped_refunded',
+      })
+    } catch (metaErr: unknown) {
+      slog({
+        phase: 'webhook.metadata_error',
+        event_id: event.id,
+        stripe_session_id: sessionId,
+        error_message: metaErr instanceof Error ? metaErr.message : String(metaErr),
+      })
+    }
+
+    const currency = session.currency ?? 'eur'
+    const itemsSummary = parsedItems
+      .map(({ productId, quantity }) => `  ${productId} × ${quantity}`)
+      .join('\n')
+    try {
+      await sendAdminAlert({
+        subject: '[StudioTJ] Order skipped — Stripe charge was refunded',
+        body: [
+          `Stripe session: ${sessionId}`,
+          `Customer: ${customerEmail}`,
+          `Total charged: ${formatCents(session.amount_total ?? 0, currency)}`,
+          `Refund amount: ${formatCents(charge.amount_refunded, currency)}`,
+          `Refunded at: ${refundedAtStr}`,
+          `Items ordered:\n${itemsSummary}`,
+          '',
+          'This Stripe charge was refunded before our webhook successfully processed it.',
+          'No Prodigi order was created. No further action needed.',
+        ].join('\n'),
+      })
+      slog({
+        phase: 'webhook.resend_sent',
+        event_id: event.id,
+        stripe_session_id: sessionId,
+        template: 'AdminAlert:skipped_refunded',
+      })
+    } catch (alertErr: unknown) {
+      slog({
+        phase: 'webhook.resend_failed',
+        event_id: event.id,
+        stripe_session_id: sessionId,
+        template: 'AdminAlert:skipped_refunded',
+        error_message: alertErr instanceof Error ? alertErr.message : String(alertErr),
+      })
+    }
+
+    slog({
+      phase: 'webhook.complete',
+      event_id: event.id,
+      stripe_session_id: sessionId,
+      prodigi_status: 'skipped_refunded',
+      returned_status_code: 200,
+      duration_ms: Date.now() - startMs,
+      ip_country_at_checkout: ipCountryAtCheckout,
+      ship_to_country: shipToCountry,
+    })
+    return NextResponse.json({ received: true })
+  }
 
   // ── Step 6: resolve SKUs ─────────────────────────────────────────────────
   const resolvedItems: ResolvedItem[] = []
