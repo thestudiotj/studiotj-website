@@ -36,7 +36,7 @@ export default function ShopCollectionCard({
           <img
             src={heroImage}
             alt={name}
-            className="absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.04]"
+            className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-[1.04]"
             style={{ opacity: imgLoaded ? 1 : 0, transition: imgLoaded ? 'opacity 0.4s ease, transform 0.5s ease-out' : 'none' }}
             loading="eager"
             onLoad={() => setImgLoaded(true)}

@@ -86,7 +86,7 @@ export default function ShopPage() {
             <ShopCollectionCard
               key={col.slug}
               slug={col.slug}
-              name={col.name}
+              name={col.displayName}
               description={col.description}
               heroImages={col.heroImages}
             />
