@@ -92,8 +92,6 @@ export function useScoutData(): ScoutState {
     setStatus(s => ({ ...s, geo: 'done', weather: 'loading', pois: 'loading' }));
 
     // Step 3: weather, POIs, and drive info run independently — each updates data as it lands
-    const radiusM = radiusKm * 1000;
-
     const weatherPromise = getWeather(location.lat, location.lng)
       .then(hours => {
         if (abort.signal.aborted) return;
@@ -107,7 +105,7 @@ export function useScoutData(): ScoutState {
         setErrors(e => ({ ...e, weather: (err as Error).message }));
       });
 
-    const poisPromise = getPOIs(location.lat, location.lng, radiusM)
+    const poisPromise = getPOIs(location.lat, location.lng, radiusKm)
       .then(results => {
         if (abort.signal.aborted) return;
         setData(d => d ? { ...d, pois: results } : null);

@@ -42,14 +42,14 @@ export interface WeatherHour {
 }
 
 export interface POI {
-  id: string;
+  id: string;          // Wikidata QID
   name: string;
   lat: number;
   lng: number;
-  tags: Record<string, string>;
-  matchedTag: string;
-  distance: number;
-  bearing: string;
+  type: string;        // human-readable type label (e.g. "basilica")
+  heritage: boolean;   // true iff Wikidata P1435 is present
+  distanceM: number;   // haversine metres from query centre
+  bearing: string;     // 8-point compass: N, NE, E, SE, S, SW, W, NW
 }
 
 export interface DriveInfo {

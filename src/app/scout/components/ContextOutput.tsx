@@ -11,11 +11,10 @@ interface Props {
   data: ScoutData | null;
   status: FetchStatus;
   errors: Partial<Record<keyof FetchStatus, string>>;
-  radiusKm: number;
   onRegenerate: () => void;
 }
 
-export default function ContextOutput({ data, status, errors, radiusKm, onRegenerate }: Props) {
+export default function ContextOutput({ data, status, errors, onRegenerate }: Props) {
   const [copied, setCopied] = useState(false);
 
   const geoLoading = status.geo === 'loading';
@@ -23,7 +22,7 @@ export default function ContextOutput({ data, status, errors, radiusKm, onRegene
   // Copy is active once location + sun are resolved and weather is no longer loading
   const canCopy = !!data && status.geo === 'done' && status.weather !== 'loading';
 
-  const block = data ? formatBlock(data, radiusKm, poisFailed) : null;
+  const block = data ? formatBlock(data, poisFailed) : null;
 
   async function handleCopy() {
     if (!block) return;
@@ -48,8 +47,8 @@ export default function ContextOutput({ data, status, errors, radiusKm, onRegene
       {poisFailed && (
         <ErrorCard
           message={
-            errors.pois === 'overpass_unavailable'
-              ? 'POIs unavailable right now — public OSM servers under heavy load. Rest of the context block is usable.'
+            errors.pois === 'pois_unavailable'
+              ? 'POIs unavailable right now — try again shortly. Rest of the context block is usable.'
               : `POIs: ${errors.pois}`
           }
         />

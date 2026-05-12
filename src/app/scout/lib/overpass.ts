@@ -1,24 +1,25 @@
+// Client-side POI fetcher.
+// Despite the filename, this now calls /api/scout/pois (Wikidata-backed).
+// Filename kept to avoid churn in imports; the function is source-agnostic.
 import type { POI } from './types';
-import { matchedTag } from './overpass-tags';
-import { haversineMetres, bearing } from './distance';
 
-export async function getPOIs(lat: number, lng: number, radiusM: number): Promise<POI[]> {
+export async function getPOIs(lat: number, lng: number, radiusKm: number): Promise<POI[]> {
   const params = new URLSearchParams({
     lat: lat.toString(),
     lng: lng.toString(),
-    radius: radiusM.toString(),
+    radiusKm: radiusKm.toString(),
   });
 
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 25_000);
+  const timeoutId = setTimeout(() => controller.abort(), 15_000);
 
   let res: Response;
   try {
-    res = await fetch(`/api/scout/overpass?${params}`, { signal: controller.signal });
+    res = await fetch(`/api/scout/pois?${params}`, { signal: controller.signal });
   } catch (err) {
     clearTimeout(timeoutId);
     if (err instanceof Error && err.name === 'AbortError') {
-      throw new Error('overpass_unavailable');
+      throw new Error('pois_unavailable');
     }
     throw err;
   }
@@ -27,44 +28,9 @@ export async function getPOIs(lat: number, lng: number, radiusM: number): Promis
   if (!res.ok) {
     const json = await res.json().catch(() => ({}));
     const code = (json as { error?: string }).error;
-    throw new Error(code === 'overpass_unavailable' ? 'overpass_unavailable' : `overpass_error_${res.status}`);
+    throw new Error(code === 'wikidata_unavailable' ? 'pois_unavailable' : `pois_error_${res.status}`);
   }
 
-  const json = await res.json() as { elements: Array<{
-    id: number; type: string; tags?: Record<string, string>;
-    lat?: number; lon?: number; center?: { lat: number; lon: number };
-  }> };
-
-  const seen = new Map<string, POI>();
-
-  for (const el of json.elements) {
-    const tags = el.tags ?? {};
-    const name = tags.name;
-    if (!name) continue;
-
-    const elLat = el.lat ?? el.center?.lat;
-    const elLng = el.lon ?? el.center?.lon;
-    if (elLat == null || elLng == null) continue;
-
-    const dist = haversineMetres(lat, lng, elLat, elLng);
-    const bear = bearing(lat, lng, elLat, elLng);
-    const tag = matchedTag(tags);
-
-    const dedupeKey = name.toLowerCase();
-    const existing = seen.get(dedupeKey);
-    if (existing && haversineMetres(existing.lat, existing.lng, elLat, elLng) < 50) continue;
-
-    seen.set(dedupeKey, {
-      id: `${el.type}/${el.id}`,
-      name,
-      lat: elLat,
-      lng: elLng,
-      tags,
-      matchedTag: tag,
-      distance: dist,
-      bearing: bear,
-    });
-  }
-
-  return Array.from(seen.values()).sort((a, b) => a.distance - b.distance);
+  const pois = (await res.json()) as POI[];
+  return pois;
 }

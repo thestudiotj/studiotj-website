@@ -1,8 +1,12 @@
 import type { ScoutData, SunTimes, WeatherHour, POI } from './types';
 import { wmoLabel } from './openmeteo';
-import { formatDistance } from './distance';
 
-const MAX_POIS = 20;
+const MAX_POIS = 30;
+
+function fmtPoiDistance(metres: number): string {
+  if (metres < 1000) return `~${Math.round(metres)}m`;
+  return `~${(metres / 1000).toFixed(1)}km`;
+}
 
 function fmtTime(d: Date): string {
   return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZoneName: 'short' })
@@ -36,17 +40,21 @@ function weatherBlock(hours: WeatherHour[], label: string): string {
   return [`Weather ${label}`, ...lines].join('\n');
 }
 
-function poisBlock(pois: POI[], radiusKm: number, failed?: boolean): string {
-  const header = `Nearby POIs (${radiusKm}km, photography-tagged)`;
-  if (failed) return `${header}\n- unavailable (public OSM servers under heavy load)`;
+function poisBlock(pois: POI[], failed?: boolean): string {
+  const header = `## Nearby notable places`;
+  if (failed) return `${header}\n- unavailable (try again shortly)`;
+  if (pois.length === 0) return `${header}\n- none indexed at this radius`;
   const shown = pois.slice(0, MAX_POIS);
   const remaining = pois.length - shown.length;
-  const lines = shown.map(p => `- ${p.name} (${p.matchedTag}, ${formatDistance(p.distance)} ${p.bearing})`);
+  const lines = shown.map(p => {
+    const heritage = p.heritage ? ' (heritage)' : '';
+    return `- ${p.name} — ${p.type.toLowerCase()}, ${fmtPoiDistance(p.distanceM)} ${p.bearing}${heritage}`;
+  });
   if (remaining > 0) lines.push(`[${remaining} more]`);
   return [header, ...lines].join('\n');
 }
 
-export function formatBlock(data: ScoutData, radiusKm: number, poisFailed?: boolean): string {
+export function formatBlock(data: ScoutData, poisFailed?: boolean): string {
   const { mode, location, origin, targetDate, sunTimes, weather, pois, driveInfo } = data;
   const parts: string[] = ['## Scouting Context'];
 
@@ -82,6 +90,6 @@ export function formatBlock(data: ScoutData, radiusKm: number, poisFailed?: bool
     if (weather.length) parts.push('', weatherBlock(weather, `at target on ${targetDate.toLocaleDateString('en-CA')}`));
   }
 
-  parts.push('', poisBlock(pois, radiusKm, poisFailed));
+  parts.push('', poisBlock(pois, poisFailed));
   return parts.join('\n');
 }

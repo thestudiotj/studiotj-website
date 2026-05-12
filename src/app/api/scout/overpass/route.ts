@@ -1,3 +1,5 @@
+// Deferred — supplemental OSM enrichment.
+// Not wired to the client. Primary POI source is Wikidata (/api/scout/pois).
 import { NextRequest, NextResponse } from 'next/server';
 import { buildOverpassQuery } from '../../../scout/lib/overpass-tags';
 

@@ -116,7 +116,6 @@ export default function ScoutPage() {
         data={data}
         status={status}
         errors={errors}
-        radiusKm={radius}
         onRegenerate={() => runFetch()}
       />
     </div>

@@ -183,7 +183,9 @@
       "Bash(echo \"Started with PID $!\")",
       "Bash(python3.14 *)",
       "Bash(awk -F',' 'NR>1 && $14==\"PHOTO_LOW_RES\" {print $6, $4, $12, $13}' _audit/prodigi-verification.csv)",
-      "Bash(Select-Object Name, PSIsContainer)"
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3000)"
     ]
   }
 }
