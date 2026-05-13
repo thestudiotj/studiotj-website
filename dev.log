@@ -1,0 +1,13 @@
+
+> studiotj-portfolio@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.0
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.1s
+ ✓ Compiled /api/scout/pois in 241ms (143 modules)
+ GET /api/scout/pois?lat=50.8104&lng=5.7153&radiusKm=2.5 200 in 1179ms
+ GET /api/scout/pois?lat=50.8104&lng=5.7153&radiusKm=2.5 200 in 84ms

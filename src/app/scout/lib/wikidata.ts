@@ -7,7 +7,7 @@ const USER_AGENT =
 const TIMEOUT_MS = 10_000;
 const RESULT_LIMIT = 80;
 
-const SPARQL_TEMPLATE = `SELECT DISTINCT ?item ?itemLabel ?coord ?typeLabel ?heritage WHERE {
+const SPARQL_TEMPLATE = `SELECT DISTINCT ?item ?itemLabel ?coord ?type ?typeLabel ?heritage WHERE {
   SERVICE wikibase:around {
     ?item wdt:P625 ?coord .
     bd:serviceParam wikibase:center "Point({LON} {LAT})"^^geo:wktLiteral .
@@ -15,26 +15,47 @@ const SPARQL_TEMPLATE = `SELECT DISTINCT ?item ?itemLabel ?coord ?typeLabel ?her
   }
   ?item wdt:P31 ?type .
   VALUES ?type {
-    wd:Q41176
-    wd:Q811979
-    wd:Q16970
-    wd:Q132510
-    wd:Q108325
-    wd:Q44613
-    wd:Q23413
-    wd:Q57821
-    wd:Q1763828
-    wd:Q12518
-    wd:Q12280
-    wd:Q4989906
-    wd:Q15243209
-    wd:Q839954
-    wd:Q39614
-    wd:Q570116
-    wd:Q1066907
+    wd:Q41176       # building
+    wd:Q811979      # architectural structure
+    wd:Q16970       # church building
+    wd:Q132510      # basilica
+    wd:Q108325      # chapel
+    wd:Q44613       # monastery
+    wd:Q23413       # castle
+    wd:Q57821       # fortification
+    wd:Q1763828     # fort
+    wd:Q12518       # tower
+    wd:Q12280       # bridge
+    wd:Q4989906     # monument
+    wd:Q15243209    # historic district
+    wd:Q839954      # archaeological site
+    wd:Q39614       # cemetery
+    wd:Q570116      # tourist attraction
+    wd:Q1066907     # city gate
   }
   OPTIONAL { ?item wdt:P1435 ?heritage . }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "nl,en". }
+
+  # Item label: Dutch preferred (proper nouns stay native), English fallback
+  OPTIONAL {
+    ?item rdfs:label ?itemLabel_nl .
+    FILTER(LANG(?itemLabel_nl) = "nl")
+  }
+  OPTIONAL {
+    ?item rdfs:label ?itemLabel_en .
+    FILTER(LANG(?itemLabel_en) = "en")
+  }
+  BIND(COALESCE(?itemLabel_nl, ?itemLabel_en) AS ?itemLabel)
+
+  # Type label: English preferred (common nouns), Dutch fallback
+  OPTIONAL {
+    ?type rdfs:label ?typeLabel_en .
+    FILTER(LANG(?typeLabel_en) = "en")
+  }
+  OPTIONAL {
+    ?type rdfs:label ?typeLabel_nl .
+    FILTER(LANG(?typeLabel_nl) = "nl")
+  }
+  BIND(COALESCE(?typeLabel_en, ?typeLabel_nl) AS ?typeLabel)
 }
 LIMIT ${RESULT_LIMIT}`;
 

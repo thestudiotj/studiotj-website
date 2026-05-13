@@ -18,7 +18,7 @@ export function cacheKey(lat: number, lng: number, radiusKm: number): string {
   const lat3 = lat.toFixed(3);
   const lng3 = lng.toFixed(3);
   const r1 = (Math.round(radiusKm * 2) / 2).toFixed(1);
-  return `scout:poi:v1:${lat3}:${lng3}:${r1}`;
+  return `scout:poi:v2:${lat3}:${lng3}:${r1}`;
 }
 
 export async function getCachedPOIs(key: string): Promise<POI[] | null> {

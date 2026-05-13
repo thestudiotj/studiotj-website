@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.smugmug.com https://photos.studiotj.com; font-src 'self' data:; connect-src 'self' https://api.stripe.com https://nominatim.openstreetmap.org https://api.open-meteo.com https://overpass-api.de https://overpass.kumi.systems https://overpass.private.coffee https://router.project-osrm.org; frame-src https://js.stripe.com https://hooks.stripe.com https://www.youtube-nocookie.com https://www.youtube.com; object-src 'none'; base-uri 'self'
+Permissions-Policy: camera=(), microphone=(), geolocation=(self)
+content-type: application/json
+x-cache: hit
+Date: Tue, 12 May 2026 22:31:06 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
