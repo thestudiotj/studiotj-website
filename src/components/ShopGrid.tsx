@@ -46,6 +46,17 @@ const COLLECTION_LABELS: Record<string, string> = {
   'the-halcyon-collection':      'Halcyon',
 }
 
+const FAMILY_SHORT_LABELS: Record<string, string> = {
+  'wall-art':         'Wall art',
+  'prints-posters':   'Prints',
+  'cards-stationery': 'Cards',
+}
+
+function groupFamilySlug(group: DisplayGroup): string | null {
+  const codes = groupFamilyCodes(group)
+  return FAMILY_CONFIG.find((f) => f.familyCodes.some((c) => codes.includes(c)))?.slug ?? null
+}
+
 // ─── Sort ─────────────────────────────────────────────────────────────────────
 
 const SORT_OPTIONS = [
@@ -171,6 +182,8 @@ function ProductCard({ group }: { group: DisplayGroup }) {
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
   const hasMultipleVariants = group.variants.length > 1
   const href = `/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`
+  const familySlug = groupFamilySlug(group)
+  const familyLabel = familySlug ? FAMILY_SHORT_LABELS[familySlug] ?? null : null
 
   return (
     <Link href={href} className="group">
@@ -189,6 +202,11 @@ function ProductCard({ group }: { group: DisplayGroup }) {
           </div>
         )}
       </div>
+      {familyLabel && (
+        <span className="inline-block text-[10px] tracking-wider uppercase px-2 py-0.5 bg-dust/25 text-muted rounded-sm mb-1.5">
+          {familyLabel}
+        </span>
+      )}
       <h3 className="text-sm font-medium text-ink leading-snug">{group.title}</h3>
       <p className="text-muted text-sm mt-1">
         {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}
@@ -203,6 +221,9 @@ function CompactProductCard({ group }: { group: DisplayGroup }) {
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
   const hasMultipleVariants = group.variants.length > 1
   const href = `/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`
+  const collectionLabel = COLLECTION_LABELS[group.collection] ?? null
+  const familySlug = groupFamilySlug(group)
+  const familyLabel = familySlug ? FAMILY_SHORT_LABELS[familySlug] ?? null : null
 
   return (
     <Link href={href} className="group">
@@ -221,6 +242,20 @@ function CompactProductCard({ group }: { group: DisplayGroup }) {
           </div>
         )}
       </div>
+      {(collectionLabel || familyLabel) && (
+        <div className="flex flex-wrap gap-1 mb-1">
+          {collectionLabel && (
+            <span className="inline-block text-[10px] tracking-wider uppercase px-1.5 py-0.5 bg-dust/25 text-muted rounded-sm">
+              {collectionLabel}
+            </span>
+          )}
+          {familyLabel && (
+            <span className="inline-block text-[10px] tracking-wider uppercase px-1.5 py-0.5 bg-dust/25 text-muted rounded-sm">
+              {familyLabel}
+            </span>
+          )}
+        </div>
+      )}
       <h3 className="text-xs font-medium text-ink leading-snug line-clamp-1">{group.title}</h3>
       <p className="text-muted text-xs mt-0.5">
         {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}

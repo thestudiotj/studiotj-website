@@ -35,6 +35,18 @@ function familyCodeLabel(code: string): string {
   return FAMILY_CODE_LABELS[code] ?? code.toUpperCase()
 }
 
+const FAMILY_SHORT_LABELS: Record<string, string> = {
+  'wall-art':         'Wall art',
+  'prints-posters':   'Prints',
+  'cards-stationery': 'Cards',
+}
+
+function familyShortLabelForGroup(group: DisplayGroup): string | null {
+  const codes = isMergedGroup(group) ? group.source_family_codes : [group.family]
+  const fam = FAMILY_CONFIG.find((f) => f.familyCodes.some((c) => codes.includes(c)))
+  return fam ? FAMILY_SHORT_LABELS[fam.slug] ?? null : null
+}
+
 /** UI title for the source-family picker on a merged product page. */
 function pickerLabelForMerge(merge: MergedGroup['merge_family']): string {
   return merge === 'paper-prints' ? 'Paper' : 'Print type'
@@ -231,6 +243,11 @@ export default function ProductDetail({
       <div className="flex flex-col md:grid md:grid-cols-2 md:grid-rows-[auto_1fr] md:gap-x-20 mt-10">
         {/* Title + price — mobile: 1st. Desktop: right col top */}
         <div className="order-1 md:order-none md:col-start-2 md:row-start-1 mb-6 md:mb-0">
+          {familyShortLabelForGroup(group) && (
+            <span className="inline-block text-[10px] tracking-wider uppercase px-2 py-0.5 bg-dust/25 text-muted rounded-sm mb-3">
+              {familyShortLabelForGroup(group)}
+            </span>
+          )}
           <h1 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-4">
             {group.title}
           </h1>
