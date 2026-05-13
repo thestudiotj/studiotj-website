@@ -8,6 +8,7 @@ import { CATEGORIES } from '@/lib/vondsten/schemas'
 import { loadActiveCategories, loadAllBrandsInCategory, loadBrandProducts } from '@/lib/picks/loader'
 import { loadActiveCategories as loadActiveGearCategories, loadAllItemsInCategory } from '@/lib/gear/loader'
 import { getElsewhereData } from '@/lib/elsewhere'
+import { getAllLearnFamilies } from '@/lib/catalogue/learn-teasers'
 
 const BASE_URL = 'https://studiotj.com'
 
@@ -92,6 +93,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const product of getAvailableDisplayGroups()) {
     const slug = COLLECTION_TO_SLUG[product.collection] ?? product.collection
     entries.push({ url: `${BASE_URL}/shop/${slug}/${product.id}` })
+  }
+
+  // Shop — substrate explainer pages
+  for (const family of getAllLearnFamilies()) {
+    entries.push({ url: `${BASE_URL}/shop/learn/${family}` })
   }
 
   // Gear — landing, active category indexes, item pages

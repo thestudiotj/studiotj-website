@@ -1,9 +1,11 @@
 'use client'
 
+import Link from 'next/link'
 import { useState, useMemo } from 'react'
 import type { DisplayGroup, ProductVariant, MergedGroup } from '@/lib/catalogue'
 import { isMergedGroup } from '@/lib/catalogue/types'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
+import { getLearnTeaser } from '@/lib/catalogue/learn-teasers'
 import { useCart } from '@/lib/cart'
 import ProductGallery from '@/components/ProductGallery'
 import Breadcrumb from '@/components/Breadcrumb'
@@ -229,6 +231,12 @@ export default function ProductDetail({
 
   const orientation = group.orientation ?? 'landscape'
 
+  // Substrate teaser bound to the currently selected source family. For standalone
+  // groups `selectedFamily` equals `group.family` and never changes; for merged
+  // groups it tracks the user's paper / print-type pick. Returns null for any
+  // family without a registered explainer page (book, calendar, ...).
+  const learnTeaser = getLearnTeaser(selectedFamily)
+
   return (
     <div className={noPadding ? '' : 'pt-24 px-6 md:px-12 pb-20'}>
       {/* Breadcrumb */}
@@ -354,6 +362,20 @@ export default function ProductDetail({
           <p className="text-sm text-muted leading-relaxed mb-8">
             <em>Mockup shown for illustration; actual product may vary slightly. See product reference image in the gallery for accurate appearance.</em>
           </p>
+
+          {/* Substrate teaser — explains the selected paper / print-type / format */}
+          {learnTeaser && (
+            <div className="border-t border-dust/30 pt-8 mb-8">
+              <p className="text-xs tracking-widest uppercase text-muted mb-4">{learnTeaser.displayName}</p>
+              <p className="text-sm text-muted leading-relaxed mb-4">{learnTeaser.teaser}</p>
+              <Link
+                href={`/shop/learn/${learnTeaser.family}`}
+                className="text-sm tracking-wide text-[var(--accent)] hover:underline"
+              >
+                Read more →
+              </Link>
+            </div>
+          )}
 
           {/* Description */}
           {group.description && (
