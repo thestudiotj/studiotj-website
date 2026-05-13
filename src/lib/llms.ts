@@ -1,6 +1,6 @@
 import { getAllPosts, getPostBySlug } from './content'
 import { getPortfolio, sortCollections } from './portfolio'
-import { getAvailableProducts, COLLECTION_TO_SLUG } from './catalogue'
+import { getAvailableDisplayGroups, COLLECTION_TO_SLUG } from './catalogue'
 import { getAllSeries, getShootBoundEntries } from './series'
 import {
   getProducts as getVondstenProducts,
@@ -460,7 +460,7 @@ async function buildData(): Promise<LlmsSectionFull[]> {
     },
   ]
 
-  const shopProducts = getAvailableProducts()
+  const shopProducts = getAvailableDisplayGroups()
   for (const product of shopProducts) {
     const minVariantPrice = product.variants.length > 0
       ? Math.min(...product.variants.map((v) => v.price_cents))

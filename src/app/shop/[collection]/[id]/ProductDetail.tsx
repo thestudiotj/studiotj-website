@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import type { GroupedProduct, ProductVariant } from '@/lib/catalogue'
+import type { DisplayGroup, ProductVariant, MergedGroup } from '@/lib/catalogue'
+import { isMergedGroup } from '@/lib/catalogue/types'
+import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 import { useCart } from '@/lib/cart'
 import ProductGallery from '@/components/ProductGallery'
 import Breadcrumb from '@/components/Breadcrumb'
@@ -17,6 +19,29 @@ function colorLabel(color: string): string {
     white: 'White Frame',
   }
   return map[color] ?? color
+}
+
+/** Lookup table for paper / print-type labels by source family code. Falls back
+ *  to the FAMILY_CONFIG entries so this stays in sync with the rest of the UI. */
+const FAMILY_CODE_LABELS: Record<string, string> = (() => {
+  const out: Record<string, string> = {}
+  for (const fam of FAMILY_CONFIG) {
+    for (const opt of fam.variantOptions) out[opt.value] = opt.label
+  }
+  return out
+})()
+
+function familyCodeLabel(code: string): string {
+  return FAMILY_CODE_LABELS[code] ?? code.toUpperCase()
+}
+
+/** UI title for the source-family picker on a merged product page. */
+function pickerLabelForMerge(merge: MergedGroup['merge_family']): string {
+  return merge === 'paper-prints' ? 'Paper' : 'Print type'
+}
+
+function cheapestVariant(variants: ProductVariant[]): ProductVariant {
+  return variants.reduce((cheapest, v) => (v.price_cents < cheapest.price_cents ? v : cheapest), variants[0])
 }
 
 // ─── Variant picker ───────────────────────────────────────────────────────────
@@ -52,14 +77,20 @@ export default function ProductDetail({
   collectionName,
   noPadding = false,
 }: {
-  group: GroupedProduct
+  group: DisplayGroup
   collectionSlug: string
   collectionName: string
   noPadding?: boolean
 }) {
-  const defaultIdx = Math.min(group.default_variant, group.variants.length - 1)
-  const defaultVariant = group.variants[defaultIdx]
+  const merged = isMergedGroup(group)
+  const defaultVariant = cheapestVariant(group.variants)
 
+  // Source family is tracked only for merged groups; standalone groups have a single family.
+  const defaultFamily = merged
+    ? (defaultVariant as ProductVariant & { source_family?: string }).source_family ?? group.sources[0].family
+    : group.family
+
+  const [selectedFamily, setSelectedFamily] = useState(defaultFamily)
   const [selectedSize, setSelectedSize] = useState(defaultVariant.size)
   const [selectedColor, setSelectedColor] = useState(defaultVariant.color ?? '')
   const [selectedPack, setSelectedPack] = useState(defaultVariant.pack ?? 0)
@@ -67,46 +98,70 @@ export default function ProductDetail({
 
   const { addItem, openDrawer } = useCart()
 
-  const hasColor = group.variant_axes.includes('color')
-  const hasPack = group.variant_axes.includes('pack')
+  /** Variants restricted to the currently selected source family. For standalone
+   *  groups this is just `group.variants`. */
+  const familyVariants = useMemo<ProductVariant[]>(() => {
+    if (!merged) return group.variants
+    return group.variants.filter(
+      (v) => (v as ProductVariant & { source_family?: string }).source_family === selectedFamily,
+    )
+  }, [group, merged, selectedFamily])
+
+  // Whether axes are present is decided by the variant set: a merged paper-prints
+  // group only has size, but a merged wall-art group has fap with color and can without.
+  const hasColor = familyVariants.some((v) => v.color)
+  const hasPack = familyVariants.some((v) => v.pack != null)
+
+  const familyOptions = useMemo(() => {
+    if (!merged) return []
+    return group.source_family_codes.map((code) => ({
+      value: code,
+      label: familyCodeLabel(code),
+      minPrice: Math.min(
+        ...group.variants
+          .filter((v) => (v as ProductVariant & { source_family?: string }).source_family === code)
+          .map((v) => v.price_cents),
+      ),
+    }))
+  }, [group, merged])
 
   const sizes = useMemo(() => {
     const seen = new Set<string>()
-    return group.variants
+    return familyVariants
       .filter((v) => {
         if (seen.has(v.size)) return false
         seen.add(v.size)
         return true
       })
       .map((v) => ({ size: v.size, label: v.size_label }))
-  }, [group.variants])
+  }, [familyVariants])
 
   const colors = useMemo(() => {
     if (!hasColor) return []
     const seen = new Set<string>()
-    return group.variants
+    return familyVariants
       .filter((v) => v.size === selectedSize && v.color && !seen.has(v.color) && seen.add(v.color!))
       .map((v) => v.color!)
-  }, [group.variants, selectedSize, hasColor])
+  }, [familyVariants, selectedSize, hasColor])
 
   const packs = useMemo(() => {
     if (!hasPack) return []
     const seen = new Set<number>()
-    return group.variants
+    return familyVariants
       .filter((v) => v.size === selectedSize && v.pack != null && !seen.has(v.pack!) && seen.add(v.pack!))
       .map((v) => v.pack!)
-  }, [group.variants, selectedSize, hasPack])
+  }, [familyVariants, selectedSize, hasPack])
 
   const selectedVariant: ProductVariant | undefined = useMemo(() => {
-    return group.variants.find((v) => {
+    return familyVariants.find((v) => {
       if (v.size !== selectedSize) return false
       if (hasColor && v.color !== selectedColor) return false
       if (hasPack && v.pack !== selectedPack) return false
       return true
     })
-  }, [group.variants, selectedSize, selectedColor, selectedPack, hasColor, hasPack])
+  }, [familyVariants, selectedSize, selectedColor, selectedPack, hasColor, hasPack])
 
-  const activeVariant = selectedVariant ?? group.variants[defaultIdx]
+  const activeVariant = selectedVariant ?? cheapestVariant(familyVariants)
   const price = formatPrice(activeVariant.price_cents)
 
   const galleryImages = useMemo(() => {
@@ -122,19 +177,36 @@ export default function ProductDetail({
   function handleSizeChange(size: string) {
     setSelectedSize(size)
     if (hasColor) {
-      const firstColorForSize = group.variants.find((v) => v.size === size)?.color ?? ''
+      const firstColorForSize = familyVariants.find((v) => v.size === size)?.color ?? ''
       setSelectedColor(firstColorForSize)
     }
     if (hasPack) {
-      const firstPackForSize = group.variants.find((v) => v.size === size)?.pack ?? 0
+      const firstPackForSize = familyVariants.find((v) => v.size === size)?.pack ?? 0
       setSelectedPack(firstPackForSize)
     }
   }
 
+  function handleFamilyChange(code: string) {
+    setSelectedFamily(code)
+    // Source family changed: pick the cheapest variant in the new family that
+    // matches the current size; if no match, fall back to that family's cheapest.
+    const newFamilyVariants = group.variants.filter(
+      (v) => (v as ProductVariant & { source_family?: string }).source_family === code,
+    )
+    const sameSize = newFamilyVariants.find((v) => v.size === selectedSize)
+    const target = sameSize ?? cheapestVariant(newFamilyVariants)
+    setSelectedSize(target.size)
+    setSelectedColor(target.color ?? '')
+    setSelectedPack(target.pack ?? 0)
+  }
+
   function handleAddToCart() {
+    const variantFamily = merged
+      ? (activeVariant as ProductVariant & { source_family?: string }).source_family
+      : undefined
     addItem({
       productId: activeVariant.variantId,
-      productTitle: buildCartTitle(group.title, activeVariant),
+      productTitle: buildCartTitle(group.title, activeVariant, variantFamily),
       price: activeVariant.price_cents,
       imageUrl: activeVariant.hero ?? activeVariant.mock1 ?? null,
     })
@@ -176,6 +248,25 @@ export default function ProductDetail({
 
         {/* Pickers + add-to-cart + description — mobile: 3rd. Desktop: right col bottom */}
         <div className="order-3 md:order-none md:col-start-2 md:row-start-2 flex flex-col">
+          {/* Paper / Print-type picker — merged groups only */}
+          {merged && familyOptions.length > 1 && (
+            <div className="mb-6">
+              <p className="text-xs tracking-widest uppercase text-muted mb-3">
+                {pickerLabelForMerge(group.merge_family)}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {familyOptions.map((opt) => (
+                  <PickerButton
+                    key={opt.value}
+                    label={opt.label}
+                    active={selectedFamily === opt.value}
+                    onClick={() => handleFamilyChange(opt.value)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Size picker */}
           {sizes.length > 1 && (
             <div className="mb-6">
@@ -268,9 +359,19 @@ export default function ProductDetail({
   )
 }
 
-function buildCartTitle(groupTitle: string, variant: ProductVariant): string {
+function buildCartTitle(
+  groupTitle: string,
+  variant: ProductVariant,
+  sourceFamilyCode: string | undefined,
+): string {
   const parts: string[] = [groupTitle]
   const suffix: string[] = []
+  // For merged groups the paper / print-type isn't in the title, so add it here
+  // so the cart line item identifies exactly what was ordered.
+  if (sourceFamilyCode) {
+    const label = FAMILY_CODE_LABELS[sourceFamilyCode]
+    if (label) suffix.push(label)
+  }
   if (variant.size_label) suffix.push(variant.size_label)
   if (variant.color) {
     const map: Record<string, string> = {

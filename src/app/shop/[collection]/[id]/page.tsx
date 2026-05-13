@@ -1,28 +1,29 @@
 import {
-  getGroupById,
-  getAllGroups,
+  getDisplayGroupById,
+  getDisplayGroups,
+  getMergedRedirectTarget,
   groupMinPriceCents,
+  groupDefaultVariant,
   COLLECTION_CONFIG,
-  SLUG_TO_COLLECTION,
   COLLECTION_TO_SLUG,
 } from '@/lib/catalogue'
-import type { GroupedProduct } from '@/lib/catalogue'
-import { notFound } from 'next/navigation'
+import type { DisplayGroup } from '@/lib/catalogue/types'
+import { notFound, permanentRedirect } from 'next/navigation'
 import ProductDetail from './ProductDetail'
 import ShopPageShell from '@/components/ShopPageShell'
 
 const PRODUCT_URL = (collection: string, id: string) =>
   `https://studiotj.com/shop/${collection}/${id}`
 
-function getPlainDescription(group: GroupedProduct): string {
+function getPlainDescription(group: DisplayGroup): string {
   const raw = group.description.trim()
   return raw.length >= 40 ? raw : `${group.title} — a StudioTJ print, shipped worldwide.`
 }
 
-function buildJsonLd(group: GroupedProduct, collection: string) {
+function buildJsonLd(group: DisplayGroup, collection: string) {
   const minPrice = groupMinPriceCents(group)
   const priceStr = (minPrice / 100).toFixed(2)
-  const defaultVariant = group.variants[Math.min(group.default_variant, group.variants.length - 1)]
+  const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1
 
   return {
@@ -46,7 +47,7 @@ function buildJsonLd(group: GroupedProduct, collection: string) {
 }
 
 export function generateStaticParams() {
-  return getAllGroups()
+  return getDisplayGroups()
     .filter((g) => COLLECTION_TO_SLUG[g.collection])
     .map((g) => ({
       collection: COLLECTION_TO_SLUG[g.collection],
@@ -59,12 +60,12 @@ export async function generateMetadata({
 }: {
   params: { collection: string; id: string }
 }) {
-  const group = getGroupById(params.id)
+  const group = getDisplayGroupById(params.id)
   if (!group) return { title: 'Product not found' }
 
   const description = getPlainDescription(group).slice(0, 160)
   const minPrice = (groupMinPriceCents(group) / 100).toFixed(2)
-  const defaultVariant = group.variants[Math.min(group.default_variant, group.variants.length - 1)]
+  const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1
 
   return {
@@ -93,7 +94,13 @@ export default function ProductPage({
   const col = COLLECTION_CONFIG.find((c) => c.slug === params.collection)
   if (!col) notFound()
 
-  const group = getGroupById(params.id)
+  // 301 from old single-paper / single-format URLs to the merged group URL.
+  const mergedTarget = getMergedRedirectTarget(params.id)
+  if (mergedTarget) {
+    permanentRedirect(`/shop/${params.collection}/${mergedTarget}`)
+  }
+
+  const group = getDisplayGroupById(params.id)
   if (!group) notFound()
 
   // Ensure the product actually belongs to this collection

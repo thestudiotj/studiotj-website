@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/content'
 import { getPortfolio } from '@/lib/portfolio'
-import { getAvailableProducts, COLLECTION_TO_SLUG } from '@/lib/catalogue'
+import { getAvailableDisplayGroups, COLLECTION_TO_SLUG } from '@/lib/catalogue'
 import { getAllSeries, getShootBoundEntries } from '@/lib/series'
 import { getProducts as getVondstenProducts } from '@/lib/vondsten/loader'
 import { CATEGORIES } from '@/lib/vondsten/schemas'
@@ -88,8 +88,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   }
 
-  // Shop — collection pages + product detail pages
-  for (const product of getAvailableProducts()) {
+  // Shop — collection pages + product detail pages (merged where applicable)
+  for (const product of getAvailableDisplayGroups()) {
     const slug = COLLECTION_TO_SLUG[product.collection] ?? product.collection
     entries.push({ url: `${BASE_URL}/shop/${slug}/${product.id}` })
   }

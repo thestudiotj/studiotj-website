@@ -3,7 +3,8 @@
 import { useState, useMemo, Suspense } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import type { GroupedProduct, ProductVariant } from '@/lib/catalogue/types'
+import type { DisplayGroup, ProductVariant } from '@/lib/catalogue/types'
+import { isMergedGroup } from '@/lib/catalogue/types'
 import { COLLECTION_TO_SLUG, COLLECTION_CONFIG } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 import {
@@ -15,13 +16,23 @@ import {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-function groupMinPriceCents(group: GroupedProduct): number {
+function groupMinPriceCents(group: DisplayGroup): number {
   return Math.min(...group.variants.map((v) => v.price_cents))
 }
 
-function groupDefaultVariant(group: GroupedProduct): ProductVariant {
+function groupDefaultVariant(group: DisplayGroup): ProductVariant {
+  if (isMergedGroup(group)) {
+    return group.variants.reduce(
+      (cheapest, v) => (v.price_cents < cheapest.price_cents ? v : cheapest),
+      group.variants[0],
+    )
+  }
   const idx = Math.min(group.default_variant, group.variants.length - 1)
   return group.variants[idx]
+}
+
+function groupFamilyCodes(group: DisplayGroup): string[] {
+  return isMergedGroup(group) ? group.source_family_codes : [group.family]
 }
 
 function formatPrice(cents: number): string {
@@ -46,9 +57,9 @@ const SORT_OPTIONS = [
 ] as const
 type SortKey = (typeof SORT_OPTIONS)[number]['value']
 
-function sortProducts(products: GroupedProduct[], sort: SortKey): GroupedProduct[] {
+function sortProducts(products: DisplayGroup[], sort: SortKey): DisplayGroup[] {
   const arr = [...products]
-  const minP = (g: GroupedProduct) => Math.min(...g.variants.map((v) => v.price_cents))
+  const minP = (g: DisplayGroup) => Math.min(...g.variants.map((v) => v.price_cents))
   switch (sort) {
     case 'price-asc':
       return arr.sort((a, b) => minP(a) - minP(b))
@@ -154,7 +165,7 @@ function SortDropdown({ value, onChange }: { value: SortKey; onChange: (v: SortK
 
 // ─── Product cards ─────────────────────────────────────────────────────────────
 
-function ProductCard({ group }: { group: GroupedProduct }) {
+function ProductCard({ group }: { group: DisplayGroup }) {
   const minPrice = groupMinPriceCents(group)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
@@ -186,10 +197,11 @@ function ProductCard({ group }: { group: GroupedProduct }) {
   )
 }
 
-function CompactProductCard({ group }: { group: GroupedProduct }) {
+function CompactProductCard({ group }: { group: DisplayGroup }) {
   const minPrice = groupMinPriceCents(group)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
+  const hasMultipleVariants = group.variants.length > 1
   const href = `/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`
 
   return (
@@ -210,7 +222,9 @@ function CompactProductCard({ group }: { group: GroupedProduct }) {
         )}
       </div>
       <h3 className="text-xs font-medium text-ink leading-snug line-clamp-1">{group.title}</h3>
-      <p className="text-muted text-xs mt-0.5">{formatPrice(minPrice)}</p>
+      <p className="text-muted text-xs mt-0.5">
+        {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}
+      </p>
     </Link>
   )
 }
@@ -221,7 +235,7 @@ function ShopGridInner({
   products,
   compact = false,
 }: {
-  products: GroupedProduct[]
+  products: DisplayGroup[]
   compact?: boolean
 }) {
   const router = useRouter()
@@ -273,7 +287,10 @@ function ShopGridInner({
   // Families present (full mode only)
   const presentFamilies = useMemo(() => {
     if (compact) return []
-    const codes = new Set(products.map((g) => g.family))
+    const codes = new Set<string>()
+    for (const g of products) {
+      for (const code of groupFamilyCodes(g)) codes.add(code)
+    }
     return FAMILY_CONFIG.filter((fam) => fam.familyCodes.some((code) => codes.has(code)))
   }, [products, compact])
 
@@ -287,7 +304,11 @@ function ShopGridInner({
     }
     if (activeFamily) {
       const fam = FAMILY_CONFIG.find((f) => f.slug === activeFamily)
-      if (fam) result = result.filter((g) => fam.familyCodes.includes(g.family))
+      if (fam) {
+        result = result.filter((g) =>
+          groupFamilyCodes(g).some((code) => fam.familyCodes.includes(code)),
+        )
+      }
     }
     if (activeLocation) {
       result = result.filter((g) => extractLocation(g.id) === activeLocation)
@@ -454,7 +475,7 @@ export default function ShopGrid({
   products,
   compact = false,
 }: {
-  products: GroupedProduct[]
+  products: DisplayGroup[]
   compact?: boolean
 }) {
   return (

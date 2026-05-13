@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import { getAllGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
+import { getDisplayGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
+import { isMergedGroup, type DisplayGroup } from '@/lib/catalogue/types'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 import ShopCollectionCard from '@/components/ShopCollectionCard'
 import ShopGrid from '@/components/ShopGrid'
+
+function displayGroupFamilyCodes(g: DisplayGroup): string[] {
+  return isMergedGroup(g) ? g.source_family_codes : [g.family]
+}
 
 export const metadata: Metadata = {
   title: 'Shop',
@@ -30,7 +35,7 @@ const FAMILY_HERO_CODES: Record<string, string[]> = {
 }
 
 export default function ShopPage() {
-  const allProducts = getAllGroups()
+  const allProducts = getDisplayGroups()
 
   const collections = COLLECTION_CONFIG.map((col) => {
     const products = allProducts.filter((g) => g.available && g.collection === col.key)
@@ -50,7 +55,9 @@ export default function ShopPage() {
 
   const families = FAMILY_CONFIG.map((fam) => {
     const codes = FAMILY_HERO_CODES[fam.slug] ?? fam.familyCodes
-    const products = allProducts.filter((g) => codes.includes(g.family))
+    const products = allProducts.filter((g) =>
+      displayGroupFamilyCodes(g).some((code) => codes.includes(code)),
+    )
     const heroImages = products
       .map((g) => {
         const v = groupDefaultVariant(g)

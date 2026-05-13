@@ -81,6 +81,52 @@ export const groupedProductSchema = z.object({
 })
 export type GroupedProduct = z.infer<typeof groupedProductSchema>
 
+// ─── Merged group (runtime aggregation) ──────────────────────────────────────
+// Built at load time by combining multiple GroupedProducts that share the same
+// photo_id and fall under a single "merge umbrella" (paper prints, wall art).
+// Display-only — never persisted to MDX. Variant identity is preserved by the
+// underlying ProductVariant.variantId, so the cart/checkout/Prodigi flow is
+// unaffected.
+
+export type MergeFamily = "paper-prints" | "wall-art-merged"
+
+export interface MergedVariant extends ProductVariant {
+  /** Source family code — hpr/hge/ema/clp for paper-prints, can/fap for wall-art-merged. */
+  source_family: string
+  /** Source GroupedProduct.id this variant originally belonged to. */
+  source_group_id: string
+}
+
+export interface MergedGroup {
+  kind: "merged"
+  /** Synthesized id, e.g. "photo-signature-thehague-218-prints". */
+  id: string
+  title: string
+  description: string
+  photo_url: string | null | undefined
+  example_image: string | null | undefined
+  available: boolean
+  collection: string
+  photo_id: string | null | undefined
+  orientation: "portrait" | "landscape" | "square" | undefined
+  /** Which umbrella merged these. */
+  merge_family: MergeFamily
+  /** Underlying GroupedProducts (one per source family present for this photo). */
+  sources: GroupedProduct[]
+  /** All variants from all sources, tagged with their source family. */
+  variants: MergedVariant[]
+  /** Ordered list of source families that have at least one variant. */
+  source_family_codes: string[]
+}
+
+/** Type guard. */
+export function isMergedGroup(g: GroupedProduct | MergedGroup): g is MergedGroup {
+  return (g as MergedGroup).kind === "merged"
+}
+
+/** Anything that can be shown on a shop card or detail page. */
+export type DisplayGroup = GroupedProduct | MergedGroup
+
 // ─── Legacy flat product types (kept for type compatibility, no longer loaded) ─
 
 const baseFields = {

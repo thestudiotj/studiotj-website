@@ -3,7 +3,8 @@
 import { useMemo, useState, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import type { GroupedProduct } from '@/lib/catalogue/types'
+import type { DisplayGroup } from '@/lib/catalogue/types'
+import { isMergedGroup } from '@/lib/catalogue/types'
 import type { FamilyMeta } from '@/lib/catalogue/families'
 import { COLLECTION_CONFIG } from '@/lib/catalogue/collections'
 import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
@@ -15,17 +16,31 @@ const COLLECTION_LABELS: Record<string, string> = {
   'the-signature-collection': 'Signature',
 }
 
+/** Family slugs whose products are merged at runtime — the per-paper/per-type
+ *  variant dropdown is meaningless on these pages and is hidden. */
+const MERGED_FAMILY_SLUGS = new Set(['prints-posters', 'wall-art'])
+
 function formatPrice(cents: number): string {
   return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
 }
 
-function groupMinPriceCents(group: GroupedProduct): number {
+function groupMinPriceCents(group: DisplayGroup): number {
   return Math.min(...group.variants.map((v) => v.price_cents))
 }
 
-function groupDefaultVariant(group: GroupedProduct) {
+function groupDefaultVariant(group: DisplayGroup) {
+  if (isMergedGroup(group)) {
+    return group.variants.reduce(
+      (cheapest, v) => (v.price_cents < cheapest.price_cents ? v : cheapest),
+      group.variants[0],
+    )
+  }
   const idx = Math.min(group.default_variant, group.variants.length - 1)
   return group.variants[idx]
+}
+
+function groupFamilyCodes(group: DisplayGroup): string[] {
+  return isMergedGroup(group) ? group.source_family_codes : [group.family]
 }
 
 // ─── Collection pill ──────────────────────────────────────────────────────────
@@ -42,7 +57,7 @@ function CollectionPill({ collection }: { collection: string }) {
 
 // ─── Product card with collection pill ───────────────────────────────────────
 
-function FamilyProductCard({ group }: { group: GroupedProduct }) {
+function FamilyProductCard({ group }: { group: DisplayGroup }) {
   const minPrice = groupMinPriceCents(group)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
@@ -145,20 +160,21 @@ function FamilyGridInner({
   products,
   familyMeta,
 }: {
-  products: GroupedProduct[]
+  products: DisplayGroup[]
   familyMeta: FamilyMeta
 }) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
+  const isMergedFamily = MERGED_FAMILY_SLUGS.has(familyMeta.slug)
   const activeCollection = searchParams.get('collection')
-  const activeVariant = searchParams.get('variant')
+  const activeVariant = isMergedFamily ? null : searchParams.get('variant')
 
   function updateFilter(col: string | null, variant: string | null) {
     const params = new URLSearchParams()
     if (col) params.set('collection', col)
-    if (variant) params.set('variant', variant)
+    if (variant && !isMergedFamily) params.set('variant', variant)
     const search = params.toString()
     router.replace(`${pathname}${search ? `?${search}` : ''}`, { scroll: false })
   }
@@ -170,7 +186,7 @@ function FamilyGridInner({
       if (col) result = result.filter((g) => g.collection === col.key)
     }
     if (activeVariant) {
-      result = result.filter((g) => g.family === activeVariant)
+      result = result.filter((g) => groupFamilyCodes(g).includes(activeVariant))
     }
     return result
   }, [products, activeCollection, activeVariant])
@@ -218,14 +234,16 @@ function FamilyGridInner({
         ))}
       </div>
 
-      {/* Variant dropdown */}
+      {/* Variant dropdown — hidden for merged families (paper/print-type lives on the product page) */}
       <div className="flex items-center gap-4 mb-8">
-        <VariantDropdown
-          label={familyMeta.variantDropdownLabel}
-          options={familyMeta.variantOptions}
-          value={activeVariant}
-          onChange={(v) => updateFilter(activeCollection, v)}
-        />
+        {!isMergedFamily && (
+          <VariantDropdown
+            label={familyMeta.variantDropdownLabel}
+            options={familyMeta.variantOptions}
+            value={activeVariant}
+            onChange={(v) => updateFilter(activeCollection, v)}
+          />
+        )}
         {hasActiveFilter && (
           <button
             onClick={() => updateFilter(null, null)}
@@ -269,7 +287,7 @@ export default function ShopFamilyGrid({
   products,
   familyMeta,
 }: {
-  products: GroupedProduct[]
+  products: DisplayGroup[]
   familyMeta: FamilyMeta
 }) {
   return (

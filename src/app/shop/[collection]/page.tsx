@@ -1,15 +1,20 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import {
-  getAvailableGroups,
+  getAvailableDisplayGroups,
   COLLECTION_CONFIG,
   SLUG_TO_COLLECTION,
 } from '@/lib/catalogue'
+import { isMergedGroup, type DisplayGroup } from '@/lib/catalogue/types'
 import { FAMILY_CONFIG, SLUG_TO_FAMILY } from '@/lib/catalogue/families'
 import ShopGrid from '@/components/ShopGrid'
 import ShopFamilyGrid from '@/components/ShopFamilyGrid'
 import ShopPageShell from '@/components/ShopPageShell'
 import Breadcrumb from '@/components/Breadcrumb'
+
+function displayGroupFamilyCodes(g: DisplayGroup): string[] {
+  return isMergedGroup(g) ? g.source_family_codes : [g.family]
+}
 
 const COLLECTION_DESCRIPTIONS: Record<string, string> = {
   atmospheric: 'Moody landscape photography where the weather is the subject and the place is the setting. Fog, low cloud, water-heavy air, the particular grey that carries its own colour — never warm, never softened. Not only a photograph of somewhere, but the conditions that decided what the photograph could be.',
@@ -59,9 +64,9 @@ export default function CollectionOrFamilyPage({
   // ── Family browse page ────────────────────────────────────────────────────
   const familyMeta = SLUG_TO_FAMILY[segment]
   if (familyMeta) {
-    const allProducts = getAvailableGroups()
+    const allProducts = getAvailableDisplayGroups()
     const familyProducts = allProducts.filter((g) =>
-      familyMeta.familyCodes.includes(g.family)
+      displayGroupFamilyCodes(g).some((code) => familyMeta.familyCodes.includes(code)),
     )
 
     return (
@@ -92,7 +97,7 @@ export default function CollectionOrFamilyPage({
   if (!col) notFound()
 
   const collectionKey = SLUG_TO_COLLECTION[segment]
-  const products = getAvailableGroups().filter((g) => g.collection === collectionKey)
+  const products = getAvailableDisplayGroups().filter((g) => g.collection === collectionKey)
 
   return (
     <ShopPageShell>
