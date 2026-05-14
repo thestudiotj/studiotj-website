@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getDisplayGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
 import { isMergedGroup, type DisplayGroup } from '@/lib/catalogue/types'
+import { COLLECTION_COPY, type CollectionSlug } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG, FAMILY_COPY, type FamilySlug } from '@/lib/catalogue/families'
 import ShopCollectionCard from '@/components/ShopCollectionCard'
 import ShopGrid from '@/components/ShopGrid'
@@ -12,13 +13,6 @@ function displayGroupFamilyCodes(g: DisplayGroup): string[] {
 export const metadata: Metadata = {
   title: 'Shop',
   description: 'Fine art prints from StudioTJ — photographs from the Netherlands, printed on demand and shipped worldwide.',
-}
-
-const COLLECTION_DESCRIPTIONS: Record<string, string> = {
-  atmospheric: 'Moody landscape photography where the weather is the subject.',
-  halcyon:     'Warm-toned landscape photography — pink, peach, coral, gold.',
-  mono:        'Black and white photography — contrast pushed to its edges.',
-  signature:   'Architecture photography with the building given the frame to itself.',
 }
 
 // Families whose hero pool skips certain codes (cal is unavailable)
@@ -42,7 +36,7 @@ export default function ShopPage() {
 
     return {
       ...col,
-      description: COLLECTION_DESCRIPTIONS[col.slug] ?? '',
+      description: COLLECTION_COPY[col.slug as CollectionSlug]?.tile ?? '',
       heroImages,
     }
   })

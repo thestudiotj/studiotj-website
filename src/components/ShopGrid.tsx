@@ -7,6 +7,7 @@ import type { DisplayGroup, ProductVariant } from '@/lib/catalogue/types'
 import { isMergedGroup } from '@/lib/catalogue/types'
 import { COLLECTION_TO_SLUG, COLLECTION_CONFIG } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
+import { formatPrice } from '@/lib/catalogue/format'
 import {
   LOCATION_ORDER,
   locationLabel,
@@ -33,10 +34,6 @@ function groupDefaultVariant(group: DisplayGroup): ProductVariant {
 
 function groupFamilyCodes(group: DisplayGroup): string[] {
   return isMergedGroup(group) ? group.source_family_codes : [group.family]
-}
-
-function formatPrice(cents: number): string {
-  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
 }
 
 const COLLECTION_LABELS: Record<string, string> = {

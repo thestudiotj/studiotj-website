@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
   getAvailableDisplayGroups,
@@ -6,7 +7,9 @@ import {
   SLUG_TO_COLLECTION,
 } from '@/lib/catalogue'
 import { isMergedGroup, type DisplayGroup } from '@/lib/catalogue/types'
+import { COLLECTION_COPY, type CollectionSlug } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG, SLUG_TO_FAMILY, FAMILY_COPY, type FamilySlug } from '@/lib/catalogue/families'
+import { LEARN_TEASERS } from '@/lib/catalogue/learn-teasers'
 import ShopGrid from '@/components/ShopGrid'
 import ShopFamilyGrid from '@/components/ShopFamilyGrid'
 import ShopPageShell from '@/components/ShopPageShell'
@@ -14,13 +17,6 @@ import Breadcrumb from '@/components/Breadcrumb'
 
 function displayGroupFamilyCodes(g: DisplayGroup): string[] {
   return isMergedGroup(g) ? g.source_family_codes : [g.family]
-}
-
-const COLLECTION_DESCRIPTIONS: Record<string, string> = {
-  atmospheric: 'Moody landscape photography where the weather is the subject and the place is the setting. Fog, low cloud, water-heavy air, the particular grey that carries its own colour — never warm, never softened. Not only a photograph of somewhere, but the conditions that decided what the photograph could be.',
-  halcyon:     'Warm-toned landscape photography — pink, peach, coral, warm gold, dusty lilac washing the whole frame. A grade the whole image lives inside, not a tint laid on top. Not only pretty light, but the kind of pretty that earns the second look because the composition holds underneath.',
-  signature:   'Architecture photography at full attention — palette-agnostic, mood-agnostic, the building given the frame to itself. Not only a record of what\'s there, but the angle and the light that make the structure look like it could not have stood any other way.',
-  mono:        'Black and white photography at its best — it plays between the contrasts of light and dark, finds the farthest edges between them, and puts them in one image. Not only stripping a photo to its essence, but finding a new truth.',
 }
 
 export function generateStaticParams() {
@@ -81,6 +77,26 @@ export default function CollectionOrFamilyPage({
           </p>
         </div>
 
+        <div className="mb-10 pb-8 border-b border-dust/30">
+          <p className="text-xs tracking-widest uppercase text-dust mb-3">Materials</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {familyMeta.familyCodes.map((code) => {
+              const teaser = LEARN_TEASERS[code]
+              if (!teaser) return null
+              return (
+                <li key={code}>
+                  <Link
+                    href={`/shop/learn/${code}`}
+                    className="text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors"
+                  >
+                    {teaser.displayName} →
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+
         <ShopFamilyGrid products={familyProducts} familyMeta={familyMeta} />
       </ShopPageShell>
     )
@@ -107,7 +123,7 @@ export default function CollectionOrFamilyPage({
           {col.displayName}
         </h1>
         <p className="text-muted max-w-md leading-relaxed">
-          {COLLECTION_DESCRIPTIONS[segment] ?? ''}
+          {COLLECTION_COPY[segment as CollectionSlug]?.page ?? ''}
         </p>
       </div>
 

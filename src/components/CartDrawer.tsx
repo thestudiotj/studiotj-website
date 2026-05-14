@@ -3,10 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/lib/cart'
-
-function formatPrice(cents: number): string {
-  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
-}
+import { formatPrice } from '@/lib/catalogue/format'
 
 export default function CartDrawer() {
   const { items, itemCount, subtotal, drawerOpen, removeItem, updateQuantity, closeDrawer } =

@@ -5,6 +5,7 @@ import { getPortfolio } from '@/lib/portfolio'
 import { getPhotoRecord, getShootPhotos, getShootDisplayName } from '@/lib/photos'
 import { getProductsByPhotoId, groupMinPriceCents } from '@/lib/catalogue/loader'
 import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
+import { formatPrice } from '@/lib/catalogue/format'
 
 const SITE_URL = 'https://studiotj.com'
 const DEFAULT_OG = 'https://photos.studiotj.com/og/studiotj-default.jpg'
@@ -53,10 +54,6 @@ function formatDate(dateStr: string): string {
     month: 'long',
     year: 'numeric',
   }).format(new Date(dateStr))
-}
-
-function formatPrice(cents: number): string {
-  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
 }
 
 export default function PhotoPage({ params }: PageProps) {

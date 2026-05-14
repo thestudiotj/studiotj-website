@@ -8,6 +8,7 @@ import { isMergedGroup } from '@/lib/catalogue/types'
 import type { FamilyMeta } from '@/lib/catalogue/families'
 import { COLLECTION_CONFIG } from '@/lib/catalogue/collections'
 import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
+import { formatPrice } from '@/lib/catalogue/format'
 
 const COLLECTION_LABELS: Record<string, string> = {
   'the-atmospheric-collection': 'Atmospheric',
@@ -19,10 +20,6 @@ const COLLECTION_LABELS: Record<string, string> = {
 /** Family slugs whose products are merged at runtime — the per-paper/per-type
  *  variant dropdown is meaningless on these pages and is hidden. */
 const MERGED_FAMILY_SLUGS = new Set(['prints-posters', 'wall-art'])
-
-function formatPrice(cents: number): string {
-  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
-}
 
 function groupMinPriceCents(group: DisplayGroup): number {
   return Math.min(...group.variants.map((v) => v.price_cents))

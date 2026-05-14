@@ -6,13 +6,10 @@ import type { DisplayGroup, ProductVariant, MergedGroup } from '@/lib/catalogue'
 import { isMergedGroup } from '@/lib/catalogue/types'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 import { getLearnTeaser } from '@/lib/catalogue/learn-teasers'
+import { formatPrice } from '@/lib/catalogue/format'
 import { useCart } from '@/lib/cart'
 import ProductGallery from '@/components/ProductGallery'
 import Breadcrumb from '@/components/Breadcrumb'
-
-function formatPrice(cents: number): string {
-  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
-}
 
 function colorLabel(color: string): string {
   const map: Record<string, string> = {
