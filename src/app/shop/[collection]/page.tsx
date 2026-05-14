@@ -6,7 +6,7 @@ import {
   SLUG_TO_COLLECTION,
 } from '@/lib/catalogue'
 import { isMergedGroup, type DisplayGroup } from '@/lib/catalogue/types'
-import { FAMILY_CONFIG, SLUG_TO_FAMILY } from '@/lib/catalogue/families'
+import { FAMILY_CONFIG, SLUG_TO_FAMILY, FAMILY_COPY, type FamilySlug } from '@/lib/catalogue/families'
 import ShopGrid from '@/components/ShopGrid'
 import ShopFamilyGrid from '@/components/ShopFamilyGrid'
 import ShopPageShell from '@/components/ShopPageShell'
@@ -21,12 +21,6 @@ const COLLECTION_DESCRIPTIONS: Record<string, string> = {
   halcyon:     'Warm-toned landscape photography — pink, peach, coral, warm gold, dusty lilac washing the whole frame. A grade the whole image lives inside, not a tint laid on top. Not only pretty light, but the kind of pretty that earns the second look because the composition holds underneath.',
   signature:   'Architecture photography at full attention — palette-agnostic, mood-agnostic, the building given the frame to itself. Not only a record of what\'s there, but the angle and the light that make the structure look like it could not have stood any other way.',
   mono:        'Black and white photography at its best — it plays between the contrasts of light and dark, finds the farthest edges between them, and puts them in one image. Not only stripping a photo to its essence, but finding a new truth.',
-}
-
-const FAMILY_DESCRIPTIONS: Record<string, string> = {
-  'wall-art':         'TODO: copy — Wall art description',
-  'prints-posters':   'TODO: copy — Prints & posters description',
-  'cards-stationery': 'TODO: copy — Cards & stationery description',
 }
 
 export function generateStaticParams() {
@@ -83,7 +77,7 @@ export default function CollectionOrFamilyPage({
             {familyMeta.name}
           </h1>
           <p className="text-muted max-w-md leading-relaxed">
-            {FAMILY_DESCRIPTIONS[segment] ?? ''}
+            {FAMILY_COPY[segment as FamilySlug]?.page ?? ''}
           </p>
         </div>
 

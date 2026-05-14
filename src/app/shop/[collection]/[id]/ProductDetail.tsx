@@ -392,6 +392,14 @@ export default function ProductDetail({
               Ships from the nearest fulfilment partner to your address.
             </p>
           </div>
+
+          {/* Collection backlink */}
+          <Link
+            href={`/shop/${collectionSlug}`}
+            className="mt-6 text-xs tracking-widest uppercase text-muted hover:text-ink transition-colors"
+          >
+            See more from {collectionName} →
+          </Link>
         </div>
       </div>
     </div>

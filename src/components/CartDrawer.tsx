@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { useCart } from '@/lib/cart'
 
 function formatPrice(cents: number): string {
@@ -71,7 +72,41 @@ export default function CartDrawer() {
         {/* Items */}
         <div className="flex-1 overflow-y-auto px-6 py-4">
           {items.length === 0 ? (
-            <p className="text-muted text-sm mt-8 text-center">Your cart is empty.</p>
+            <div className="h-full flex flex-col items-center justify-center text-center gap-8 py-8">
+              <p className="font-display text-2xl text-ink leading-tight">
+                The cart&apos;s empty. The shop isn&apos;t.
+              </p>
+              <ul className="flex flex-col gap-3 w-full">
+                <li>
+                  <Link
+                    href="/shop/wall-art"
+                    onClick={closeDrawer}
+                    className="block text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors"
+                  >
+                    Wall art →
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/shop/prints-posters"
+                    onClick={closeDrawer}
+                    className="block text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors"
+                  >
+                    Prints &amp; posters →
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/shop/cards-stationery"
+                    onClick={closeDrawer}
+                    className="block text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors"
+                  >
+                    Cards &amp; stationery →
+                  </Link>
+                </li>
+              </ul>
+              <p className="text-xs text-muted">Made to order. Shipped worldwide.</p>
+            </div>
           ) : (
             <ul className="flex flex-col divide-y divide-dust/20">
               {items.map((item) => (

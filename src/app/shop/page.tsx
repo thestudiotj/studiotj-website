@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { getDisplayGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
 import { isMergedGroup, type DisplayGroup } from '@/lib/catalogue/types'
-import { FAMILY_CONFIG } from '@/lib/catalogue/families'
+import { FAMILY_CONFIG, FAMILY_COPY, type FamilySlug } from '@/lib/catalogue/families'
 import ShopCollectionCard from '@/components/ShopCollectionCard'
 import ShopGrid from '@/components/ShopGrid'
 
@@ -19,12 +19,6 @@ const COLLECTION_DESCRIPTIONS: Record<string, string> = {
   halcyon:     'Warm-toned landscape photography — pink, peach, coral, gold.',
   mono:        'Black and white photography — contrast pushed to its edges.',
   signature:   'Architecture photography with the building given the frame to itself.',
-}
-
-const FAMILY_DESCRIPTIONS: Record<string, string> = {
-  'wall-art':         'Framed prints and stretched canvas — the photograph at the size it deserves, finished and ready to hang. Heavy paper or woven canvas, either way it arrives feeling like a real object.',
-  'prints-posters':   'Fine art prints and posters on heavy art paper — substantial in the hand, matte enough to read cleanly on the wall. Frame to taste.',
-  'cards-stationery': 'Greeting cards and postcards on heavy uncoated paper — weighty in the hand, soft enough to write on, with the matte finish that lets a photograph carry. Sent or kept.',
 }
 
 // Families whose hero pool skips certain codes (cal is unavailable)
@@ -67,7 +61,7 @@ export default function ShopPage() {
 
     return {
       ...fam,
-      description: FAMILY_DESCRIPTIONS[fam.slug] ?? '',
+      description: FAMILY_COPY[fam.slug as FamilySlug]?.tile ?? '',
       heroImages,
     }
   })
@@ -82,6 +76,9 @@ export default function ShopPage() {
         </h1>
         <p className="text-muted max-w-md leading-relaxed">
           Fine art prints and objects. Printed on demand, finished to last.
+        </p>
+        <p className="text-sm text-muted/80 max-w-md leading-relaxed mt-2">
+          Archival prints across papers, canvas, and frames, printed in the EU and shipped worldwide.
         </p>
       </div>
 
