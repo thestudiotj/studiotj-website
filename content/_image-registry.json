@@ -1,4 +1,24 @@
 {
+  "picks/design/envato-placeit/hero.webp": {
+    "aspect": "1:1",
+    "width": 900,
+    "height": 900
+  },
+  "picks/design/envato-placeit/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/design/envato-placeit/supporting-2.webp": {
+    "aspect": "406:271",
+    "width": 406,
+    "height": 271
+  },
+  "picks/design/envato-placeit/supporting-3.webp": {
+    "aspect": "3:2",
+    "width": 1038,
+    "height": 692
+  },
   "picks/gaming/chessnut/air-plus/hero.webp": {
     "aspect": "1:1",
     "width": 1000,
@@ -144,6 +164,46 @@
     "width": 480,
     "height": 600
   },
+  "picks/gaming/gearup/hero.webp": {
+    "aspect": "1:1",
+    "width": 1280,
+    "height": 1280
+  },
+  "picks/gaming/gearup/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 512,
+    "height": 512
+  },
+  "picks/gaming/gearup/supporting-2.webp": {
+    "aspect": "256:125",
+    "width": 1024,
+    "height": 500
+  },
+  "picks/gaming/gearup/supporting-3.webp": {
+    "aspect": "256:125",
+    "width": 1024,
+    "height": 500
+  },
+  "picks/gaming/world-of-tanks/hero.webp": {
+    "aspect": "1280:721",
+    "width": 1280,
+    "height": 721
+  },
+  "picks/gaming/world-of-tanks/supporting-1.webp": {
+    "aspect": "16:9",
+    "width": 1200,
+    "height": 675
+  },
+  "picks/gaming/world-of-tanks/supporting-2.webp": {
+    "aspect": "92:43",
+    "width": 460,
+    "height": 215
+  },
+  "picks/gaming/world-of-tanks/supporting-3.webp": {
+    "aspect": "25:14",
+    "width": 300,
+    "height": 168
+  },
   "picks/photography/leica-camera-usa/hero.webp": {
     "aspect": "1:1",
     "width": 820,
@@ -268,5 +328,145 @@
     "aspect": "4:5",
     "width": 480,
     "height": 600
+  },
+  "picks/site-workflow/jalbum/hero.webp": {
+    "aspect": "1:1",
+    "width": 1280,
+    "height": 1280
+  },
+  "picks/site-workflow/jalbum/supporting-1.webp": {
+    "aspect": "40:21",
+    "width": 1200,
+    "height": 630
+  },
+  "picks/site-workflow/jalbum/supporting-2.webp": {
+    "aspect": "611:394",
+    "width": 611,
+    "height": 394
+  },
+  "picks/site-workflow/jalbum/supporting-3.webp": {
+    "aspect": "450:253",
+    "width": 450,
+    "height": 253
+  },
+  "picks/site-workflow/namecheap/hero.webp": {
+    "aspect": "1:1",
+    "width": 900,
+    "height": 900
+  },
+  "picks/site-workflow/namecheap/supporting-1.webp": {
+    "aspect": "16:9",
+    "width": 1200,
+    "height": 675
+  },
+  "picks/site-workflow/namecheap/supporting-2.webp": {
+    "aspect": "100:57",
+    "width": 1200,
+    "height": 684
+  },
+  "picks/site-workflow/namecheap/supporting-3.webp": {
+    "aspect": "400:159",
+    "width": 1200,
+    "height": 477
+  },
+  "picks/site-workflow/shopify/hero.webp": {
+    "aspect": "1:1",
+    "width": 512,
+    "height": 512
+  },
+  "picks/site-workflow/shopify/supporting-1.webp": {
+    "aspect": "16:9",
+    "width": 1200,
+    "height": 675
+  },
+  "picks/site-workflow/shopify/supporting-2.webp": {
+    "aspect": "400:169",
+    "width": 1200,
+    "height": 507
+  },
+  "picks/site-workflow/shopify/supporting-3.webp": {
+    "aspect": "240:151",
+    "width": 1200,
+    "height": 755
+  },
+  "picks/software/nordvpn/hero.webp": {
+    "aspect": "1:1",
+    "width": 1110,
+    "height": 1110
+  },
+  "picks/software/nordvpn/supporting-1.webp": {
+    "aspect": "3:2",
+    "width": 1200,
+    "height": 800
+  },
+  "picks/software/nordvpn/supporting-2.webp": {
+    "aspect": "3:2",
+    "width": 1200,
+    "height": 800
+  },
+  "picks/software/nordvpn/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 1110,
+    "height": 1110
+  },
+  "picks/software/sentrypc/hero.webp": {
+    "aspect": "16:9",
+    "width": 1280,
+    "height": 720
+  },
+  "picks/software/sentrypc/supporting-1.webp": {
+    "aspect": "40:21",
+    "width": 1200,
+    "height": 630
+  },
+  "picks/software/sentrypc/supporting-2.webp": {
+    "aspect": "505:493",
+    "width": 505,
+    "height": 493
+  },
+  "picks/software/sentrypc/supporting-3.webp": {
+    "aspect": "833:470",
+    "width": 833,
+    "height": 470
+  },
+  "picks/video/smallrig/hero.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/video/smallrig/supporting-1.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/video/smallrig/supporting-2.webp": {
+    "aspect": "1:1",
+    "width": 1000,
+    "height": 1000
+  },
+  "picks/video/smallrig/supporting-3.webp": {
+    "aspect": "1:1",
+    "width": 1200,
+    "height": 1200
+  },
+  "picks/workspace/uperfect/hero.webp": {
+    "aspect": "300:157",
+    "width": 1200,
+    "height": 628
+  },
+  "picks/workspace/uperfect/supporting-1.webp": {
+    "aspect": "2:1",
+    "width": 600,
+    "height": 300
+  },
+  "picks/workspace/uperfect/supporting-2.webp": {
+    "aspect": "500:339",
+    "width": 1000,
+    "height": 678
+  },
+  "picks/workspace/uperfect/supporting-3.webp": {
+    "aspect": "600:257",
+    "width": 1200,
+    "height": 514
   }
 }
