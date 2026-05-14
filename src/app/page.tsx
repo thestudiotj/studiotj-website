@@ -5,9 +5,11 @@ import { getAllPosts } from '@/lib/content'
 import type { BlogFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
 import { getAllSeriesPhotos } from '@/lib/series'
 import { getElsewhereData } from '@/lib/elsewhere'
+import { getDisplayGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
 import EmailCapture from '@/components/EmailCapture'
 import HeroImage from '@/components/HeroImage'
 import CollectionCard from '@/components/CollectionCard'
+import ShopHomeCard from '@/components/ShopHomeCard'
 import SeriesRotator from '@/components/SeriesRotator'
 import ElsewhereHomeGrid from '@/components/ElsewhereHomeGrid'
 
@@ -118,6 +120,19 @@ export default async function HomePage() {
     ? new Map(portfolio.photos.map(p => [p.id, p]))
     : new Map()
 
+  const shopProducts = getDisplayGroups()
+  const shopCollections = COLLECTION_CONFIG.map((col) => {
+    const heroImages = shopProducts
+      .filter((g) => g.available && g.collection === col.key)
+      .map((g) => {
+        const v = groupDefaultVariant(g)
+        return v.hero ?? v.mock1 ?? null
+      })
+      .filter((url): url is string => url !== null)
+    return { slug: col.slug, displayName: col.displayName, heroImages }
+  })
+  const hasShopCollections = shopCollections.some((c) => c.heroImages.length > 0)
+
   const seriesPhotos = getAllSeriesPhotos()
 
   const elsewhereItems = getElsewhereData().items.slice(0, 8)
@@ -183,6 +198,31 @@ export default async function HomePage() {
                 />
               )
             })}
+          </div>
+        </section>
+      )}
+
+      {/* Shop */}
+      {hasShopCollections && (
+        <section className="border-t border-dust/40 px-6 md:px-12 py-20">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <h2 className="section-title">Shop</h2>
+              <p className="text-muted text-sm mt-1">Fine art prints and objects, made to order</p>
+            </div>
+            <Link href="/shop" className="nav-link">View all →</Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {shopCollections.map((col, i) => (
+              <ShopHomeCard
+                key={col.slug}
+                slug={col.slug}
+                name={col.displayName}
+                heroImages={col.heroImages}
+                index={i}
+              />
+            ))}
           </div>
         </section>
       )}
