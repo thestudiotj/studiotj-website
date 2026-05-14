@@ -37,36 +37,28 @@ export default function ShopHomeCard({
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Link href={`/shop/${slug}`} className="group block relative overflow-hidden">
-        <div
-          className="relative w-full overflow-hidden bg-dust/20"
-          style={{ aspectRatio: '4 / 5' }}
-        >
+      <Link href={`/shop/${slug}`} className="group block">
+        <div className="relative aspect-[3/2] bg-dust/20 overflow-hidden mb-4">
           {heroImage && (
-            <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.04]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={heroImage}
-                alt={name}
-                className="w-full h-full object-contain"
-                style={{
-                  opacity: imgLoaded ? 1 : 0,
-                  transition: imgLoaded ? 'opacity 0.4s ease' : 'none',
-                }}
-                loading="lazy"
-                onLoad={() => setImgLoaded(true)}
-              />
-            </div>
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={heroImage}
+              alt={name}
+              className="absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-[1.04]"
+              style={{
+                opacity: imgLoaded ? 1 : 0,
+                transition: imgLoaded
+                  ? 'opacity 0.4s ease, transform 0.5s ease-out'
+                  : 'none',
+              }}
+              loading="lazy"
+              onLoad={() => setImgLoaded(true)}
+            />
           )}
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent transition-opacity duration-300 group-hover:opacity-90" />
-
-          <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-            <h2 className="font-display text-2xl md:text-3xl text-paper leading-tight mb-2">
-              {name}
-            </h2>
-          </div>
         </div>
+        <h2 className="font-display text-xl md:text-2xl text-ink leading-tight">
+          {name}
+        </h2>
       </Link>
     </motion.div>
   )
