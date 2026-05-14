@@ -9,6 +9,8 @@ import { COLLECTION_COPY, type CollectionSlug } from '@/lib/catalogue/collection
 import { FAMILY_CONFIG, FAMILY_COPY, type FamilySlug } from '@/lib/catalogue/families'
 import ShopCollectionCard from '@/components/ShopCollectionCard'
 import ShopGrid from '@/components/ShopGrid'
+import ShopNotesStrip from '@/components/ShopNotesStrip'
+import { getAllShopNotes } from '@/lib/catalogue/shop-notes'
 
 export const metadata: Metadata = {
   title: 'Shop',
@@ -24,6 +26,7 @@ const FAMILY_HERO_CODES: Record<string, string[]> = {
 
 export default function ShopPage() {
   const allProducts = getDisplayGroups()
+  const shopNotes = getAllShopNotes()
 
   const collections = COLLECTION_CONFIG.map((col) => {
     const products = allProducts.filter((g) => g.available && g.collection === col.key)
@@ -108,6 +111,9 @@ export default function ShopPage() {
           ))}
         </div>
       </div>
+
+      {/* Studio notes — working observations about each collection */}
+      <ShopNotesStrip notes={shopNotes} />
 
       {/* Browse all — compact grid with location filter + sort */}
       <div className="mb-16 pt-10 border-t border-dust/30">
