@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(cd *)",
+      "PowerShell(Set-Location *)",
+      "PowerShell(ls *)",
+      "PowerShell(dir *)",
+      "PowerShell(Get-Content *)",
+      "PowerShell(Test-Path *)",
+      "PowerShell(Invoke-WebRequest *)",
+      "PowerShell(npx tsc --noEmit)",
+      "PowerShell(npx tsc --noEmit 2>&1)",
+      "Bash(curl *)",
+      "Bash(awk *)",
+      "Bash(nslookup *)"
+    ]
+  }
+}
