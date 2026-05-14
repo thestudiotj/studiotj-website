@@ -7,9 +7,11 @@ import { isMergedGroup, displayGroupFamilyCodes } from '@/lib/catalogue/types'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 import { getLearnTeaser } from '@/lib/catalogue/learn-teasers'
 import { formatPrice } from '@/lib/catalogue/format'
+import type { Currency } from '@/lib/i18n/currency'
 import { useCart } from '@/lib/cart'
 import ProductGallery from '@/components/ProductGallery'
 import Breadcrumb from '@/components/Breadcrumb'
+import { TaxNote } from '@/components/TaxNote'
 
 function colorLabel(color: string): string {
   const map: Record<string, string> = {
@@ -79,11 +81,13 @@ export default function ProductDetail({
   group,
   collectionSlug,
   collectionName,
+  currency,
   noPadding = false,
 }: {
   group: DisplayGroup
   collectionSlug: string
   collectionName: string
+  currency: Currency
   noPadding?: boolean
 }) {
   const merged = isMergedGroup(group)
@@ -166,7 +170,7 @@ export default function ProductDetail({
   }, [familyVariants, selectedSize, selectedColor, selectedPack, hasColor, hasPack])
 
   const activeVariant = selectedVariant ?? cheapestVariant(familyVariants)
-  const price = formatPrice(activeVariant.price_cents)
+  const price = formatPrice(activeVariant.price_cents, currency)
 
   const galleryImages = useMemo(() => {
     const imgs: string[] = []
@@ -249,7 +253,9 @@ export default function ProductDetail({
           <h1 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-4">
             {group.title}
           </h1>
-          <p className="text-2xl text-ink mb-6">{price}</p>
+          <p className="text-2xl text-ink mb-1">{price}</p>
+          <TaxNote currency={currency} className="block text-xs text-muted mb-6" />
+          {currency !== 'USD' && <div className="mb-6" />}
         </div>
 
         {/* Gallery — mobile: 2nd. Desktop: left col, both rows */}

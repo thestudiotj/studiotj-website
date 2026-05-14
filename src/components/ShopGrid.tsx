@@ -8,6 +8,7 @@ import { isMergedGroup, displayGroupFamilyCodes } from '@/lib/catalogue/types'
 import { COLLECTION_TO_SLUG, COLLECTION_CONFIG, KEY_TO_COLLECTION } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG, SLUG_TO_FAMILY } from '@/lib/catalogue/families'
 import { formatPrice } from '@/lib/catalogue/format'
+import type { Currency } from '@/lib/i18n/currency'
 import {
   LOCATION_ORDER,
   locationLabel,
@@ -156,7 +157,7 @@ function SortDropdown({ value, onChange }: { value: SortKey; onChange: (v: SortK
 
 // ─── Product cards ─────────────────────────────────────────────────────────────
 
-function ProductCard({ group }: { group: DisplayGroup }) {
+function ProductCard({ group, currency }: { group: DisplayGroup; currency: Currency }) {
   const minPrice = groupMinPriceCents(group)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
@@ -189,13 +190,13 @@ function ProductCard({ group }: { group: DisplayGroup }) {
       )}
       <h3 className="text-sm font-medium text-ink leading-snug">{group.title}</h3>
       <p className="text-muted text-sm mt-1">
-        {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}
+        {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice, currency)}
       </p>
     </Link>
   )
 }
 
-function CompactProductCard({ group }: { group: DisplayGroup }) {
+function CompactProductCard({ group, currency }: { group: DisplayGroup; currency: Currency }) {
   const minPrice = groupMinPriceCents(group)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
@@ -238,7 +239,7 @@ function CompactProductCard({ group }: { group: DisplayGroup }) {
       )}
       <h3 className="text-xs font-medium text-ink leading-snug line-clamp-1">{group.title}</h3>
       <p className="text-muted text-xs mt-0.5">
-        {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}
+        {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice, currency)}
       </p>
     </Link>
   )
@@ -249,9 +250,11 @@ function CompactProductCard({ group }: { group: DisplayGroup }) {
 function ShopGridInner({
   products,
   compact = false,
+  currency,
 }: {
   products: DisplayGroup[]
   compact?: boolean
+  currency: Currency
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -470,13 +473,13 @@ function ShopGridInner({
       ) : compact ? (
         <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
           {displayed.map((group) => (
-            <CompactProductCard key={group.id} group={group} />
+            <CompactProductCard key={group.id} group={group} currency={currency} />
           ))}
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
           {displayed.map((group) => (
-            <ProductCard key={group.id} group={group} />
+            <ProductCard key={group.id} group={group} currency={currency} />
           ))}
         </div>
       )}
@@ -489,13 +492,15 @@ function ShopGridInner({
 export default function ShopGrid({
   products,
   compact = false,
+  currency,
 }: {
   products: DisplayGroup[]
   compact?: boolean
+  currency: Currency
 }) {
   return (
     <Suspense>
-      <ShopGridInner products={products} compact={compact} />
+      <ShopGridInner products={products} compact={compact} currency={currency} />
     </Suspense>
   )
 }

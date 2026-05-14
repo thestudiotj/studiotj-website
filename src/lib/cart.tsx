@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from 'react'
+import type { Currency } from '@/lib/i18n/currency'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -82,6 +83,7 @@ interface CartContextValue {
   itemCount: number
   subtotal: number
   drawerOpen: boolean
+  currency: Currency
   addItem: (item: Omit<CartItem, 'quantity'>) => void
   removeItem: (productId: string) => void
   updateQuantity: (productId: string, qty: number) => void
@@ -96,7 +98,13 @@ const CartContext = createContext<CartContextValue | null>(null)
 
 export const CART_STORAGE_KEY = 'studiotj_cart_v2'
 
-export function CartProvider({ children }: { children: ReactNode }) {
+export function CartProvider({
+  children,
+  currency = 'EUR',
+}: {
+  children: ReactNode
+  currency?: Currency
+}) {
   const [state, dispatch] = useReducer(cartReducer, { items: [], drawerOpen: false })
   const [hydrated, setHydrated] = useState(false)
 
@@ -130,6 +138,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     itemCount,
     subtotal,
     drawerOpen: state.drawerOpen,
+    currency,
     addItem: (item) => dispatch({ type: 'ADD_ITEM', item }),
     removeItem: (productId) => dispatch({ type: 'REMOVE_ITEM', productId }),
     updateQuantity: (productId, qty) => dispatch({ type: 'UPDATE_QTY', productId, qty }),

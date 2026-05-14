@@ -11,6 +11,7 @@ import ShopCollectionCard from '@/components/ShopCollectionCard'
 import ShopGrid from '@/components/ShopGrid'
 import ShopNotesStrip from '@/components/ShopNotesStrip'
 import { getAllShopNotes } from '@/lib/catalogue/shop-notes'
+import { getVisitorCurrency } from '@/lib/i18n/server'
 
 export const metadata: Metadata = {
   title: 'Shop',
@@ -24,9 +25,10 @@ const FAMILY_HERO_CODES: Record<string, string[]> = {
   'cards-stationery': ['gre', 'pos'],
 }
 
-export default function ShopPage() {
+export default async function ShopPage() {
   const allProducts = getDisplayGroups()
   const shopNotes = getAllShopNotes()
+  const currency = await getVisitorCurrency()
 
   const collections = COLLECTION_CONFIG.map((col) => {
     const products = allProducts.filter((g) => g.available && g.collection === col.key)
@@ -118,7 +120,7 @@ export default function ShopPage() {
       {/* Browse all — compact grid with location filter + sort */}
       <div className="mb-16 pt-10 border-t border-dust/30">
         <h2 className="text-xs tracking-[0.3em] uppercase text-muted mb-8">Browse all</h2>
-        <ShopGrid products={allProducts.filter((g) => g.available)} compact />
+        <ShopGrid products={allProducts.filter((g) => g.available)} compact currency={currency} />
       </div>
 
       {/* Info copy */}

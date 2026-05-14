@@ -4,9 +4,10 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/lib/cart'
 import { formatPrice } from '@/lib/catalogue/format'
+import { TaxNote } from '@/components/TaxNote'
 
 export default function CartDrawer() {
-  const { items, itemCount, subtotal, drawerOpen, removeItem, updateQuantity, closeDrawer } =
+  const { items, itemCount, subtotal, drawerOpen, currency, removeItem, updateQuantity, closeDrawer } =
     useCart()
   const [checking, setChecking] = useState(false)
   const [error, setError] = useState('')
@@ -129,7 +130,7 @@ export default function CartDrawer() {
                       {item.productTitle}
                     </p>
                     <p className="text-sm text-ink mt-1">
-                      {formatPrice(item.price * item.quantity)}
+                      {formatPrice(item.price * item.quantity, currency)}
                     </p>
 
                     {/* Qty controls */}
@@ -170,9 +171,12 @@ export default function CartDrawer() {
           <div className="border-t border-dust/30 px-6 py-5 flex flex-col gap-4">
             <div className="flex items-center justify-between">
               <span className="text-xs tracking-widest uppercase text-muted">Subtotal</span>
-              <span className="text-ink">{formatPrice(subtotal)}</span>
+              <span className="text-ink">{formatPrice(subtotal, currency)}</span>
             </div>
-            <p className="text-xs text-muted">Shipping calculated at checkout.</p>
+            <div className="flex items-center justify-between -mt-2">
+              <p className="text-xs text-muted">Shipping calculated at checkout.</p>
+              <TaxNote currency={currency} />
+            </div>
             {error && <p className="text-xs text-red-500">{error}</p>}
             <button
               onClick={handleCheckout}

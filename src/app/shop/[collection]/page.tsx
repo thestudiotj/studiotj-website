@@ -14,6 +14,9 @@ import ShopGrid from '@/components/ShopGrid'
 import ShopFamilyGrid from '@/components/ShopFamilyGrid'
 import ShopPageShell from '@/components/ShopPageShell'
 import Breadcrumb from '@/components/Breadcrumb'
+import { getVisitorCurrency } from '@/lib/i18n/server'
+
+export const dynamic = 'force-dynamic'
 
 export function generateStaticParams() {
   const collectionParams = COLLECTION_CONFIG.map(({ slug }) => ({ collection: slug }))
@@ -40,12 +43,13 @@ export async function generateMetadata(
   }
 }
 
-export default function CollectionOrFamilyPage({
+export default async function CollectionOrFamilyPage({
   params,
 }: {
   params: { collection: string }
 }) {
   const { collection: segment } = params
+  const currency = await getVisitorCurrency()
 
   // ── Family browse page ────────────────────────────────────────────────────
   const familyMeta = SLUG_TO_FAMILY[segment]
@@ -93,7 +97,7 @@ export default function CollectionOrFamilyPage({
           </ul>
         </div>
 
-        <ShopFamilyGrid products={familyProducts} familyMeta={familyMeta} />
+        <ShopFamilyGrid products={familyProducts} familyMeta={familyMeta} currency={currency} />
       </ShopPageShell>
     )
   }
@@ -124,7 +128,7 @@ export default function CollectionOrFamilyPage({
       </div>
 
       {products.length > 0 ? (
-        <ShopGrid products={products} />
+        <ShopGrid products={products} currency={currency} />
       ) : (
         <div className="flex flex-col items-center text-center max-w-xl mx-auto py-20">
           <h2 className="font-display text-3xl mb-4">Coming soon</h2>

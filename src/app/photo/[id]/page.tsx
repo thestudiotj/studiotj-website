@@ -6,6 +6,7 @@ import { getPhotoRecord, getShootPhotos, getShootDisplayName } from '@/lib/photo
 import { getProductsByPhotoId, groupMinPriceCents } from '@/lib/catalogue/loader'
 import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
 import { formatPrice } from '@/lib/catalogue/format'
+import { getVisitorCurrency } from '@/lib/i18n/server'
 
 const SITE_URL = 'https://studiotj.com'
 const DEFAULT_OG = 'https://photos.studiotj.com/og/studiotj-default.jpg'
@@ -13,6 +14,8 @@ const DEFAULT_OG = 'https://photos.studiotj.com/og/studiotj-default.jpg'
 interface PageProps {
   params: { id: string }
 }
+
+export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
   return (getPortfolio()?.photos ?? []).map(p => ({ id: p.id }))
@@ -56,9 +59,11 @@ function formatDate(dateStr: string): string {
   }).format(new Date(dateStr))
 }
 
-export default function PhotoPage({ params }: PageProps) {
+export default async function PhotoPage({ params }: PageProps) {
   const record = getPhotoRecord(params.id)
   if (!record) notFound()
+
+  const currency = await getVisitorCurrency()
 
   const photo = record.photo
   const heroUrl = photo.url
@@ -122,7 +127,7 @@ export default function PhotoPage({ params }: PageProps) {
             href={shopHref}
             className="block mt-5 text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors"
           >
-            Available in the shop — from {formatPrice(shopMinPrice)} →
+            Available in the shop — from {formatPrice(shopMinPrice, currency)} →
           </Link>
         )}
       </div>

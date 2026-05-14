@@ -6,6 +6,7 @@ import Nav from '@/components/Nav'
 import FooterWrapper from '@/components/FooterWrapper'
 import { CartProvider } from '@/lib/cart'
 import CartDrawer from '@/components/CartDrawer'
+import { getVisitorCurrency } from '@/lib/i18n/server'
 
 const playfairDisplay = localFont({
   src: [
@@ -75,15 +76,17 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const currency = await getVisitorCurrency()
+
   return (
     <html lang="en" className={`${playfairDisplay.variable} ${dmSans.variable} ${dmMono.variable}`}>
       <body className="bg-paper text-ink min-h-screen flex flex-col">
-        <CartProvider>
+        <CartProvider currency={currency}>
           <Nav />
           <CartDrawer />
           <main className="flex-1 max-w-[1440px] mx-auto w-full">

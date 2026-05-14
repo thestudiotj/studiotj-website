@@ -8,6 +8,7 @@ import { isMergedGroup, displayGroupFamilyCodes } from '@/lib/catalogue/types'
 import type { FamilyMeta } from '@/lib/catalogue/families'
 import { COLLECTION_CONFIG, COLLECTION_TO_SLUG, KEY_TO_COLLECTION } from '@/lib/catalogue/collections'
 import { formatPrice } from '@/lib/catalogue/format'
+import type { Currency } from '@/lib/i18n/currency'
 
 /** Family slugs whose products are merged at runtime — the per-paper/per-type
  *  variant dropdown is meaningless on these pages and is hidden. */
@@ -42,7 +43,7 @@ function CollectionPill({ collection }: { collection: string }) {
 
 // ─── Product card with collection pill ───────────────────────────────────────
 
-function FamilyProductCard({ group }: { group: DisplayGroup }) {
+function FamilyProductCard({ group, currency }: { group: DisplayGroup; currency: Currency }) {
   const minPrice = groupMinPriceCents(group)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
@@ -70,7 +71,7 @@ function FamilyProductCard({ group }: { group: DisplayGroup }) {
         <CollectionPill collection={group.collection} />
         <h3 className="text-sm font-medium text-ink leading-snug">{group.title}</h3>
         <p className="text-muted text-sm">
-          {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice)}
+          {hasMultipleVariants ? 'from ' : ''}{formatPrice(minPrice, currency)}
         </p>
       </div>
     </Link>
@@ -144,9 +145,11 @@ function VariantDropdown({
 function FamilyGridInner({
   products,
   familyMeta,
+  currency,
 }: {
   products: DisplayGroup[]
   familyMeta: FamilyMeta
+  currency: Currency
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -258,7 +261,7 @@ function FamilyGridInner({
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
           {filtered.map((group) => (
-            <FamilyProductCard key={group.id} group={group} />
+            <FamilyProductCard key={group.id} group={group} currency={currency} />
           ))}
         </div>
       )}
@@ -271,13 +274,15 @@ function FamilyGridInner({
 export default function ShopFamilyGrid({
   products,
   familyMeta,
+  currency,
 }: {
   products: DisplayGroup[]
   familyMeta: FamilyMeta
+  currency: Currency
 }) {
   return (
     <Suspense>
-      <FamilyGridInner products={products} familyMeta={familyMeta} />
+      <FamilyGridInner products={products} familyMeta={familyMeta} currency={currency} />
     </Suspense>
   )
 }

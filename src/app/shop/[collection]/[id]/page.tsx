@@ -11,6 +11,7 @@ import type { DisplayGroup } from '@/lib/catalogue/types'
 import { notFound, permanentRedirect } from 'next/navigation'
 import ProductDetail from './ProductDetail'
 import ShopPageShell from '@/components/ShopPageShell'
+import { getVisitorCurrency } from '@/lib/i18n/server'
 
 const PRODUCT_URL = (collection: string, id: string) =>
   `https://studiotj.com/shop/${collection}/${id}`
@@ -45,6 +46,8 @@ function buildJsonLd(group: DisplayGroup, collection: string) {
     },
   }
 }
+
+export const dynamic = 'force-dynamic'
 
 export function generateStaticParams() {
   return getDisplayGroups()
@@ -86,7 +89,7 @@ export async function generateMetadata({
   }
 }
 
-export default function ProductPage({
+export default async function ProductPage({
   params,
 }: {
   params: { collection: string; id: string }
@@ -107,6 +110,7 @@ export default function ProductPage({
   if (COLLECTION_TO_SLUG[group.collection] !== params.collection) notFound()
 
   const jsonLd = buildJsonLd(group, params.collection)
+  const currency = await getVisitorCurrency()
 
   return (
     <>
@@ -119,6 +123,7 @@ export default function ProductPage({
           group={group}
           collectionSlug={params.collection}
           collectionName={col.name}
+          currency={currency}
           noPadding
         />
       </ShopPageShell>
