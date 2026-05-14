@@ -6,3 +6,4 @@ audit/
 .env*.local
 tsconfig.tsbuildinfo
 studiotj-sorter/
+.claude/settings.local.json
