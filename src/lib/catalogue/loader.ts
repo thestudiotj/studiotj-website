@@ -284,6 +284,14 @@ export function getDisplayGroupById(id: string): DisplayGroup | null {
   return buildCache().displayById.get(id) ?? null
 }
 
+/** Available DisplayGroups whose photo_id matches `photoId`, sorted ascending by
+ *  cheapest variant price. Returns [] when no matches — callers render nothing. */
+export function getProductsByPhotoId(photoId: string): DisplayGroup[] {
+  return getDisplayGroups()
+    .filter((g) => g.available && g.photo_id === photoId)
+    .sort((a, b) => groupMinPriceCents(a) - groupMinPriceCents(b))
+}
+
 /** If `id` is an old source ID that has been merged into another, returns the
  *  merged group's ID. Used for 301 redirects on the product page. */
 export function getMergedRedirectTarget(id: string): string | null {

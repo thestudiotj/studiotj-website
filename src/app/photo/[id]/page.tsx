@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getPortfolio } from '@/lib/portfolio'
 import { getPhotoRecord, getShootPhotos, getShootDisplayName } from '@/lib/photos'
+import { getProductsByPhotoId, groupMinPriceCents } from '@/lib/catalogue/loader'
+import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
 
 const SITE_URL = 'https://studiotj.com'
 const DEFAULT_OG = 'https://photos.studiotj.com/og/studiotj-default.jpg'
@@ -53,6 +55,10 @@ function formatDate(dateStr: string): string {
   }).format(new Date(dateStr))
 }
 
+function formatPrice(cents: number): string {
+  return new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' }).format(cents / 100)
+}
+
 export default function PhotoPage({ params }: PageProps) {
   const record = getPhotoRecord(params.id)
   if (!record) notFound()
@@ -71,6 +77,13 @@ export default function PhotoPage({ params }: PageProps) {
 
   const shootPhotos = getShootPhotos(params.id)
   const shootDisplayName = getShootDisplayName(photo)
+
+  const shopMatches = getProductsByPhotoId(photo.id)
+  const cheapestShopMatch = shopMatches[0] ?? null
+  const shopHref = cheapestShopMatch
+    ? `/shop/${COLLECTION_TO_SLUG[cheapestShopMatch.collection] ?? cheapestShopMatch.collection}/${cheapestShopMatch.id}`
+    : null
+  const shopMinPrice = cheapestShopMatch ? groupMinPriceCents(cheapestShopMatch) : null
 
   return (
     <main className="min-h-screen bg-paper pt-20 pb-24">
@@ -106,6 +119,15 @@ export default function PhotoPage({ params }: PageProps) {
         <Link href={ctaHref} className="btn-primary">
           {ctaLabel}
         </Link>
+
+        {shopHref && shopMinPrice !== null && (
+          <Link
+            href={shopHref}
+            className="block mt-5 text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors"
+          >
+            Available in the shop — from {formatPrice(shopMinPrice)} →
+          </Link>
+        )}
       </div>
 
       {/* Shoot strip */}
