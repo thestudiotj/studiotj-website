@@ -50,6 +50,21 @@ REGION_CSV_IDS = {
 
 ECB_URL = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
 
+# Locked FX rates (ECB reference, 2026-05-13). See scripts/extraction-fx-rates.md.
+# These drive both:
+#   • compute_price_cents (GBP→EUR cost-basis conversion via LOCKED_FX_RATES['GBP']),
+#   • lookup_uk/us/au regional FX conversion (when --use-locked-fx is set).
+# Hardcoding keeps storefront price_cents and stored base_prices reproducible
+# from MDX alone. Pass --refresh-fx to fetch fresh ECB rates instead.
+LOCKED_FX_DATE = "2026-05-13"
+LOCKED_FX_RATES = {
+    "EUR": 1.0,
+    "USD": 1.171500,
+    "GBP": 0.867130,
+    "AUD": 1.615800,
+}
+GBP_PER_EUR = LOCKED_FX_RATES["GBP"]
+
 
 # ─── ECB FX rates ─────────────────────────────────────────────────────────────
 
@@ -285,9 +300,14 @@ def parse_grouped_mdx(path: Path) -> dict:
     fm_end = fm_close_idx + 1  # offset of the '---' line start
     fm_text = text[fm_start:fm_end]
 
-    # margin_pct (top-level)
-    m = re.search(r"^margin_pct: (\d+)\s*$", fm_text, re.MULTILINE)
-    margin_pct = int(m.group(1)) if m else None
+    # margin_pct (top-level). Accepts decimals — re-target families encode
+    # the FX-cancellation factor with multi-decimal precision so storefront
+    # price_cents stay within 1 cent of the legacy value.
+    m = re.search(r"^margin_pct: ([\d.]+)\s*$", fm_text, re.MULTILINE)
+    margin_pct = float(m.group(1)) if m else None
+
+    fam_m = re.search(r"^family: (\S+)\s*$", fm_text, re.MULTILINE)
+    family = fam_m.group(1) if fam_m else None
 
     # Find variant headers
     variants = []
@@ -352,7 +372,7 @@ def parse_grouped_mdx(path: Path) -> dict:
         })
 
     return {"text": text, "fm_start": fm_start, "fm_end": fm_end,
-            "margin_pct": margin_pct, "variants": variants}
+            "margin_pct": margin_pct, "family": family, "variants": variants}
 
 
 def format_base_prices_block(bp: dict, indent: str = "      ") -> str:
@@ -373,17 +393,19 @@ def format_base_prices_block(bp: dict, indent: str = "      ") -> str:
 
 
 def rewrite_grouped_mdx(parsed: dict, new_variants: list,
-                        new_cbc_per_variant: dict) -> str:
+                        new_cbc_per_variant: dict,
+                        new_pc_per_variant: dict) -> str:
     """
-    Reconstruct full MDX text with updated base_prices + cost_basis_currency
-    per variant. new_variants maps variant_id → new_bp dict. new_cbc_per_variant
-    maps variant_id → basis string.
+    Reconstruct full MDX text with updated base_prices, cost_basis_currency,
+    and price_cents per variant. new_variants maps variant_id → new_bp dict.
+    new_cbc_per_variant maps variant_id → basis string. new_pc_per_variant
+    maps variant_id → recomputed price_cents int.
 
     Strategy: process variants in reverse order (so offsets remain valid as we
     splice). For each variant:
       1. Replace bp_block (from bp_block_start to bp_block_end) with new bp text.
-      2. After the new bp_block, insert cost_basis_currency line if not already
-         present, or replace existing one.
+      2. Re-locate the variant block by variantId, then replace/insert
+         cost_basis_currency and rewrite the price_cents line.
     """
     text = parsed["text"]
     # Sort variants by block_start in reverse so edits don't invalidate offsets
@@ -395,26 +417,37 @@ def rewrite_grouped_mdx(parsed: dict, new_variants: list,
         if new_bp is None:
             continue
         new_cbc = new_cbc_per_variant.get(v["variant_id"])
+        new_pc = new_pc_per_variant.get(v["variant_id"])
 
         # 1. Replace base_prices block
         new_bp_text = format_base_prices_block(new_bp)
         text = text[:v["bp_block_start"]] + new_bp_text + text[v["bp_block_end"]:]
 
-        # 2. Handle cost_basis_currency line (insert or replace)
-        # Re-find the variant block after the bp replace, since offsets shifted.
-        # Simplest: search the variant block by variant_id.
-        if new_cbc is None:
-            continue
+        # 2. Re-locate variant block (offsets shifted after bp replace).
         header_re = re.compile(rf"^  - variantId: {re.escape(v['variant_id'])}\s*$",
                                re.MULTILINE)
         hm = header_re.search(text)
         if not hm:
             raise RuntimeError(f"Lost variant {v['variant_id']} during rewrite")
-        # Variant ends at the next variant header or at the closing ---
         next_hm = re.search(r"^  - variantId: \S+\s*$|^---\s*$",
                             text[hm.end():], re.MULTILINE)
         block_end = hm.end() + (next_hm.start() if next_hm else len(text) - hm.end())
         var_block = text[hm.end():block_end]
+
+        # 2a. Rewrite price_cents
+        if new_pc is not None:
+            pc_re = re.compile(r"^(    price_cents: )\d+(\s*)$", re.MULTILINE)
+            new_var_block, n_pc = pc_re.subn(rf"\g<1>{new_pc}\g<2>", var_block)
+            if n_pc != 1:
+                raise RuntimeError(
+                    f"Could not rewrite price_cents for {v['variant_id']} "
+                    f"(matched {n_pc} times)")
+            var_block = new_var_block
+
+        # 2b. Handle cost_basis_currency line (insert or replace).
+        if new_cbc is None:
+            text = text[:hm.end()] + var_block + text[block_end:]
+            continue
         cbc_re = re.compile(r"^    cost_basis_currency: \S+\s*$", re.MULTILINE)
         new_cbc_line = f"    cost_basis_currency: {new_cbc}\n"
         if cbc_re.search(var_block):
@@ -510,8 +543,20 @@ def run_discover(files: list, price_index: dict, report_path: Path) -> None:
 
 # ─── Update pass ─────────────────────────────────────────────────────────────
 
-def compute_price_cents(eu_price: float, margin_pct: int) -> int:
-    return round(eu_price * (1 + margin_pct / 100) * 100)
+def compute_price_cents(eu_price: float, margin_pct: float,
+                        cost_basis_currency: str) -> int:
+    """
+    Storefront price_cents in EUR. eu_price arrives in the variant's
+    cost-basis currency (per build_base_prices); GBP-basis variants must
+    FX-convert to EUR before margin is applied, otherwise the price treats
+    GBP base as EUR and under-prices by the FX gap (the bug fixed in
+    Session 2). See GBP_PER_EUR constant.
+    """
+    if cost_basis_currency == "GBP":
+        eur_base = eu_price / GBP_PER_EUR
+    else:
+        eur_base = eu_price
+    return round(eur_base * (1 + margin_pct / 100) * 100)
 
 
 def write_fx_notes(rates: dict, fetch_date: str, source_url: str) -> None:
@@ -576,8 +621,17 @@ def run_update(files: list, price_index: dict, products_dir: Path,
             print(f"  SKIP {path.name}: no margin_pct")
             continue
 
+        # HPB is deferred (Session 12d activation). Leave the MDX byte-identical
+        # — no base_prices refresh, no price_cents recompute. Without this skip
+        # the formula fix would propagate the FX correction to HPB landscape and
+        # change customer-facing prices outside the deferred scope.
+        if parsed["family"] == "hpb":
+            print(f"  SKIP {path.name}: family=hpb (deferred)")
+            continue
+
         new_variants_bp = {}
         new_variants_cbc = {}
+        new_variants_pc = {}
         file_changed = False
 
         for v in parsed["variants"]:
@@ -595,7 +649,7 @@ def run_update(files: list, price_index: dict, products_dir: Path,
                 summary["skus_not_in_index"].append((path.name, f"{sku}-EU-null"))
                 continue
 
-            new_pc = compute_price_cents(new_bp["EU"], margin_pct)
+            new_pc = compute_price_cents(new_bp["EU"], margin_pct, basis)
             if new_pc != old_pc:
                 summary["variants_price_cents_drift"] += 1
                 pc_drift_details.append(
@@ -627,6 +681,7 @@ def run_update(files: list, price_index: dict, products_dir: Path,
 
             new_variants_bp[v["variant_id"]] = new_bp
             new_variants_cbc[v["variant_id"]] = basis
+            new_variants_pc[v["variant_id"]] = new_pc
 
             if len(sample_diffs) < 8:
                 sample_diffs.append({
@@ -645,11 +700,13 @@ def run_update(files: list, price_index: dict, products_dir: Path,
                 old_bp.get("UK") != new_bp["UK"] or
                 old_bp.get("US") != new_bp["US"] or
                 old_bp.get("AU") != new_bp["AU"] or
-                v["existing_cost_basis_currency"] != basis):
+                v["existing_cost_basis_currency"] != basis or
+                old_pc != new_pc):
                 file_changed = True
 
-        if new_variants_bp and not dry_run:
-            new_text = rewrite_grouped_mdx(parsed, new_variants_bp, new_variants_cbc)
+        if new_variants_bp and file_changed and not dry_run:
+            new_text = rewrite_grouped_mdx(parsed, new_variants_bp,
+                                           new_variants_cbc, new_variants_pc)
             path.write_text(new_text, encoding="utf-8")
         if file_changed:
             summary["files_modified"] += 1
@@ -735,6 +792,10 @@ def main():
                     help="With --update: report but do not write")
     ap.add_argument("--check", action="store_true",
                     help="Run acceptance checks only")
+    ap.add_argument("--refresh-fx", action="store_true",
+                    help="Fetch live ECB FX rates instead of using the "
+                         "values locked in extract-prodigi-pricing.py / "
+                         "extraction-fx-rates.md.")
     ap.add_argument("--csv-dir", default=None,
                     help="Directory with Prodigi pricing CSVs")
     ap.add_argument("--products-dir", default=PRODUCTS_DIR_DEFAULT,
@@ -778,13 +839,20 @@ def main():
     print(f"  {len(price_index)} unique SKUs indexed.")
 
     if args.update:
-        print(f"\nFetching ECB FX rates from {ECB_URL} …")
-        rates, fetch_date, source_url = fetch_ecb_rates()
+        if args.refresh_fx:
+            print(f"\nFetching ECB FX rates from {ECB_URL} …")
+            rates, fetch_date, source_url = fetch_ecb_rates()
+        else:
+            print(f"\nUsing locked FX rates from {LOCKED_FX_DATE} "
+                  "(scripts/extraction-fx-rates.md). Pass --refresh-fx to refetch.")
+            rates = dict(LOCKED_FX_RATES)
+            fetch_date = LOCKED_FX_DATE
+            source_url = "scripts/extraction-fx-rates.md (locked)"
         print(f"  Fetch date: {fetch_date}")
         for ccy in ("USD", "GBP", "AUD"):
             if ccy in rates:
                 print(f"  1 EUR = {rates[ccy]:.6f} {ccy}")
-        if not args.dry_run:
+        if not args.dry_run and args.refresh_fx:
             write_fx_notes(rates, fetch_date, source_url)
     else:
         rates = None

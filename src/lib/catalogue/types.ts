@@ -205,6 +205,11 @@ export interface CheckoutProduct {
   print_areas: PrintArea[]
   base_prices: ProductBasePrices | undefined
   margin_pct: number
+  /** Variant's storefront price in cents (EUR). Authoritative — verifyPrice
+   *  compares the claimed cart price against this. Base_prices alone can no
+   *  longer reproduce it because GBP-cost-basis variants need FX conversion
+   *  (Session 2 formula fix). */
+  price_cents: number
   prodigi_sku: string           // variant's SKU for Prodigi shipping quote
   regional_skus?: Record<string, string | undefined>
   /** Attributes required by the Prodigi SKU (e.g. wrap, color). Omitted when empty. */

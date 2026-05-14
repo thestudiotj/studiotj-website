@@ -16,9 +16,9 @@ Status defined per cost-basis currency: LOSS if `revenue − base_US < 0`, EROSI
 | ema | 0 | 81 | 30 | 0 | 111 |
 | fap | 0 | 0 | 0 | 162 | 162 |
 | gre | 0 | 0 | 0 | 96 | 96 |
-| hge | 0 | 54 | 57 | 0 | 111 |
+| hge | 0 | 27 | 84 | 0 | 111 |
 | hpb | 0 | 0 | 20 | 0 | 20 |
-| hpr | 0 | 54 | 57 | 0 | 111 |
+| hpr | 0 | 27 | 84 | 0 | 111 |
 | pos | 0 | 0 | 0 | 96 | 96 |
 | spb | 0 | 0 | 8 | 0 | 8 |
 

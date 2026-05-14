@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
       )
     }
     if (bounds.expected.length === 0) {
-      console.warn('[checkout] Price bounds skipped (no base prices in catalogue)', { productId })
+      console.warn('[checkout] Price bounds skipped (no price_cents in catalogue)', { productId })
     }
 
     resolvedItems.push({ product, price, quantity })

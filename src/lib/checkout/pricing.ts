@@ -1,6 +1,3 @@
-import type { Lab, ProductBasePrices } from '@/lib/catalogue'
-
-const ALL_LABS: Lab[] = ['EU', 'UK', 'US', 'AU']
 const TOLERANCE_CENTS = 5
 
 interface PriceBoundsResult {
@@ -10,25 +7,17 @@ interface PriceBoundsResult {
 }
 
 interface PriceVerifiable {
-  base_prices?: ProductBasePrices
-  margin_pct: number
+  price_cents: number
 }
 
+// Authoritative storefront price is variant.price_cents (computed by
+// scripts/extract-prodigi-pricing.py with cost-basis FX handling). The cart
+// sends that same value; this check guards against tampering with a small
+// rounding tolerance.
 export function verifyPrice(product: PriceVerifiable, claimedCents: number): PriceBoundsResult {
-  const candidates: number[] = []
-
-  for (const lab of ALL_LABS) {
-    const baseDecimal = product.base_prices?.[lab] ?? null
-    if (baseDecimal == null) continue
-    const withMargin = baseDecimal * (1 + product.margin_pct / 100)
-    const cents = Math.round(withMargin * 100)
-    candidates.push(cents)
-  }
-
-  if (candidates.length === 0) {
+  if (!product.price_cents) {
     return { ok: false, expected: [], received: claimedCents }
   }
-
-  const ok = candidates.some((c) => Math.abs(c - claimedCents) <= TOLERANCE_CENTS)
-  return { ok, expected: candidates, received: claimedCents }
+  const ok = Math.abs(product.price_cents - claimedCents) <= TOLERANCE_CENTS
+  return { ok, expected: [product.price_cents], received: claimedCents }
 }

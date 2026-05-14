@@ -243,10 +243,17 @@ async function checkPhoto(r2Path) {
 
 // ── Price check ───────────────────────────────────────────────────────────────
 
+// Locked ECB rate 2026-05-13 (scripts/extraction-fx-rates.md). The storefront
+// is EUR-only; GBP-basis variants FX-convert their base before margin is
+// applied (Session 2 formula fix). Must match extract-prodigi-pricing.py's
+// GBP_PER_EUR constant.
+const GBP_PER_EUR = 0.867130
+
 function checkPrice(variant, marginPct) {
   const euBase = variant.base_prices?.EU
   if (euBase == null) return { ok: false, expected: null, notes: 'no base_prices.EU' }
-  const expected = Math.round(euBase * (1 + marginPct / 100) * 100)
+  const eurBase = variant.cost_basis_currency === 'GBP' ? euBase / GBP_PER_EUR : euBase
+  const expected = Math.round(eurBase * (1 + marginPct / 100) * 100)
   const diff = Math.abs(expected - (variant.price_cents ?? 0))
   if (diff > PRICE_TOLERANCE_CENTS) {
     return { ok: false, expected, notes: `price_cents=${variant.price_cents} expected=${expected} diff=${diff}c` }

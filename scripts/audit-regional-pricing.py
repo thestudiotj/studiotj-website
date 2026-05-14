@@ -37,8 +37,8 @@ def parse_mdx(path: Path) -> dict:
     out["family"] = re.search(r"^family: (\S+)\s*$",
                               fm, re.MULTILINE).group(1) \
         if re.search(r"^family: (\S+)\s*$", fm, re.MULTILINE) else ""
-    margin_m = re.search(r"^margin_pct: (\d+)\s*$", fm, re.MULTILINE)
-    out["margin_pct"] = int(margin_m.group(1)) if margin_m else None
+    margin_m = re.search(r"^margin_pct: ([\d.]+)\s*$", fm, re.MULTILINE)
+    out["margin_pct"] = float(margin_m.group(1)) if margin_m else None
 
     headers = list(VARIANT_HEADER_RE.finditer(fm))
     for i, h in enumerate(headers):

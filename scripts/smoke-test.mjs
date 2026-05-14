@@ -45,11 +45,11 @@ const stripe = new Stripe(STRIPE_SECRET_KEY)
 // ── Test cases ─────────────────────────────────────────────────────────────────
 const TESTS = [
   { label: 'can   (canvas 16×12)',          variantId: 'photo-atmospheric-leiden-017-can-16x12',           price: 4080 },
-  { label: 'fap-blk (framed A4 black)',     variantId: 'photo-atmospheric-leiden-017-fap-a4-black',        price: 5600 },
-  { label: 'fap-nat (framed A4 natural-oak)',variantId: 'photo-atmospheric-leiden-017-fap-a4-natural-oak', price: 5600 },
-  { label: 'fap-wht (framed A4 white)',     variantId: 'photo-atmospheric-leiden-017-fap-a4-white',        price: 5600 },
-  { label: 'hpr   (Photo Rag A3)',          variantId: 'photo-atmospheric-leiden-017-hpr-a3',              price: 1800 },
-  { label: 'hge   (German Etching A3)',     variantId: 'photo-atmospheric-leiden-017-hge-a3',              price: 1800 },
+  { label: 'fap-blk (framed A4 black)',     variantId: 'photo-atmospheric-leiden-017-fap-a4-black',        price: 6458 },
+  { label: 'fap-nat (framed A4 natural-oak)',variantId: 'photo-atmospheric-leiden-017-fap-a4-natural-oak', price: 6458 },
+  { label: 'fap-wht (framed A4 white)',     variantId: 'photo-atmospheric-leiden-017-fap-a4-white',        price: 6458 },
+  { label: 'hpr   (Photo Rag A3)',          variantId: 'photo-atmospheric-leiden-017-hpr-a3',              price: 2076 },
+  { label: 'hge   (German Etching A3)',     variantId: 'photo-atmospheric-leiden-017-hge-a3',              price: 2076 },
   { label: 'ema   (Matte Art A3)',          variantId: 'photo-atmospheric-leiden-017-ema-a3',              price: 1190 },
   { label: 'clp   (C-type 16×20)',          variantId: 'photo-atmospheric-leiden-068-clp-16x20',           price: 2250 },
   { label: 'gre   (greeting card pack10)',  variantId: 'photo-atmospheric-leiden-068-gre-6x4-pack10',      price: 2800 },

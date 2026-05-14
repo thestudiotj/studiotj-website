@@ -242,6 +242,7 @@ export function getVariantForCheckout(variantId: string): CheckoutProduct | null
     print_areas: group.print_areas as PrintArea[],
     base_prices: variant.base_prices as ProductBasePrices | undefined,
     margin_pct: group.margin_pct,
+    price_cents: variant.price_cents,
     prodigi_sku: variant.sku,
     ...(prodigi_attributes ? { prodigi_attributes } : {}),
   }
