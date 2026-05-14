@@ -234,7 +234,7 @@ export default async function HomePage() {
             <div className="md:w-1/2">
               <h2 className="section-title mb-6">Series</h2>
               <p className="text-muted leading-relaxed mb-8">
-                Ongoing sequences of photographs, organized by subject, weather, and season.
+                Ongoing sequences of photographs — routes walked and visits made, kept in the order they happened.
               </p>
               <Link href="/series" className="btn-outline">View Series →</Link>
             </div>
