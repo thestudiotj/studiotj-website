@@ -13,6 +13,16 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/portfolio/signature',
+        destination: '/portfolio/the-signature-collection',
+        permanent: true,
+      },
+      {
+        source: '/portfolio/mono',
+        destination: '/portfolio/monochrome-moods',
+        permanent: true,
+      },
+      {
         source: '/vondsten/verzorging',
         destination: '/vondsten',
         permanent: true,
