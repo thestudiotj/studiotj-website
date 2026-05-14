@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
   getAvailableDisplayGroups,
+  displayGroupFamilyCodes,
   COLLECTION_CONFIG,
   SLUG_TO_COLLECTION,
 } from '@/lib/catalogue'
-import { isMergedGroup, type DisplayGroup } from '@/lib/catalogue/types'
 import { COLLECTION_COPY, type CollectionSlug } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG, SLUG_TO_FAMILY, FAMILY_COPY, type FamilySlug } from '@/lib/catalogue/families'
 import { LEARN_TEASERS } from '@/lib/catalogue/learn-teasers'
@@ -14,10 +14,6 @@ import ShopGrid from '@/components/ShopGrid'
 import ShopFamilyGrid from '@/components/ShopFamilyGrid'
 import ShopPageShell from '@/components/ShopPageShell'
 import Breadcrumb from '@/components/Breadcrumb'
-
-function displayGroupFamilyCodes(g: DisplayGroup): string[] {
-  return isMergedGroup(g) ? g.source_family_codes : [g.family]
-}
 
 export function generateStaticParams() {
   const collectionParams = COLLECTION_CONFIG.map(({ slug }) => ({ collection: slug }))

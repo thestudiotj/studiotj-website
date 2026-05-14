@@ -6,15 +6,21 @@ export interface FamilyVariantOption {
 export interface FamilyMeta {
   slug: string
   name: string
-  familyCodes: string[]
+  /** Compact label for product cards and inline contexts. */
+  shortLabel: string
+  familyCodes: readonly string[]
   variantDropdownLabel: string
-  variantOptions: FamilyVariantOption[]
+  variantOptions: readonly FamilyVariantOption[]
 }
 
-export const FAMILY_CONFIG: FamilyMeta[] = [
+// Raw narrow tuple drives the FamilySlug literal union; the public export is
+// widened to readonly FamilyMeta[] so callers can pass arbitrary strings into
+// helpers like `.familyCodes.includes(code)` without tuple-narrowing pain.
+const FAMILY_CONFIG_RAW = [
   {
     slug: 'wall-art',
     name: 'Wall art',
+    shortLabel: 'Wall art',
     familyCodes: ['can', 'fap'],
     variantDropdownLabel: 'Print type',
     variantOptions: [
@@ -25,6 +31,7 @@ export const FAMILY_CONFIG: FamilyMeta[] = [
   {
     slug: 'prints-posters',
     name: 'Prints & posters',
+    shortLabel: 'Prints',
     familyCodes: ['hpr', 'hge', 'ema', 'clp'],
     variantDropdownLabel: 'Paper',
     variantOptions: [
@@ -37,6 +44,7 @@ export const FAMILY_CONFIG: FamilyMeta[] = [
   {
     slug: 'cards-stationery',
     name: 'Cards & stationery',
+    shortLabel: 'Cards',
     familyCodes: ['gre', 'pos'],
     variantDropdownLabel: 'Type',
     variantOptions: [
@@ -44,15 +52,16 @@ export const FAMILY_CONFIG: FamilyMeta[] = [
       { value: 'pos', label: 'Postcards' },
     ],
   },
-]
+] as const satisfies readonly FamilyMeta[]
+
+export const FAMILY_CONFIG: readonly FamilyMeta[] = FAMILY_CONFIG_RAW
+export type FamilySlug = (typeof FAMILY_CONFIG_RAW)[number]['slug']
 
 export const SLUG_TO_FAMILY: Record<string, FamilyMeta> = Object.fromEntries(
   FAMILY_CONFIG.map((f) => [f.slug, f])
 )
 
-export const FAMILY_SLUGS = new Set(FAMILY_CONFIG.map((f) => f.slug))
-
-export type FamilySlug = 'wall-art' | 'prints-posters' | 'cards-stationery'
+export const FAMILY_SLUGS = new Set<string>(FAMILY_CONFIG.map((f) => f.slug))
 
 interface FamilyCopy {
   /** Short single-line copy for /shop landing tiles. */

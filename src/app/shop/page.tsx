@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { getDisplayGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
-import { isMergedGroup, type DisplayGroup } from '@/lib/catalogue/types'
+import {
+  getDisplayGroups,
+  groupDefaultVariant,
+  displayGroupFamilyCodes,
+  COLLECTION_CONFIG,
+} from '@/lib/catalogue'
 import { COLLECTION_COPY, type CollectionSlug } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG, FAMILY_COPY, type FamilySlug } from '@/lib/catalogue/families'
 import ShopCollectionCard from '@/components/ShopCollectionCard'
 import ShopGrid from '@/components/ShopGrid'
-
-function displayGroupFamilyCodes(g: DisplayGroup): string[] {
-  return isMergedGroup(g) ? g.source_family_codes : [g.family]
-}
 
 export const metadata: Metadata = {
   title: 'Shop',

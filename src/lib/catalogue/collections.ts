@@ -8,12 +8,17 @@ export interface CollectionMeta {
 }
 
 // Order: Atmospheric, Halcyon, Signature, Monochrome Moods
-export const COLLECTION_CONFIG: CollectionMeta[] = [
+// Raw narrow tuple drives CollectionSlug; the public export is widened to
+// readonly CollectionMeta[] for ergonomic indexing and iteration.
+const COLLECTION_CONFIG_RAW = [
   { slug: 'atmospheric', key: 'the-atmospheric-collection', name: 'Atmospheric', displayName: 'The Atmospheric Collection' },
   { slug: 'halcyon',     key: 'the-halcyon-collection',     name: 'Halcyon',     displayName: 'The Halcyon Collection'     },
   { slug: 'signature',   key: 'the-signature-collection',   name: 'Signature',   displayName: 'The Signature Collection'   },
   { slug: 'mono',        key: 'monochrome-moods',            name: 'Mono',        displayName: 'Monochrome Moods'           },
-]
+] as const satisfies readonly CollectionMeta[]
+
+export const COLLECTION_CONFIG: readonly CollectionMeta[] = COLLECTION_CONFIG_RAW
+export type CollectionSlug = (typeof COLLECTION_CONFIG_RAW)[number]['slug']
 
 /** MDX collection key → URL slug (e.g. "the-atmospheric-collection" → "atmospheric") */
 export const COLLECTION_TO_SLUG: Record<string, string> = Object.fromEntries(
@@ -25,11 +30,14 @@ export const SLUG_TO_COLLECTION: Record<string, string> = Object.fromEntries(
   COLLECTION_CONFIG.map(({ slug, key }) => [slug, key])
 )
 
+/** MDX collection key → full CollectionMeta (for label lookups by group.collection). */
+export const KEY_TO_COLLECTION: Record<string, CollectionMeta> = Object.fromEntries(
+  COLLECTION_CONFIG.map((c) => [c.key, c])
+)
+
 export function collectionSlug(collectionKey: string): string {
   return COLLECTION_TO_SLUG[collectionKey] ?? collectionKey
 }
-
-export type CollectionSlug = 'atmospheric' | 'halcyon' | 'signature' | 'mono'
 
 interface CollectionCopy {
   /** Short single-line copy for /shop landing tiles. */

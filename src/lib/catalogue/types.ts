@@ -127,6 +127,12 @@ export function isMergedGroup(g: GroupedProduct | MergedGroup): g is MergedGroup
 /** Anything that can be shown on a shop card or detail page. */
 export type DisplayGroup = GroupedProduct | MergedGroup
 
+/** Family codes carried by a DisplayGroup — single-element for standalone
+ *  GroupedProducts, multi-element for MergedGroups. */
+export function displayGroupFamilyCodes(group: DisplayGroup): readonly string[] {
+  return isMergedGroup(group) ? group.source_family_codes : [group.family]
+}
+
 // ─── Legacy flat product types (kept for type compatibility, no longer loaded) ─
 
 const baseFields = {

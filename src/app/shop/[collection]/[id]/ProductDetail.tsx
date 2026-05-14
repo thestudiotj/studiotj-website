@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState, useMemo } from 'react'
 import type { DisplayGroup, ProductVariant, MergedGroup } from '@/lib/catalogue'
-import { isMergedGroup } from '@/lib/catalogue/types'
+import { isMergedGroup, displayGroupFamilyCodes } from '@/lib/catalogue/types'
 import { FAMILY_CONFIG } from '@/lib/catalogue/families'
 import { getLearnTeaser } from '@/lib/catalogue/learn-teasers'
 import { formatPrice } from '@/lib/catalogue/format'
@@ -34,16 +34,9 @@ function familyCodeLabel(code: string): string {
   return FAMILY_CODE_LABELS[code] ?? code.toUpperCase()
 }
 
-const FAMILY_SHORT_LABELS: Record<string, string> = {
-  'wall-art':         'Wall art',
-  'prints-posters':   'Prints',
-  'cards-stationery': 'Cards',
-}
-
 function familyShortLabelForGroup(group: DisplayGroup): string | null {
-  const codes = isMergedGroup(group) ? group.source_family_codes : [group.family]
-  const fam = FAMILY_CONFIG.find((f) => f.familyCodes.some((c) => codes.includes(c)))
-  return fam ? FAMILY_SHORT_LABELS[fam.slug] ?? null : null
+  const codes = displayGroupFamilyCodes(group)
+  return FAMILY_CONFIG.find((f) => f.familyCodes.some((c) => codes.includes(c)))?.shortLabel ?? null
 }
 
 /** UI title for the source-family picker on a merged product page. */

@@ -4,9 +4,9 @@ import { useState, useMemo, Suspense } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import type { DisplayGroup, ProductVariant } from '@/lib/catalogue/types'
-import { isMergedGroup } from '@/lib/catalogue/types'
-import { COLLECTION_TO_SLUG, COLLECTION_CONFIG } from '@/lib/catalogue/collections'
-import { FAMILY_CONFIG } from '@/lib/catalogue/families'
+import { isMergedGroup, displayGroupFamilyCodes } from '@/lib/catalogue/types'
+import { COLLECTION_TO_SLUG, COLLECTION_CONFIG, KEY_TO_COLLECTION } from '@/lib/catalogue/collections'
+import { FAMILY_CONFIG, SLUG_TO_FAMILY } from '@/lib/catalogue/families'
 import { formatPrice } from '@/lib/catalogue/format'
 import {
   LOCATION_ORDER,
@@ -32,25 +32,8 @@ function groupDefaultVariant(group: DisplayGroup): ProductVariant {
   return group.variants[idx]
 }
 
-function groupFamilyCodes(group: DisplayGroup): string[] {
-  return isMergedGroup(group) ? group.source_family_codes : [group.family]
-}
-
-const COLLECTION_LABELS: Record<string, string> = {
-  'the-signature-collection':    'Signature',
-  'monochrome-moods':            'Monochrome',
-  'the-atmospheric-collection':  'Atmospheric',
-  'the-halcyon-collection':      'Halcyon',
-}
-
-const FAMILY_SHORT_LABELS: Record<string, string> = {
-  'wall-art':         'Wall art',
-  'prints-posters':   'Prints',
-  'cards-stationery': 'Cards',
-}
-
 function groupFamilySlug(group: DisplayGroup): string | null {
-  const codes = groupFamilyCodes(group)
+  const codes = displayGroupFamilyCodes(group)
   return FAMILY_CONFIG.find((f) => f.familyCodes.some((c) => codes.includes(c)))?.slug ?? null
 }
 
@@ -180,7 +163,7 @@ function ProductCard({ group }: { group: DisplayGroup }) {
   const hasMultipleVariants = group.variants.length > 1
   const href = `/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`
   const familySlug = groupFamilySlug(group)
-  const familyLabel = familySlug ? FAMILY_SHORT_LABELS[familySlug] ?? null : null
+  const familyLabel = familySlug ? SLUG_TO_FAMILY[familySlug]?.shortLabel ?? null : null
 
   return (
     <Link href={href} className="group">
@@ -218,9 +201,9 @@ function CompactProductCard({ group }: { group: DisplayGroup }) {
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1 ?? null
   const hasMultipleVariants = group.variants.length > 1
   const href = `/shop/${COLLECTION_TO_SLUG[group.collection] ?? group.collection}/${group.id}`
-  const collectionLabel = COLLECTION_LABELS[group.collection] ?? null
+  const collectionLabel = KEY_TO_COLLECTION[group.collection]?.name ?? null
   const familySlug = groupFamilySlug(group)
-  const familyLabel = familySlug ? FAMILY_SHORT_LABELS[familySlug] ?? null : null
+  const familyLabel = familySlug ? SLUG_TO_FAMILY[familySlug]?.shortLabel ?? null : null
 
   return (
     <Link href={href} className="group">
@@ -321,7 +304,7 @@ function ShopGridInner({
     if (compact) return []
     const codes = new Set<string>()
     for (const g of products) {
-      for (const code of groupFamilyCodes(g)) codes.add(code)
+      for (const code of displayGroupFamilyCodes(g)) codes.add(code)
     }
     return FAMILY_CONFIG.filter((fam) => fam.familyCodes.some((code) => codes.has(code)))
   }, [products, compact])
@@ -338,7 +321,7 @@ function ShopGridInner({
       const fam = FAMILY_CONFIG.find((f) => f.slug === activeFamily)
       if (fam) {
         result = result.filter((g) =>
-          groupFamilyCodes(g).some((code) => fam.familyCodes.includes(code)),
+          displayGroupFamilyCodes(g).some((code) => fam.familyCodes.includes(code)),
         )
       }
     }
@@ -380,7 +363,7 @@ function ShopGridInner({
                 onClick={() => updateParams({ collection: slug })}
                 className={`${pillBase} ${activeCollection === slug ? pillActive : pillInactive}`}
               >
-                {COLLECTION_LABELS[c] ?? c}
+                {KEY_TO_COLLECTION[c]?.name ?? c}
               </button>
             )
           })}

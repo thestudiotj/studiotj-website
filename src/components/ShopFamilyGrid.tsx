@@ -4,18 +4,10 @@ import { useMemo, useState, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import type { DisplayGroup } from '@/lib/catalogue/types'
-import { isMergedGroup } from '@/lib/catalogue/types'
+import { isMergedGroup, displayGroupFamilyCodes } from '@/lib/catalogue/types'
 import type { FamilyMeta } from '@/lib/catalogue/families'
-import { COLLECTION_CONFIG } from '@/lib/catalogue/collections'
-import { COLLECTION_TO_SLUG } from '@/lib/catalogue/collections'
+import { COLLECTION_CONFIG, COLLECTION_TO_SLUG, KEY_TO_COLLECTION } from '@/lib/catalogue/collections'
 import { formatPrice } from '@/lib/catalogue/format'
-
-const COLLECTION_LABELS: Record<string, string> = {
-  'the-atmospheric-collection': 'Atmospheric',
-  'the-halcyon-collection': 'Halcyon',
-  'monochrome-moods': 'Mono',
-  'the-signature-collection': 'Signature',
-}
 
 /** Family slugs whose products are merged at runtime — the per-paper/per-type
  *  variant dropdown is meaningless on these pages and is hidden. */
@@ -36,14 +28,10 @@ function groupDefaultVariant(group: DisplayGroup) {
   return group.variants[idx]
 }
 
-function groupFamilyCodes(group: DisplayGroup): string[] {
-  return isMergedGroup(group) ? group.source_family_codes : [group.family]
-}
-
 // ─── Collection pill ──────────────────────────────────────────────────────────
 
 function CollectionPill({ collection }: { collection: string }) {
-  const label = COLLECTION_LABELS[collection]
+  const label = KEY_TO_COLLECTION[collection]?.name
   if (!label) return null
   return (
     <span className="inline-block text-[10px] tracking-wider uppercase px-2 py-0.5 bg-dust/25 text-muted rounded-sm">
@@ -98,7 +86,7 @@ function VariantDropdown({
   onChange,
 }: {
   label: string
-  options: { value: string; label: string }[]
+  options: readonly { value: string; label: string }[]
   value: string | null
   onChange: (v: string | null) => void
 }) {
@@ -183,7 +171,7 @@ function FamilyGridInner({
       if (col) result = result.filter((g) => g.collection === col.key)
     }
     if (activeVariant) {
-      result = result.filter((g) => groupFamilyCodes(g).includes(activeVariant))
+      result = result.filter((g) => displayGroupFamilyCodes(g).includes(activeVariant))
     }
     return result
   }, [products, activeCollection, activeVariant])
