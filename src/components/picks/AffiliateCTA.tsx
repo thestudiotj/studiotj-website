@@ -13,12 +13,12 @@ export default function AffiliateCTA({ url, brandName, label }: AffiliateCTAProp
   }
 
   return (
-    <div>
+    <div className="not-prose">
       <a
         href={isPlaceholder ? "#" : url}
         rel="sponsored noopener"
         target="_blank"
-        className="btn-primary"
+        className="btn-affiliate"
         {...(isPlaceholder ? { "aria-disabled": "true" } : {})}
       >
         {displayLabel} →

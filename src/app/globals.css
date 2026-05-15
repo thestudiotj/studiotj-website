@@ -98,6 +98,14 @@
            hover:bg-ink hover:text-paper transition-colors duration-200;
   }
 
+  /* Affiliate CTA button used across the Picks section.
+     Uses !text-paper to defeat the prose-a accent override when rendered
+     inside an article body. */
+  .btn-affiliate {
+    @apply inline-block px-6 py-3 bg-accent !text-paper text-sm tracking-widest uppercase
+           no-underline hover:bg-accent-deep transition-colors duration-200;
+  }
+
   /* Markdown prose for collection descriptions */
   .collection-description {
     max-width: 70ch;

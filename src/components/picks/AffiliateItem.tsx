@@ -39,7 +39,7 @@ export default function AffiliateItem({
             href={affiliate_url}
             rel="sponsored noopener"
             target="_blank"
-            className="btn-primary"
+            className="btn-affiliate"
           >
             View {product_name} →
           </a>
