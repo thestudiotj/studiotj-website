@@ -8,6 +8,7 @@ import { resolveR2 } from "@/lib/picks/paths";
 import { resolveAspect } from "@/lib/picks/imageAspect";
 import { mdxComponents } from "@/components/mdx";
 import AffiliateItem from "@/components/picks/AffiliateItem";
+import AffiliateCTA from "@/components/picks/AffiliateCTA";
 import ArticleCard from "@/components/picks/ArticleCard";
 import ArticleDisclosure from "@/components/picks/ArticleDisclosure";
 
@@ -15,7 +16,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-const articleMdxComponents = { ...mdxComponents, AffiliateItem };
+const articleMdxComponents = { ...mdxComponents, AffiliateItem, AffiliateCTA };
 
 export function generateStaticParams() {
   return loadArticles().map((a) => ({ slug: a.slug }));
