@@ -1,0 +1,67 @@
+---
+title: "Six jAlbum features that earn their place in a photographer's gallery archive"
+slug: jalbum-features-for-photographers
+description: "A photographer's gallery archive needs portability, ownership, and longevity. jAlbum delivers all three by design."
+published_date: "2026-05-15"
+hero_image: /picks/site-workflow/jalbum/hero.webp
+hero_image_alt: jAlbum brand mark
+hero_aspect: "1:1"
+related_brands:
+  - jalbum
+related_articles: []
+image_source: https://jalbum.net
+image_license: Brand-supplied imagery, editorial use
+attribution: Image courtesy of jAlbum
+---
+
+A photography gallery has to live somewhere. The default option for most photographers is a cloud service that bundles hosting, presentation, and software into one monthly subscription — convenient until the service raises prices, changes terms, deprecates a feature you depended on, or shuts down entirely. The galleries themselves usually go with the service. The captions you wrote, the keywords you tagged, the colour grading you spent hours on, the URL your clients have bookmarked — all of it tied to the platform that hosted it.
+
+There is a different option for the photographer who wants their galleries to outlast any single company. Software that runs on your own computer, generates static HTML files, and uploads them to your own hosting. The gallery is the output, not the platform. Your archive sits on your hard drive. Your published galleries sit on your domain. The company that made the software could disappear tomorrow and the galleries would keep working — which is the case the company itself makes, in those words, on its own website.
+
+jAlbum has been making that software since 2002. The company is Swedish, small, privately held, and still actively developing the same product they started with — twenty-three years on, the desktop app is on version 39, AVIF support is in, and roughly a million registered users have built over thirty million galleries between them. I do not use jAlbum myself; studiotj.com runs on a custom stack because I wanted full control of the editorial surface across portfolio, blog, and shop on equal footing. For the photographer who does not want to roll their own gallery infrastructure and also does not want to rent it indefinitely from a cloud provider, [jAlbum](/picks/site-workflow/jalbum) is what sits in the middle. Here are six things they get right.
+
+<AffiliateCTA url="https://jalbum-affiliate-program.sjv.io/c/4896981/1531950/17916" label="Visit jAlbum" />
+
+## The galleries are static HTML you host yourself
+
+jAlbum runs on your computer and outputs a folder of HTML, CSS, JavaScript, and image files. That folder is the gallery. You upload it to any web host that serves static files — your own server, a shared hosting account, Cloudflare Pages, Netlify, an S3 bucket, the jAlbum-hosted option at jalbum.net if you do not have a server of your own. There is no server-side code in the generated gallery, no database, no admin panel needing maintenance. The files served to a visitor are the same files that left your machine.
+
+This decision compounds over years. A static HTML gallery published in 2005 still works today on the same hardware it was uploaded to. A gallery you publish through jAlbum in 2026 will still work in 2040 if the host stays online. There is no platform to migrate off when the company changes hands; there is no API version to track. The gallery is yours, on your domain, served from your bytes. That is what owning a gallery looks like in practice, and it is the one thing cloud-bundled services structurally cannot offer.
+
+## Skins are functional templates, not just visual themes
+
+jAlbum's templating system is called skins, and the naming is more honest than it sounds. Each skin is a complete gallery design — typography, layout, navigation, behaviour — and most of them add functionality the base software does not provide. Some skins include a shopping cart for selling prints. Some include map views for geotagged images. Some are built around fullscreen slideshow presentation with custom transition behaviour. Some prioritise filterable archives at scale. Picking a skin is not picking a colour scheme; it is picking what the gallery does.
+
+Dozens of skins are available, mostly community-developed by photographers and designers using jAlbum themselves. The free tier includes a wide selection; the Pro tier unlocks premium skins and removes the jAlbum logo from generated output. You can customise any skin through the jAlbum interface — colours, typography, layout settings, thumbnail sizes — or directly via HTML, CSS, and JavaScript if you want to edit the output by hand. The skin system is what keeps jAlbum galleries from settling into a single visual register the way platform-bundled designs tend to over time.
+
+## Adobe XMP metadata flows through your existing workflow
+
+Captions, keywords, star ratings, and copyright information all live in your image files as XMP metadata — the same open standard Adobe Lightroom, Photoshop, and Bridge use. When you import images into jAlbum, the metadata comes with them. When you edit metadata in Lightroom after the fact, it propagates back to jAlbum on the next refresh. When you export a gallery, the metadata is embedded in the generated HTML for both visitors and search engines to read.
+
+This sounds like a small detail until you imagine the alternative. A gallery tool that stores captions and keywords in its own proprietary database requires you to maintain that information twice, or lose your work when you switch tools. XMP is open, durable, and supported across the entire serious photography software stack — Lightroom, Photoshop, Capture One, Bridge, and most modern asset managers all read and write the same fields. Choosing it means your metadata investment compounds with the rest of your archive rather than getting trapped inside one application's database.
+
+## Password protection comes built in for client galleries
+
+A gallery does not always want to be public. Wedding work delivered to a couple, commercial work delivered to a brand, private archives shared with family — all of it benefits from gallery-level password protection rather than living behind an unguessable URL that anyone with the link can forward on. jAlbum builds this in. You set a password per gallery during the build step, and the resulting HTML uses client-side encryption to gate the contents. Visitors to a protected gallery see a password field; without the password, they see nothing.
+
+For photographers running a client-delivery side of their practice alongside the portfolio side, the same tool handles both. You build your public portfolio gallery with one skin. You build a client delivery gallery with a different skin, or the same skin with different settings, and a password. Both galleries upload to your own hosting through the same interface, using the same metadata, in the same image format. The client work does not live on a separate platform with its own subscription and its own delivery URLs; it lives on your domain, gated by the password you set.
+
+## The license is a one-time purchase, not a subscription
+
+jAlbum sells a one-time license for the current version of the software. Pay once, own that version forever, with twelve months of free upgrades included from the date of purchase. The Standard license covers personal and non-commercial use; the Pro license adds commercial use, white-label branding (which removes the jAlbum logo from your generated galleries), access to premium skins, and improved handling for larger files. If you want hosting on jalbum.net, that is a separate annual plan; if you have your own hosting, the license alone is what you pay.
+
+This pricing model has gone out of fashion across most of the software industry, which is the reason it is worth naming explicitly. The dominant pattern across photography tools, gallery services, and creative software generally is the recurring subscription — pay forever to keep using the version you already have, or watch the software stop opening when the payments stop. jAlbum's model is older, less recurring-revenue-friendly, and more honest about what software ownership actually means. The version you bought keeps working when you stop paying; you upgrade because a new version is worth upgrading to, not because your existing version has been switched off.
+
+## Modern image formats are supported alongside the classics
+
+jAlbum's version 39, released in 2025, added full support for AVIF — a next-generation image format that produces significantly smaller files than JPEG at equivalent visual quality, with browser support now spanning every major engine. Galleries can output AVIF as the primary format with JPEG fallbacks for older browsers, which means a portfolio that loads measurably faster on every visitor's connection without losing compatibility with anything. WebP is supported alongside; the classic JPEG and PNG paths still work for whoever needs them.
+
+The thing worth noticing is not the format itself but the fact that a twenty-three-year-old desktop application from a small Swedish company shipped AVIF support before many cloud-hosted gallery services did. Active development on a long-running product is a different bet than active development on a startup chasing growth. jAlbum has been making the same product, on the same model, for two decades, and it still picks up new image formats and operating-system compatibility updates when they become worth supporting. That is the kind of slow, steady, version-after-version development that produces software you can build a working archive on.
+
+## When jAlbum is not the right call
+
+jAlbum is not the right call for everyone. Photographers who want a fully integrated all-in-one platform — gallery hosting, payments, contracts, client proofing, email marketing, and CRM bundled into one subscription — will find the unbundled approach more friction than benefit; the workflows those platforms automate are workflows you assemble yourself with jAlbum at the centre. Photographers who do not want to manage their own hosting or domain at all will find the cloud-hosted alternative simpler, and the simplicity is worth paying for if your work pace prefers spending time on photography over infrastructure. Photographers building dynamic, database-backed sites with frequent non-image content updates will find static HTML output limiting; jAlbum is for image galleries, not for content management systems.
+
+For everyone else — and especially for photographers building an archive they want to outlast any single service — jAlbum is the option that has been sitting there quietly for twenty-three years, getting better in small steady increments, staying independent, staying Swedish, staying focused on the same problem. Turn a folder of photographs into a website you own.
+
+<AffiliateCTA url="https://jalbum-affiliate-program.sjv.io/c/4896981/1531950/17916" label="Visit jAlbum" />
