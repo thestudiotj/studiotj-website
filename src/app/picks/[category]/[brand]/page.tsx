@@ -13,6 +13,7 @@ import BrandGallery from "@/components/picks/BrandGallery";
 import BrandRelated from "@/components/picks/BrandRelated";
 import AffiliateCTA from "@/components/picks/AffiliateCTA";
 import BrandProductCard from "@/components/picks/BrandProductCard";
+import BrandArticlesRail from "@/components/picks/BrandArticlesRail";
 
 interface Props {
   params: Promise<{ category: string; brand: string }>;
@@ -115,6 +116,8 @@ export default async function BrandPage({ params }: Props) {
           <p className="text-lg text-muted leading-relaxed mb-6">{brand.hook}</p>
           <AffiliateCTA url={brand.affiliate_url} brandName={brand.name} />
         </div>
+
+        <BrandArticlesRail brandSlug={brand.slug} brandName={brand.name} />
 
         <BrandRelated brands={related} />
       </div>
