@@ -1,8 +1,22 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { BrandSchema, BrandProductSchema, LandingSchema, CategoryIntroSchema } from "./schemas";
-import type { Brand, BrandProduct, Landing, CategoryIntro } from "./schemas";
+import {
+  BrandSchema,
+  BrandProductSchema,
+  LandingSchema,
+  CategoryIntroSchema,
+  ArticleSchema,
+  ArticleIndexSchema,
+} from "./schemas";
+import type {
+  Brand,
+  BrandProduct,
+  Landing,
+  CategoryIntro,
+  Article,
+  ArticleIndex,
+} from "./schemas";
 import { PICKS_CATEGORIES, type PicksCategory } from "./categories";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "picks");
@@ -143,4 +157,53 @@ export function loadBrandProductsBySlugs(
       return loadBrandProduct(category, brandSlug, slug);
     })
     .filter((p): p is BrandProduct => p !== null);
+}
+
+const ARTICLES_DIR = path.join(CONTENT_DIR, "articles");
+
+export function loadArticleIndex(): ArticleIndex | null {
+  const filePath = path.join(ARTICLES_DIR, "_index.mdx");
+  if (!fs.existsSync(filePath)) return null;
+  const { data, content } = readMdx("articles/_index.mdx");
+  const fm = ArticleIndexSchema.parse(data);
+  return { ...fm, body: content };
+}
+
+export function loadArticles(): Article[] {
+  if (!fs.existsSync(ARTICLES_DIR)) return [];
+
+  const articles: Article[] = [];
+  const files = fs.readdirSync(ARTICLES_DIR).filter((f) => f.endsWith(".mdx"));
+
+  for (const filename of files) {
+    if (filename === "_index.mdx") continue;
+    // Reject orphan reserved files (anything else starting with "_")
+    if (filename.startsWith("_")) {
+      throw new Error(
+        `Unexpected reserved file in content/picks/articles/: ${filename}. Only _index.mdx is permitted.`
+      );
+    }
+    const { data, content } = readMdx(`articles/${filename}`);
+    const fm = ArticleSchema.parse(data);
+    articles.push({ ...fm, body: content });
+  }
+
+  return articles.sort((a, b) => b.published_date.localeCompare(a.published_date));
+}
+
+export function loadArticle(slug: string): Article | null {
+  const filePath = path.join(ARTICLES_DIR, `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) return null;
+  if (slug.startsWith("_")) return null;
+  try {
+    const { data, content } = readMdx(`articles/${slug}.mdx`);
+    const fm = ArticleSchema.parse(data);
+    return { ...fm, body: content };
+  } catch {
+    return null;
+  }
+}
+
+export function loadArticlesByBrand(brandSlug: string): Article[] {
+  return loadArticles().filter((a) => a.related_brands.includes(brandSlug));
 }
