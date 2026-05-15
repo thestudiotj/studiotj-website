@@ -5,7 +5,7 @@ import { getAvailableDisplayGroups, COLLECTION_TO_SLUG } from '@/lib/catalogue'
 import { getAllSeries, getShootBoundEntries } from '@/lib/series'
 import { getProducts as getVondstenProducts } from '@/lib/vondsten/loader'
 import { CATEGORIES } from '@/lib/vondsten/schemas'
-import { loadActiveCategories, loadAllBrandsInCategory, loadBrandProducts } from '@/lib/picks/loader'
+import { loadActiveCategories, loadAllBrandsInCategory, loadBrandProducts, loadArticles } from '@/lib/picks/loader'
 import { loadActiveCategories as loadActiveGearCategories, loadAllItemsInCategory } from '@/lib/gear/loader'
 import { getElsewhereData } from '@/lib/elsewhere'
 import { getAllLearnFamilies } from '@/lib/catalogue/learn-teasers'
@@ -124,6 +124,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         entries.push({ url: `${BASE_URL}/picks/${cat}/${brand.slug}/${product.slug}` })
       }
     }
+  }
+
+  // Picks — articles index and per-slug pages
+  entries.push({ url: `${BASE_URL}/picks/articles` })
+  for (const article of loadArticles()) {
+    entries.push({
+      url: `${BASE_URL}/picks/articles/${article.slug}`,
+      lastModified: new Date(article.published_date),
+    })
   }
 
   // Vondsten — landing, category indexes, product pages
