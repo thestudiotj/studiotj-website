@@ -58,7 +58,30 @@ export const CategoryIntroSchema = z.object({
   hero_image: z.string().optional(),
 });
 
+export const ArticleSchema = z.object({
+  title: z.string(),
+  slug: z.string(),
+  description: z.string(),
+  published_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'published_date must be YYYY-MM-DD'),
+  hero_image: z.string(),
+  hero_image_alt: z.string(),
+  hero_aspect: z.enum(['3:2', '1:1']).optional(),
+  related_brands: z.array(z.string()).default([]),
+  related_articles: z.array(z.string()).default([]),
+  image_source: z.string(),
+  image_license: z.string(),
+  attribution: z.string().optional(),
+});
+
+export const ArticleIndexSchema = z.object({
+  slug: z.literal('articles'),
+  title: z.literal('Articles'),
+  hero_image: z.string().optional(),
+});
+
 export type Brand = z.infer<typeof BrandSchema> & { body: string };
 export type BrandProduct = z.infer<typeof BrandProductSchema> & { body: string };
 export type Landing = z.infer<typeof LandingSchema> & { body: string };
 export type CategoryIntro = z.infer<typeof CategoryIntroSchema> & { body: string };
+export type Article = z.infer<typeof ArticleSchema> & { body: string };
+export type ArticleIndex = z.infer<typeof ArticleIndexSchema> & { body: string };

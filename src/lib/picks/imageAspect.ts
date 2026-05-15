@@ -7,11 +7,12 @@ const ROLE_DEFAULTS: Record<string, string> = {
   supporting: '1 / 1',
   intro: '3 / 2',
   thumb: '4 / 5',
+  article_hero: '3 / 2',
 };
 
 export function resolveAspect(
   imagePath: string,
-  role: 'hero' | 'supporting' | 'intro' | 'thumb',
+  role: 'hero' | 'supporting' | 'intro' | 'thumb' | 'article_hero',
   schemaOverride?: string,
 ): string {
   if (schemaOverride) return schemaOverride.replace(':', ' / ');
