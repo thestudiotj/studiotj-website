@@ -1,4 +1,24 @@
 {
+  "picks/audio/martinic-audio/hero.webp": {
+    "aspect": "1:1",
+    "width": 1280,
+    "height": 1280
+  },
+  "picks/audio/martinic-audio/supporting-1.webp": {
+    "aspect": "300:157",
+    "width": 1200,
+    "height": 628
+  },
+  "picks/audio/martinic-audio/supporting-2.webp": {
+    "aspect": "107:56",
+    "width": 1070,
+    "height": 560
+  },
+  "picks/audio/martinic-audio/supporting-3.webp": {
+    "aspect": "107:56",
+    "width": 1070,
+    "height": 560
+  },
   "picks/design/envato-placeit/hero.webp": {
     "aspect": "1:1",
     "width": 900,
