@@ -49,12 +49,14 @@ export const BrandProductSchema = z.object({
 export const LandingSchema = z.object({
   slug: z.literal('picks'),
   title: z.literal('Picks'),
+  description: z.string().optional(),
   hero_image: z.string(),
 });
 
 export const CategoryIntroSchema = z.object({
   slug: z.enum(PICKS_CATEGORIES),
   title: z.string(),
+  description: z.string().optional(),
   hero_image: z.string().optional(),
 });
 

@@ -6,6 +6,12 @@ import { getCategoryIntro, getProducts } from "@/lib/vondsten/loader";
 import { CATEGORIES } from "@/lib/vondsten/schemas";
 import { CATEGORY_DISPLAY, isValidCategory } from "@/lib/vondsten/categories";
 import ProductGrid from "@/components/vondsten/ProductGrid";
+import ArticleDisclosure from "@/components/picks/ArticleDisclosure";
+
+// Compliance-sensitive Dutch disclosure for Vondsten category pages.
+// Sign off explicitly before changing wording.
+const VONDSTEN_DISCLOSURE_NL =
+  "Deze pagina bevat affiliate-links. Als Amazon-partner verdient StudioTJ aan in aanmerking komende aankopen, zonder extra kosten voor jou. De selectie staat daar los van.";
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -26,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const displayName = CATEGORY_DISPLAY[category];
   return {
     title: `${displayName} — Vondsten`,
-    description: intro.body.trim().slice(0, 150),
+    description: intro.description ?? intro.body.trim().slice(0, 150),
   };
 }
 
@@ -52,9 +58,11 @@ export default async function CategoryPage({ params }: Props) {
 
       <h1 className="section-title mb-6">{intro.title}</h1>
 
-      <div className="prose prose-lg max-w-prose mb-12 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
+      <div className="prose prose-lg max-w-prose mb-8 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
         <MDXRemote source={intro.body} />
       </div>
+
+      <ArticleDisclosure>{VONDSTEN_DISCLOSURE_NL}</ArticleDisclosure>
 
       <ProductGrid products={products} category={category} />
     </div>

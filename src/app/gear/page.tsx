@@ -46,10 +46,11 @@ export default async function GearPage() {
 
       {landing.hero_image && (
         <div className="relative overflow-hidden aspect-video mb-10">
+          {/* Hero alt describes the current image; update this string if the hero is swapped. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={resolveR2(landing.hero_image)}
-            alt="My Gear"
+            alt="StudioTJ working gear laid out for use, photographed by Tjeerd van der Heeft"
             className="w-full h-full object-cover"
           />
         </div>

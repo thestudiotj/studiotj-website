@@ -8,11 +8,13 @@ import CategoryGrid from "@/components/vondsten/CategoryGrid";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Vondsten",
-  description:
-    "Productpagina's per categorie — onderzocht, gecureerd, op amazon.nl. Affiliate-links via het Amazon Partnerprogramma.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const landing = getLanding();
+  return {
+    title: "Vondsten — Onderzochte productselecties",
+    description: landing.description,
+  };
+}
 
 export default async function VondstenPage() {
   const landing = getLanding();
@@ -30,12 +32,19 @@ export default async function VondstenPage() {
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-5xl">
       <h1 className="section-title mb-4">{landing.title}</h1>
 
+      {landing.description && (
+        <p className="text-muted text-lg leading-relaxed mb-8 max-w-prose">
+          {landing.description}
+        </p>
+      )}
+
       {landing.hero_image && (
         <div className="relative overflow-hidden w-full mb-10" style={{ aspectRatio: "16/9", maxWidth: "860px" }}>
+          {/* Hero alt describes the current image; update this string if the hero is swapped. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={resolveR2(landing.hero_image)}
-            alt="Vondsten"
+            alt="Traditioneel Nederlandse stenen molen met witte wieken tegen een blauwe lucht, met zomerse boomtoppen in de voorgrond"
             className="w-full h-full object-cover"
           />
         </div>

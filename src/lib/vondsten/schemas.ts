@@ -46,6 +46,7 @@ export const ProductFrontmatter = z.object({
 export const LandingFrontmatter = z.object({
   slug: z.literal("vondsten"),
   title: z.string(),
+  description: z.string().optional(),
   hero_image: z.string().min(1),
   type: z.literal("landing").optional(),
 });
@@ -53,6 +54,7 @@ export const LandingFrontmatter = z.object({
 export const CategoryIntroFrontmatter = z.object({
   slug: z.enum(CATEGORIES),
   title: z.string(),
+  description: z.string().optional(),
   hero_image: z.string().optional(),
   type: z.literal("category_intro").optional(),
 });

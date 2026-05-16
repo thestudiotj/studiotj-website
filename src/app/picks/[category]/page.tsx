@@ -2,9 +2,15 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { loadCategoryIntro, loadActiveCategories, loadAllBrandsInCategory } from "@/lib/picks/loader";
+import {
+  loadCategoryIntro,
+  loadActiveCategories,
+  loadAllBrandsInCategory,
+  loadArticles,
+} from "@/lib/picks/loader";
 import { isValidPicksCategory, PICKS_CATEGORY_LABELS } from "@/lib/picks/categories";
 import BrandGrid from "@/components/picks/BrandGrid";
+import ArticleDisclosure from "@/components/picks/ArticleDisclosure";
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -20,10 +26,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const intro = loadCategoryIntro(category);
   const displayName = PICKS_CATEGORY_LABELS[category];
   return {
-    title: `${displayName} — Picks`,
-    description: intro
-      ? intro.body.trim().slice(0, 150)
-      : `${displayName} picks from StudioTJ.`,
+    title: `${displayName} Picks`,
+    description:
+      intro?.description ??
+      (intro ? intro.body.trim().slice(0, 150) : `${displayName} picks from StudioTJ.`),
   };
 }
 
@@ -38,6 +44,7 @@ export default async function PicksCategoryPage({ params }: Props) {
   const intro = loadCategoryIntro(category);
   const brands = loadAllBrandsInCategory(category);
   const displayName = PICKS_CATEGORY_LABELS[category];
+  const hasArticles = loadArticles().length > 0;
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-5xl">
@@ -52,12 +59,25 @@ export default async function PicksCategoryPage({ params }: Props) {
       <h1 className="section-title mb-6">{intro?.title ?? displayName}</h1>
 
       {intro && (
-        <div className="prose prose-lg max-w-prose mb-12 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
+        <div className="prose prose-lg max-w-prose mb-8 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
           <MDXRemote source={intro.body} />
         </div>
       )}
 
+      <ArticleDisclosure />
+
       <BrandGrid brands={brands} category={category} />
+
+      {hasArticles && (
+        <div className="border-t border-dust/30 mt-12 pt-6">
+          <Link
+            href="/picks/articles"
+            className="text-sm text-muted hover:text-ink transition-colors"
+          >
+            Articles →
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
