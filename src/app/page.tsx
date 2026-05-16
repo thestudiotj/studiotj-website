@@ -167,7 +167,7 @@ export default async function HomePage() {
           </p>
           <div className="flex gap-4">
             <Link href="/portfolio" className="btn-primary">View Portfolio</Link>
-            <Link href="/shop" className="btn-outline">View Shop</Link>
+            <Link href="/shop" className="btn-outline-inverse">View Shop</Link>
           </div>
         </div>
       </section>
