@@ -90,7 +90,7 @@ export default async function ShopPage() {
         </p>
         {minPriceCents > 0 && (
           <p className="text-xs text-muted/70 max-w-md leading-relaxed mt-4">
-            From {priceFloor}. Payments are handled by Stripe; prints are produced and shipped by Prodigi. Returns within 14 days.
+            From {priceFloor}. Payments are handled by Stripe; prints are produced and shipped by Prodigi.
           </p>
         )}
       </div>
