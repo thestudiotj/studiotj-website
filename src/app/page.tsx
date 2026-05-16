@@ -3,7 +3,7 @@ import { getPortfolio, sortCollections } from '@/lib/portfolio'
 import type { Photo } from '@/lib/portfolio'
 import { getAllPosts } from '@/lib/content'
 import type { BlogFrontmatter, SubtextFrontmatter, PostEntry } from '@/lib/content'
-import { getAllSeriesPhotos } from '@/lib/series'
+import { getAllSeriesEntries } from '@/lib/series'
 import { getElsewhereData } from '@/lib/elsewhere'
 import { getDisplayGroups, groupDefaultVariant, COLLECTION_CONFIG } from '@/lib/catalogue'
 import EmailCapture from '@/components/EmailCapture'
@@ -133,7 +133,7 @@ export default async function HomePage() {
   })
   const hasShopCollections = shopCollections.some((c) => c.heroImages.length > 0)
 
-  const seriesPhotos = getAllSeriesPhotos()
+  const seriesEntries = getAllSeriesEntries().filter(e => e.photos.length > 0)
 
   const elsewhereItems = getElsewhereData().items.slice(0, 8)
   const showElsewhere = elsewhereItems.length >= 3
@@ -160,14 +160,14 @@ export default async function HomePage() {
         <div className="relative z-10 max-w-2xl animate-fade-up">
           <p className="text-paper/70 text-sm tracking-[0.3em] uppercase mb-4">StudioTJ</p>
           <h1 className="font-display text-5xl md:text-7xl text-paper leading-tight mb-6">
-            Photography, and everything it pulls in
+            The photographs come first.
           </h1>
           <p className="text-paper/70 text-lg mb-8 max-w-md leading-relaxed">
-            Four photography collections and the prints to match, ongoing series, and The Subtext Lab on media and society.
+            Four photography collections with prints to match, ongoing photo series, and The Subtext Lab — essays and video on media and society.
           </p>
           <div className="flex gap-4">
             <Link href="/portfolio" className="btn-primary">View Portfolio</Link>
-            <Link href="/shop" className="btn-primary">View Shop</Link>
+            <Link href="/shop" className="btn-outline">View Shop</Link>
           </div>
         </div>
       </section>
@@ -178,7 +178,7 @@ export default async function HomePage() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <h2 className="section-title">On view</h2>
-              <p className="text-muted text-sm mt-1">Rotating weekly</p>
+              <p className="text-muted text-sm mt-1">Four collections; the selection rotates weekly.</p>
             </div>
             <Link href="/portfolio" className="nav-link">View all →</Link>
           </div>
@@ -228,7 +228,7 @@ export default async function HomePage() {
       )}
 
       {/* Series — only rendered when at least one entry exists */}
-      {seriesPhotos.length > 0 && (
+      {seriesEntries.length > 0 && (
         <section className="border-t border-dust/40 px-6 md:px-12 py-20">
           <div className="flex flex-col md:flex-row md:items-center gap-10 md:gap-16">
             <div className="md:w-1/2">
@@ -240,9 +240,24 @@ export default async function HomePage() {
             </div>
             <div className="md:w-1/2 flex justify-center md:justify-end">
               <div className="w-full max-w-sm">
-                <SeriesRotator photos={seriesPhotos} />
+                <SeriesRotator entries={seriesEntries} />
               </div>
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Latest strip — breakout so bg-ink spans edge-to-edge */}
+      {hasLatest && (
+        <section className="breakout bg-ink text-paper px-6 md:px-12 py-20">
+          <h2 className="font-display text-4xl md:text-6xl mb-12">Latest</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {latestBlog && <BlogCard post={latestBlog} />}
+            {latestSubtext && (
+              <div className="theme-subtext">
+                <SubtextCard post={latestSubtext} />
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -266,7 +281,7 @@ export default async function HomePage() {
         <div className="max-w-2xl">
           <h2 className="section-title mb-6">The work</h2>
           <p className="text-muted leading-relaxed mb-4">
-            StudioTJ is a one-person studio working across photography, print, and writing. The photographs come first; the shop, the series, and The Subtext Lab are what grew around them.
+            StudioTJ is a one-person studio working across photography, print, and writing. Run by one person, which is why the prints, the series, and the writing all trace back to the same eye.
           </p>
           <p className="text-muted leading-relaxed mb-8">
             Created by Tjeerd van der Heeft.
@@ -275,20 +290,30 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Latest strip — breakout so bg-ink spans edge-to-edge */}
-      {hasLatest && (
-        <section className="breakout bg-ink text-paper px-6 md:px-12 py-20">
-          <h2 className="font-display text-4xl md:text-6xl mb-12">Latest</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {latestBlog && <BlogCard post={latestBlog} />}
-            {latestSubtext && (
-              <div className="theme-subtext">
-                <SubtextCard post={latestSubtext} />
-              </div>
-            )}
-          </div>
-        </section>
-      )}
+      {/* Also here — quiet corners list */}
+      <section className="border-t border-dust/40 px-6 md:px-12 py-20">
+        <h2 className="section-title mb-8">Also here</h2>
+        <ul className="space-y-4 max-w-2xl">
+          <li>
+            <Link href="/gear" className="group inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-display text-2xl text-ink group-hover:text-muted transition-colors">My Gear</span>
+              <span className="text-muted text-sm">— what I shoot with, and why</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/picks" className="group inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-display text-2xl text-ink group-hover:text-muted transition-colors">Picks</span>
+              <span className="text-muted text-sm">— tools and brands I actually use</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/vondsten" className="group inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-display text-2xl text-ink group-hover:text-muted transition-colors">Vondsten</span>
+              <span className="text-muted text-sm">— things worth finding</span>
+            </Link>
+          </li>
+        </ul>
+      </section>
 
       {/* Email capture */}
       <EmailCapture

@@ -52,7 +52,7 @@ export default function ElsewhereHomeGrid({ items }: ElsewhereHomeGridProps) {
           className="absolute"
           style={{ top: box.top, left: box.left, width: box.width }}
         >
-          <ElsewhereCard item={items[i]} index={i} imageHeight={box.height} />
+          <ElsewhereCard item={items[i]} index={i} imageHeight={box.height} eager />
         </div>
       ))}
     </div>
