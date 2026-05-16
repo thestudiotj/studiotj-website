@@ -19,6 +19,7 @@ const STATIC_PAGES = [
   '/blog',
   '/subtext-lab',
   '/shop',
+  '/shop/learn',
   '/about',
   '/contact',
   '/privacy',
