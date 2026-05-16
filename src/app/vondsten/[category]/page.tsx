@@ -33,6 +33,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${displayName} — Vondsten`,
     description: intro.description ?? intro.body.trim().slice(0, 150),
+    openGraph: {
+      locale: "nl_NL",
+    },
   };
 }
 

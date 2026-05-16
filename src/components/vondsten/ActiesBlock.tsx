@@ -10,7 +10,10 @@ export default function ActiesBlock({ acties }: ActiesBlockProps) {
 
   return (
     <section className="border border-dust/40 bg-dust/10 px-6 py-6 mb-10">
-      <h2 className="font-display text-2xl text-ink mb-6">Acties</h2>
+      <h2 className="font-display text-2xl text-ink mb-2">Acties</h2>
+      <p className="text-sm text-muted mb-6">
+        Tijdelijke aanbiedingen via amazon.nl, los van de vaste selectie.
+      </p>
       <div className="space-y-6">
         {acties.map((actie) => (
           <div key={actie.name}>

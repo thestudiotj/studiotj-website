@@ -13,6 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Vondsten — Onderzochte productselecties",
     description: landing.description,
+    openGraph: {
+      locale: "nl_NL",
+    },
   };
 }
 
@@ -30,13 +33,22 @@ export default async function VondstenPage() {
 
   return (
     <div className="pt-24 px-6 md:px-12 pb-20 max-w-5xl">
-      <h1 className="section-title mb-4">{landing.title}</h1>
+      <div className="flex items-baseline gap-3 mb-4">
+        <h1 className="section-title">{landing.title}</h1>
+        <span lang="en" className="text-xs text-muted tracking-widest uppercase" aria-label="Dutch-language section">
+          NL
+        </span>
+      </div>
 
       {landing.description && (
-        <p className="text-muted text-lg leading-relaxed mb-8 max-w-prose">
+        <p className="text-muted text-lg leading-relaxed mb-6 max-w-prose">
           {landing.description}
         </p>
       )}
+
+      <p lang="en" className="text-xs text-muted tracking-wide mb-10 max-w-prose">
+        Vondsten runs in Dutch because the products go through amazon.nl. Everything else on the site is English.
+      </p>
 
       {landing.hero_image && (
         <div className="relative overflow-hidden w-full mb-10" style={{ aspectRatio: "16/9", maxWidth: "860px" }}>
@@ -50,13 +62,9 @@ export default async function VondstenPage() {
         </div>
       )}
 
-      <div className="prose prose-lg max-w-prose mb-6 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
+      <div className="prose prose-lg max-w-prose mb-10 prose-headings:font-display prose-headings:font-normal prose-a:text-[var(--accent)] prose-a:no-underline hover:prose-a:underline">
         <MDXRemote source={landing.body} />
       </div>
-
-      <p className="text-xs text-muted tracking-wide mb-10">
-        Vondsten runs in Dutch because the products go through amazon.nl. Everything else on the site is English.
-      </p>
 
       <ActiesBlock acties={activeActies} />
 
