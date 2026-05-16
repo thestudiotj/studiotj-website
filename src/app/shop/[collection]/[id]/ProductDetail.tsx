@@ -254,7 +254,10 @@ export default function ProductDetail({
             {group.title}
           </h1>
           <p className="text-2xl text-ink mb-1">{price}</p>
-          <TaxNote currency={currency} className="block text-xs text-muted mb-6" />
+          <TaxNote currency={currency} className="block text-xs text-muted" />
+          <p className="text-xs text-muted/70 leading-relaxed mt-2 mb-6">
+            Secure payment via Stripe. Made and shipped by Prodigi.
+          </p>
           {currency !== 'USD' && <div className="mb-6" />}
         </div>
 

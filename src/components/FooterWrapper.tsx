@@ -7,5 +7,6 @@ export default function FooterWrapper() {
   const pathname = usePathname();
   if (pathname.startsWith("/vondsten")) return null;
   if (pathname.startsWith("/picks")) return null;
+  if (pathname.startsWith("/shop")) return null;
   return <Footer />;
 }

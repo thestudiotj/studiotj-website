@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import {
   getDisplayGroups,
   groupDefaultVariant,
+  groupMinPriceCents,
   displayGroupFamilyCodes,
   COLLECTION_CONFIG,
 } from '@/lib/catalogue'
 import { COLLECTION_COPY, type CollectionSlug } from '@/lib/catalogue/collections'
 import { FAMILY_CONFIG, FAMILY_COPY, type FamilySlug } from '@/lib/catalogue/families'
+import { formatPrice } from '@/lib/catalogue/format'
 import ShopCollectionCard from '@/components/ShopCollectionCard'
 import ShopGrid from '@/components/ShopGrid'
 import ShopNotesStrip from '@/components/ShopNotesStrip'
@@ -29,6 +32,12 @@ export default async function ShopPage() {
   const allProducts = getDisplayGroups()
   const shopNotes = getAllShopNotes()
   const currency = await getVisitorCurrency()
+
+  const availableProducts = allProducts.filter((g) => g.available)
+  const minPriceCents = availableProducts.length
+    ? Math.min(...availableProducts.map((g) => groupMinPriceCents(g)))
+    : 0
+  const priceFloor = formatPrice(minPriceCents, currency)
 
   const collections = COLLECTION_CONFIG.map((col) => {
     const products = allProducts.filter((g) => g.available && g.collection === col.key)
@@ -74,16 +83,21 @@ export default async function ShopPage() {
           Shop
         </h1>
         <p className="text-muted max-w-md leading-relaxed">
-          Fine art prints and objects. Printed on demand, finished to last.
+          Fine art prints, posters, canvas, and cards. Printed on demand, finished to last.
         </p>
         <p className="text-sm text-muted/80 max-w-md leading-relaxed mt-2">
           Archival prints across papers, canvas, and frames, printed in the EU and shipped worldwide.
         </p>
+        {minPriceCents > 0 && (
+          <p className="text-xs text-muted/70 max-w-md leading-relaxed mt-4">
+            From {priceFloor}. Payments are handled by Stripe; prints are produced and shipped by Prodigi. Returns within 14 days.
+          </p>
+        )}
       </div>
 
       {/* Shop by collection */}
       <div className="mb-14">
-        <h2 className="text-xs tracking-[0.3em] uppercase text-muted mb-8">Shop by collection</h2>
+        <h2 className="text-xs tracking-[0.3em] uppercase text-ink font-medium mb-8">Shop by collection</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-14">
           {collections.map((col) => (
             <ShopCollectionCard
@@ -99,7 +113,7 @@ export default async function ShopPage() {
 
       {/* Shop by product */}
       <div className="mb-16 pt-10 border-t border-dust/30">
-        <h2 className="text-xs tracking-[0.3em] uppercase text-muted mb-8">Shop by product</h2>
+        <h2 className="text-xs tracking-[0.3em] uppercase text-ink font-medium mb-8">Shop by product</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
           {families.map((fam) => (
             <ShopCollectionCard
@@ -111,6 +125,14 @@ export default async function ShopPage() {
               ctaText="Browse products →"
             />
           ))}
+        </div>
+        <div className="mt-10">
+          <Link
+            href="/shop/learn"
+            className="text-sm text-muted hover:text-ink transition-colors underline underline-offset-4"
+          >
+            How buying a print works →
+          </Link>
         </div>
       </div>
 
