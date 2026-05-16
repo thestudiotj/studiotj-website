@@ -40,7 +40,7 @@ Camera is a Nikon D3500. Prime and wide-angle both, used however the subject cal
 Monochrome Moods is photography at its strongest in black and white. The frame stands without colour because it never needed it.`,
 }
 
-export const PORTFOLIO_HUB_BODY = `What's gathered here is the Netherlands seen carefully. Four collections, each one answering a different question about what a photograph can be.
+export const PORTFOLIO_HUB_BODY = `Four collections, each one answering a different question about what a photograph can be.
 
 **Signature** is architecture taken at its word — buildings as subject, surfaces as text, lines and brickwork and the play of light on stone and glass. The work runs through Dutch town centres, modernist edges, and civic and industrial architecture the country has plenty of.
 

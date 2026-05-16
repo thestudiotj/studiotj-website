@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getPortfolio, sortCollections } from '@/lib/portfolio'
 import type { Photo } from '@/lib/portfolio'
 import CollectionCard from '@/components/CollectionCard'
@@ -22,11 +23,19 @@ export default function PortfolioPage() {
       {/* Header */}
       <div className="pt-32 pb-16 px-6 md:px-12">
         <p className="text-muted text-xs tracking-[0.3em] uppercase mb-4">StudioTJ</p>
+        {/* Alternate (noun-forward) — swap by uncommenting and removing the primary below:
         <h1 className="font-display text-5xl md:text-7xl text-ink leading-tight mb-6">
-          The work
+          Dutch architecture, landscape, and light
         </h1>
         <p className="text-muted text-lg max-w-xl leading-relaxed">
-          Four collections. Each one answers a different question about what a photograph can be.
+          Four collections in colour and black and white — the Netherlands, looked at carefully.
+        </p>
+        */}
+        <h1 className="font-display text-5xl md:text-7xl text-ink leading-tight mb-6">
+          Photography of the Netherlands, looked at carefully
+        </h1>
+        <p className="text-muted text-lg max-w-xl leading-relaxed">
+          Architecture, landscape, and light, across four collections in colour and black and white.
         </p>
       </div>
 
@@ -72,6 +81,31 @@ export default function PortfolioPage() {
           <MDXRemote source={PORTFOLIO_HUB_BODY} />
         </div>
       </div>
+
+      {/* Also here — quiet corners list */}
+      <section className="border-t border-dust/40 px-6 md:px-12 py-20">
+        <h2 className="section-title mb-8">Also here</h2>
+        <ul className="space-y-4 max-w-2xl">
+          <li>
+            <Link href="/series" className="group inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-display text-2xl text-ink group-hover:text-muted transition-colors">Series</span>
+              <span className="text-muted text-sm">— ongoing sequences, kept in the order they happened</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog" className="group inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-display text-2xl text-ink group-hover:text-muted transition-colors">Blog</span>
+              <span className="text-muted text-sm">— writing from around the work</span>
+            </Link>
+          </li>
+          <li>
+            <Link href="/subtext-lab" className="group inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <span className="font-display text-2xl text-ink group-hover:text-muted transition-colors">Subtext Lab</span>
+              <span className="text-muted text-sm">— essays and video on media and society</span>
+            </Link>
+          </li>
+        </ul>
+      </section>
     </div>
   )
 }
