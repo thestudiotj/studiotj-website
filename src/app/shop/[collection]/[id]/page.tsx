@@ -16,16 +16,6 @@ import { getVisitorCurrency } from '@/lib/i18n/server'
 const PRODUCT_URL = (collection: string, id: string) =>
   `https://studiotj.com/shop/${collection}/${id}`
 
-// Benable importer gallery test: scoped to one product. If Benable surfaces
-// more than the hero image on this card but only one image on neighbours,
-// the multi-image metadata is the signal we should roll out site-wide.
-const BENABLE_GALLERY_TEST_IDS = new Set(['photo-halcyon-katwijk-221-prints'])
-
-function galleryImagesFor(group: DisplayGroup): string[] {
-  const v = groupDefaultVariant(group)
-  return [v.hero, v.mock1, v.mock2].filter((u): u is string => Boolean(u))
-}
-
 function getPlainDescription(group: DisplayGroup): string {
   const raw = group.description.trim()
   return raw.length >= 40 ? raw : `${group.title} — a StudioTJ print, shipped worldwide.`
@@ -36,18 +26,13 @@ function buildJsonLd(group: DisplayGroup, collection: string) {
   const priceStr = (minPrice / 100).toFixed(2)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1
-  const images = BENABLE_GALLERY_TEST_IDS.has(group.id)
-    ? galleryImagesFor(group)
-    : heroImage
-      ? [heroImage]
-      : []
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: group.title,
     description: getPlainDescription(group),
-    ...(images.length ? { image: images } : {}),
+    ...(heroImage ? { image: [heroImage] } : {}),
     sku: group.id,
     brand: { '@type': 'Brand', name: 'StudioTJ' },
     offers: {
@@ -85,11 +70,6 @@ export async function generateMetadata({
   const minPrice = (groupMinPriceCents(group) / 100).toFixed(2)
   const defaultVariant = groupDefaultVariant(group)
   const heroImage = defaultVariant.hero ?? defaultVariant.mock1
-  const ogImages = BENABLE_GALLERY_TEST_IDS.has(group.id)
-    ? galleryImagesFor(group)
-    : heroImage
-      ? [heroImage]
-      : []
 
   return {
     title: group.title,
@@ -98,7 +78,7 @@ export async function generateMetadata({
       type: 'website',
       title: group.title,
       description,
-      ...(ogImages.length ? { images: ogImages } : {}),
+      ...(heroImage ? { images: [heroImage] } : {}),
     },
     other: {
       'og:type': 'product',
