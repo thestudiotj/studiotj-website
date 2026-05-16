@@ -16,6 +16,18 @@ import { getVisitorCurrency } from '@/lib/i18n/server'
 const PRODUCT_URL = (collection: string, id: string) =>
   `https://studiotj.com/shop/${collection}/${id}`
 
+// Benable importer gallery probe (option 2: SSR'd <img> manifest).
+// Scoped to one product so we can compare the test card against unchanged
+// neighbours in a Benable list. If Benable surfaces these as gallery thumbs,
+// the signal is body <img> tags and we roll this out site-wide (likely by
+// SSRing the real gallery strip rather than this hidden block).
+const BENABLE_GALLERY_TEST_IDS = new Set(['photo-halcyon-katwijk-221-prints'])
+
+function galleryImageUrls(group: DisplayGroup): string[] {
+  const v = groupDefaultVariant(group)
+  return [v.hero, v.mock1, v.mock2].filter((u): u is string => Boolean(u))
+}
+
 function getPlainDescription(group: DisplayGroup): string {
   const raw = group.description.trim()
   return raw.length >= 40 ? raw : `${group.title} — a StudioTJ print, shipped worldwide.`
@@ -111,6 +123,9 @@ export default async function ProductPage({
 
   const jsonLd = buildJsonLd(group, params.collection)
   const currency = await getVisitorCurrency()
+  const benableProbeImages = BENABLE_GALLERY_TEST_IDS.has(group.id)
+    ? galleryImageUrls(group)
+    : []
 
   return (
     <>
@@ -118,6 +133,24 @@ export default async function ProductPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {benableProbeImages.length > 0 && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            left: '-10000px',
+            top: 'auto',
+            width: '600px',
+            height: '600px',
+            overflow: 'hidden',
+          }}
+        >
+          {benableProbeImages.map((src) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={src} src={src} alt={group.title} width={600} height={600} />
+          ))}
+        </div>
+      )}
       <ShopPageShell>
         <ProductDetail
           group={group}
