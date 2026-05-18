@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-18T11:30:03Z",
+  "generated_at": "2026-05-18T12:00:11Z",
   "items": [
     {
       "cluster_id": "f3004d1aff716cabb5119984ff2b895fdc2aa932",
@@ -22,13 +22,18 @@
       "identity": "studiotj",
       "primary_image_url": "https://photos.studiotj.com/elsewhere/ac57ba2ba3e1bae85b17c78a3ebba2cd312a8928.webp",
       "aspect_ratio": 0.6667,
-      "copy": "Steel arch bridge over the Maas, doubled in the water below. The sky does as much structural work as the steel — reflection extends rather than softens. Dutch infrastructure at its most composed. studiotj.com #ArchitecturePhotography #BlackAndWhite",
-      "earliest_posted_at": "2026-04-29T16:44:30Z",
+      "copy": "Steel arch railway bridge over the Maas, its silhouette doubled cleanly in the water below. Dramatic cumulus clouds stack above the span — the sky does as much structural work as the bridge itself. Dutch infrastructure photography that finds the industrial waterway at its most composed. The reflection doesn't soften the steel, it extends it. Shot in the cool blue-grey palette of a changeable southern Netherlands afternoon, the kind of light that turns a technical structure into something almost architectural in how it holds the frame. The bridge becomes both subject and mirror, and the water becomes the argument between them. https://studiotj.com/photo/2026-04-19-Maastricht-dsc-0003/portfolio/the-atmospheric-collection #ArchitecturePhotography #BridgePhotography #DutchPhotography #UrbanLandscape #IndustrialPhotography #MaastrichtNederlands #BlackAndWhitePhotography",
+      "earliest_posted_at": "2026-04-29T16:44:15Z",
       "channels": [
         {
           "platform": "bluesky",
           "public_url": "https://bsky.app/profile/studiotj.bsky.social/post/3mknkbwv5l62w",
           "posted_at": "2026-04-29T16:44:30Z"
+        },
+        {
+          "platform": "pixelfed",
+          "public_url": "https://pixelfed.social/p/StudioTJ/955144756467128585",
+          "posted_at": "2026-04-29T16:44:15Z"
         }
       ]
     },
@@ -37,13 +42,18 @@
       "identity": "studiotj",
       "primary_image_url": "https://photos.studiotj.com/elsewhere/d3edb8df8ec0e68249d227d9deb2b70cf6f46b0e.webp",
       "aspect_ratio": 0.8,
-      "copy": "Riveted steel trusses converging into a diagonal tunnel of girders. Infrastructure as structural abstraction — the underside reveals what the crossing conceals. #IndustrialPhotography #ArchitectureAbstract\n\nstudiotj.com",
-      "earliest_posted_at": "2026-04-29T16:15:09Z",
+      "copy": "Canal bridge geometry in Maastricht, shot from below — riveted steel trusses compress into a diagonal tunnel of industrial structure. Dutch heritage infrastructure at close range: the bridge reads as a building from this angle, all girder rhythm and bolted ironwork. Black and white strips the palette to its skeleton and finds a new subject inside the familiar crossing. The underside is where the engineering shows — every rivet a decision, every angle a load path made visible. This is what happens when you stop looking at bridges as crossings and start looking at them as objects. https://studiotj.com/photo/2026-04-19-Maastricht-dsc-0029/portfolio/the-signature-collection #ArchitecturePhotography #IndustrialPhotography #BlackAndWhitePhotography #BridgePhotography #MaastrichtPhotography #DutchHeritage #StructuralGeometry #Mastoart",
+      "earliest_posted_at": "2026-04-29T14:54:11Z",
       "channels": [
         {
           "platform": "bluesky",
           "public_url": "https://bsky.app/profile/studiotj.bsky.social/post/3mkninhgeyf2n",
           "posted_at": "2026-04-29T16:15:09Z"
+        },
+        {
+          "platform": "pixelfed",
+          "public_url": "https://pixelfed.social/p/StudioTJ/955117054903032619",
+          "posted_at": "2026-04-29T14:54:11Z"
         }
       ]
     }
@@ -52,9 +62,9 @@
     "active_channels_30d": 0,
     "posts_this_month": 0,
     "last_successful_fetch_per_platform": {
-      "bluesky": "2026-05-18T11:30:02Z",
-      "pixelfed": "2026-05-06T01:36:03Z",
-      "youtube": "2026-05-18T11:30:02Z"
+      "bluesky": "2026-05-18T12:00:09Z",
+      "pixelfed": "2026-05-18T12:00:09Z",
+      "youtube": "2026-05-18T12:00:09Z"
     }
   }
 }
