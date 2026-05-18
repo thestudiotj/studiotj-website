@@ -1,60 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-18T09:52:07Z",
-  "items": [
-    {
-      "cluster_id": "f3004d1aff716cabb5119984ff2b895fdc2aa932",
-      "identity": "studiotj",
-      "primary_image_url": "https://photos.studiotj.com/elsewhere/f3004d1aff716cabb5119984ff2b895fdc2aa932.webp",
-      "aspect_ratio": 0.6667,
-      "copy": "ENCI cement works above its own quarry lake — chimney rising over extraction pond, limestone terracing carved into the hillside. Industrial landscape where landscape and architecture are the same subject. studiotj.com #IndustrialPhotography #MaastrichtArchitecture",
-      "earliest_posted_at": "2026-04-29T16:55:38Z",
-      "channels": [
-        {
-          "platform": "bluesky",
-          "public_url": "https://bsky.app/profile/studiotj.bsky.social/post/3mknkvueanr23",
-          "posted_at": "2026-04-29T16:55:38Z"
-        }
-      ]
-    },
-    {
-      "cluster_id": "ac57ba2ba3e1bae85b17c78a3ebba2cd312a8928",
-      "identity": "studiotj",
-      "primary_image_url": "https://photos.studiotj.com/elsewhere/ac57ba2ba3e1bae85b17c78a3ebba2cd312a8928.webp",
-      "aspect_ratio": 0.6667,
-      "copy": "Steel arch bridge over the Maas, doubled in the water below. The sky does as much structural work as the steel — reflection extends rather than softens. Dutch infrastructure at its most composed. studiotj.com #ArchitecturePhotography #BlackAndWhite",
-      "earliest_posted_at": "2026-04-29T16:44:30Z",
-      "channels": [
-        {
-          "platform": "bluesky",
-          "public_url": "https://bsky.app/profile/studiotj.bsky.social/post/3mknkbwv5l62w",
-          "posted_at": "2026-04-29T16:44:30Z"
-        }
-      ]
-    },
-    {
-      "cluster_id": "d3edb8df8ec0e68249d227d9deb2b70cf6f46b0e",
-      "identity": "studiotj",
-      "primary_image_url": "https://photos.studiotj.com/elsewhere/d3edb8df8ec0e68249d227d9deb2b70cf6f46b0e.webp",
-      "aspect_ratio": 0.8,
-      "copy": "Riveted steel trusses converging into a diagonal tunnel of girders. Infrastructure as structural abstraction — the underside reveals what the crossing conceals. #IndustrialPhotography #ArchitectureAbstract\n\nstudiotj.com",
-      "earliest_posted_at": "2026-04-29T16:15:09Z",
-      "channels": [
-        {
-          "platform": "bluesky",
-          "public_url": "https://bsky.app/profile/studiotj.bsky.social/post/3mkninhgeyf2n",
-          "posted_at": "2026-04-29T16:15:09Z"
-        }
-      ]
-    }
-  ],
+  "generated_at": "2026-05-18T10:00:09Z",
+  "items": [],
   "meta": {
     "active_channels_30d": 0,
     "posts_this_month": 0,
     "last_successful_fetch_per_platform": {
       "bluesky": "2026-05-18T09:52:05Z",
       "pixelfed": "2026-05-06T01:36:03Z",
-      "youtube": "2026-05-18T09:52:05Z"
+      "youtube": "2026-05-18T10:00:09Z"
     }
   }
 }
