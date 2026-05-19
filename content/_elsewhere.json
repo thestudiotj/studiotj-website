@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-19T08:30:05Z",
+  "generated_at": "2026-05-19T09:00:08Z",
   "items": [
     {
       "cluster_id": "f3004d1aff716cabb5119984ff2b895fdc2aa932",
@@ -62,9 +62,9 @@
     "active_channels_30d": 0,
     "posts_this_month": 0,
     "last_successful_fetch_per_platform": {
-      "bluesky": "2026-05-19T08:30:04Z",
-      "pixelfed": "2026-05-19T08:30:04Z",
-      "youtube": "2026-05-19T08:30:04Z"
+      "bluesky": "2026-05-19T09:00:07Z",
+      "pixelfed": "2026-05-19T09:00:07Z",
+      "youtube": "2026-05-19T09:00:07Z"
     }
   }
 }
