@@ -303,7 +303,7 @@ export default async function HomePage() {
           <li>
             <Link href="/picks" className="group inline-flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="font-display text-2xl text-ink group-hover:text-muted transition-colors">Picks</span>
-              <span className="text-muted text-sm">— tools and brands I actually use</span>
+              <span className="text-muted text-sm">— brands that fit the studio</span>
             </Link>
           </li>
           <li>
