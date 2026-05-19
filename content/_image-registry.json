@@ -324,6 +324,26 @@
     "width": 300,
     "height": 168
   },
+  "picks/learning/domestika/hero.webp": {
+    "aspect": "1:1",
+    "width": 900,
+    "height": 900
+  },
+  "picks/learning/domestika/supporting-1.webp": {
+    "aspect": "2:1",
+    "width": 1200,
+    "height": 600
+  },
+  "picks/learning/domestika/supporting-2.webp": {
+    "aspect": "16:9",
+    "width": 496,
+    "height": 279
+  },
+  "picks/learning/domestika/supporting-3.webp": {
+    "aspect": "16:9",
+    "width": 496,
+    "height": 279
+  },
   "picks/photography/leica-camera-usa/hero.webp": {
     "aspect": "1:1",
     "width": 820,
