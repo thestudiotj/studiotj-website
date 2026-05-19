@@ -10,6 +10,7 @@ export const PICKS_CATEGORIES = [
   'workspace',
   'print',
   'gaming',
+  'learning',
 ] as const;
 
 export const PICKS_CATEGORY_LABELS: Record<typeof PICKS_CATEGORIES[number], string> = {
@@ -24,6 +25,7 @@ export const PICKS_CATEGORY_LABELS: Record<typeof PICKS_CATEGORIES[number], stri
   'workspace': 'Workspace',
   'print': 'Print',
   'gaming': 'Gaming',
+  'learning': 'Learning',
 };
 
 export type PicksCategory = typeof PICKS_CATEGORIES[number];

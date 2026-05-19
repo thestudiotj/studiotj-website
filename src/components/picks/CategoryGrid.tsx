@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Camera, Shield, Globe, LampDesk, Film, PenLine, Pencil, Printer, Music, Palette, Gamepad2, type LucideIcon } from "lucide-react";
+import { Camera, Shield, Globe, LampDesk, Film, PenLine, Pencil, Printer, Music, Palette, Gamepad2, GraduationCap, type LucideIcon } from "lucide-react";
 import type { PicksCategory } from "@/lib/picks/categories";
 
 const CATEGORY_ICONS: Partial<Record<PicksCategory, LucideIcon>> = {
@@ -14,6 +14,7 @@ const CATEGORY_ICONS: Partial<Record<PicksCategory, LucideIcon>> = {
   audio: Music,
   design: Palette,
   gaming: Gamepad2,
+  learning: GraduationCap,
 };
 
 interface CategoryEntry {
